@@ -350,11 +350,7 @@ namespace Benchwarp
 
         private static void WarpClicked(string buttonName)
         {
-            if (PlayerData.instance.respawnType == 1)
-            {
                 GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
-            }
-            else return;
         }
 
         #region Dropdown toggle methods
