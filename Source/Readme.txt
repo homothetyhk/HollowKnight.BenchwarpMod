@@ -1,3 +1,0 @@
-Mod which creates a clickable menu on the pause screen to alter your current bench respawn point. Save and quit after selection to travel to new bench. Only benches visited after installing the mod can be visited, unless you set UnlockAllBenches to true in the document Benchwarp.GlobalSettings found in the save directory.
-
-Credit to Seanpr for originally developing the UI used here for DebugMod, and for creating the "Warp" method. Credit to The Embraced One for originally developing menu assets for DebugMod, reused here.
