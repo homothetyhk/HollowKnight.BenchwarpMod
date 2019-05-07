@@ -56,6 +56,21 @@ namespace Benchwarp
 
             // We have to set the game non-paused because TogglePauseMenu sucks and UIClosePauseMenu doesn't do it for us.
             GameManager.instance.isPaused = false;
+
+            // Restore various things normally handled by exiting the pause menu. None of these are necessary afaik
+            GameCameras.instance.ResumeCameraShake();
+            if (HeroController.instance != null)
+            {
+                HeroController.instance.UnPause();
+            }
+            MenuButtonList.ClearAllLastSelected();
+
+            //This allows the next pause to stop the game correctly
+            TimeController.GenericTimeScale = 1f;
+
+            // Restores audio to normal levels. Unfortunately, some warps pop atm when music changes over
+            GameManager.instance.actorSnapshotUnpaused.TransitionTo(0f);
+            GameManager.instance.ui.AudioGoToGameplay(.2f);
         }
 
         public void benchWatcher(string target, bool val)
