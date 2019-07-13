@@ -8,35 +8,35 @@ namespace Benchwarp
 {
     public class Benchwarp : Mod<SaveSettings, GlobalSettings>
     {
+
         internal static Benchwarp instance;
         public override void Initialize()
         {
+            if (instance != null) return;
+
             instance = this;
 
             instance.Log("Initializing");
-
-            if (!Benchwarp.instance.GlobalSettings.UnlockAllBenches) Benchwarp.instance.GlobalSettings.UnlockAllBenches = false;
 
             GameObject UIObj = new GameObject();
             UIObj.AddComponent<GUIController>();
             GameObject.DontDestroyOnLoad(UIObj);
 
-            ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
             ModHooks.Instance.SetPlayerBoolHook += benchWatcher;
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += ClearSettings;
-            if (Benchwarp.instance.GlobalSettings.UnlockAllBenches) ModHooks.Instance.SavegameLoadHook += UnlockAllBenchesLoadGame;
-            if (Benchwarp.instance.GlobalSettings.UnlockAllBenches) ModHooks.Instance.NewGameHook += UnlockAllBenchesNewGame;
+            ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
 
             GUIController.Instance.BuildMenus();
         }
 
         public override string GetVersion()
         {
-            return "1.0";
+            return "1.3";
         }
 
         public IEnumerator Respawn()
         {
+            GameManager.instance.SaveGame();
             UIManager.instance.UIClosePauseMenu();
 
             // Set some stuff which would normally be set by LoadSave
@@ -129,130 +129,6 @@ namespace Benchwarp
             }
             PlayerData.instance.SetBoolInternal(target, val);
         }
-        public void UnlockAllBenchesLoadGame(int id)
-        {
-            UnlockAllBenchesNewGame();
-        }
-
-        public void UnlockAllBenchesNewGame()
-        {
-            if (!Benchwarp.instance.Settings.UnlockAllBenchesFinished)
-            {
-                Benchwarp.instance.Settings.hasVisitedDirtmouth = true;
-                Benchwarp.instance.Settings.hasVisitedMato = true;
-                Benchwarp.instance.Settings.hasVisitedXRHotSprings = true;
-                Benchwarp.instance.Settings.hasVisitedXRStag = true;
-                Benchwarp.instance.Settings.hasVisitedSalubra = true;
-                Benchwarp.instance.Settings.hasVisitedAncestralMound = true;
-                Benchwarp.instance.Settings.hasVisitedBlackEggTemple = true;
-                Benchwarp.instance.Settings.hasVisitedWaterfall = true;
-                Benchwarp.instance.Settings.hasVisitedStoneSanctuary = true;
-                Benchwarp.instance.Settings.hasVisitedGPToll = true;
-                Benchwarp.instance.Settings.hasVisitedGPStag = true;
-                Benchwarp.instance.Settings.hasVisitedLakeofUnn = true;
-                Benchwarp.instance.Settings.hasVisitedSheo = true;
-                Benchwarp.instance.Settings.hasVisitedTeachersArchives = true;
-                Benchwarp.instance.Settings.hasVisitedQueensStation = true;
-                Benchwarp.instance.Settings.hasVisitedLegEater = true;
-                Benchwarp.instance.Settings.hasVisitedBretta = true;
-                Benchwarp.instance.Settings.hasVisitedMantisVillage = true;
-                Benchwarp.instance.Settings.hasVisitedQuirrel = true;
-                Benchwarp.instance.Settings.hasVisitedCoTToll = true;
-                Benchwarp.instance.Settings.hasVisitedCityStorerooms = true;
-                Benchwarp.instance.Settings.hasVisitedWatchersSpire = true;
-                Benchwarp.instance.Settings.hasVisitedKingsStation = true;
-                Benchwarp.instance.Settings.hasVisitedPleasureHouse = true;
-                Benchwarp.instance.Settings.hasVisitedWaterways = true;
-                Benchwarp.instance.Settings.hasVisitedGodhome = true;
-                Benchwarp.instance.Settings.hasVisitedHallofGods = true;
-                Benchwarp.instance.Settings.hasVisitedDNHotSprings = true;
-                Benchwarp.instance.Settings.hasVisitedFailedTramway = true;
-                Benchwarp.instance.Settings.hasVisitedBeastsDen = true;
-                Benchwarp.instance.Settings.hasVisitedABToll = true;
-                Benchwarp.instance.Settings.hasVisitedABStag = true;
-                Benchwarp.instance.Settings.hasVisitedOro = true;
-                Benchwarp.instance.Settings.hasVisitedCamp = true;
-                Benchwarp.instance.Settings.hasVisitedColosseum = true;
-                Benchwarp.instance.Settings.hasVisitedHive = true;
-                Benchwarp.instance.Settings.hasVisitedDarkRoom = true;
-                Benchwarp.instance.Settings.hasVisitedCrystalGuardian = true;
-                Benchwarp.instance.Settings.hasVisitedQGCornifer = true;
-                Benchwarp.instance.Settings.hasVisitedQGToll = true;
-                Benchwarp.instance.Settings.hasVisitedQGStag = true;
-                Benchwarp.instance.Settings.hasVisitedWPEntrance = true;
-                Benchwarp.instance.Settings.hasVisitedWPAtrium = true;
-                Benchwarp.instance.Settings.hasVisitedWPBalcony = true;
-                Benchwarp.instance.Settings.hasVisitedUpperTram = true;
-                Benchwarp.instance.Settings.hasVisitedLowerTram = true;
-                Benchwarp.instance.Settings.hasVisitedRGStag = true;
-                Benchwarp.instance.Settings.hasVisitedGreyMourner = true;
-
-                Benchwarp.instance.Settings.UnlockAllBenchesFinished = true;
-                
-                PlayerData pd = PlayerData.instance;
-
-                //Most of these are unnecessary, but some titlecards can lock you into a bench
-                pd.SetBoolInternal("visitedAbyss", true);
-                pd.SetBoolInternal("visitedAbyssLower", true);
-                pd.SetBoolInternal("visitedCliffs", true);
-                pd.SetBoolInternal("visitedCrossroads", true);
-                pd.SetBoolInternal("visitedDeepnest", true);
-                pd.SetBoolInternal("visitedDirtmouth", true);
-                pd.SetBoolInternal("visitedGreenpath", true);
-                pd.SetBoolInternal("visitedFogCanyon", true);
-                pd.SetBoolInternal("visitedFungus", true);
-                pd.SetBoolInternal("visitedHive", true);
-                pd.SetBoolInternal("visitedGodhome", true);
-                pd.SetBoolInternal("visitedMines", true);
-                pd.SetBoolInternal("visitedOutskirts", true);
-                pd.SetBoolInternal("visitedRestingGrounds", true);
-                pd.SetBoolInternal("visitedRoyalGardens", true);
-                pd.SetBoolInternal("visitedRestingGrounds", true);
-                pd.SetBoolInternal("visitedRuins", true);
-                pd.SetBoolInternal("visitedWaterways", true);
-                pd.SetBoolInternal("visitedWhitePalace", true);
-
-                // Only two of these do anything
-                pd.SetBoolInternal("tramOpenedCrossroads", true);
-                pd.SetBoolInternal("openedTramRestingGrounds", true);
-                pd.SetBoolInternal("tramOpenedDeepnest", true);
-                pd.SetBoolInternal("openedTramLower", true);
-                pd.SetBoolInternal("tollBenchAbyss", true);
-                pd.SetBoolInternal("tollBenchCity", true);
-                pd.SetBoolInternal("tollBenchQueensGardens", true);
-
-                //This actually fixes the unlockable benches
-                SceneData sd = GameManager.instance.sceneData;
-                sd.SaveMyState(new PersistentBoolData
-                {
-                    sceneName = "Hive_01",
-                    id = "Hive Bench",
-                    activated = true,
-                    semiPersistent = false
-                });
-                sd.SaveMyState(new PersistentBoolData
-                {
-                    sceneName = "Ruins1_31",
-                    id = "Toll Machine Bench",
-                    activated = true,
-                    semiPersistent = false
-                });
-                sd.SaveMyState(new PersistentBoolData
-                {
-                    sceneName = "Abyss_18",
-                    id = "Toll Machine Bench",
-                    activated = true,
-                    semiPersistent = false
-                });
-                sd.SaveMyState(new PersistentBoolData
-                {
-                    sceneName = "Fungus3_50",
-                    id = "Toll Machine Bench",
-                    activated = true,
-                    semiPersistent = false
-                });
-            }
-        }
 
         public void ClearSettings(Scene arg0, Scene arg1)
         {
@@ -306,8 +182,6 @@ namespace Benchwarp
                 Benchwarp.instance.Settings.hasVisitedLowerTram = false;
                 Benchwarp.instance.Settings.hasVisitedRGStag = false;
                 Benchwarp.instance.Settings.hasVisitedGreyMourner = false;
-
-                Benchwarp.instance.Settings.UnlockAllBenchesFinished = false;
             }
         }
 

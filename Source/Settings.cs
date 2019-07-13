@@ -244,21 +244,25 @@ namespace Benchwarp
             get => GetBool(false);
             set => SetBool(value);
         }
-        public bool UnlockAllBenchesFinished
-        {
-            get => GetBool(false);
-            set => SetBool(value);
-        }
 
         public static SaveSettings _instance;
     }
     public class GlobalSettings : IModSettings
     {
+        public bool WarpOnly
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
         public bool UnlockAllBenches
         {
             get => GetBool(false);
             set => SetBool(value);
         }
-
+        public bool ShowScene
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
     }
 }

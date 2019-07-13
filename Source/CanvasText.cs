@@ -47,7 +47,6 @@ namespace Benchwarp
 
             active = true;
         }
-
         public void SetPosition(Vector2 pos)
         {
             if (textObj != null)
