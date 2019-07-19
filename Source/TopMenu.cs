@@ -376,6 +376,8 @@ namespace Benchwarp
 
         private static void WarpClicked(string buttonName)
         {
+            if (Benchwarp.instance.GlobalSettings.UnlockAllBenches) UnlockAllClicked(buttonName); // makes various pd changes if necessary
+
             GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
         }
 
@@ -391,8 +393,12 @@ namespace Benchwarp
 
         private static void UnlockAllClicked(string buttonName)
         {
-            Benchwarp.instance.GlobalSettings.UnlockAllBenches = !Benchwarp.instance.GlobalSettings.UnlockAllBenches;
-            Benchwarp.instance.SaveGlobalSettings();
+            if (buttonName != "Warp")
+            {
+                Benchwarp.instance.GlobalSettings.UnlockAllBenches = !Benchwarp.instance.GlobalSettings.UnlockAllBenches;
+                Benchwarp.instance.SaveGlobalSettings();
+            }
+            
             if (Benchwarp.instance.GlobalSettings.UnlockAllBenches)
             {
                 PlayerData pd = PlayerData.instance;

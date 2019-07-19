@@ -31,7 +31,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "1.3";
+            return "1.4";
         }
 
         public IEnumerator Respawn()
@@ -47,6 +47,7 @@ namespace Benchwarp
             yield return new WaitForSecondsRealtime(0.5f);
 
             // Actually respawn the character
+            GameManager.instance.SetPlayerDataBool(nameof(PlayerData.atBench), false);
             GameManager.instance.ReadyForRespawn(false);
 
             yield return new WaitWhile(() => GameManager.instance.IsInSceneTransition);
@@ -65,6 +66,11 @@ namespace Benchwarp
                 HeroController.instance.UnPause();
             }
             MenuButtonList.ClearAllLastSelected();
+
+            // Sloppy way to force the soul meter to update
+            HeroController.instance.SetMPCharge(0);
+            HeroController.instance.AddMPCharge(1);
+
 
             //This allows the next pause to stop the game correctly
             TimeController.GenericTimeScale = 1f;
