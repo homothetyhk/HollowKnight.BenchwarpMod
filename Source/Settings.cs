@@ -4,6 +4,42 @@ namespace Benchwarp
 {
     public class SaveSettings : IModSettings
     {
+        public bool benchDeployed
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
+
+        public float benchX
+        {
+            get => GetFloat(0f);
+            set => SetFloat(value);
+        }
+
+        public float benchY
+        {
+            get => GetFloat(0f);
+            set => SetFloat(value);
+        }
+
+        public string benchScene
+        {
+            get => GetString(null);
+            set => SetString(value);
+        }
+
+        public string benchStyle
+        {
+            get => GetString("Right");
+            set => SetString(value);
+        }
+
+        public string benchName
+        {
+            get => GetString(null);
+            set => SetString(value);
+        }
+
         public bool hasVisitedDirtmouth
         {
             get => GetBool(false);
@@ -262,6 +298,35 @@ namespace Benchwarp
         public bool ShowScene
         {
             get => GetBool(false);
+            set => SetBool(value);
+        }
+        public bool EnableDeploy
+        {
+            get => GetBool(true);
+            set => SetBool(value);
+        }
+
+        public bool DeployCooldown
+        {
+            get => GetBool(true);
+            set => SetBool(value);
+        }
+
+        public bool Noninteractive
+        {
+            get => GetBool(true);
+            set => SetBool(value);
+        }
+
+        public bool NoMidAirDeploy
+        {
+            get => GetBool(true);
+            set => SetBool(value);
+        }
+
+        public bool BlacklistRooms
+        {
+            get => GetBool(true);
             set => SetBool(value);
         }
     }

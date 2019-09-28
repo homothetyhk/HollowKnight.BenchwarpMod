@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using GlobalEnums;
 
@@ -9,6 +10,8 @@ namespace Benchwarp
         private static CanvasPanel panel;
         private static CanvasPanel sceneNamePanel;
         private static GameObject canvas;
+        private static float cooldown;
+        private static bool onCooldown;
 
         public static void BuildMenu(GameObject _canvas)
         {
@@ -25,11 +28,35 @@ namespace Benchwarp
 
             //Main buttons
             panel.AddButton("Warp", GUIController.Instance.images["ButtonRect"], new Vector2(-154f, 40f), Vector2.zero, WarpClicked, buttonRect, GUIController.Instance.trajanBold, "Warp");
+
+            if (Benchwarp.instance.GlobalSettings.EnableDeploy)
+            {
+                panel.AddButton("Deploy", GUIController.Instance.images["ButtonRect"], new Vector2(-154f, 200f), Vector2.zero, DeployClicked, buttonRect, GUIController.Instance.trajanBold, "Deploy");
+                panel.AddButton("Set", GUIController.Instance.images["ButtonRect"], new Vector2(-54f, 200f), Vector2.zero, SetClicked, buttonRect, GUIController.Instance.trajanBold, "Set");
+                panel.AddButton("Style", GUIController.Instance.images["ButtonRect"], new Vector2(46f, 200f), Vector2.zero, StyleClicked, buttonRect, GUIController.Instance.trajanBold, "Style");
+                panel.AddPanel("Style Panel", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(46f, 200f), Vector2.zero, new Rect(0, 0, GUIController.Instance.images["DropdownBG"].width, 270f));
+                {
+                    Vector2 position = new Vector2(5f, 25f);
+                    foreach (string style in BenchMaker.Styles)
+                    {
+                        panel.GetPanel("Style Panel").AddButton(style, GUIController.Instance.images["ButtonRectEmpty"], position, Vector2.zero, StyleChanged, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, style, fontSize);
+                        position += new Vector2(0f, 30f);
+                    }
+                }
+                panel.AddButton("Options", GUIController.Instance.images["ButtonRect"], new Vector2(146f, 200f), Vector2.zero, OptionsClicked, buttonRect, GUIController.Instance.trajanBold, "Options");
+                panel.AddPanel("Options Panel", GUIController.Instance.images["DropdownBG"], new Vector2(146f, 200f), Vector2.zero, new Rect(0, 0, GUIController.Instance.images["DropdownBG"].width, 270f));
+                panel.GetPanel("Options Panel").AddButton("Cooldown", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 25f), Vector2.zero, CooldownClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Cooldown", fontSize);
+                panel.GetPanel("Options Panel").AddButton("Noninteractive", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 65f), Vector2.zero, NoninteractiveClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Noninteractive", fontSize);
+                panel.GetPanel("Options Panel").AddButton("No Mid-Air Deploy", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 105f), Vector2.zero, NoMidAirDeployClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "No Mid-Air Deploy", fontSize);
+                panel.GetPanel("Options Panel").AddButton("Blacklist", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 145f), Vector2.zero, BlacklistClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Blacklist", fontSize);
+            }
+
             panel.AddButton("Settings", GUIController.Instance.images["ButtonRect"], new Vector2(1446f, 0f), Vector2.zero, SettingsClicked, buttonRect, GUIController.Instance.trajanBold, "Settings");
             panel.AddPanel("Settings Panel", GUIController.Instance.images["DropdownBG"], new Vector2(1445f, 20f), Vector2.zero, new Rect(0, 0, GUIController.Instance.images["DropdownBG"].width, 270f));
             panel.GetPanel("Settings Panel").AddButton("WarpOnly", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 25f), Vector2.zero, WarpOnlyClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Warp Only", fontSize);
             panel.GetPanel("Settings Panel").AddButton("UnlockAll", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 65f), Vector2.zero, UnlockAllClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Unlock All", fontSize);
             panel.GetPanel("Settings Panel").AddButton("ShowScene", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 105f), Vector2.zero, ShowSceneClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Show Room Name", fontSize);
+            panel.GetPanel("Settings Panel").AddButton("EnableDeploy", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 145f), Vector2.zero, EnableDeployClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Enable Deploy", fontSize);
 
             if (Benchwarp.instance.GlobalSettings.WarpOnly) return;
 
@@ -67,7 +94,7 @@ namespace Benchwarp
             panel.AddPanel("Palace Panel", GUIController.Instance.images["DropdownBG"], new Vector2(1245f, 20f), Vector2.zero, new Rect(0, 0, GUIController.Instance.images["DropdownBG"].width, 270f));
             panel.AddPanel("Tram Panel", GUIController.Instance.images["DropdownBG"], new Vector2(1345f, 20f), Vector2.zero, new Rect(0, 0, GUIController.Instance.images["DropdownBG"].width, 270f));
 
-            //Cheats panel
+            //Cliffs panel
             panel.GetPanel("Cliffs Panel").AddButton("KingsPass", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 25f), Vector2.zero, KingsPassClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "King's Pass", fontSize);
             panel.GetPanel("Cliffs Panel").AddButton("Dirtmouth", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 65f), Vector2.zero, DirtmouthClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Dirtmouth", fontSize);
             panel.GetPanel("Cliffs Panel").AddButton("Mato", GUIController.Instance.images["ButtonRectEmpty"], new Vector2(5f, 105f), Vector2.zero, MatoClicked, new Rect(0f, 0f, 80f, 40f), GUIController.Instance.trajanNormal, "Mato", fontSize);
@@ -151,6 +178,12 @@ namespace Benchwarp
 
         public static void Update()
         {
+            
+            if (cooldown > 0)
+            {
+                cooldown -= Time.unscaledDeltaTime;
+            }
+
             if (panel == null || sceneNamePanel == null)
             {
                 return;
@@ -171,12 +204,52 @@ namespace Benchwarp
             {
                 panel.SetActive(false, true);
             }
+            if (Benchwarp.instance.GlobalSettings.EnableDeploy)
+            {
+                if (onCooldown)
+                {
+                    panel.GetButton("Deploy").UpdateText(((int)cooldown).ToString());
+                }
+                if (cooldown <= 0 && onCooldown)
+                {
+                    panel.GetButton("Deploy").UpdateText("Deploy");
+                    onCooldown = false;
+                }
+                if (onCooldown ||
+                    (Benchwarp.instance.GlobalSettings.BlacklistRooms && BenchMaker.Blacklist()) ||
+                    (Benchwarp.instance.GlobalSettings.NoMidAirDeploy && !HeroController.instance.CheckTouchingGround()))
+                {
+                    panel.GetButton("Deploy").SetTextColor(Color.red);
+                }
+                else panel.GetButton("Deploy").SetTextColor(Color.white);
+
+
+                panel.GetButton("Set").SetTextColor(Benchwarp.instance.Settings.benchScene == PlayerData.instance.respawnScene && Benchwarp.instance.Settings.benchName == PlayerData.instance.respawnMarkerName
+                    ? Color.yellow : Color.white);
+
+                if (panel.GetPanel("Style Panel").active)
+                {
+                    foreach (string style in BenchMaker.Styles)
+                    {
+                        panel.GetButton(style, "Style Panel").SetTextColor(Benchwarp.instance.Settings.benchStyle == style ? Color.yellow : Color.white);
+                    }
+                }
+
+                if (panel.GetPanel("Options Panel").active)
+                {
+                    panel.GetButton("Cooldown", "Options Panel").SetTextColor(Benchwarp.instance.GlobalSettings.DeployCooldown ? Color.yellow : Color.white);
+                    panel.GetButton("Noninteractive", "Options Panel").SetTextColor(Benchwarp.instance.GlobalSettings.Noninteractive ? Color.yellow : Color.white);
+                    panel.GetButton("No Mid-Air Deploy", "Options Panel").SetTextColor(Benchwarp.instance.GlobalSettings.NoMidAirDeploy ? Color.yellow : Color.white);
+                    panel.GetButton("Blacklist", "Options Panel").SetTextColor(Benchwarp.instance.GlobalSettings.BlacklistRooms ? Color.yellow : Color.white);
+                }
+            }
 
             if (panel.GetPanel("Settings Panel").active)
             {
                 panel.GetButton("WarpOnly", "Settings Panel").SetTextColor(Benchwarp.instance.GlobalSettings.WarpOnly ? Color.yellow : Color.white);
                 panel.GetButton("UnlockAll", "Settings Panel").SetTextColor(Benchwarp.instance.GlobalSettings.UnlockAllBenches ? Color.yellow : Color.white);
                 panel.GetButton("ShowScene", "Settings Panel").SetTextColor(Benchwarp.instance.GlobalSettings.ShowScene ? Color.yellow : Color.white);
+                panel.GetButton("EnableDeploy", "Settings Panel").SetTextColor(Benchwarp.instance.GlobalSettings.EnableDeploy ? Color.yellow : Color.white);
             }
 
             if (panel.GetPanel("Cliffs Panel").active)
@@ -381,6 +454,76 @@ namespace Benchwarp
             GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
         }
 
+        private static void DeployClicked(string buttonName)
+        {
+            if (onCooldown) return;
+            if (Benchwarp.instance.GlobalSettings.BlacklistRooms && BenchMaker.Blacklist()) return;
+            if (Benchwarp.instance.GlobalSettings.NoMidAirDeploy && !HeroController.instance.CheckTouchingGround())
+            {
+                return;
+            }
+            BenchMaker.DestroyBench();
+
+            Benchwarp.instance.Settings.benchDeployed = true;
+            Benchwarp.instance.Settings.benchX = HeroController.instance.gameObject.transform.position.x;
+            Benchwarp.instance.Settings.benchY = HeroController.instance.gameObject.transform.position.y;
+            Benchwarp.instance.Settings.benchScene = GameManager.instance.sceneName;
+
+            BenchMaker.MakeBench();
+            SetClicked(null);
+            if (Benchwarp.instance.GlobalSettings.DeployCooldown)
+            {
+                cooldown = 60f;
+                onCooldown = true;
+            }
+        }
+
+        private static void SetClicked(string buttonName)
+        {
+            if (!Benchwarp.instance.Settings.benchDeployed) return;
+            PlayerData.instance.respawnScene = Benchwarp.instance.Settings.benchScene;
+            PlayerData.instance.respawnType = 1;
+            PlayerData.instance.respawnMarkerName = Benchwarp.instance.Settings.benchName;
+        }
+
+        #region Deploy options
+
+        private static void StyleChanged(string buttonName)
+        {
+            Benchwarp.instance.Settings.benchStyle = buttonName;
+        }
+
+        private static void CooldownClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.DeployCooldown = !Benchwarp.instance.GlobalSettings.DeployCooldown;
+            Benchwarp.instance.SaveGlobalSettings();
+            cooldown = 0f;
+        }
+
+        private static void NoninteractiveClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.Noninteractive = !Benchwarp.instance.GlobalSettings.Noninteractive;
+            Benchwarp.instance.SaveGlobalSettings();
+            if (!Benchwarp.instance.GlobalSettings.Noninteractive && BenchMaker.DeployedBench != null)
+            {
+                BenchMaker.MakeBench();
+            }
+        }
+
+        private static void NoMidAirDeployClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.NoMidAirDeploy = !Benchwarp.instance.GlobalSettings.NoMidAirDeploy;
+            Benchwarp.instance.SaveGlobalSettings();
+        }
+
+        private static void BlacklistClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.BlacklistRooms = !Benchwarp.instance.GlobalSettings.BlacklistRooms;
+            Benchwarp.instance.SaveGlobalSettings();
+        }
+
+        #endregion
+
         #region Settings button method
         private static void WarpOnlyClicked(string buttonName)
         {
@@ -472,6 +615,15 @@ namespace Benchwarp
             Benchwarp.instance.SaveGlobalSettings();
         }
 
+        private static void EnableDeployClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.EnableDeploy = !Benchwarp.instance.GlobalSettings.EnableDeploy;
+            Benchwarp.instance.SaveGlobalSettings();
+            BenchMaker.DestroyBench();
+            panel.Destroy();
+            sceneNamePanel.Destroy();
+            BuildMenu(canvas);
+        }
         #endregion
 
         #region Dropdown toggle methods
@@ -555,6 +707,16 @@ namespace Benchwarp
         private static void TramClicked(string buttonName)
         {
             panel.TogglePanel("Tram Panel");
+        }
+
+        private static void StyleClicked(string buttonName)
+        {
+            panel.TogglePanel("Style Panel");
+        }
+
+        private static void OptionsClicked(string buttonName)
+        {
+            panel.TogglePanel("Options Panel");
         }
 
         private static void SettingsClicked(string buttonName)

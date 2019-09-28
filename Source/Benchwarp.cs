@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
+using System.Collections;
 using Modding;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,13 +11,16 @@ namespace Benchwarp
     {
 
         internal static Benchwarp instance;
-        public override void Initialize()
+        public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
             if (instance != null) return;
 
             instance = this;
 
             instance.Log("Initializing");
+
+            BenchMaker.GetPrefabs(preloaded);
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
 
             GameObject UIObj = new GameObject();
             UIObj.AddComponent<GUIController>();
@@ -27,11 +31,43 @@ namespace Benchwarp
             ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
 
             GUIController.Instance.BuildMenus();
+            
         }
 
         public override string GetVersion()
         {
-            return "1.4";
+            return "1.5";
+        }
+
+        public override List<(string, string)> GetPreloadNames()
+        {
+            return new List<(string, string)>
+            {
+                ("Crossroads_30", "RestBench"),
+                ("Town", "RestBench"),
+                ("Crossroads_04", "RestBench"),
+                ("Crossroads_ShamanTemple", "BoneBench"),
+                ("Fungus1_37", "RestBench"),
+                ("Room_Slug_Shrine", "RestBench"),
+                ("Fungus3_archive", "RestBench"),
+                ("Fungus2_26", "RestBench"),
+                ("Fungus2_31", "RestBench"),
+                ("Ruins_Bathhouse", "RestBench"),
+                ("Waterways_02", "RestBench"),
+                ("GG_Atrium", "RestBench"),
+                ("Deepnest_Spider_Town", "RestBench Return"),
+                ("Deepnest_East_13", "RestBench"),
+                ("Deepnest_East_13", "outskirts__0003_camp"),
+                ("Room_Colosseum_02", "RestBench"),
+                ("Fungus1_24", "RestBench"),
+                ("Fungus1_24", "guardian_bench"),
+                ("Room_Tram", "RestBench"),
+                ("Room_nailmaster", "RestBench"),
+                ("Deepnest_East_06", "RestBench"),
+                ("Fungus1_15", "RestBench"),
+                ("White_Palace_01", "WhiteBench"),
+                ("Room_Final_Boss_Atrium", "RestBench")
+            };
         }
 
         public IEnumerator Respawn()
@@ -69,7 +105,7 @@ namespace Benchwarp
 
             // Sloppy way to force the soul meter to update
             HeroController.instance.SetMPCharge(0);
-            HeroController.instance.AddMPCharge(1);
+            HeroController.instance.AddMPCharge(100);
 
 
             //This allows the next pause to stop the game correctly
@@ -84,54 +120,54 @@ namespace Benchwarp
         {
             if (target == "atBench" && val)
             {
-                if (PlayerData.instance.respawnScene == "Town") Benchwarp.instance.Settings.hasVisitedDirtmouth = true;
-                if (PlayerData.instance.respawnScene == "Room_nailmaster") Benchwarp.instance.Settings.hasVisitedMato = true;
-                if (PlayerData.instance.respawnScene == "Crossroads_30") Benchwarp.instance.Settings.hasVisitedXRHotSprings = true;
-                if (PlayerData.instance.respawnScene == "Crossroads_47") Benchwarp.instance.Settings.hasVisitedXRStag = true;
-                if (PlayerData.instance.respawnScene == "Crossroads_04") Benchwarp.instance.Settings.hasVisitedSalubra = true;
-                if (PlayerData.instance.respawnScene == "Crossroads_ShamanTemple") Benchwarp.instance.Settings.hasVisitedAncestralMound = true;
-                if (PlayerData.instance.respawnScene == "Room_Final_Boss_Atrium") Benchwarp.instance.Settings.hasVisitedBlackEggTemple = true;
-                if (PlayerData.instance.respawnScene == "Fungus1_01b") Benchwarp.instance.Settings.hasVisitedWaterfall = true;
-                if (PlayerData.instance.respawnScene == "Fungus1_37") Benchwarp.instance.Settings.hasVisitedStoneSanctuary = true;
-                if (PlayerData.instance.respawnScene == "Fungus1_31") Benchwarp.instance.Settings.hasVisitedGPToll = true;
-                if (PlayerData.instance.respawnScene == "Fungus1_16_alt") Benchwarp.instance.Settings.hasVisitedGPStag = true;
-                if (PlayerData.instance.respawnScene == "Room_Slug_Shrine") Benchwarp.instance.Settings.hasVisitedLakeofUnn = true;
-                if (PlayerData.instance.respawnScene == "Fungus1_15") Benchwarp.instance.Settings.hasVisitedSheo = true;
-                if (PlayerData.instance.respawnScene == "Fungus3_archive") Benchwarp.instance.Settings.hasVisitedTeachersArchives = true;
-                if (PlayerData.instance.respawnScene == "Fungus2_02") Benchwarp.instance.Settings.hasVisitedQueensStation = true;
-                if (PlayerData.instance.respawnScene == "Fungus2_26") Benchwarp.instance.Settings.hasVisitedLegEater = true;
-                if (PlayerData.instance.respawnScene == "Fungus2_13") Benchwarp.instance.Settings.hasVisitedBretta = true;
-                if (PlayerData.instance.respawnScene == "Fungus2_31") Benchwarp.instance.Settings.hasVisitedMantisVillage = true;
-                if (PlayerData.instance.respawnScene == "Ruins1_02") Benchwarp.instance.Settings.hasVisitedQuirrel = true;
-                if (PlayerData.instance.respawnScene == "Ruins1_31") Benchwarp.instance.Settings.hasVisitedCoTToll = true;
-                if (PlayerData.instance.respawnScene == "Ruins1_29") Benchwarp.instance.Settings.hasVisitedCityStorerooms = true;
-                if (PlayerData.instance.respawnScene == "Ruins1_18") Benchwarp.instance.Settings.hasVisitedWatchersSpire = true;
-                if (PlayerData.instance.respawnScene == "Ruins2_08") Benchwarp.instance.Settings.hasVisitedKingsStation = true;
-                if (PlayerData.instance.respawnScene == "Ruins_Bathhouse") Benchwarp.instance.Settings.hasVisitedPleasureHouse = true;
-                if (PlayerData.instance.respawnScene == "Waterways_02") Benchwarp.instance.Settings.hasVisitedWaterways = true;
-                if (PlayerData.instance.respawnScene == "GG_Atrium") Benchwarp.instance.Settings.hasVisitedGodhome = true;
-                if (PlayerData.instance.respawnScene == "GG_Workshop") Benchwarp.instance.Settings.hasVisitedHallofGods = true;
-                if (PlayerData.instance.respawnScene == "Deepnest_30") Benchwarp.instance.Settings.hasVisitedDNHotSprings = true;
-                if (PlayerData.instance.respawnScene == "Deepnest_14") Benchwarp.instance.Settings.hasVisitedFailedTramway = true;
-                if (PlayerData.instance.respawnScene == "Deepnest_Spider_Town") Benchwarp.instance.Settings.hasVisitedBeastsDen = true;
-                if (PlayerData.instance.respawnScene == "Abyss_18") Benchwarp.instance.Settings.hasVisitedABToll = true;
-                if (PlayerData.instance.respawnScene == "Abyss_22") Benchwarp.instance.Settings.hasVisitedABStag = true;
-                if (PlayerData.instance.respawnScene == "Deepnest_East_06") Benchwarp.instance.Settings.hasVisitedOro = true;
-                if (PlayerData.instance.respawnScene == "Deepnest_East_13") Benchwarp.instance.Settings.hasVisitedCamp = true;
-                if (PlayerData.instance.respawnScene == "Room_Colosseum_02") Benchwarp.instance.Settings.hasVisitedColosseum = true;
-                if (PlayerData.instance.respawnScene == "Hive_01") Benchwarp.instance.Settings.hasVisitedHive = true;
-                if (PlayerData.instance.respawnScene == "Mines_29") Benchwarp.instance.Settings.hasVisitedDarkRoom = true;
-                if (PlayerData.instance.respawnScene == "Mines_18") Benchwarp.instance.Settings.hasVisitedCrystalGuardian = true;
-                if (PlayerData.instance.respawnScene == "Fungus1_24") Benchwarp.instance.Settings.hasVisitedQGCornifer = true;
-                if (PlayerData.instance.respawnScene == "Fungus3_50") Benchwarp.instance.Settings.hasVisitedQGToll = true;
-                if (PlayerData.instance.respawnScene == "Fungus3_40") Benchwarp.instance.Settings.hasVisitedQGStag = true;
-                if (PlayerData.instance.respawnScene == "White_Palace_01") Benchwarp.instance.Settings.hasVisitedWPEntrance = true;
-                if (PlayerData.instance.respawnScene == "White_Palace_03_hub") Benchwarp.instance.Settings.hasVisitedWPAtrium = true;
-                if (PlayerData.instance.respawnScene == "White_Palace_06") Benchwarp.instance.Settings.hasVisitedWPBalcony = true;
-                if (PlayerData.instance.respawnScene == "Room_Tram_RG") Benchwarp.instance.Settings.hasVisitedUpperTram = true;
-                if (PlayerData.instance.respawnScene == "Room_Tram") Benchwarp.instance.Settings.hasVisitedLowerTram = true;
-                if (PlayerData.instance.respawnScene == "RestingGrounds_09") Benchwarp.instance.Settings.hasVisitedRGStag = true;
-                if (PlayerData.instance.respawnScene == "RestingGrounds_12") Benchwarp.instance.Settings.hasVisitedGreyMourner = true;
+                if (GameManager.instance.sceneName == "Town") Benchwarp.instance.Settings.hasVisitedDirtmouth = true;
+                if (GameManager.instance.sceneName == "Room_nailmaster") Benchwarp.instance.Settings.hasVisitedMato = true;
+                if (GameManager.instance.sceneName == "Crossroads_30") Benchwarp.instance.Settings.hasVisitedXRHotSprings = true;
+                if (GameManager.instance.sceneName == "Crossroads_47") Benchwarp.instance.Settings.hasVisitedXRStag = true;
+                if (GameManager.instance.sceneName == "Crossroads_04") Benchwarp.instance.Settings.hasVisitedSalubra = true;
+                if (GameManager.instance.sceneName == "Crossroads_ShamanTemple") Benchwarp.instance.Settings.hasVisitedAncestralMound = true;
+                if (GameManager.instance.sceneName == "Room_Final_Boss_Atrium") Benchwarp.instance.Settings.hasVisitedBlackEggTemple = true;
+                if (GameManager.instance.sceneName == "Fungus1_01b") Benchwarp.instance.Settings.hasVisitedWaterfall = true;
+                if (GameManager.instance.sceneName == "Fungus1_37") Benchwarp.instance.Settings.hasVisitedStoneSanctuary = true;
+                if (GameManager.instance.sceneName == "Fungus1_31") Benchwarp.instance.Settings.hasVisitedGPToll = true;
+                if (GameManager.instance.sceneName == "Fungus1_16_alt") Benchwarp.instance.Settings.hasVisitedGPStag = true;
+                if (GameManager.instance.sceneName == "Room_Slug_Shrine") Benchwarp.instance.Settings.hasVisitedLakeofUnn = true;
+                if (GameManager.instance.sceneName == "Fungus1_15") Benchwarp.instance.Settings.hasVisitedSheo = true;
+                if (GameManager.instance.sceneName == "Fungus3_archive") Benchwarp.instance.Settings.hasVisitedTeachersArchives = true;
+                if (GameManager.instance.sceneName == "Fungus2_02") Benchwarp.instance.Settings.hasVisitedQueensStation = true;
+                if (GameManager.instance.sceneName == "Fungus2_26") Benchwarp.instance.Settings.hasVisitedLegEater = true;
+                if (GameManager.instance.sceneName == "Fungus2_13") Benchwarp.instance.Settings.hasVisitedBretta = true;
+                if (GameManager.instance.sceneName == "Fungus2_31") Benchwarp.instance.Settings.hasVisitedMantisVillage = true;
+                if (GameManager.instance.sceneName == "Ruins1_02") Benchwarp.instance.Settings.hasVisitedQuirrel = true;
+                if (GameManager.instance.sceneName == "Ruins1_31") Benchwarp.instance.Settings.hasVisitedCoTToll = true;
+                if (GameManager.instance.sceneName == "Ruins1_29") Benchwarp.instance.Settings.hasVisitedCityStorerooms = true;
+                if (GameManager.instance.sceneName == "Ruins1_18") Benchwarp.instance.Settings.hasVisitedWatchersSpire = true;
+                if (GameManager.instance.sceneName == "Ruins2_08") Benchwarp.instance.Settings.hasVisitedKingsStation = true;
+                if (GameManager.instance.sceneName == "Ruins_Bathhouse") Benchwarp.instance.Settings.hasVisitedPleasureHouse = true;
+                if (GameManager.instance.sceneName == "Waterways_02") Benchwarp.instance.Settings.hasVisitedWaterways = true;
+                if (GameManager.instance.sceneName == "GG_Atrium") Benchwarp.instance.Settings.hasVisitedGodhome = true;
+                if (GameManager.instance.sceneName == "GG_Workshop") Benchwarp.instance.Settings.hasVisitedHallofGods = true;
+                if (GameManager.instance.sceneName == "Deepnest_30") Benchwarp.instance.Settings.hasVisitedDNHotSprings = true;
+                if (GameManager.instance.sceneName == "Deepnest_14") Benchwarp.instance.Settings.hasVisitedFailedTramway = true;
+                if (GameManager.instance.sceneName == "Deepnest_Spider_Town") Benchwarp.instance.Settings.hasVisitedBeastsDen = true;
+                if (GameManager.instance.sceneName == "Abyss_18") Benchwarp.instance.Settings.hasVisitedABToll = true;
+                if (GameManager.instance.sceneName == "Abyss_22") Benchwarp.instance.Settings.hasVisitedABStag = true;
+                if (GameManager.instance.sceneName == "Deepnest_East_06") Benchwarp.instance.Settings.hasVisitedOro = true;
+                if (GameManager.instance.sceneName == "Deepnest_East_13") Benchwarp.instance.Settings.hasVisitedCamp = true;
+                if (GameManager.instance.sceneName == "Room_Colosseum_02") Benchwarp.instance.Settings.hasVisitedColosseum = true;
+                if (GameManager.instance.sceneName == "Hive_01") Benchwarp.instance.Settings.hasVisitedHive = true;
+                if (GameManager.instance.sceneName == "Mines_29") Benchwarp.instance.Settings.hasVisitedDarkRoom = true;
+                if (GameManager.instance.sceneName == "Mines_18") Benchwarp.instance.Settings.hasVisitedCrystalGuardian = true;
+                if (GameManager.instance.sceneName == "Fungus1_24") Benchwarp.instance.Settings.hasVisitedQGCornifer = true;
+                if (GameManager.instance.sceneName == "Fungus3_50") Benchwarp.instance.Settings.hasVisitedQGToll = true;
+                if (GameManager.instance.sceneName == "Fungus3_40") Benchwarp.instance.Settings.hasVisitedQGStag = true;
+                if (GameManager.instance.sceneName == "White_Palace_01") Benchwarp.instance.Settings.hasVisitedWPEntrance = true;
+                if (GameManager.instance.sceneName == "White_Palace_03_hub") Benchwarp.instance.Settings.hasVisitedWPAtrium = true;
+                if (GameManager.instance.sceneName == "White_Palace_06") Benchwarp.instance.Settings.hasVisitedWPBalcony = true;
+                if (GameManager.instance.sceneName == "Room_Tram_RG") Benchwarp.instance.Settings.hasVisitedUpperTram = true;
+                if (GameManager.instance.sceneName == "Room_Tram") Benchwarp.instance.Settings.hasVisitedLowerTram = true;
+                if (GameManager.instance.sceneName == "RestingGrounds_09") Benchwarp.instance.Settings.hasVisitedRGStag = true;
+                if (GameManager.instance.sceneName == "RestingGrounds_12") Benchwarp.instance.Settings.hasVisitedGreyMourner = true;
             }
             PlayerData.instance.SetBoolInternal(target, val);
         }
@@ -188,6 +224,13 @@ namespace Benchwarp
                 Benchwarp.instance.Settings.hasVisitedLowerTram = false;
                 Benchwarp.instance.Settings.hasVisitedRGStag = false;
                 Benchwarp.instance.Settings.hasVisitedGreyMourner = false;
+
+                Benchwarp.instance.Settings.benchDeployed = false;
+                Benchwarp.instance.Settings.benchName = null;
+                Benchwarp.instance.Settings.benchScene = null;
+                Benchwarp.instance.Settings.benchX = 0f;
+                Benchwarp.instance.Settings.benchY = 0f;
+                Benchwarp.instance.Settings.benchStyle = "Right";
             }
         }
 
