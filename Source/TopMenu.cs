@@ -178,6 +178,7 @@ namespace Benchwarp
 
         public static void Update()
         {
+            if (HeroController.instance == null || GameManager.instance == null) return;
             
             if (cooldown > 0)
             {
