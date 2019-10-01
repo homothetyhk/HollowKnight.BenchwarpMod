@@ -13,79 +13,79 @@ namespace Benchwarp
     {
         public static GameObject DeployedBench;
 
-        public static GameObject ExtraSprite;
+        private static GameObject ExtraSprite;
 
         private static GameObject _rightBench;
-        public static GameObject RightBench => GameObject.Instantiate(_rightBench);
+        private static GameObject RightBench => GameObject.Instantiate(_rightBench);
 
         private static GameObject _leftBench;
-        public static GameObject LeftBench => GameObject.Instantiate(_leftBench);
+        private static GameObject LeftBench => GameObject.Instantiate(_leftBench);
 
         private static GameObject _ornateBench;
-        public static GameObject OrnateBench => GameObject.Instantiate(_ornateBench);
+        private static GameObject OrnateBench => GameObject.Instantiate(_ornateBench);
 
         private static GameObject _boneBench;
-        public static GameObject BoneBench => GameObject.Instantiate(_boneBench);
+        private static GameObject BoneBench => GameObject.Instantiate(_boneBench);
 
         private static GameObject _stoneBench;
-        public static GameObject StoneBench => GameObject.Instantiate(_stoneBench);
+        private static GameObject StoneBench => GameObject.Instantiate(_stoneBench);
 
         private static GameObject _shrineBench;
-        public static GameObject ShrineBench => GameObject.Instantiate(_shrineBench);
+        private static GameObject ShrineBench => GameObject.Instantiate(_shrineBench);
 
         private static GameObject _archiveBench;
-        public static GameObject ArchiveBench => GameObject.Instantiate(_archiveBench);
+        private static GameObject ArchiveBench => GameObject.Instantiate(_archiveBench);
 
         private static GameObject _corpseBench;
-        public static GameObject CorpseBench => GameObject.Instantiate(_corpseBench);
+        private static GameObject CorpseBench => GameObject.Instantiate(_corpseBench);
 
         private static GameObject _mantisBench;
-        public static GameObject MantisBench => GameObject.Instantiate(_mantisBench);
+        private static GameObject MantisBench => GameObject.Instantiate(_mantisBench);
 
         private static GameObject _simpleBench;
-        public static GameObject SimpleBench => GameObject.Instantiate(_simpleBench);
+        private static GameObject SimpleBench => GameObject.Instantiate(_simpleBench);
 
         private static GameObject _tiltedBench;
-        public static GameObject TiltedBench => GameObject.Instantiate(_tiltedBench);
+        private static GameObject TiltedBench => GameObject.Instantiate(_tiltedBench);
 
         private static GameObject _wideBench;
-        public static GameObject WideBench => GameObject.Instantiate(_wideBench);
+        private static GameObject WideBench => GameObject.Instantiate(_wideBench);
 
         private static GameObject _beastBench;
-        public static GameObject BeastBench => GameObject.Instantiate(_beastBench);
+        private static GameObject BeastBench => GameObject.Instantiate(_beastBench);
 
         private static GameObject _campBench;
-        public static GameObject CampBench => GameObject.Instantiate(_campBench);
+        private static GameObject CampBench => GameObject.Instantiate(_campBench);
 
         private static GameObject _campSprite;
-        public static GameObject CampSprite => GameObject.Instantiate(_campSprite);
+        private static GameObject CampSprite => GameObject.Instantiate(_campSprite);
 
         private static GameObject _foolBench;
-        public static GameObject FoolBench => GameObject.Instantiate(_foolBench);
+        private static GameObject FoolBench => GameObject.Instantiate(_foolBench);
 
         private static GameObject _guardianBench;
-        public static GameObject GuardianBench => GameObject.Instantiate(_guardianBench);
+        private static GameObject GuardianBench => GameObject.Instantiate(_guardianBench);
 
         private static GameObject _guardianSprite;
-        public static GameObject GuardianSprite => GameObject.Instantiate(_guardianSprite);
+        private static GameObject GuardianSprite => GameObject.Instantiate(_guardianSprite);
 
         private static GameObject _tramBench;
-        public static GameObject TramBench => GameObject.Instantiate(_tramBench);
+        private static GameObject TramBench => GameObject.Instantiate(_tramBench);
 
         private static GameObject _matoBench;
-        public static GameObject MatoBench => GameObject.Instantiate(_matoBench);
+        private static GameObject MatoBench => GameObject.Instantiate(_matoBench);
 
         private static GameObject _oroBench;
-        public static GameObject OroBench => GameObject.Instantiate(_oroBench);
+        private static GameObject OroBench => GameObject.Instantiate(_oroBench);
 
         private static GameObject _sheoBench;
-        public static GameObject SheoBench => GameObject.Instantiate(_sheoBench);
+        private static GameObject SheoBench => GameObject.Instantiate(_sheoBench);
 
         private static GameObject _whiteBench;
-        public static GameObject WhiteBench => GameObject.Instantiate(_whiteBench);
+        private static GameObject WhiteBench => GameObject.Instantiate(_whiteBench);
 
         private static GameObject _blackBench;
-        public static GameObject BlackBench => GameObject.Instantiate(_blackBench);
+        private static GameObject BlackBench => GameObject.Instantiate(_blackBench);
 
         public static List<string> Styles = new List<string> { "Left", "Right", "Bone", "Ornate", "Stone", "Shrine", "Archive", "Corpse", "Mantis", "Simple", "Tilted", "Wide", "Beast", "Camp", "Fool", "Garden", "Tram", "Mato", "Oro", "Sheo", "White", "Black" };
 
@@ -119,7 +119,7 @@ namespace Benchwarp
 
         private static Vector3 GetAdjust()
         {
-            switch (Benchwarp.instance.Settings.benchStyle)
+            switch (Benchwarp.instance.GlobalSettings.benchStyle)
             {
                 default:
                 case "Left":
@@ -154,7 +154,7 @@ namespace Benchwarp
 
             Vector3 position = new Vector3(Benchwarp.instance.Settings.benchX, Benchwarp.instance.Settings.benchY, 0.02f) + GetAdjust();
 
-            switch (Benchwarp.instance.Settings.benchStyle)
+            switch (Benchwarp.instance.GlobalSettings.benchStyle)
             {
                 default:
                 case "Right": DeployedBench = RightBench;
@@ -204,13 +204,13 @@ namespace Benchwarp
             }
             DeployedBench.transform.position = position;
             DeployedBench.SetActive(true);
-            if (Benchwarp.instance.Settings.benchStyle == "Guardian")
+            if (Benchwarp.instance.GlobalSettings.benchStyle == "Guardian")
             {
                 ExtraSprite = GuardianSprite;
                 ExtraSprite.transform.position = position + new Vector3(0f, 0.5f, 0f);
                 ExtraSprite.SetActive(true);
             }
-            if (Benchwarp.instance.Settings.benchStyle == "Camp")
+            if (Benchwarp.instance.GlobalSettings.benchStyle == "Camp")
             {
                 ExtraSprite = CampSprite;
                 ExtraSprite.transform.position = position + new Vector3(0f, -0.5f, 0f);

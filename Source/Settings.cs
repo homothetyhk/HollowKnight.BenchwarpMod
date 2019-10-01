@@ -28,11 +28,7 @@ namespace Benchwarp
             set => SetString(value);
         }
 
-        public string benchStyle
-        {
-            get => GetString("Right");
-            set => SetString(value);
-        }
+
 
         public string benchName
         {
@@ -300,10 +296,21 @@ namespace Benchwarp
             get => GetBool(false);
             set => SetBool(value);
         }
+        public bool SwapNames
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
         public bool EnableDeploy
         {
             get => GetBool(true);
             set => SetBool(value);
+        }
+
+        public string benchStyle
+        {
+            get => GetString("Right");
+            set => SetString(value);
         }
 
         public bool DeployCooldown

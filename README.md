@@ -6,6 +6,7 @@ Options
 - Warp Only: removes bench selection menu
 - Unlock All: enables all benches on the selection menu
 - Show Room Name: displays the name of the current room from the game code in the bottom left
+- Use Room Names: bench menu uses room names from the game code instead of descriptive names
 - Enable Deploy: adds a menu to place a custom bench point
 
 Deploy
@@ -18,7 +19,7 @@ Deploy
 	- No Mid-Air Deploy: the game must recognize the player as grounded in order to deploy
 	- Blacklist Rooms: prevents use of deploy in rooms which do not allow dreamgate, and if the player does not have lantern, prevents use of deploy in rooms which are dark
 
-New update -- Warping to bench now refills soul meter
+Update: Warping to bench now refills soul meter.
 
 Credits
 Seanpr - developed the UI, as part of DebugMod
