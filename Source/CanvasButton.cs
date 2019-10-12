@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Benchwarp
 {
     public class CanvasButton
     {
-        private GameObject buttonObj;
-        private GameObject textObj;
-        private Button button;
+        private readonly GameObject buttonObj;
+        private readonly GameObject textObj;
         private UnityAction<string> clicked;
-        private string buttonName;
-
-        public bool active;
+        private readonly string buttonName;
 
         public CanvasButton(GameObject parent, string name, Texture2D tex, Vector2 pos, Vector2 size, Rect bgSubSection, Font font = null, string text = null, int fontSize = 13)
         {
-            if (size.x == 0 || size.y == 0)
+            if (Mathf.Abs(size.x) < Mathf.Epsilon || Mathf.Abs(size.y) < Mathf.Epsilon)
             {
                 size = new Vector2(bgSubSection.width, bgSubSection.height);
             }
@@ -25,21 +23,40 @@ namespace Benchwarp
 
             buttonObj = new GameObject();
             buttonObj.AddComponent<CanvasRenderer>();
+            
             RectTransform buttonTransform = buttonObj.AddComponent<RectTransform>();
+            
             buttonTransform.sizeDelta = new Vector2(bgSubSection.width, bgSubSection.height);
-            buttonObj.AddComponent<Image>().sprite = Sprite.Create(tex, new Rect(bgSubSection.x, tex.height - bgSubSection.height, bgSubSection.width, bgSubSection.height), Vector2.zero);
-            button = buttonObj.AddComponent<Button>();
+            
+            buttonObj.AddComponent<Image>().sprite = Sprite.Create
+            (
+                tex,
+                new Rect
+                (
+                    bgSubSection.x,
+                    tex.height - bgSubSection.height,
+                    bgSubSection.width,
+                    bgSubSection.height
+                ),
+                Vector2.zero
+            );
+            
+            buttonObj.AddComponent<Button>();
 
             buttonObj.transform.SetParent(parent.transform, false);
 
             buttonTransform.SetScaleX(size.x / bgSubSection.width);
             buttonTransform.SetScaleY(size.y / bgSubSection.height);
 
-            Vector2 position = new Vector2((pos.x + ((size.x / bgSubSection.width) * bgSubSection.width) / 2f) / 1920f, (1080f - (pos.y + ((size.y / bgSubSection.height) * bgSubSection.height) / 2f)) / 1080f);
-            buttonTransform.anchorMin = position;
-            buttonTransform.anchorMax = position;
+            Vector2 position = new Vector2
+            (
+                (pos.x + size.x / bgSubSection.width * bgSubSection.width / 2f) / 1920f,
+                (1080f - (pos.y + size.y / bgSubSection.height * bgSubSection.height / 2f)) / 1080f
+            );
+            
+            buttonTransform.anchorMin = buttonTransform.anchorMax = position;
 
-            GameObject.DontDestroyOnLoad(buttonObj);
+            Object.DontDestroyOnLoad(buttonObj);
 
             if (font != null && text != null)
             {
@@ -52,10 +69,8 @@ namespace Benchwarp
                 t.alignment = TextAnchor.MiddleCenter;
                 textObj.transform.SetParent(buttonObj.transform, false);
 
-                GameObject.DontDestroyOnLoad(textObj);
+                Object.DontDestroyOnLoad(textObj);
             }
-
-            active = true;
         }
 
         public void UpdateSprite(Texture2D tex, Rect bgSubSection)
@@ -120,7 +135,6 @@ namespace Benchwarp
             if (buttonObj != null)
             {
                 buttonObj.SetActive(b);
-                active = b;
             }
         }
 
@@ -172,8 +186,8 @@ namespace Benchwarp
 
         public void Destroy()
         {
-            GameObject.Destroy(buttonObj);
-            GameObject.Destroy(textObj);
+            Object.Destroy(buttonObj);
+            Object.Destroy(textObj);
         }
     }
 }

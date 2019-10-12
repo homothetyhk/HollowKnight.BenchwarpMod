@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using GlobalEnums;
 using Modding;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using GlobalEnums;
 
 namespace Benchwarp
 {
     public class Benchwarp : Mod<SaveSettings, GlobalSettings>
     {
-
         internal static Benchwarp instance;
+        
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
             if (instance != null) return;
@@ -44,7 +44,7 @@ namespace Benchwarp
         {
 
             return new List<(string, string)>
-                {
+            {
                 ("Crossroads_30", "RestBench"),
                 ("Town", "RestBench"),
                 ("Crossroads_04", "RestBench"),
@@ -69,7 +69,7 @@ namespace Benchwarp
                 ("Fungus1_15", "RestBench"),
                 ("White_Palace_01", "WhiteBench"),
                 ("Room_Final_Boss_Atrium", "RestBench")
-                };
+            };
         }
 
         public IEnumerator Respawn()
@@ -118,14 +118,14 @@ namespace Benchwarp
             GameManager.instance.ui.AudioGoToGameplay(.2f);
         }
 
-        public void BenchWatcher(string target, bool val)
+        private static void BenchWatcher(string target, bool val)
         {
             if (target == "atBench" && val)
             {
                 foreach (Bench bench in Bench.Benches)
                 {
                     if (bench.benched) bench.visited = true;
-                    else if (GameManager.instance.sceneName == bench.sceneName && Benchwarp.instance.Settings.benchScene != bench.sceneName) bench.visited = true;
+                    else if (GameManager.instance.sceneName == bench.sceneName && instance.Settings.benchScene != bench.sceneName) bench.visited = true;
                     else continue;
                     break;
                 }
@@ -133,21 +133,20 @@ namespace Benchwarp
             PlayerData.instance.SetBoolInternal(target, val);
         }
 
-        public void ClearSettings(Scene arg0, Scene arg1)
+        private static void ClearSettings(Scene arg0, Scene arg1)
         {
-            if (arg1.name == "Menu_Title")
+            if (arg1.name != "Menu_Title") return;
+            
+            foreach (Bench bench in Bench.Benches)
             {
-                foreach (Bench bench in Bench.Benches)
-                {
-                    bench.visited = false;
-                }
-
-                Benchwarp.instance.Settings.benchDeployed = false;
-                Benchwarp.instance.Settings.benchName = null;
-                Benchwarp.instance.Settings.benchScene = null;
-                Benchwarp.instance.Settings.benchX = 0f;
-                Benchwarp.instance.Settings.benchY = 0f;
+                bench.visited = false;
             }
+
+            instance.Settings.benchDeployed = false;
+            instance.Settings.benchName = null;
+            instance.Settings.benchScene = null;
+            instance.Settings.benchX = 0f;
+            instance.Settings.benchY = 0f;
         }
 
     }

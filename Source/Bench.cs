@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Modding;
-using UnityEngine;
-using GlobalEnums;
+﻿using GlobalEnums;
 
 namespace Benchwarp
 {
@@ -118,7 +112,7 @@ namespace Benchwarp
                 new Bench("Balcony", "Palace", "White_Palace_06", "RestBench", 1, MapZone.WHITE_PALACE),
 
                 new Bench("Upper Tram", "Tram", "Room_Tram_RG", "RestBench", 1, MapZone.TRAM_UPPER),
-                new Bench("Lower Tram", "Tram", "Room_Tram", "RestBench", 1, MapZone.TRAM_LOWER, true, "Tram"),
+                new Bench("Lower Tram", "Tram", "Room_Tram", "RestBench", 1, MapZone.TRAM_LOWER, true, "Tram")
             };
         }
 
