@@ -277,7 +277,7 @@ namespace Benchwarp
 
         public static SaveSettings _instance;
     }
-    public class GlobalSettings : IModSettings
+    public class GlobalSettings : ModSettings
     {
         public bool WarpOnly
         {

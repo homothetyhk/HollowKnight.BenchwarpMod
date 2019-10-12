@@ -9,8 +9,8 @@ namespace Benchwarp
 {
     public class Benchwarp : Mod<SaveSettings, GlobalSettings>
     {
-
         internal static Benchwarp instance;
+        
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
             if (instance != null) return;
@@ -118,7 +118,7 @@ namespace Benchwarp
             GameManager.instance.ui.AudioGoToGameplay(.2f);
         }
 
-        public void BenchWatcher(string target, bool val)
+        private static void BenchWatcher(string target, bool val)
         {
             if (target == "atBench" && val)
             {
@@ -133,21 +133,20 @@ namespace Benchwarp
             PlayerData.instance.SetBoolInternal(target, val);
         }
 
-        public void ClearSettings(Scene arg0, Scene arg1)
+        private static void ClearSettings(Scene arg0, Scene arg1)
         {
-            if (arg1.name == "Menu_Title")
+            if (arg1.name != "Menu_Title") return;
+            
+            foreach (Bench bench in Bench.Benches)
             {
-                foreach (Bench bench in Bench.Benches)
-                {
-                    bench.visited = false;
-                }
-
-                instance.Settings.benchDeployed = false;
-                instance.Settings.benchName = null;
-                instance.Settings.benchScene = null;
-                instance.Settings.benchX = 0f;
-                instance.Settings.benchY = 0f;
+                bench.visited = false;
             }
+
+            instance.Settings.benchDeployed = false;
+            instance.Settings.benchName = null;
+            instance.Settings.benchScene = null;
+            instance.Settings.benchX = 0f;
+            instance.Settings.benchY = 0f;
         }
 
     }
