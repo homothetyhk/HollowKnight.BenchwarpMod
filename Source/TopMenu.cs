@@ -19,24 +19,24 @@ namespace Benchwarp
 
         private static readonly Type t = typeof(GlobalSettings);
 
-        private static readonly Dictionary<string, (string, UnityAction<string>, FieldInfo)[]> Panels =
-            new Dictionary<string, (string, UnityAction<string>, FieldInfo)[]>
+        private static readonly Dictionary<string, (string, UnityAction<string>, PropertyInfo)[]> Panels =
+            new Dictionary<string, (string, UnityAction<string>, PropertyInfo)[]>
             {
-                ["Options"] = new (string, UnityAction<string>, FieldInfo)[]
+                ["Options"] = new (string, UnityAction<string>, PropertyInfo)[]
                 {
-                    ("Cooldown", CooldownClicked, t.GetField(nameof(GlobalSettings.DeployCooldown))),
-                    ("Noninteractive", NoninteractiveClicked, t.GetField(nameof(GlobalSettings.Noninteractive))),
-                    ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetField(nameof(GlobalSettings.NoMidAirDeploy))),
-                    ("Blacklist", BlacklistClicked, t.GetField(nameof(GlobalSettings.BlacklistRooms)))
+                    ("Cooldown", CooldownClicked, t.GetProperty(nameof(GlobalSettings.DeployCooldown))),
+                    ("Noninteractive", NoninteractiveClicked, t.GetProperty(nameof(GlobalSettings.Noninteractive))),
+                    ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetProperty(nameof(GlobalSettings.NoMidAirDeploy))),
+                    ("Blacklist", BlacklistClicked, t.GetProperty(nameof(GlobalSettings.BlacklistRooms)))
                 },
 
-                ["Settings"] = new (string, UnityAction<string>, FieldInfo)[]
+                ["Settings"] = new (string, UnityAction<string>, PropertyInfo)[]
                 {
-                    ("WarpOnly", WarpOnlyClicked, t.GetField(nameof(GlobalSettings.WarpOnly))),
-                    ("UnlockAll", UnlockAllClicked, t.GetField(nameof(GlobalSettings.UnlockAllBenches))),
-                    ("ShowScene", ShowSceneClicked, t.GetField(nameof(GlobalSettings.ShowScene))),
-                    ("SwapNames", SwapNamesClicked, t.GetField(nameof(GlobalSettings.SwapNames))),
-                    ("EnableDeploy", EnableDeployClicked, t.GetField(nameof(GlobalSettings.EnableDeploy)))
+                    ("WarpOnly", WarpOnlyClicked, t.GetProperty(nameof(GlobalSettings.WarpOnly))),
+                    ("UnlockAll", UnlockAllClicked, t.GetProperty(nameof(GlobalSettings.UnlockAllBenches))),
+                    ("ShowScene", ShowSceneClicked, t.GetProperty(nameof(GlobalSettings.ShowScene))),
+                    ("SwapNames", SwapNamesClicked, t.GetProperty(nameof(GlobalSettings.SwapNames))),
+                    ("EnableDeploy", EnableDeployClicked, t.GetProperty(nameof(GlobalSettings.EnableDeploy)))
                 }
             };
 
@@ -148,7 +148,7 @@ namespace Benchwarp
 
                 for (int i = 0; i < Panels["Options"].Length; i++)
                 {
-                    (string name, UnityAction<string> action, FieldInfo _) = Panels["Options"][i];
+                    (string name, UnityAction<string> action, PropertyInfo _) = Panels["Options"][i];
 
                     AddButton
                     (
@@ -165,7 +165,7 @@ namespace Benchwarp
 
             for (int i = 0; i < Panels["Settings"].Length; i++)
             {
-                (string name, UnityAction<string> action, FieldInfo _) = Panels["Settings"][i];
+                (string name, UnityAction<string> action, PropertyInfo _) = Panels["Settings"][i];
 
                 AddButton
                 (
@@ -297,9 +297,9 @@ namespace Benchwarp
 
                 if (options.active)
                 {
-                    foreach ((string name, FieldInfo fi) in Panels["Options"].Select(x => (x.Item1, x.Item3)))
+                    foreach ((string name, PropertyInfo pi) in Panels["Options"].Select(x => (x.Item1, x.Item3)))
                     {
-                        options.GetButton(name).SetTextColor((bool) fi.GetValue(gs) ? Color.yellow : Color.white);
+                        options.GetButton(name).SetTextColor((bool) pi.GetValue(gs, new object[0]) ? Color.yellow : Color.white);
                     }
                 }
             }
@@ -308,9 +308,9 @@ namespace Benchwarp
 
             if (settings.active)
             {
-                foreach ((string name, FieldInfo fi) in Panels["Settings"].Select(x => (x.Item1, x.Item3)))
+                foreach ((string name, PropertyInfo pi) in Panels["Settings"].Select(x => (x.Item1, x.Item3)))
                 {
-                    settings.GetButton(name).SetTextColor((bool) fi.GetValue(gs) ? Color.yellow : Color.white);
+                    settings.GetButton(name).SetTextColor((bool) pi.GetValue(gs, new object[0]) ? Color.yellow : Color.white);
                 }
             }
 
