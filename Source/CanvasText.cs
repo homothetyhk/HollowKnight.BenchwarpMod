@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Benchwarp
 {
     public class CanvasText
     {
-        private GameObject textObj;
-        private Vector2 size;
+        private readonly GameObject textObj;
+        
+        private readonly Vector2 size;
 
-        public bool active;
+        private bool active;
 
         public CanvasText(GameObject parent, Vector2 pos, Vector2 sz, Font font, string text, int fontSize = 13, FontStyle style = FontStyle.Normal, TextAnchor alignment = TextAnchor.UpperLeft)
         {
-            if (sz.x == 0 || sz.y == 0)
+            if (Mathf.Abs(sz.x) < Mathf.Epsilon || Mathf.Abs(sz.y) < Mathf.Epsilon)
             {
                 size = new Vector2(1920f, 1080f);
             }
@@ -43,10 +45,11 @@ namespace Benchwarp
             textTransform.anchorMin = position;
             textTransform.anchorMax = position;
 
-            GameObject.DontDestroyOnLoad(textObj);
+            Object.DontDestroyOnLoad(textObj);
 
             active = true;
         }
+        
         public void SetPosition(Vector2 pos)
         {
             if (textObj != null)
@@ -108,7 +111,7 @@ namespace Benchwarp
 
         public void Destroy()
         {
-            GameObject.Destroy(textObj);
+            Object.Destroy(textObj);
         }
     }
 }

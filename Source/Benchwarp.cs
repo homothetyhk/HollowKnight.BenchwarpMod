@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using GlobalEnums;
 using Modding;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using GlobalEnums;
 
 namespace Benchwarp
 {
@@ -125,7 +125,7 @@ namespace Benchwarp
                 foreach (Bench bench in Bench.Benches)
                 {
                     if (bench.benched) bench.visited = true;
-                    else if (GameManager.instance.sceneName == bench.sceneName && Benchwarp.instance.Settings.benchScene != bench.sceneName) bench.visited = true;
+                    else if (GameManager.instance.sceneName == bench.sceneName && instance.Settings.benchScene != bench.sceneName) bench.visited = true;
                     else continue;
                     break;
                 }
@@ -142,11 +142,11 @@ namespace Benchwarp
                     bench.visited = false;
                 }
 
-                Benchwarp.instance.Settings.benchDeployed = false;
-                Benchwarp.instance.Settings.benchName = null;
-                Benchwarp.instance.Settings.benchScene = null;
-                Benchwarp.instance.Settings.benchX = 0f;
-                Benchwarp.instance.Settings.benchY = 0f;
+                instance.Settings.benchDeployed = false;
+                instance.Settings.benchName = null;
+                instance.Settings.benchScene = null;
+                instance.Settings.benchX = 0f;
+                instance.Settings.benchY = 0f;
             }
         }
 

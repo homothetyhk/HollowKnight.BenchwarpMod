@@ -2,7 +2,7 @@
 
 namespace Benchwarp
 {
-    public class SaveSettings : IModSettings
+    public class SaveSettings : ModSettings
     {
         public bool benchDeployed
         {
@@ -24,15 +24,13 @@ namespace Benchwarp
 
         public string benchScene
         {
-            get => GetString(null);
+            get => GetString();
             set => SetString(value);
         }
 
-
-
         public string benchName
         {
-            get => GetString(null);
+            get => GetString();
             set => SetString(value);
         }
 

@@ -8,12 +8,14 @@ namespace Benchwarp
     {
         private CanvasImage background;
         private GameObject canvas;
+        
         private Vector2 position;
-        private Vector2 size;
-        private Dictionary<string, CanvasButton> buttons = new Dictionary<string, CanvasButton>();
-        private Dictionary<string, CanvasPanel> panels = new Dictionary<string, CanvasPanel>();
-        private Dictionary<string, CanvasImage> images = new Dictionary<string, CanvasImage>();
-        private Dictionary<string, CanvasText> texts = new Dictionary<string, CanvasText>();
+        private readonly Vector2 size;
+        
+        private readonly Dictionary<string, CanvasButton> buttons = new Dictionary<string, CanvasButton>();
+        private readonly Dictionary<string, CanvasPanel> panels = new Dictionary<string, CanvasPanel>();
+        private readonly Dictionary<string, CanvasImage> images = new Dictionary<string, CanvasImage>();
+        private readonly Dictionary<string, CanvasText> texts = new Dictionary<string, CanvasText>();
 
         public bool active;
 
@@ -37,11 +39,13 @@ namespace Benchwarp
             buttons.Add(name, button);
         }
 
-        public void AddPanel(string name, Texture2D tex, Vector2 pos, Vector2 sz, Rect bgSubSection)
+        public CanvasPanel AddPanel(string name, Texture2D tex, Vector2 pos, Vector2 sz, Rect bgSubSection)
         {
             CanvasPanel panel = new CanvasPanel(canvas, tex, position + pos, sz, bgSubSection);
 
             panels.Add(name, panel);
+
+            return panel;
         }
 
         public void AddImage(string name, Texture2D tex, Vector2 pos, Vector2 size, Rect subSprite)
@@ -144,7 +148,7 @@ namespace Benchwarp
 
             foreach (CanvasPanel panel in panels.Values)
             {
-                panel.SetPosition(panel.GetPosition() - deltaPos);
+                panel.SetPosition(panel.position - deltaPos);
             }
         }
 
@@ -192,7 +196,7 @@ namespace Benchwarp
             active = b;
         }
 
-        public Vector2 GetPosition()
+        private Vector2 GetPosition()
         {
             return position;
         }

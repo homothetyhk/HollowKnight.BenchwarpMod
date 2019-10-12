@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Modding;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
-using System.Text;
 
 namespace Benchwarp
 {
@@ -87,7 +83,31 @@ namespace Benchwarp
         private static GameObject _blackBench;
         private static GameObject BlackBench => GameObject.Instantiate(_blackBench);
 
-        public static List<string> Styles = new List<string> { "Left", "Right", "Bone", "Ornate", "Stone", "Shrine", "Archive", "Corpse", "Mantis", "Simple", "Tilted", "Wide", "Beast", "Camp", "Fool", "Garden", "Tram", "Mato", "Oro", "Sheo", "White", "Black" };
+        public static readonly List<string> Styles = new List<string>
+        {
+            "Left",
+            "Right",
+            "Bone",
+            "Ornate",
+            "Stone",
+            "Shrine",
+            "Archive",
+            "Corpse",
+            "Mantis",
+            "Simple",
+            "Tilted",
+            "Wide",
+            "Beast",
+            "Camp",
+            "Fool",
+            "Garden",
+            "Tram",
+            "Mato",
+            "Oro",
+            "Sheo",
+            "White",
+            "Black"
+        };
 
         public static void GetPrefabs(Dictionary<string, Dictionary<string, GameObject>> objects)
         {
@@ -122,9 +142,6 @@ namespace Benchwarp
             switch (Benchwarp.instance.GlobalSettings.benchStyle)
             {
                 default:
-                case "Left":
-                case "Right":
-                case "Ornate":
                     return new Vector3(0f, -.68f, 0f);
                 case "Bone":
                     return new Vector3(0f, -.7f, 0f);

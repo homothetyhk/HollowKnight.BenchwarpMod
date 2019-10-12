@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Modding;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,11 @@ namespace Benchwarp
 {
     public class GUIController : MonoBehaviour
     {
-        public Font trajanBold;
-        public Font trajanNormal;
-        public Font arial;
+        public Font TrajanBold { get; private set; }
+        public Font TrajanNormal { get; private set; }
+
+        private Font Arial { get; set; }
+        
         public Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
 
         private GameObject canvas;
@@ -31,50 +34,38 @@ namespace Benchwarp
 
             TopMenu.BuildMenu(canvas);
 
-            GameObject.DontDestroyOnLoad(canvas);
+            DontDestroyOnLoad(canvas);
         }
 
         private void LoadResources()
         {
-            foreach (Font f in Resources.FindObjectsOfTypeAll<Font>())
+            CanvasUtil.CreateFonts();
+
+            TrajanBold = CanvasUtil.TrajanBold;
+            TrajanNormal = CanvasUtil.TrajanNormal;
+
+            Arial = Font.CreateDynamicFontFromOSFont
+            (
+                Font.GetOSInstalledFontNames().First(x => x.ToLower().Contains("arial")),
+                13
+            );
+
+            if (TrajanBold == null || TrajanNormal == null || Arial == null)
             {
-                if (f != null && f.name == "TrajanPro-Bold")
-                {
-                    trajanBold = f;
-                }
-
-                if (f != null && f.name == "TrajanPro-Regular")
-                {
-                    trajanNormal = f;
-                }
-
-                //Just in case for some reason the computer doesn't have arial
-                if (f != null && f.name == "Perpetua")
-                {
-                    arial = f;
-                }
-
-                foreach (string font in Font.GetOSInstalledFontNames())
-                {
-                    if (font.ToLower().Contains("arial"))
-                    {
-                        arial = Font.CreateDynamicFontFromOSFont(font, 13);
-                        break;
-                    }
-                }
+                Benchwarp.instance.LogError("Could not find game fonts");
             }
 
-            if (trajanBold == null || trajanNormal == null || arial == null) Benchwarp.instance.LogError("Could not find game fonts");
-
-            string[] resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-
-            foreach (string res in resourceNames)
+            Assembly asm = Assembly.GetExecutingAssembly();
+            
+            foreach (string res in asm.GetManifestResourceNames())
             {
-                if (res.StartsWith("Benchwarp.Images."))
+                if (!res.StartsWith("Benchwarp.Images.")) continue;
+                
+                try
                 {
-                    try
+                    using (Stream imageStream = asm.GetManifestResourceStream(res))
                     {
-                        Stream imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(res);
+
                         byte[] buffer = new byte[imageStream.Length];
                         imageStream.Read(buffer, 0, buffer.Length);
 
@@ -83,14 +74,15 @@ namespace Benchwarp
 
                         string[] split = res.Split('.');
                         string internalName = split[split.Length - 2];
+                        
                         images.Add(internalName, tex);
 
                         Benchwarp.instance.Log("Loaded image: " + internalName);
                     }
-                    catch (Exception e)
-                    {
-                        Benchwarp.instance.LogError("Failed to load image: " + res + "\n" + e.ToString());
-                    }
+                }
+                catch (Exception e)
+                {
+                    Benchwarp.instance.LogError("Failed to load image: " + res + "\n" + e);
                 }
             }
         }
@@ -104,22 +96,19 @@ namespace Benchwarp
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = UnityEngine.Object.FindObjectOfType<GUIController>();
-                    if (_instance == null)
-                    {
-                        Benchwarp.instance.LogWarn("Couldn't find GUIController");
+                if (_instance != null) return _instance;
 
-                        GameObject GUIObj = new GameObject();
-                        _instance = GUIObj.AddComponent<GUIController>();
-                        GameObject.DontDestroyOnLoad(GUIObj);
-                    }
-                }
+                _instance = FindObjectOfType<GUIController>();
+
+                if (_instance != null) return _instance;
+
+                Benchwarp.instance.LogWarn("Couldn't find GUIController");
+
+                GameObject GUIObj = new GameObject();
+                _instance = GUIObj.AddComponent<GUIController>();
+                DontDestroyOnLoad(GUIObj);
+
                 return _instance;
-            }
-            set
-            {
             }
         }
     }
