@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using GlobalEnums;
+﻿using System.Collections.Generic;
+using System.Collections;
 using Modding;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GlobalEnums;
 
 namespace Benchwarp
 {
     public class Benchwarp : Mod<SaveSettings, GlobalSettings>
     {
+
         internal static Benchwarp instance;
-        
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
             if (instance != null) return;
@@ -37,14 +37,14 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "1.6";
+            return "1.7";
         }
 
         public override List<(string, string)> GetPreloadNames()
         {
 
             return new List<(string, string)>
-            {
+                {
                 ("Crossroads_30", "RestBench"),
                 ("Town", "RestBench"),
                 ("Crossroads_04", "RestBench"),
@@ -69,14 +69,15 @@ namespace Benchwarp
                 ("Fungus1_15", "RestBench"),
                 ("White_Palace_01", "WhiteBench"),
                 ("Room_Final_Boss_Atrium", "RestBench")
-            };
+                };
         }
 
         public IEnumerator Respawn()
         {
             GameManager.instance.SaveGame();
+            GameManager.instance.ResetSemiPersistentItems();
             UIManager.instance.UIClosePauseMenu();
-
+            HeroController.instance.SetMPCharge(1);
             // Set some stuff which would normally be set by LoadSave
             HeroController.instance.AffectedByGravity(false);
             HeroController.instance.transitionState = HeroTransitionState.EXITING_SCENE;
@@ -106,8 +107,7 @@ namespace Benchwarp
             MenuButtonList.ClearAllLastSelected();
 
             // Sloppy way to force the soul meter to update
-            HeroController.instance.SetMPCharge(0);
-            HeroController.instance.AddMPCharge(100);
+            HeroController.instance.SetMPCharge(1);
 
 
             //This allows the next pause to stop the game correctly
@@ -118,14 +118,14 @@ namespace Benchwarp
             GameManager.instance.ui.AudioGoToGameplay(.2f);
         }
 
-        private static void BenchWatcher(string target, bool val)
+        public void BenchWatcher(string target, bool val)
         {
             if (target == "atBench" && val)
             {
                 foreach (Bench bench in Bench.Benches)
                 {
                     if (bench.benched) bench.visited = true;
-                    else if (GameManager.instance.sceneName == bench.sceneName && instance.Settings.benchScene != bench.sceneName) bench.visited = true;
+                    else if (GameManager.instance.sceneName == bench.sceneName && Benchwarp.instance.Settings.benchScene != bench.sceneName) bench.visited = true;
                     else continue;
                     break;
                 }
@@ -133,20 +133,21 @@ namespace Benchwarp
             PlayerData.instance.SetBoolInternal(target, val);
         }
 
-        private static void ClearSettings(Scene arg0, Scene arg1)
+        public void ClearSettings(Scene arg0, Scene arg1)
         {
-            if (arg1.name != "Menu_Title") return;
-            
-            foreach (Bench bench in Bench.Benches)
+            if (arg1.name == "Menu_Title")
             {
-                bench.visited = false;
-            }
+                foreach (Bench bench in Bench.Benches)
+                {
+                    bench.visited = false;
+                }
 
-            instance.Settings.benchDeployed = false;
-            instance.Settings.benchName = null;
-            instance.Settings.benchScene = null;
-            instance.Settings.benchX = 0f;
-            instance.Settings.benchY = 0f;
+                Benchwarp.instance.Settings.benchDeployed = false;
+                Benchwarp.instance.Settings.benchName = null;
+                Benchwarp.instance.Settings.benchScene = null;
+                Benchwarp.instance.Settings.benchX = 0f;
+                Benchwarp.instance.Settings.benchY = 0f;
+            }
         }
 
     }

@@ -14,12 +14,10 @@ Deploy
 - Set: alters your respawn/warp point to be your currently deployed bench
 - Style: select your preferred bench sprite
 - Options:
-	- Cooldown: adds a 60s cooldown to the deploy button
+	- Cooldown: adds a 300s cooldown to the deploy button
 	- Noninteractive: deployed bench cannot be interacted with, except via warping (e.g. preventing use during boss fights)
 	- No Mid-Air Deploy: the game must recognize the player as grounded in order to deploy
 	- Blacklist Rooms: prevents use of deploy in rooms which do not allow dreamgate, and if the player does not have lantern, prevents use of deploy in rooms which are dark
-
-Update: Warping to bench now refills soul meter.
 
 Credits
 Seanpr - developed the UI, as part of DebugMod

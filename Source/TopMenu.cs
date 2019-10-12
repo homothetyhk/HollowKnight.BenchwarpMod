@@ -356,7 +356,7 @@ namespace Benchwarp
 
             if (!Benchwarp.instance.GlobalSettings.DeployCooldown) return;
 
-            cooldown = 60f;
+            cooldown = 300f;
             onCooldown = true;
         }
 

@@ -238,7 +238,7 @@ namespace Benchwarp
 
             if (Benchwarp.instance.GlobalSettings.Noninteractive)
             {
-                var actions = DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Rest Burst").Actions.ToList();
+                var actions = DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Idle").Actions.ToList();
                 actions.RemoveAt(1); // never recognizes player as being in range
                 DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Idle").Actions = actions.ToArray();
             }
