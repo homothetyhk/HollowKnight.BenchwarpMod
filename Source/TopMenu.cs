@@ -32,11 +32,11 @@ namespace Benchwarp
 
                 ["Settings"] = new (string, UnityAction<string>, PropertyInfo)[]
                 {
-                    ("WarpOnly", WarpOnlyClicked, t.GetProperty(nameof(GlobalSettings.WarpOnly))),
-                    ("UnlockAll", UnlockAllClicked, t.GetProperty(nameof(GlobalSettings.UnlockAllBenches))),
-                    ("ShowScene", ShowSceneClicked, t.GetProperty(nameof(GlobalSettings.ShowScene))),
-                    ("SwapNames", SwapNamesClicked, t.GetProperty(nameof(GlobalSettings.SwapNames))),
-                    ("EnableDeploy", EnableDeployClicked, t.GetProperty(nameof(GlobalSettings.EnableDeploy)))
+                    ("Warp Only", WarpOnlyClicked, t.GetProperty(nameof(GlobalSettings.WarpOnly))),
+                    ("Unlock All", UnlockAllClicked, t.GetProperty(nameof(GlobalSettings.UnlockAllBenches))),
+                    ("Show Room Name", ShowSceneClicked, t.GetProperty(nameof(GlobalSettings.ShowScene))),
+                    ("Use Room Names", SwapNamesClicked, t.GetProperty(nameof(GlobalSettings.SwapNames))),
+                    ("Enable Deploy", EnableDeployClicked, t.GetProperty(nameof(GlobalSettings.EnableDeploy)))
                 }
             };
 

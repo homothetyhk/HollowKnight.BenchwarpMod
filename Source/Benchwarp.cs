@@ -44,7 +44,7 @@ namespace Benchwarp
         {
 
             return new List<(string, string)>
-                {
+            {
                 ("Crossroads_30", "RestBench"),
                 ("Town", "RestBench"),
                 ("Crossroads_04", "RestBench"),
@@ -69,7 +69,7 @@ namespace Benchwarp
                 ("Fungus1_15", "RestBench"),
                 ("White_Palace_01", "WhiteBench"),
                 ("Room_Final_Boss_Atrium", "RestBench")
-                };
+            };
         }
 
         public IEnumerator Respawn()
