@@ -19,25 +19,26 @@ namespace Benchwarp
 
         private static readonly Type t = typeof(GlobalSettings);
 
-        private static readonly Dictionary<string, (string, UnityAction<string>, FieldInfo)[]> Panels = new Dictionary<string, (string, UnityAction<string>, FieldInfo)[]>
-        {
-            ["Options"] = new (string, UnityAction<string>, FieldInfo)[]
+        private static readonly Dictionary<string, (string, UnityAction<string>, FieldInfo)[]> Panels =
+            new Dictionary<string, (string, UnityAction<string>, FieldInfo)[]>
             {
-                ("Cooldown", CooldownClicked, t.GetField(nameof(GlobalSettings.DeployCooldown))),
-                ("Noninteractive", NoninteractiveClicked, t.GetField(nameof(GlobalSettings.Noninteractive))),
-                ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetField(nameof(GlobalSettings.NoMidAirDeploy))),
-                ("Blacklist", BlacklistClicked, t.GetField(nameof(GlobalSettings.BlacklistRooms)))
-            },
-            
-            ["Settings"] = new (string, UnityAction<string>, FieldInfo)[]
-            {
-                ("WarpOnly", WarpOnlyClicked, t.GetField(nameof(GlobalSettings.WarpOnly))),
-                ("UnlockAll", UnlockAllClicked, t.GetField(nameof(GlobalSettings.UnlockAllBenches))),
-                ("ShowScene", ShowSceneClicked, t.GetField(nameof(GlobalSettings.ShowScene))),
-                ("SwapNames", SwapNamesClicked, t.GetField(nameof(GlobalSettings.SwapNames))),
-                ("EnableDeploy", EnableDeployClicked, t.GetField(nameof(GlobalSettings.EnableDeploy)))
-            }
-        };
+                ["Options"] = new (string, UnityAction<string>, FieldInfo)[]
+                {
+                    ("Cooldown", CooldownClicked, t.GetField(nameof(GlobalSettings.DeployCooldown))),
+                    ("Noninteractive", NoninteractiveClicked, t.GetField(nameof(GlobalSettings.Noninteractive))),
+                    ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetField(nameof(GlobalSettings.NoMidAirDeploy))),
+                    ("Blacklist", BlacklistClicked, t.GetField(nameof(GlobalSettings.BlacklistRooms)))
+                },
+
+                ["Settings"] = new (string, UnityAction<string>, FieldInfo)[]
+                {
+                    ("WarpOnly", WarpOnlyClicked, t.GetField(nameof(GlobalSettings.WarpOnly))),
+                    ("UnlockAll", UnlockAllClicked, t.GetField(nameof(GlobalSettings.UnlockAllBenches))),
+                    ("ShowScene", ShowSceneClicked, t.GetField(nameof(GlobalSettings.ShowScene))),
+                    ("SwapNames", SwapNamesClicked, t.GetField(nameof(GlobalSettings.SwapNames))),
+                    ("EnableDeploy", EnableDeployClicked, t.GetField(nameof(GlobalSettings.EnableDeploy)))
+                }
+            };
 
         private static readonly Dictionary<string, (UnityAction<string>, Vector2)> Buttons = new Dictionary<string, (UnityAction<string>, Vector2)>
         {
@@ -50,10 +51,12 @@ namespace Benchwarp
         {
             canvas = _canvas;
 
-            sceneNamePanel = new CanvasPanel(_canvas, GUIController.Instance.images["ButtonsMenuBG"], new Vector2(0f, 0f), new Vector2(1346f, 0f), new Rect(0f, 0f, 0f, 0f));
+            sceneNamePanel = new CanvasPanel
+                (_canvas, GUIController.Instance.images["ButtonsMenuBG"], new Vector2(0f, 0f), new Vector2(1346f, 0f), new Rect(0f, 0f, 0f, 0f));
             sceneNamePanel.AddText("SceneName", "Tutorial_01", new Vector2(5f, 1060f), Vector2.zero, GUIController.Instance.TrajanNormal, 18);
 
-            rootPanel = new CanvasPanel(_canvas, GUIController.Instance.images["ButtonsMenuBG"], new Vector2(342f, 15f), new Vector2(1346f, 0f), new Rect(0f, 0f, 0f, 0f));
+            rootPanel = new CanvasPanel
+                (_canvas, GUIController.Instance.images["ButtonsMenuBG"], new Vector2(342f, 15f), new Vector2(1346f, 0f), new Rect(0f, 0f, 0f, 0f));
 
             Rect buttonRect = new Rect(0, 0, GUIController.Instance.images["ButtonRect"].width, GUIController.Instance.images["ButtonRect"].height);
 
@@ -61,30 +64,57 @@ namespace Benchwarp
 
             void AddButton(CanvasPanel panel, string name, UnityAction<string> action, Vector2 pos, string displayName = null, Font f = null)
             {
-                    panel.AddButton
-                    (
-                        name,
-                        GUIController.Instance.images["ButtonRectEmpty"],
-                        pos,
-                        Vector2.zero,
-                        action,
-                        new Rect(0f, 0f, 80f, 40f),
-                        f != null ? f :  GUIController.Instance.TrajanNormal,
-                        displayName ?? name,
-                        fontSize
-                    );
+                panel.AddButton
+                (
+                    name,
+                    GUIController.Instance.images["ButtonRectEmpty"],
+                    pos,
+                    Vector2.zero,
+                    action,
+                    new Rect(0f, 0f, 80f, 40f),
+                    f != null ? f : GUIController.Instance.TrajanNormal,
+                    displayName ?? name,
+                    fontSize
+                );
             }
 
             CanvasPanel MakePanel(string name, Vector2 position)
             {
-                CanvasPanel newPanel = rootPanel.AddPanel(name, GUIController.Instance.images["ButtonRectEmpty"], position, Vector2.zero, new Rect(0f, 0f, GUIController.Instance.images["DropdownBG"].width, 270f));
-                rootPanel.AddButton(name, GUIController.Instance.images["ButtonRect"], position + new Vector2(1f, -20f), Vector2.zero, s => rootPanel.TogglePanel(name), buttonRect, GUIController.Instance.TrajanBold, name);
+                CanvasPanel newPanel = rootPanel.AddPanel
+                (
+                    name,
+                    GUIController.Instance.images["ButtonRectEmpty"],
+                    position,
+                    Vector2.zero,
+                    new Rect(0f, 0f, GUIController.Instance.images["DropdownBG"].width, 270f)
+                );
+                rootPanel.AddButton
+                (
+                    name,
+                    GUIController.Instance.images["ButtonRect"],
+                    position + new Vector2(1f, -20f),
+                    Vector2.zero,
+                    s => rootPanel.TogglePanel(name),
+                    buttonRect,
+                    GUIController.Instance.TrajanBold,
+                    name
+                );
 
                 return newPanel;
             }
 
             //Main buttons
-            rootPanel.AddButton("Warp", GUIController.Instance.images["ButtonRect"], new Vector2(-154f, 40f), Vector2.zero, WarpClicked, buttonRect, GUIController.Instance.TrajanBold, "Warp");
+            rootPanel.AddButton
+            (
+                "Warp",
+                GUIController.Instance.images["ButtonRect"],
+                new Vector2(-154f, 40f),
+                Vector2.zero,
+                WarpClicked,
+                buttonRect,
+                GUIController.Instance.TrajanBold,
+                "Warp"
+            );
 
             if (Benchwarp.instance.GlobalSettings.EnableDeploy)
             {
@@ -104,16 +134,16 @@ namespace Benchwarp
                 }
 
                 CanvasPanel style = MakePanel("Style", new Vector2(145f, 320f));
-                
+
                 Vector2 position = new Vector2(5f, 25f);
-                
+
                 foreach (string styleName in BenchMaker.Styles)
                 {
                     AddButton(style, styleName, StyleChanged, position);
-                    
+
                     position += new Vector2(0f, 30f);
                 }
-                
+
                 CanvasPanel options = MakePanel("Options", new Vector2(245f, 320f));
 
                 for (int i = 0; i < Panels["Options"].Length; i++)
@@ -129,10 +159,10 @@ namespace Benchwarp
                     );
                 }
             }
-            
+
 
             CanvasPanel settings = MakePanel("Settings", new Vector2(1445f, 20f));
-            
+
             for (int i = 0; i < Panels["Settings"].Length; i++)
             {
                 (string name, UnityAction<string> action, FieldInfo _) = Panels["Settings"][i];
@@ -149,10 +179,10 @@ namespace Benchwarp
             if (Benchwarp.instance.GlobalSettings.WarpOnly) return;
 
             Vector2 panelDistance = new Vector2(-155f, 20f);
-            
+
             Dictionary<string, Vector2> panelButtonHeight = new Dictionary<string, Vector2>();
             benchPanels = new List<string>();
-            
+
             foreach (Bench bench in Bench.Benches)
             {
                 if (!panelButtonHeight.ContainsKey(bench.areaName))
@@ -168,21 +198,31 @@ namespace Benchwarp
                 }
 
                 rootPanel.GetPanel(bench.areaName)
-                     .AddButton
-                     (
-                         bench.name,
-                         GUIController.Instance.images["ButtonRectEmpty"],
-                         panelButtonHeight[bench.areaName],
-                         Vector2.zero,
-                         (string s) => bench.SetBench(),
-                         new Rect(0f, 0f, 80f, 40f),
-                         GUIController.Instance.TrajanNormal,
-                         !Benchwarp.instance.GlobalSettings.SwapNames ? bench.name : bench.sceneName,
-                         fontSize
-                     );
+                         .AddButton
+                         (
+                             bench.name,
+                             GUIController.Instance.images["ButtonRectEmpty"],
+                             panelButtonHeight[bench.areaName],
+                             Vector2.zero,
+                             (string s) => bench.SetBench(),
+                             new Rect(0f, 0f, 80f, 40f),
+                             GUIController.Instance.TrajanNormal,
+                             !Benchwarp.instance.GlobalSettings.SwapNames ? bench.name : bench.sceneName,
+                             fontSize
+                         );
             }
-            
-            rootPanel.AddButton("All", GUIController.Instance.images["ButtonRect"], new Vector2(-154f, 0f), Vector2.zero, AllClicked, buttonRect, GUIController.Instance.TrajanBold, "All");
+
+            rootPanel.AddButton
+            (
+                "All",
+                GUIController.Instance.images["ButtonRect"],
+                new Vector2(-154f, 0f),
+                Vector2.zero,
+                AllClicked,
+                buttonRect,
+                GUIController.Instance.TrajanBold,
+                "All"
+            );
 
             rootPanel.FixRenderOrder();
         }
@@ -201,7 +241,7 @@ namespace Benchwarp
 
             Benchwarp bw = Benchwarp.instance;
             GlobalSettings gs = bw.GlobalSettings;
-            
+
             if (gs.ShowScene)
             {
                 sceneNamePanel.SetActive(true, false);
@@ -211,7 +251,7 @@ namespace Benchwarp
 
             if (GameManager.instance.IsGamePaused())
                 rootPanel.SetActive(true, false);
-            else 
+            else
                 rootPanel.SetActive(false, true);
 
             if (HeroController.instance == null || GameManager.instance == null) return;
@@ -219,25 +259,31 @@ namespace Benchwarp
             if (gs.EnableDeploy)
             {
                 CanvasButton deploy = rootPanel.GetButton("Deploy");
-                
+
                 if (onCooldown)
                 {
-                    deploy.UpdateText(((int)cooldown).ToString());
+                    deploy.UpdateText(((int) cooldown).ToString());
                 }
+
                 if (cooldown <= 0 && onCooldown)
                 {
                     deploy.UpdateText("Deploy");
                     onCooldown = false;
                 }
 
-                bool cantDeploy = onCooldown 
-                    || gs.BlacklistRooms && BenchMaker.Blacklist() 
+                bool cantDeploy = onCooldown
+                    || gs.BlacklistRooms && BenchMaker.Blacklist()
                     || gs.NoMidAirDeploy && !HeroController.instance.CheckTouchingGround();
-                
+
                 deploy.SetTextColor(cantDeploy ? Color.red : Color.white);
-                
-                rootPanel.GetButton("Set").SetTextColor(bw.Settings.benchScene == PlayerData.instance.respawnScene && bw.Settings.benchName == PlayerData.instance.respawnMarkerName
-                    ? Color.yellow : Color.white);
+
+                rootPanel.GetButton("Set")
+                         .SetTextColor
+                         (
+                             bw.Settings.benchScene == PlayerData.instance.respawnScene && bw.Settings.benchName == PlayerData.instance.respawnMarkerName
+                                 ? Color.yellow
+                                 : Color.white
+                         );
 
                 if (rootPanel.GetPanel("Style").active)
                 {
@@ -248,7 +294,7 @@ namespace Benchwarp
                 }
 
                 CanvasPanel options = rootPanel.GetPanel("Options");
-                
+
                 if (options.active)
                 {
                     foreach ((string name, FieldInfo fi) in Panels["Options"].Select(x => (x.Item1, x.Item3)))
@@ -259,20 +305,19 @@ namespace Benchwarp
             }
 
             CanvasPanel settings = rootPanel.GetPanel("Settings");
-            
+
             if (settings.active)
             {
-                settings.GetButton("WarpOnly").SetTextColor(gs.WarpOnly ? Color.yellow : Color.white);
-                settings.GetButton("UnlockAll").SetTextColor(gs.UnlockAllBenches ? Color.yellow : Color.white);
-                settings.GetButton("ShowScene").SetTextColor(gs.ShowScene ? Color.yellow : Color.white);
-                settings.GetButton("SwapNames").SetTextColor(gs.SwapNames ? Color.yellow : Color.white);
-                settings.GetButton("EnableDeploy").SetTextColor(gs.EnableDeploy ? Color.yellow : Color.white);
+                foreach ((string name, FieldInfo fi) in Panels["Settings"].Select(x => (x.Item1, x.Item3)))
+                {
+                    settings.GetButton(name).SetTextColor((bool) fi.GetValue(gs) ? Color.yellow : Color.white);
+                }
             }
 
             foreach (Bench bench in Bench.Benches)
             {
                 if (!rootPanel.GetPanel(bench.areaName).active) continue;
-                
+
                 if (!bench.visited && !gs.UnlockAllBenches && bench.sceneName != "Tutorial_01")
                 {
                     rootPanel.GetButton(bench.name, bench.areaName).SetTextColor(Color.red);
@@ -281,12 +326,12 @@ namespace Benchwarp
                 {
                     rootPanel.GetButton(bench.name, bench.areaName).SetTextColor(bench.benched ? Color.yellow : Color.white);
                 }
-            }    
+            }
         }
-           
+
         private static void WarpClicked(string buttonName)
         {
-            if (Benchwarp.instance.GlobalSettings.UnlockAllBenches) 
+            if (Benchwarp.instance.GlobalSettings.UnlockAllBenches)
                 UnlockAllClicked(null);
 
             GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
@@ -306,11 +351,11 @@ namespace Benchwarp
             Benchwarp.instance.Settings.benchScene = GameManager.instance.sceneName;
 
             BenchMaker.MakeBench();
-            
+
             SetClicked(null);
 
             if (!Benchwarp.instance.GlobalSettings.DeployCooldown) return;
-            
+
             cooldown = 60f;
             onCooldown = true;
         }
@@ -363,6 +408,7 @@ namespace Benchwarp
         #endregion
 
         #region Settings button method
+
         private static void WarpOnlyClicked(string buttonName)
         {
             Benchwarp.instance.GlobalSettings.WarpOnly = !Benchwarp.instance.GlobalSettings.WarpOnly;
@@ -381,20 +427,20 @@ namespace Benchwarp
             }
 
             if (!Benchwarp.instance.GlobalSettings.UnlockAllBenches) return;
-            
+
             PlayerData pd = PlayerData.instance;
 
             FieldInfo[] fields = typeof(PlayerData).GetFields();
 
             // Most of these are unnecessary, but some titlecards can lock you into a bench
-            foreach 
+            foreach
             (
                 FieldInfo fi in fields.Where
                 (
-                        x => x.Name.StartsWith("visited")
-                            || x.Name.StartsWith("tramOpened")
-                            || x.Name.StartsWith("openedTram")
-                            || x.Name.StartsWith("tramOpened")
+                    x => x.Name.StartsWith("visited")
+                        || x.Name.StartsWith("tramOpened")
+                        || x.Name.StartsWith("openedTram")
+                        || x.Name.StartsWith("tramOpened")
                 )
             )
             {
@@ -412,7 +458,6 @@ namespace Benchwarp
                 ("Fungus3_50", "Toll Machine Bench")
             })
             {
-
                 sd.SaveMyState
                 (
                     new PersistentBoolData
@@ -450,17 +495,22 @@ namespace Benchwarp
             sceneNamePanel.Destroy();
             BuildMenu(canvas);
         }
+
         #endregion
 
         private static void AllClicked(string buttonName)
         {
             if (benchPanels.Any(s => !rootPanel.GetPanel(s).active))
             {
-                foreach (string s in benchPanels) if (!rootPanel.GetPanel(s).active) rootPanel.TogglePanel(s);
+                foreach (string s in benchPanels)
+                    if (!rootPanel.GetPanel(s).active)
+                        rootPanel.TogglePanel(s);
             }
             else
             {
-                foreach (string s in benchPanels) if (rootPanel.GetPanel(s).active) rootPanel.TogglePanel(s);
+                foreach (string s in benchPanels)
+                    if (rootPanel.GetPanel(s).active)
+                        rootPanel.TogglePanel(s);
             }
         }
     }
