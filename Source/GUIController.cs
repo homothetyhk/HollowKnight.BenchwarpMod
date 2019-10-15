@@ -6,6 +6,7 @@ using System.Reflection;
 using Modding;
 using UnityEngine;
 using UnityEngine.UI;
+using Logger = Modding.Logger;
 
 namespace Benchwarp
 {
@@ -44,11 +45,21 @@ namespace Benchwarp
             TrajanBold = CanvasUtil.TrajanBold;
             TrajanNormal = CanvasUtil.TrajanNormal;
 
-            Arial = Font.CreateDynamicFontFromOSFont
-            (
-                Font.GetOSInstalledFontNames().First(x => x.ToLower().Contains("arial")),
-                13
-            );
+            try
+            {
+
+                Arial = Font.CreateDynamicFontFromOSFont
+                (
+                    Font.GetOSInstalledFontNames().First(x => x.ToLower().Contains("arial")),
+                    13
+                );
+
+            }
+            catch
+            {
+                Logger.LogWarn("Unable to find Arial! Using Perpetua.");
+                Arial = CanvasUtil.GetFont("Perpetua");
+            }
 
             if (TrajanBold == null || TrajanNormal == null || Arial == null)
             {
