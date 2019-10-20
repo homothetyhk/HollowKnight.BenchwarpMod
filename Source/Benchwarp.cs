@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 using Modding;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GlobalEnums;
+using HutongGames.PlayMaker;
+using HutongGames.PlayMaker.Actions;
+using TMPro;
 
 namespace Benchwarp
 {
@@ -37,7 +41,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "1.7";
+            return "1.8";
         }
 
         public override List<(string, string)> GetPreloadNames()
@@ -116,6 +120,34 @@ namespace Benchwarp
             // Restores audio to normal levels. Unfortunately, some warps pop atm when music changes over
             GameManager.instance.actorSnapshotUnpaused.TransitionTo(0f);
             GameManager.instance.ui.AudioGoToGameplay(.2f);
+
+            // Break the flower poggers
+            if (!PlayerData.instance.GetBool(nameof(PlayerData.hasXunFlower)))
+            {
+                yield break;
+            }
+
+            PlayerData.instance.SetBool(nameof(PlayerData.xunFlowerBroken), true);
+            PlayerData.instance.IncrementInt(nameof(PlayerData.xunFlowerBrokeTimes));
+
+            // No fsm extensions = unreadable code, unfortunately
+            // Find "Flower?" state on Knight - ProxyFSM
+            FsmState flower = HeroController.instance.proxyFSM.FsmStates.First(state => state.Name == "Flower?");
+
+            // Activate flower broken effect
+            HeroController.instance.proxyFSM.Fsm
+                .GetOwnerDefaultTarget(flower.Actions.OfType<ActivateGameObject>().First().gameObject).SetActive(true);
+
+            // Find message prefab, instantiate
+            GameObject msg =
+                Object.Instantiate(flower.Actions.OfType<SpawnObjectFromGlobalPool>().First().gameObject.Value);
+            GameObject msgText = msg.transform.Find("Text").gameObject;
+            GameObject msgIcon = msg.transform.Find("Icon").gameObject;
+
+            // Set icon/text to be flower broken
+            msgText.GetComponent<TextMeshPro>().text = Language.Language.Get("NOTIFICATION_FLOWER_BREAK", "UI");
+            msgIcon.GetComponent<SpriteRenderer>().sprite =
+                (Sprite) flower.Actions.OfType<SetSpriteRendererSprite>().First().sprite.Value;
         }
 
         public void BenchWatcher(string target, bool val)
