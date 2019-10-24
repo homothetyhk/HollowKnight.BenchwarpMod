@@ -30,14 +30,80 @@ namespace Benchwarp
             ModHooks.Instance.SetPlayerBoolHook += BenchWatcher;
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += ClearSettings;
             ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
+            ModHooks.Instance.AfterSavegameLoadHook += RescueBrokenSaveFile;
+            ModHooks.Instance.GetPlayerStringHook += RespawnAtDeployedBench;
+            ModHooks.Instance.GetPlayerIntHook += RespawnAtDeployedBench2;
+            ModHooks.Instance.SetPlayerStringHook += RemoveRespawnFromDeployedBench;
+
 
             GUIController.Instance.BuildMenus();
             
         }
 
+        private void RemoveRespawnFromDeployedBench(string stringName, string value)
+        {
+            switch (stringName)
+            {
+                case nameof(PlayerData.respawnMarkerName):
+                    if (value != BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME)
+                    {
+                        Benchwarp.instance.Settings.atDeployedBench = false;
+                    }
+                    break;
+                case nameof(PlayerData.respawnScene):
+                    if (value != Benchwarp.instance.Settings.benchScene)
+                    {
+                        Benchwarp.instance.Settings.atDeployedBench = false;
+                    }
+                    break;
+            }
+            PlayerData.instance.SetStringInternal(stringName, value);
+        }
+
+        private string RespawnAtDeployedBench(string stringName)
+        {
+            if (!Benchwarp.instance.Settings.atDeployedBench) return PlayerData.instance.GetStringInternal(stringName);
+            switch (stringName)
+            {
+                case nameof(PlayerData.respawnMarkerName):
+                    return BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
+                case nameof(PlayerData.respawnScene):
+                    return Benchwarp.instance.Settings.benchScene;
+                default:
+                    return PlayerData.instance.GetStringInternal(stringName);
+            }
+        }
+
+        private int RespawnAtDeployedBench2(string intName)
+        {
+            if (!Benchwarp.instance.Settings.atDeployedBench || intName != nameof(PlayerData.respawnType))
+            {
+                return PlayerData.instance.GetIntInternal(intName);
+            }
+            else return 1;
+        }
+
+        private void RescueBrokenSaveFile(SaveGameData data)
+        {
+            if (!Benchwarp.instance.GlobalSettings.CheckForBrokenSaveFile) return;
+
+            foreach (Bench bench in Bench.Benches)
+            {
+                bool benched = data.playerData.respawnScene == bench.sceneName && data.playerData.respawnMarkerName == bench.respawnMarker && data.playerData.respawnType == bench.respawnType;
+                if (benched) return;
+            }
+            if (data.playerData.respawnType == 0) return;
+            LogError("Attempted to load into unrecognized bench. Relocating to Dirtmouth.\n" +
+                "If you would like to disable this check in the future, please visit the Benchwarp GlobalSettings " +
+                "and change key \"CheckForBrokenSaveFile\" to false.");
+            data.playerData.respawnScene = "Town";
+            data.playerData.respawnMarkerName = "RestBench";
+            data.playerData.respawnType = 1;
+        }
+
         public override string GetVersion()
         {
-            return "1.7";
+            return "1.8";
         }
 
         public override List<(string, string)> GetPreloadNames()
@@ -77,7 +143,8 @@ namespace Benchwarp
             GameManager.instance.SaveGame();
             GameManager.instance.ResetSemiPersistentItems();
             UIManager.instance.UIClosePauseMenu();
-            HeroController.instance.SetMPCharge(1);
+            HeroController.instance.SetMPCharge(0);
+            PlayMakerFSM.BroadcastEvent("MP DRAIN");
             // Set some stuff which would normally be set by LoadSave
             HeroController.instance.AffectedByGravity(false);
             HeroController.instance.transitionState = HeroTransitionState.EXITING_SCENE;
@@ -106,9 +173,7 @@ namespace Benchwarp
             }
             MenuButtonList.ClearAllLastSelected();
 
-            // Sloppy way to force the soul meter to update
             HeroController.instance.SetMPCharge(1);
-
 
             //This allows the next pause to stop the game correctly
             TimeController.GenericTimeScale = 1f;
@@ -143,7 +208,7 @@ namespace Benchwarp
                 }
 
                 Benchwarp.instance.Settings.benchDeployed = false;
-                Benchwarp.instance.Settings.benchName = null;
+                Benchwarp.instance.Settings.atDeployedBench = false;
                 Benchwarp.instance.Settings.benchScene = null;
                 Benchwarp.instance.Settings.benchX = 0f;
                 Benchwarp.instance.Settings.benchY = 0f;

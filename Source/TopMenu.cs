@@ -280,7 +280,7 @@ namespace Benchwarp
                 rootPanel.GetButton("Set")
                          .SetTextColor
                          (
-                             bw.Settings.benchScene == PlayerData.instance.respawnScene && bw.Settings.benchName == PlayerData.instance.respawnMarkerName
+                             Benchwarp.instance.Settings.atDeployedBench
                                  ? Color.yellow
                                  : Color.white
                          );
@@ -363,9 +363,7 @@ namespace Benchwarp
         private static void SetClicked(string buttonName)
         {
             if (!Benchwarp.instance.Settings.benchDeployed) return;
-            PlayerData.instance.respawnScene = Benchwarp.instance.Settings.benchScene;
-            PlayerData.instance.respawnType = 1;
-            PlayerData.instance.respawnMarkerName = Benchwarp.instance.Settings.benchName;
+            Benchwarp.instance.Settings.atDeployedBench = true;
         }
 
         #region Deploy options

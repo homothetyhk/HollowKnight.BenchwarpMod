@@ -9,6 +9,8 @@ namespace Benchwarp
     {
         public static GameObject DeployedBench;
 
+        public const string DEPLOYED_BENCH_RESPAWN_MARKER_NAME = "DeployedBench";
+
         private static GameObject ExtraSprite;
 
         private static GameObject _rightBench;
@@ -234,7 +236,7 @@ namespace Benchwarp
                 ExtraSprite.SetActive(true);
             }
             DeployedBench.SetActive(true);
-            Benchwarp.instance.Settings.benchName = DeployedBench.name;
+            DeployedBench.name = DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
 
             if (Benchwarp.instance.GlobalSettings.Noninteractive)
             {
@@ -250,13 +252,6 @@ namespace Benchwarp
             {
                 MakeBench();
             }
-            if (arg1.name == PlayerData.instance.respawnScene &&
-                Benchwarp.instance.Settings.benchDeployed &&
-                GameObject.Find(PlayerData.instance.respawnMarkerName) == null)
-            {
-                PlayerData.instance.respawnMarkerName = DeployedBench.name;
-            }
-
         }
 
         private static readonly List<string> darkRooms = new List<string> { "Fungus1_35", "Mines_07", "Mines_33", "Cliffs_04", "Deepnest_34", "Deepnest_35", "Deepnest_39", "Deepnest_41", "Deepnest_42" };

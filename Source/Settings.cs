@@ -10,6 +10,12 @@ namespace Benchwarp
             set => SetBool(value);
         }
 
+        public bool atDeployedBench
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
+
         public float benchX
         {
             get => GetFloat(0f);
@@ -23,12 +29,6 @@ namespace Benchwarp
         }
 
         public string benchScene
-        {
-            get => GetString();
-            set => SetString(value);
-        }
-
-        public string benchName
         {
             get => GetString();
             set => SetString(value);
@@ -300,6 +300,12 @@ namespace Benchwarp
             set => SetBool(value);
         }
         public bool EnableDeploy
+        {
+            get => GetBool(true);
+            set => SetBool(value);
+        }
+
+        public bool CheckForBrokenSaveFile
         {
             get => GetBool(true);
             set => SetBool(value);
