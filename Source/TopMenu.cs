@@ -11,7 +11,7 @@ namespace Benchwarp
     {
         private static CanvasPanel rootPanel;
         private static CanvasPanel sceneNamePanel;
-        private static GameObject canvas;
+        public static GameObject canvas;
         private static float cooldown;
         private static bool onCooldown;
         private static List<string> benchPanels;

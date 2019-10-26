@@ -12,7 +12,7 @@ namespace Benchwarp
 
         public bool atDeployedBench
         {
-            get => GetBool(false);
+            get => GetBool(false) && benchDeployed;
             set => SetBool(value);
         }
 

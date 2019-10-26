@@ -113,6 +113,8 @@ namespace Benchwarp
 
         public static void GetPrefabs(Dictionary<string, Dictionary<string, GameObject>> objects)
         {
+            if (objects == null) return; //happens if mod is reloaded
+
             _rightBench = objects["Crossroads_30"]["RestBench"];
             _leftBench = objects["Town"]["RestBench"];
             _ornateBench = objects["Crossroads_04"]["RestBench"];
@@ -160,11 +162,15 @@ namespace Benchwarp
             }
         }
 
-        public static void DestroyBench()
+        public static void DestroyBench(bool DontDeleteData = false)
         {
             if (DeployedBench != null) GameObject.Destroy(DeployedBench);
             if (ExtraSprite != null) GameObject.Destroy(ExtraSprite);
+
+            if (DontDeleteData) return;
+
             Benchwarp.instance.Settings.benchDeployed = false;
+            Benchwarp.instance.Settings.atDeployedBench = false;
         }
 
         public static void MakeBench()
@@ -248,7 +254,7 @@ namespace Benchwarp
 
         public static void TryToDeploy(Scene arg0, Scene arg1)
         {
-            if (arg1.name == Benchwarp.instance.Settings.benchScene)
+            if (Benchwarp.instance.Settings.benchDeployed && arg1.name == Benchwarp.instance.Settings.benchScene)
             {
                 MakeBench();
             }
