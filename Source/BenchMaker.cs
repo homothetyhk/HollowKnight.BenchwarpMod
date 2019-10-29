@@ -250,6 +250,14 @@ namespace Benchwarp
                 actions.RemoveAt(1); // never recognizes player as being in range
                 DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Idle").Actions = actions.ToArray();
             }
+            {
+                var actions = DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Rest Burst").Actions.ToList();
+                for (int i=19; i<27; i++)
+                {
+                    actions.RemoveAt(19); // Remove actions related to setting respawn point
+                }
+                DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Rest Burst").Actions = actions.ToArray();
+            }
         }
 
         public static void TryToDeploy(Scene arg0, Scene arg1)

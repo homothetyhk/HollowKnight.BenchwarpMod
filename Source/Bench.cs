@@ -22,7 +22,8 @@ namespace Benchwarp
         }
         public bool benched => PlayerData.instance.respawnScene == sceneName &&
             PlayerData.instance.respawnMarkerName == respawnMarker &&
-            PlayerData.instance.respawnType == respawnType;
+            PlayerData.instance.respawnType == respawnType &&
+            !Benchwarp.instance.Settings.atDeployedBench;
 
         public Bench(string _name, string _areaName, string _sceneName, string _respawnMarker, int _respawnType, MapZone _mapZone, bool _preload = false, string _style = null)
         {
@@ -39,6 +40,7 @@ namespace Benchwarp
         public void SetBench()
         {
             if (!Benchwarp.instance.GlobalSettings.UnlockAllBenches && !visited && sceneName != "Tutorial_01") return;
+            Benchwarp.instance.Settings.atDeployedBench = false;
             PlayerData.instance.respawnScene = sceneName;
             PlayerData.instance.respawnMarkerName = respawnMarker;
             PlayerData.instance.respawnType = respawnType;

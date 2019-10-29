@@ -53,7 +53,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "1.9";
+            return "2.0";
         }
 
         public override List<(string, string)> GetPreloadNames()
@@ -123,8 +123,6 @@ namespace Benchwarp
             }
             MenuButtonList.ClearAllLastSelected();
 
-            HeroController.instance.SetMPCharge(1);
-
             //This allows the next pause to stop the game correctly
             TimeController.GenericTimeScale = 1f;
 
@@ -135,7 +133,7 @@ namespace Benchwarp
             // Below this is Sean stuff -- I take no responsiblity
 
             // Break the flower poggers
-            if (!PlayerData.instance.GetBool(nameof(PlayerData.hasXunFlower)))
+            if (!PlayerData.instance.GetBool(nameof(PlayerData.hasXunFlower)) || PlayerData.instance.xunFlowerBroken)
             {
                 yield break;
             }
@@ -183,11 +181,10 @@ namespace Benchwarp
         {
             if (!Benchwarp.instance.GlobalSettings.CheckForBrokenSaveFile) return PlayerData.instance.GetStringInternal(stringName);
 
-            if (stringName == "respawnScene" || !Benchwarp.instance.Settings.atDeployedBench)
+            if (stringName == "respawnScene" && !Benchwarp.instance.Settings.atDeployedBench)
             {
                 foreach (Bench bench in Bench.Benches)
                 {
-                    Log(bench.name);
                     if (bench.benched) return PlayerData.instance.GetStringInternal(stringName);
                 }
                 if (PlayerData.instance.respawnType == 1)
@@ -199,6 +196,7 @@ namespace Benchwarp
                     PlayerData.instance.respawnScene = "Town";
                     PlayerData.instance.respawnMarkerName = "RestBench";
                     PlayerData.instance.mapZone = MapZone.TOWN;
+                    GameManager.instance.SaveGame();
                     return "Town";
                 }
             }
