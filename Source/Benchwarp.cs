@@ -93,8 +93,8 @@ namespace Benchwarp
             GameManager.instance.SaveGame();
             GameManager.instance.ResetSemiPersistentItems();
             UIManager.instance.UIClosePauseMenu();
-            HeroController.instance.SetMPCharge(0);
-            PlayMakerFSM.BroadcastEvent("MP DRAIN");
+            HeroController.instance.ClearMP();
+            HeroController.instance.ClearMPSendEvents();
             // Set some stuff which would normally be set by LoadSave
             HeroController.instance.AffectedByGravity(false);
             HeroController.instance.transitionState = HeroTransitionState.EXITING_SCENE;
