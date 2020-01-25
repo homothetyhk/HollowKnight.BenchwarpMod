@@ -89,6 +89,7 @@
     <Compile Include="CanvasPanel.cs" />
     <Compile Include="CanvasText.cs" />
     <Compile Include="Bench.cs" />
+    <Compile Include="RandomizerStartLocation.cs" />
     <Compile Include="GUIController.cs" />
     <Compile Include="BenchMaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

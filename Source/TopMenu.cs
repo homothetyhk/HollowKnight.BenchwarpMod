@@ -44,7 +44,12 @@ namespace Benchwarp
         {
             ["Deploy"] = (DeployClicked, new Vector2(-154f, 300f)),
             ["Set"] = (SetClicked, new Vector2(-54f, 300f)),
-            ["Destroy"] = (s => BenchMaker.DestroyBench(), new Vector2(46f, 300f))
+            ["Destroy"] = (s => BenchMaker.DestroyBench(), new Vector2(46f, 300f)),
+        };
+
+        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> RandomizerButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
+        {
+            ["Randomizer"] = (s => RandomizerStartLocation.SetStart(), new Vector2(1446f, 300f))
         };
 
         public static void BuildMenu(GameObject _canvas)
@@ -177,6 +182,24 @@ namespace Benchwarp
             }
 
             if (Benchwarp.instance.GlobalSettings.WarpOnly) return;
+
+            if (RandomizerStartLocation.RandomizerActive)
+            {
+                foreach (KeyValuePair<string, (UnityAction<string>, Vector2)> pair in RandomizerButtons)
+                {
+                    rootPanel.AddButton
+                    (
+                        pair.Key,
+                        GUIController.Instance.images["ButtonRect"],
+                        pair.Value.Item2,
+                        Vector2.zero,
+                        pair.Value.Item1,
+                        buttonRect,
+                        GUIController.Instance.TrajanBold,
+                        pair.Key
+                    );
+                }
+            }
 
             Vector2 panelDistance = new Vector2(-155f, 20f);
 
@@ -314,11 +337,16 @@ namespace Benchwarp
                 }
             }
 
+            if (!Benchwarp.instance.GlobalSettings.WarpOnly && RandomizerStartLocation.RandomizerActive)
+            {
+                rootPanel.GetButton("Randomizer").SetTextColor(RandomizerStartLocation.CheckIfAtStart() ? Color.yellow : Color.white);
+            }
+
             foreach (Bench bench in Bench.Benches)
             {
                 if (!rootPanel.GetPanel(bench.areaName).active) continue;
 
-                if (!bench.visited && !gs.UnlockAllBenches && bench.sceneName != "Tutorial_01")
+                if (!bench.visited && !gs.UnlockAllBenches)
                 {
                     rootPanel.GetButton(bench.name, bench.areaName).SetTextColor(Color.red);
                 }

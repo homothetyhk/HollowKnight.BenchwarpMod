@@ -24,6 +24,8 @@ namespace Benchwarp
 
             instance.Log("Initializing");
 
+            RandomizerStartLocation.CheckForRandomizer();
+
             Bench.GenerateBenchData();
             BenchMaker.GetPrefabs(preloaded);
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
@@ -34,6 +36,7 @@ namespace Benchwarp
 
             ModHooks.Instance.SetPlayerBoolHook += BenchWatcher;
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += ClearSettings;
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged += CheckForKingsPassUnlock;
             ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
 
             ModHooks.Instance.GetPlayerStringHook += RescueSave;
@@ -54,6 +57,11 @@ namespace Benchwarp
         public override string GetVersion()
         {
             return "2.0";
+        }
+
+        public override int LoadPriority()
+        {
+            return 100;
         }
 
         public override List<(string, string)> GetPreloadNames()
@@ -93,8 +101,16 @@ namespace Benchwarp
             GameManager.instance.SaveGame();
             GameManager.instance.ResetSemiPersistentItems();
             UIManager.instance.UIClosePauseMenu();
+
+            // Collection of various redundant attempts to fix the infamous soul orb bug
+            HeroController.instance.TakeMPQuick(PlayerData.instance.MPCharge); // actually broadcasts the event
             HeroController.instance.SetMPCharge(0);
-            PlayMakerFSM.BroadcastEvent("MP DRAIN");
+            PlayerData.instance.MPReserve = 0;
+            HeroController.instance.ClearMP(); // useless
+            PlayMakerFSM.BroadcastEvent("MP DRAIN"); // This is the main fsm path for removing soul from the orb
+            PlayMakerFSM.BroadcastEvent("MP LOSE"); // This is an alternate path (used for bindings and other things) that actually plays an animation?
+            PlayMakerFSM.BroadcastEvent("MP RESERVE DOWN");
+            
             // Set some stuff which would normally be set by LoadSave
             HeroController.instance.AffectedByGravity(false);
             HeroController.instance.transitionState = HeroTransitionState.EXITING_SCENE;
@@ -130,35 +146,13 @@ namespace Benchwarp
             GameManager.instance.actorSnapshotUnpaused.TransitionTo(0f);
             GameManager.instance.ui.AudioGoToGameplay(.2f);
 
-            // Below this is Sean stuff -- I take no responsiblity
-
-            // Break the flower poggers
-            if (!PlayerData.instance.GetBool(nameof(PlayerData.hasXunFlower)) || PlayerData.instance.xunFlowerBroken)
-            {
-                yield break;
-            }
-
-            PlayerData.instance.SetBool(nameof(PlayerData.xunFlowerBroken), true);
-            PlayerData.instance.IncrementInt(nameof(PlayerData.xunFlowerBrokeTimes));
-
-            // No fsm extensions = unreadable code, unfortunately
-            // Find "Flower?" state on Knight - ProxyFSM
-            FsmState flower = HeroController.instance.proxyFSM.FsmStates.First(state => state.Name == "Flower?");
-
-            // Activate flower broken effect
-            HeroController.instance.proxyFSM.Fsm
-                .GetOwnerDefaultTarget(flower.Actions.OfType<ActivateGameObject>().First().gameObject).SetActive(true);
-
-            // Find message prefab, instantiate
-            GameObject msg =
-                Object.Instantiate(flower.Actions.OfType<SpawnObjectFromGlobalPool>().First().gameObject.Value);
-            GameObject msgText = msg.transform.Find("Text").gameObject;
-            GameObject msgIcon = msg.transform.Find("Icon").gameObject;
-
-            // Set icon/text to be flower broken
-            msgText.GetComponent<TextMeshPro>().text = Language.Language.Get("NOTIFICATION_FLOWER_BREAK", "UI");
-            msgIcon.GetComponent<SpriteRenderer>().sprite =
-                (Sprite) flower.Actions.OfType<SetSpriteRendererSprite>().First().sprite.Value;
+            /*
+             * Removed flower break
+             * For one, it did absolutely nothing, since you could just select a bench and savequit instead of warping
+             * Also, writing room rando in such a way that it actually checks for a path from Grey Mourner to QG would be unspeakably awful
+             * So no
+             * Cheaters rejoice
+             */
         }
 
         public void BenchWatcher(string target, bool val)
@@ -246,6 +240,24 @@ namespace Benchwarp
             else return 1;
         }
 
+        private void CheckForKingsPassUnlock(Scene arg0, Scene arg1)
+        {
+            switch (arg1.name)
+            {
+                case "Tutorial_01":
+                    try
+                    {
+                        Bench kp = Bench.Benches.First(b => b.sceneName == "Tutorial_01");
+                        kp.visited = true;
+                    }
+                    catch
+                    {
+                        LogError("Error occurred while attempting to set King's Pass bench as visited.");
+                    }
+                    break;
+            }
+        }
+
         public void ClearSettings(Scene arg0, Scene arg1)
         {
             if (arg1.name == "Menu_Title")
@@ -266,6 +278,7 @@ namespace Benchwarp
         public void Unload()
         {
             ModHooks.Instance.SetPlayerBoolHook -= BenchWatcher;
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= CheckForKingsPassUnlock;
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= ClearSettings;
             ModHooks.Instance.ApplicationQuitHook -= SaveGlobalSettings;
 
