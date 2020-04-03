@@ -1,55 +1,11 @@
 ﻿using GlobalEnums;
+using System.Linq;
 
 namespace Benchwarp
 {
     public class Bench
     {
-        public static Bench[] Benches;
-
-        public readonly string name;
-        public readonly string areaName;
-        public readonly string sceneName;
-        public readonly string respawnMarker;
-        public readonly int respawnType;
-        public readonly MapZone mapZone;
-        public readonly bool preload;
-        public readonly string style;
-
-        public bool visited
-        {
-            get => Benchwarp.instance.Settings.GetBool(false, sceneName);
-            set => Benchwarp.instance.Settings.SetBool(value, sceneName);
-        }
-        public bool benched => PlayerData.instance.respawnScene == sceneName &&
-            PlayerData.instance.respawnMarkerName == respawnMarker &&
-            PlayerData.instance.respawnType == respawnType &&
-            !Benchwarp.instance.Settings.atDeployedBench;
-
-        public Bench(string _name, string _areaName, string _sceneName, string _respawnMarker, int _respawnType, MapZone _mapZone, bool _preload = false, string _style = null)
-        {
-            name = _name; // may not be unique
-            areaName = _areaName; // may be abbreviated, see below
-            sceneName = _sceneName;
-            respawnMarker = _respawnMarker;
-            respawnType = _respawnType;
-            mapZone = _mapZone;
-            preload = _preload;
-            style = _style;
-        }
-
-        public void SetBench()
-        {
-            if (!Benchwarp.instance.GlobalSettings.UnlockAllBenches && !visited && sceneName != "Tutorial_01") return;
-            Benchwarp.instance.Settings.atDeployedBench = false;
-            PlayerData.instance.respawnScene = sceneName;
-            PlayerData.instance.respawnMarkerName = respawnMarker;
-            PlayerData.instance.respawnType = respawnType;
-            PlayerData.instance.mapZone = mapZone;
-        }
-
-        public static void GenerateBenchData()
-        {
-            Benches = new Bench[]
+        public static Bench[] Benches = new Bench[]
             {
                 new Bench("King's Pass", "Cliffs", "Tutorial_01", "Death Respawn Marker", 0, MapZone.KINGS_PASS),
                 new Bench("Dirtmouth", "Cliffs", "Town", "RestBench", 1, MapZone.TOWN, true, "Left"),
@@ -116,7 +72,50 @@ namespace Benchwarp
                 new Bench("Upper Tram", "Tram", "Room_Tram_RG", "RestBench", 1, MapZone.TRAM_UPPER),
                 new Bench("Lower Tram", "Tram", "Room_Tram", "RestBench", 1, MapZone.TRAM_LOWER, true, "Tram")
             };
+
+        public readonly string name;
+        public readonly string areaName;
+        public readonly string sceneName;
+        public readonly string respawnMarker;
+        public readonly int respawnType;
+        public readonly MapZone mapZone;
+        public readonly bool preload;
+        public readonly string style;
+
+        public bool visited
+        {
+            get => Benchwarp.instance.Settings.GetBool(false, sceneName);
+            set => Benchwarp.instance.Settings.SetBool(value, sceneName);
+        }
+        public bool benched => PlayerData.instance.respawnScene == sceneName &&
+            PlayerData.instance.respawnMarkerName == respawnMarker &&
+            PlayerData.instance.respawnType == respawnType &&
+            !Benchwarp.instance.Settings.atDeployedBench;
+
+        public Bench(string _name, string _areaName, string _sceneName, string _respawnMarker, int _respawnType, MapZone _mapZone, bool _preload = false, string _style = null)
+        {
+            name = _name; // may not be unique
+            areaName = _areaName; // may be abbreviated, see below
+            sceneName = _sceneName;
+            respawnMarker = _respawnMarker;
+            respawnType = _respawnType;
+            mapZone = _mapZone;
+            preload = _preload;
+            style = _style;
         }
 
+        public void SetBench()
+        {
+            if (!Benchwarp.instance.GlobalSettings.UnlockAllBenches && !visited && sceneName != "Tutorial_01") return;
+            Benchwarp.instance.Settings.atDeployedBench = false;
+            PlayerData.instance.respawnScene = sceneName;
+            PlayerData.instance.respawnMarkerName = respawnMarker;
+            PlayerData.instance.respawnType = respawnType;
+            PlayerData.instance.mapZone = mapZone;
+        }
+        public static Bench GetStyleBench()
+        {
+            return Benches.First(bench => bench.style == Benchwarp.instance.GlobalSettings.benchStyle);
+        }
     }
 }

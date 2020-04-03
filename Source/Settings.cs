@@ -305,6 +305,12 @@ namespace Benchwarp
             set => SetBool(value);
         }
 
+        public bool AlwaysToggleAll
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
+
         public bool CheckForBrokenSaveFile
         {
             get => GetBool(true);

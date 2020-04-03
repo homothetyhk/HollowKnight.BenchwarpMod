@@ -25,8 +25,6 @@ namespace Benchwarp
             instance.Log("Initializing");
 
             RandomizerStartLocation.CheckForRandomizer();
-
-            Bench.GenerateBenchData();
             BenchMaker.GetPrefabs(preloaded);
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
 
@@ -56,7 +54,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "2.0";
+            return "2.1";
         }
 
         public override int LoadPriority()
@@ -66,7 +64,6 @@ namespace Benchwarp
 
         public override List<(string, string)> GetPreloadNames()
         {
-
             return new List<(string, string)>
                 {
                 ("Crossroads_30", "RestBench"),

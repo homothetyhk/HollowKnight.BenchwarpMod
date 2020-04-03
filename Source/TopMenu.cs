@@ -36,7 +36,8 @@ namespace Benchwarp
                     ("Unlock All", UnlockAllClicked, t.GetProperty(nameof(GlobalSettings.UnlockAllBenches))),
                     ("Show Room Name", ShowSceneClicked, t.GetProperty(nameof(GlobalSettings.ShowScene))),
                     ("Use Room Names", SwapNamesClicked, t.GetProperty(nameof(GlobalSettings.SwapNames))),
-                    ("Enable Deploy", EnableDeployClicked, t.GetProperty(nameof(GlobalSettings.EnableDeploy)))
+                    ("Enable Deploy", EnableDeployClicked, t.GetProperty(nameof(GlobalSettings.EnableDeploy))),
+                    ("Always Toggle All", AlwaysToggleAllClicked, t.GetProperty(nameof(GlobalSettings.AlwaysToggleAll)))
                 }
             };
 
@@ -49,7 +50,7 @@ namespace Benchwarp
 
         private static readonly Dictionary<string, (UnityAction<string>, Vector2)> RandomizerButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
         {
-            ["Randomizer"] = (s => RandomizerStartLocation.SetStart(), new Vector2(1446f, 300f))
+            ["Set Start"] = (s => RandomizerStartLocation.SetStart(), new Vector2(1446f, 300f))
         };
 
         public static void BuildMenu(GameObject _canvas)
@@ -134,7 +135,8 @@ namespace Benchwarp
                         pair.Value.Item1,
                         buttonRect,
                         GUIController.Instance.TrajanBold,
-                        pair.Key
+                        pair.Key,
+                        fontSize: 11
                     );
                 }
 
@@ -279,6 +281,13 @@ namespace Benchwarp
 
             if (HeroController.instance == null || GameManager.instance == null) return;
 
+            if (gs.AlwaysToggleAll)
+            {
+                foreach (string s in benchPanels)
+                    if (!rootPanel.GetPanel(s).active)
+                        rootPanel.TogglePanel(s);
+            }
+
             if (gs.EnableDeploy)
             {
                 CanvasButton deploy = rootPanel.GetButton("Deploy");
@@ -339,7 +348,7 @@ namespace Benchwarp
 
             if (!Benchwarp.instance.GlobalSettings.WarpOnly && RandomizerStartLocation.RandomizerActive)
             {
-                rootPanel.GetButton("Randomizer").SetTextColor(RandomizerStartLocation.CheckIfAtStart() ? Color.yellow : Color.white);
+                rootPanel.GetButton("Set Start").SetTextColor(RandomizerStartLocation.CheckIfAtStart() ? Color.yellow : Color.white);
             }
 
             foreach (Bench bench in Bench.Benches)
@@ -520,6 +529,12 @@ namespace Benchwarp
             rootPanel.Destroy();
             sceneNamePanel.Destroy();
             BuildMenu(canvas);
+        }
+
+        private static void AlwaysToggleAllClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.AlwaysToggleAll = !Benchwarp.instance.GlobalSettings.AlwaysToggleAll;
+            Benchwarp.instance.SaveGlobalSettings();
         }
 
         #endregion
