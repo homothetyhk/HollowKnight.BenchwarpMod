@@ -61,7 +61,7 @@ namespace Benchwarp
                 new Bench("Stag", "Grounds", "RestingGrounds_09", "RestBench", 1, MapZone.RESTING_GROUNDS),
                 new Bench("Grey Mourner", "Grounds", "RestingGrounds_12", "RestBench", 1, MapZone.RESTING_GROUNDS),
 
-                new Bench("Cornifer", "Gardens", "Fungus1_24", "RestBench", 1, MapZone.ROYAL_GARDENS, true, "Guardian"),
+                new Bench("Cornifer", "Gardens", "Fungus1_24", "RestBench", 1, MapZone.ROYAL_GARDENS, true, "Garden"),
                 new Bench("Toll", "Gardens", "Fungus3_50", "RestBench", 1, MapZone.ROYAL_GARDENS),
                 new Bench("Stag", "Gardens", "Fungus3_40", "RestBench", 1, MapZone.ROYAL_GARDENS),
 
@@ -113,9 +113,9 @@ namespace Benchwarp
             PlayerData.instance.respawnType = respawnType;
             PlayerData.instance.mapZone = mapZone;
         }
-        public static Bench GetStyleBench()
+        public static Bench GetStyleBench(string style)
         {
-            return Benches.First(bench => bench.style == Benchwarp.instance.GlobalSettings.benchStyle);
+            return Benches.First(bench => bench.style == style);
         }
     }
 }

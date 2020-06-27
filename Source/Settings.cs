@@ -346,5 +346,11 @@ namespace Benchwarp
             get => GetBool(true);
             set => SetBool(value);
         }
+
+        public bool ReducePreload
+        {
+            get => GetBool(false);
+            set => SetBool(value);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using IL.TMPro;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -85,6 +86,17 @@ namespace Benchwarp
         private static GameObject _blackBench;
         private static GameObject BlackBench => GameObject.Instantiate(_blackBench);
 
+        public static string Style => reducedPreload ? preloadedStyle : Benchwarp.instance.GlobalSettings.benchStyle;
+
+        public static bool reducedPreload;
+        private static string preloadedStyle;
+        private static GameObject _preloadedBench;
+        private static GameObject PreloadedBench => GameObject.Instantiate(_preloadedBench);
+        private static bool usePreloadSprite;
+        private static GameObject _preloadedSprite;
+        private static GameObject PreloadedSprite => GameObject.Instantiate(_preloadedSprite);
+
+
         public static readonly List<string> Styles = new List<string>
         {
             "Left",
@@ -114,6 +126,26 @@ namespace Benchwarp
         public static void GetPrefabs(Dictionary<string, Dictionary<string, GameObject>> objects)
         {
             if (objects == null) return; //happens if mod is reloaded
+            if (reducedPreload)
+            {
+                preloadedStyle = Benchwarp.instance.GlobalSettings.benchStyle;
+                if (objects.TryGetValue("Fungus1_24", out var dict) && dict.TryGetValue("guardian_bench", out var guardianSprite))
+                {
+                    dict.Remove("guardian_bench");
+                    usePreloadSprite = true;
+                    _preloadedSprite = guardianSprite;
+                }
+                else if (objects.TryGetValue("Deepnest_East_13", out var dict2) && dict2.TryGetValue("outskirts__0003_camp", out var campSprite))
+                {
+                    dict2.Remove("outskirts__0003_camp");
+                    usePreloadSprite = true;
+                    _preloadedSprite = campSprite;
+                }
+                else usePreloadSprite = false;
+
+                _preloadedBench = objects.Values.First().Values.First();
+                return;
+            }
 
             _rightBench = objects["Crossroads_30"]["RestBench"];
             _leftBench = objects["Town"]["RestBench"];
@@ -143,7 +175,8 @@ namespace Benchwarp
 
         private static Vector3 GetAdjust()
         {
-            switch (Benchwarp.instance.GlobalSettings.benchStyle)
+            string style = reducedPreload ? preloadedStyle : Benchwarp.instance.GlobalSettings.benchStyle;
+            switch (style)
             {
                 default:
                     return new Vector3(0f, -.68f, 0f);
@@ -155,6 +188,8 @@ namespace Benchwarp
                     return new Vector3(0f, -0.4f, 0f);
                 case "Oro":
                     return new Vector3(0f, -.8f, 0.18f);
+                case "Garden":
+                    return new Vector3(0, 0.15f, 0.2f);
                 case "White":
                     return new Vector3(0f, -.13f, 0f);
                 case "Black":
@@ -179,63 +214,107 @@ namespace Benchwarp
 
             Vector3 position = new Vector3(Benchwarp.instance.Settings.benchX, Benchwarp.instance.Settings.benchY, 0.02f) + GetAdjust();
 
-            switch (Benchwarp.instance.GlobalSettings.benchStyle)
+            if (reducedPreload)
             {
-                default:
-                case "Right": DeployedBench = RightBench;
-                    break;
-                case "Left": DeployedBench = LeftBench;
-                    break;
-                case "Ornate": DeployedBench = OrnateBench;
-                    break;
-                case "Bone": DeployedBench = BoneBench;
-                    break;
-                case "Stone": DeployedBench = StoneBench;
-                    break;
-                case "Shrine": DeployedBench = ShrineBench;
-                    break;
-                case "Archive": DeployedBench = ArchiveBench;
-                    break;
-                case "Corpse": DeployedBench = CorpseBench;
-                    break;
-                case "Mantis": DeployedBench = MantisBench;
-                    break;
-                case "Simple": DeployedBench = SimpleBench;
-                    break;
-                case "Tilted": DeployedBench = TiltedBench;
-                    break;
-                case "Wide": DeployedBench = WideBench;
-                    break;
-                case "Beast": DeployedBench = BeastBench;
-                    break;
-                case "Camp": DeployedBench = CampBench;
-                    break;
-                case "Fool": DeployedBench = FoolBench;
-                    break;
-                case "Guardian": DeployedBench = GuardianBench;
-                    break;
-                case "Tram": DeployedBench = TramBench;
-                    break;
-                case "Mato": DeployedBench = MatoBench;
-                    break;
-                case "Oro": DeployedBench = OroBench;
-                    break;
-                case "Sheo": DeployedBench = SheoBench;
-                    break;
-                case "White": DeployedBench = WhiteBench;
-                    break;
-                case "Black": DeployedBench = BlackBench;
-                    break;
+                DeployedBench = PreloadedBench;
             }
+            else
+            {
+                switch (Benchwarp.instance.GlobalSettings.benchStyle)
+                {
+                    default:
+                    case "Right":
+                        DeployedBench = RightBench;
+                        break;
+                    case "Left":
+                        DeployedBench = LeftBench;
+                        break;
+                    case "Ornate":
+                        DeployedBench = OrnateBench;
+                        break;
+                    case "Bone":
+                        DeployedBench = BoneBench;
+                        break;
+                    case "Stone":
+                        DeployedBench = StoneBench;
+                        break;
+                    case "Shrine":
+                        DeployedBench = ShrineBench;
+                        break;
+                    case "Archive":
+                        DeployedBench = ArchiveBench;
+                        break;
+                    case "Corpse":
+                        DeployedBench = CorpseBench;
+                        break;
+                    case "Mantis":
+                        DeployedBench = MantisBench;
+                        break;
+                    case "Simple":
+                        DeployedBench = SimpleBench;
+                        break;
+                    case "Tilted":
+                        DeployedBench = TiltedBench;
+                        break;
+                    case "Wide":
+                        DeployedBench = WideBench;
+                        break;
+                    case "Beast":
+                        DeployedBench = BeastBench;
+                        break;
+                    case "Camp":
+                        DeployedBench = CampBench;
+                        break;
+                    case "Fool":
+                        DeployedBench = FoolBench;
+                        break;
+                    case "Garden":
+                        DeployedBench = GuardianBench;
+                        break;
+                    case "Tram":
+                        DeployedBench = TramBench;
+                        break;
+                    case "Mato":
+                        DeployedBench = MatoBench;
+                        break;
+                    case "Oro":
+                        DeployedBench = OroBench;
+                        break;
+                    case "Sheo":
+                        DeployedBench = SheoBench;
+                        break;
+                    case "White":
+                        DeployedBench = WhiteBench;
+                        break;
+                    case "Black":
+                        DeployedBench = BlackBench;
+                        break;
+                }
+            }
+            
             DeployedBench.transform.position = position;
             DeployedBench.SetActive(true);
-            if (Benchwarp.instance.GlobalSettings.benchStyle == "Guardian")
+            if (usePreloadSprite)
             {
-                ExtraSprite = GuardianSprite;
-                ExtraSprite.transform.position = position + new Vector3(0f, 0.5f, 0f);
+                ExtraSprite = PreloadedSprite;
+                if (Style == "Garden")
+                {
+                    ExtraSprite.transform.position = position + new Vector3(0f, -0.4f, -0.2f);
+                }
+                else if (Style == "Camp")
+                {
+                    ExtraSprite.transform.position = position + new Vector3(0f, -0.5f, 0f);
+                }
                 ExtraSprite.SetActive(true);
             }
-            if (Benchwarp.instance.GlobalSettings.benchStyle == "Camp")
+            else if (reducedPreload) { }
+            else if (Benchwarp.instance.GlobalSettings.benchStyle == "Garden")
+            {
+                ExtraSprite = GuardianSprite;
+                ExtraSprite.transform.position = position + new Vector3(0f, -0.4f, -0.2f);
+                ExtraSprite.SetActive(true);
+            }
+            else if (Benchwarp.instance.GlobalSettings.benchStyle == "Camp")
             {
                 ExtraSprite = CampSprite;
                 ExtraSprite.transform.position = position + new Vector3(0f, -0.5f, 0f);

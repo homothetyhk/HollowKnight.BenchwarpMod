@@ -27,7 +27,8 @@ namespace Benchwarp
                     ("Cooldown", CooldownClicked, t.GetProperty(nameof(GlobalSettings.DeployCooldown))),
                     ("Noninteractive", NoninteractiveClicked, t.GetProperty(nameof(GlobalSettings.Noninteractive))),
                     ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetProperty(nameof(GlobalSettings.NoMidAirDeploy))),
-                    ("Blacklist", BlacklistClicked, t.GetProperty(nameof(GlobalSettings.BlacklistRooms)))
+                    ("Blacklist", BlacklistClicked, t.GetProperty(nameof(GlobalSettings.BlacklistRooms))),
+                    ("Reduce Preload", ReducePreloadClicked, t.GetProperty(nameof(GlobalSettings.ReducePreload)))
                 },
 
                 ["Settings"] = new (string, UnityAction<string>, PropertyInfo)[]
@@ -259,8 +260,10 @@ namespace Benchwarp
                 cooldown -= Time.unscaledDeltaTime;
             }
 
-            if (rootPanel == null || sceneNamePanel == null)
+            if (rootPanel == null || sceneNamePanel == null) return;
+            if (GameManager.instance == null || !GameManager.instance.IsGameplayScene() || HeroController.instance == null)
             {
+                rootPanel.SetActive(false, true);
                 return;
             }
 
@@ -278,8 +281,6 @@ namespace Benchwarp
                 rootPanel.SetActive(true, false);
             else
                 rootPanel.SetActive(false, true);
-
-            if (HeroController.instance == null || GameManager.instance == null) return;
 
             if (gs.AlwaysToggleAll)
             {
@@ -437,6 +438,12 @@ namespace Benchwarp
         private static void BlacklistClicked(string buttonName)
         {
             Benchwarp.instance.GlobalSettings.BlacklistRooms = !Benchwarp.instance.GlobalSettings.BlacklistRooms;
+            Benchwarp.instance.SaveGlobalSettings();
+        }
+
+        private static void ReducePreloadClicked(string buttonName)
+        {
+            Benchwarp.instance.GlobalSettings.ReducePreload = !Benchwarp.instance.GlobalSettings.ReducePreload;
             Benchwarp.instance.SaveGlobalSettings();
         }
 

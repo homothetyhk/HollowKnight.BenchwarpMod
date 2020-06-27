@@ -18,6 +18,7 @@ Deploy
 	- Noninteractive: deployed bench cannot be interacted with, except via warping (e.g. preventing use during boss fights)
 	- No Mid-Air Deploy: the game must recognize the player as grounded in order to deploy
 	- Blacklist Rooms: prevents use of deploy in rooms which do not allow dreamgate, and if the player does not have lantern, prevents use of deploy in rooms which are dark
+	- Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
 
 Credits
 Seanpr - developed the UI, as part of DebugMod

@@ -54,7 +54,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "2.1";
+            return "2.2";
         }
 
         public override int LoadPriority()
@@ -64,6 +64,29 @@ namespace Benchwarp
 
         public override List<(string, string)> GetPreloadNames()
         {
+            if (GlobalSettings.ReducePreload)
+            {
+                BenchMaker.reducedPreload = true;
+                try
+                {
+                    Bench bench = Bench.GetStyleBench(GlobalSettings.benchStyle);
+                    List<(string, string)> preloads = new List<(string, string)> { (bench.sceneName, bench.respawnMarker) };
+                    if (GlobalSettings.benchStyle == "Camp")
+                    {
+                        preloads.Add(("Deepnest_East_13", "outskirts__0003_camp"));
+                    }
+                    if (GlobalSettings.benchStyle == "Garden")
+                    {
+                        preloads.Add(("Fungus1_24", "guardian_bench"));
+                    }
+                    return preloads;
+                }
+                catch (System.Exception e)
+                {
+                    LogError(e);
+                }
+            }
+
             return new List<(string, string)>
                 {
                 ("Crossroads_30", "RestBench"),
