@@ -49,9 +49,9 @@ namespace Benchwarp
             ["Destroy"] = (s => BenchMaker.DestroyBench(), new Vector2(46f, 300f)),
         };
 
-        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> RandomizerButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
+        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> CustomStartButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
         {
-            ["Set Start"] = (s => RandomizerStartLocation.SetStart(), new Vector2(1446f, 300f))
+            ["Set Start"] = (s => CustomStartLocation.SetStart(), new Vector2(1446f, 300f))
         };
 
         public static void BuildMenu(GameObject _canvas)
@@ -186,9 +186,9 @@ namespace Benchwarp
 
             if (Benchwarp.instance.GlobalSettings.WarpOnly) return;
 
-            if (RandomizerStartLocation.RandomizerActive)
+            if (!CustomStartLocation.Inactive)
             {
-                foreach (KeyValuePair<string, (UnityAction<string>, Vector2)> pair in RandomizerButtons)
+                foreach (KeyValuePair<string, (UnityAction<string>, Vector2)> pair in CustomStartButtons)
                 {
                     rootPanel.AddButton
                     (
@@ -347,10 +347,11 @@ namespace Benchwarp
                 }
             }
 
-            if (!Benchwarp.instance.GlobalSettings.WarpOnly && RandomizerStartLocation.RandomizerActive)
+            if (!CustomStartLocation.Inactive)
             {
-                rootPanel.GetButton("Set Start").SetTextColor(RandomizerStartLocation.CheckIfAtStart() ? Color.yellow : Color.white);
+                rootPanel.GetButton("Set Start").SetTextColor(CustomStartLocation.CheckIfAtStart() ? Color.yellow : Color.white);
             }
+
 
             foreach (Bench bench in Bench.Benches)
             {

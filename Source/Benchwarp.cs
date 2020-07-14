@@ -24,7 +24,7 @@ namespace Benchwarp
 
             instance.Log("Initializing");
 
-            RandomizerStartLocation.CheckForRandomizer();
+            CustomStartLocation.Setup();
             BenchMaker.GetPrefabs(preloaded);
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
 
