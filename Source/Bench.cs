@@ -107,7 +107,7 @@ namespace Benchwarp
 
         public void SetBench()
         {
-            if (!Benchwarp.instance.globalSettings.UnlockAllBenches && !visited && sceneName != "Tutorial_01") return;
+            if (!Benchwarp.instance.globalSettings.UnlockAllBenches && !visited) return;
             Benchwarp.instance.saveSettings.atDeployedBench = false;
             PlayerData.instance.respawnScene = sceneName;
             PlayerData.instance.respawnMarkerName = respawnMarker;

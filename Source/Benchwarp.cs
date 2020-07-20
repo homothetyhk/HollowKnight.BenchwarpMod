@@ -48,7 +48,6 @@ namespace Benchwarp
             GameObject.DontDestroyOnLoad(UIObj);
 
             ModHooks.Instance.SetPlayerBoolHook += BenchWatcher;
-            UnityEngine.SceneManagement.SceneManager.activeSceneChanged += ClearSettings;
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += CheckForKingsPassUnlock;
             ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
 
@@ -273,28 +272,10 @@ namespace Benchwarp
             orig(self);
         }
 
-        public void ClearSettings(Scene arg0, Scene arg1)
-        {
-            if (arg1.name == "Menu_Title")
-            {
-                foreach (Bench bench in Bench.Benches)
-                {
-                    bench.visited = false;
-                }
-
-                Benchwarp.instance.saveSettings.benchDeployed = false;
-                Benchwarp.instance.saveSettings.atDeployedBench = false;
-                Benchwarp.instance.saveSettings.benchScene = null;
-                Benchwarp.instance.saveSettings.benchX = 0f;
-                Benchwarp.instance.saveSettings.benchY = 0f;
-            }
-        }
-
         public void Unload()
         {
             ModHooks.Instance.SetPlayerBoolHook -= BenchWatcher;
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= CheckForKingsPassUnlock;
-            UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= ClearSettings;
             ModHooks.Instance.ApplicationQuitHook -= SaveGlobalSettings;
 
             ModHooks.Instance.GetPlayerStringHook -= RespawnAtDeployedBench;
