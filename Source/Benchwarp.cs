@@ -5,25 +5,40 @@ using Modding;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GlobalEnums;
+using System.Reflection;
 using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using TMPro;
 
 namespace Benchwarp
 {
-    public class Benchwarp : Mod<SaveSettings, GlobalSettings>, ITogglableMod
+    public class Benchwarp : Mod, ITogglableMod
     {
 
         internal static Benchwarp instance;
 
         internal GameObject UIObj;
+        internal GlobalSettings globalSettings = new GlobalSettings();
+        internal SaveSettings saveSettings = new SaveSettings();
+        public override ModSettings GlobalSettings 
+        { 
+            get => globalSettings; 
+            set => globalSettings = value as GlobalSettings; 
+        }
+
+        public override ModSettings SaveSettings 
+        { 
+            get => saveSettings; 
+            set => saveSettings = value as SaveSettings; 
+        }
+
+        public Benchwarp()
+        {
+            instance = this;
+        }
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
-            instance = this;
-
-            instance.Log("Initializing");
-
             CustomStartLocation.Setup();
             BenchMaker.GetPrefabs(preloaded);
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
@@ -37,24 +52,23 @@ namespace Benchwarp
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += CheckForKingsPassUnlock;
             ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
 
-            ModHooks.Instance.GetPlayerStringHook += RescueSave;
-
             ModHooks.Instance.GetPlayerStringHook += RespawnAtDeployedBench;
-            ModHooks.Instance.GetPlayerIntHook += RespawnAtDeployedBench2;
             ModHooks.Instance.SetPlayerStringHook += RemoveRespawnFromDeployedBench;
 
             GUIController.Instance.BuildMenus();
             
-            if (Benchwarp.instance.Settings.benchDeployed && GameManager.instance.sceneName == Benchwarp.instance.Settings.benchScene)
+            if (Benchwarp.instance.saveSettings.benchDeployed && GameManager.instance.sceneName == Benchwarp.instance.saveSettings.benchScene)
             {
                 BenchMaker.MakeBench();
             }
 
+            // Imagine if GetPlayerIntHook actually worked
+            On.GameManager.OnNextLevelReady += FixRespawnType;
         }
 
         public override string GetVersion()
         {
-            return "2.2";
+            return "2.3";
         }
 
         public override int LoadPriority()
@@ -64,18 +78,24 @@ namespace Benchwarp
 
         public override List<(string, string)> GetPreloadNames()
         {
-            if (GlobalSettings.ReducePreload)
+            BenchMaker.SetInitialSettings();
+            
+            if (globalSettings.NoPreload)
             {
-                BenchMaker.reducedPreload = true;
+                return new List<(string, string)>();
+            }
+
+            if (globalSettings.ReducePreload)
+            {
                 try
                 {
-                    Bench bench = Bench.GetStyleBench(GlobalSettings.benchStyle);
+                    Bench bench = Bench.GetStyleBench(globalSettings.benchStyle);
                     List<(string, string)> preloads = new List<(string, string)> { (bench.sceneName, bench.respawnMarker) };
-                    if (GlobalSettings.benchStyle == "Camp")
+                    if (globalSettings.benchStyle == "Camp")
                     {
                         preloads.Add(("Deepnest_East_13", "outskirts__0003_camp"));
                     }
-                    if (GlobalSettings.benchStyle == "Garden")
+                    if (globalSettings.benchStyle == "Garden")
                     {
                         preloads.Add(("Fungus1_24", "guardian_bench"));
                     }
@@ -165,14 +185,6 @@ namespace Benchwarp
             // Restores audio to normal levels. Unfortunately, some warps pop atm when music changes over
             GameManager.instance.actorSnapshotUnpaused.TransitionTo(0f);
             GameManager.instance.ui.AudioGoToGameplay(.2f);
-
-            /*
-             * Removed flower break
-             * For one, it did absolutely nothing, since you could just select a bench and savequit instead of warping
-             * Also, writing room rando in such a way that it actually checks for a path from Grey Mourner to QG would be unspeakably awful
-             * So no
-             * Cheaters rejoice
-             */
         }
 
         public void BenchWatcher(string target, bool val)
@@ -182,39 +194,12 @@ namespace Benchwarp
                 foreach (Bench bench in Bench.Benches)
                 {
                     if (bench.benched) bench.visited = true;
-                    else if (GameManager.instance.sceneName == bench.sceneName && Benchwarp.instance.Settings.benchScene != bench.sceneName) bench.visited = true;
+                    else if (GameManager.instance.sceneName == bench.sceneName && Benchwarp.instance.saveSettings.benchScene != bench.sceneName) bench.visited = true;
                     else continue;
                     break;
                 }
             }
             PlayerData.instance.SetBoolInternal(target, val);
-        }
-
-
-        private string RescueSave(string stringName)
-        {
-            if (!Benchwarp.instance.GlobalSettings.CheckForBrokenSaveFile) return PlayerData.instance.GetStringInternal(stringName);
-
-            if (stringName == "respawnScene" && !Benchwarp.instance.Settings.atDeployedBench)
-            {
-                foreach (Bench bench in Bench.Benches)
-                {
-                    if (bench.benched) return PlayerData.instance.GetStringInternal(stringName);
-                }
-                if (PlayerData.instance.respawnType == 1)
-                {
-                    LogError("Attempted to load into unrecognized bench. Relocating to Dirtmouth.\n" +
-                        "If you would like to disable this check in the future, please visit the Benchwarp GlobalSettings " +
-                        "and change key \"CheckForBrokenSaveFile\" to false.");
-
-                    PlayerData.instance.respawnScene = "Town";
-                    PlayerData.instance.respawnMarkerName = "RestBench";
-                    PlayerData.instance.mapZone = MapZone.TOWN;
-                    GameManager.instance.SaveGame();
-                    return "Town";
-                }
-            }
-            return PlayerData.instance.GetStringInternal(stringName);
         }
 
         private void RemoveRespawnFromDeployedBench(string stringName, string value)
@@ -224,13 +209,13 @@ namespace Benchwarp
                 case nameof(PlayerData.respawnMarkerName):
                     if (value != BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME)
                     {
-                        Benchwarp.instance.Settings.atDeployedBench = false;
+                        Benchwarp.instance.saveSettings.atDeployedBench = false;
                     }
                     break;
                 case nameof(PlayerData.respawnScene):
-                    if (value != Benchwarp.instance.Settings.benchScene)
+                    if (value != Benchwarp.instance.saveSettings.benchScene)
                     {
-                        Benchwarp.instance.Settings.atDeployedBench = false;
+                        Benchwarp.instance.saveSettings.atDeployedBench = false;
                     }
                     break;
             }
@@ -239,25 +224,16 @@ namespace Benchwarp
 
         private string RespawnAtDeployedBench(string stringName)
         {
-            if (!Benchwarp.instance.Settings.atDeployedBench) return PlayerData.instance.GetStringInternal(stringName);
+            if (!Benchwarp.instance.saveSettings.atDeployedBench) return PlayerData.instance.GetStringInternal(stringName);
             switch (stringName)
             {
                 case nameof(PlayerData.respawnMarkerName):
                     return BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
                 case nameof(PlayerData.respawnScene):
-                    return Benchwarp.instance.Settings.benchScene;
+                    return Benchwarp.instance.saveSettings.benchScene;
                 default:
                     return PlayerData.instance.GetStringInternal(stringName);
             }
-        }
-
-        private int RespawnAtDeployedBench2(string intName)
-        {
-            if (!Benchwarp.instance.Settings.atDeployedBench || intName != nameof(PlayerData.respawnType))
-            {
-                return PlayerData.instance.GetIntInternal(intName);
-            }
-            else return 1;
         }
 
         private void CheckForKingsPassUnlock(Scene arg0, Scene arg1)
@@ -278,6 +254,25 @@ namespace Benchwarp
             }
         }
 
+        private void FixRespawnType(On.GameManager.orig_OnNextLevelReady orig, GameManager self)
+        {
+            if (GameManager.instance.RespawningHero)
+            {
+                Transform spawnPoint = HeroController.instance.LocateSpawnPoint();
+                if (spawnPoint != null && spawnPoint.gameObject != null
+                    && spawnPoint.gameObject.GetComponents<PlayMakerFSM>().Any(fsm => fsm.FsmName == "Bench Control"))
+                {
+                    PlayerData.instance.respawnType = 1;
+                }
+                else
+                {
+                    PlayerData.instance.respawnType = 0;
+                }
+            }
+
+            orig(self);
+        }
+
         public void ClearSettings(Scene arg0, Scene arg1)
         {
             if (arg1.name == "Menu_Title")
@@ -287,11 +282,11 @@ namespace Benchwarp
                     bench.visited = false;
                 }
 
-                Benchwarp.instance.Settings.benchDeployed = false;
-                Benchwarp.instance.Settings.atDeployedBench = false;
-                Benchwarp.instance.Settings.benchScene = null;
-                Benchwarp.instance.Settings.benchX = 0f;
-                Benchwarp.instance.Settings.benchY = 0f;
+                Benchwarp.instance.saveSettings.benchDeployed = false;
+                Benchwarp.instance.saveSettings.atDeployedBench = false;
+                Benchwarp.instance.saveSettings.benchScene = null;
+                Benchwarp.instance.saveSettings.benchX = 0f;
+                Benchwarp.instance.saveSettings.benchY = 0f;
             }
         }
 
@@ -302,15 +297,19 @@ namespace Benchwarp
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= ClearSettings;
             ModHooks.Instance.ApplicationQuitHook -= SaveGlobalSettings;
 
-            ModHooks.Instance.GetPlayerStringHook -= RescueSave;
-
             ModHooks.Instance.GetPlayerStringHook -= RespawnAtDeployedBench;
-            ModHooks.Instance.GetPlayerIntHook -= RespawnAtDeployedBench2;
             ModHooks.Instance.SetPlayerStringHook -= RemoveRespawnFromDeployedBench;
+
+            On.GameManager.OnNextLevelReady -= FixRespawnType;
 
             BenchMaker.DestroyBench(DontDeleteData: true);
             Object.Destroy(TopMenu.canvas);
             Object.Destroy(UIObj);
+        }
+
+        new public void SaveGlobalSettings()
+        {
+            base.SaveGlobalSettings();
         }
     }
 }

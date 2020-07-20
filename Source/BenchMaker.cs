@@ -86,11 +86,20 @@ namespace Benchwarp
         private static GameObject _blackBench;
         private static GameObject BlackBench => GameObject.Instantiate(_blackBench);
 
-        public static string Style => reducedPreload ? preloadedStyle : Benchwarp.instance.GlobalSettings.benchStyle;
+        public static string Style => reducedPreload ? preloadedStyle : Benchwarp.instance.globalSettings.benchStyle;
 
-        public static bool reducedPreload;
+        public static void SetInitialSettings()
+        {
+            noPreload = Benchwarp.instance.globalSettings.NoPreload;
+            reducedPreload = Benchwarp.instance.globalSettings.ReducePreload;
+        }
+
+        private static bool noPreload;
+        private static bool reducedPreload;
         private static string preloadedStyle;
         private static GameObject _preloadedBench;
+        public static int respawnType => noPreload ? 0 : 1;
+
         private static GameObject PreloadedBench => GameObject.Instantiate(_preloadedBench);
         private static bool usePreloadSprite;
         private static GameObject _preloadedSprite;
@@ -125,10 +134,10 @@ namespace Benchwarp
 
         public static void GetPrefabs(Dictionary<string, Dictionary<string, GameObject>> objects)
         {
-            if (objects == null) return; //happens if mod is reloaded
+            if (objects == null || noPreload) return; //happens if mod is reloaded
             if (reducedPreload)
             {
-                preloadedStyle = Benchwarp.instance.GlobalSettings.benchStyle;
+                preloadedStyle = Benchwarp.instance.globalSettings.benchStyle;
                 if (objects.TryGetValue("Fungus1_24", out var dict) && dict.TryGetValue("guardian_bench", out var guardianSprite))
                 {
                     dict.Remove("guardian_bench");
@@ -175,7 +184,7 @@ namespace Benchwarp
 
         private static Vector3 GetAdjust()
         {
-            string style = reducedPreload ? preloadedStyle : Benchwarp.instance.GlobalSettings.benchStyle;
+            string style = reducedPreload ? preloadedStyle : Benchwarp.instance.globalSettings.benchStyle;
             switch (style)
             {
                 default:
@@ -203,16 +212,25 @@ namespace Benchwarp
             if (ExtraSprite != null) GameObject.Destroy(ExtraSprite);
 
             if (DontDeleteData) return;
-
-            Benchwarp.instance.Settings.benchDeployed = false;
-            Benchwarp.instance.Settings.atDeployedBench = false;
+            Benchwarp.instance.saveSettings.benchDeployed = false;
+            Benchwarp.instance.saveSettings.atDeployedBench = false;
         }
 
         public static void MakeBench()
         {
-            if (!Benchwarp.instance.Settings.benchDeployed) return;
+            if (!Benchwarp.instance.saveSettings.benchDeployed) return;
 
-            Vector3 position = new Vector3(Benchwarp.instance.Settings.benchX, Benchwarp.instance.Settings.benchY, 0.02f) + GetAdjust();
+            Vector3 position = new Vector3(Benchwarp.instance.saveSettings.benchX, Benchwarp.instance.saveSettings.benchY, 0.02f) + GetAdjust();
+
+            if (noPreload)
+            {
+                GameObject marker = new GameObject();
+                marker.transform.position = new Vector3(Benchwarp.instance.saveSettings.benchX, Benchwarp.instance.saveSettings.benchY, 7.4f);
+                marker.tag = "RespawnPoint";
+                marker.name = DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
+                marker.SetActive(true);
+                return;
+            }
 
             if (reducedPreload)
             {
@@ -220,7 +238,7 @@ namespace Benchwarp
             }
             else
             {
-                switch (Benchwarp.instance.GlobalSettings.benchStyle)
+                switch (Benchwarp.instance.globalSettings.benchStyle)
                 {
                     default:
                     case "Right":
@@ -308,13 +326,13 @@ namespace Benchwarp
                 ExtraSprite.SetActive(true);
             }
             else if (reducedPreload) { }
-            else if (Benchwarp.instance.GlobalSettings.benchStyle == "Garden")
+            else if (Benchwarp.instance.globalSettings.benchStyle == "Garden")
             {
                 ExtraSprite = GuardianSprite;
                 ExtraSprite.transform.position = position + new Vector3(0f, -0.4f, -0.2f);
                 ExtraSprite.SetActive(true);
             }
-            else if (Benchwarp.instance.GlobalSettings.benchStyle == "Camp")
+            else if (Benchwarp.instance.globalSettings.benchStyle == "Camp")
             {
                 ExtraSprite = CampSprite;
                 ExtraSprite.transform.position = position + new Vector3(0f, -0.5f, 0f);
@@ -323,7 +341,7 @@ namespace Benchwarp
             DeployedBench.SetActive(true);
             DeployedBench.name = DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
 
-            if (Benchwarp.instance.GlobalSettings.Noninteractive)
+            if (Benchwarp.instance.globalSettings.Noninteractive)
             {
                 var actions = DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Idle").Actions.ToList();
                 actions.RemoveAt(1); // never recognizes player as being in range
@@ -341,18 +359,19 @@ namespace Benchwarp
 
         public static void TryToDeploy(Scene arg0, Scene arg1)
         {
-            if (Benchwarp.instance.Settings.benchDeployed && arg1.name == Benchwarp.instance.Settings.benchScene)
+            if (Benchwarp.instance.saveSettings.benchDeployed && arg1.name == Benchwarp.instance.saveSettings.benchScene)
             {
                 MakeBench();
             }
         }
 
-        private static readonly List<string> darkRooms = new List<string> { "Fungus1_35", "Mines_07", "Mines_33", "Cliffs_04", "Deepnest_34", "Deepnest_35", "Deepnest_39", "Deepnest_41", "Deepnest_42" };
-        public static bool Blacklist()
+        public static bool IsDarkOrDreamRoom()
         {
-            if (!PlayerData.instance.hasLantern && darkRooms.Contains(GameManager.instance.sceneName)) return false;
-            return !HeroController.instance.gameObject.LocateMyFSM("Dream Nail").FsmVariables.FindFsmBool("Dream Warp Allowed").Value;
+            return (!PlayerData.instance.hasLantern && GameManager.instance.sm.darknessLevel == 2)
+                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.DREAM_WORLD
+                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODS_GLORY
+                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODSEEKER_WASTE
+                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.WHITE_PALACE;
         }
-
     }
 }

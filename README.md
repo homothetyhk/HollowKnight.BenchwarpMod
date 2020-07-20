@@ -8,6 +8,7 @@ Options
 - Show Room Name: displays the name of the current room from the game code in the bottom left
 - Use Room Names: bench menu uses room names from the game code instead of descriptive names
 - Enable Deploy: adds a menu to place a custom bench point
+- Always Toggle All: all bench menus are displayed by default
 
 Deploy
 - Deploy button: places a bench at the current location
@@ -17,8 +18,9 @@ Deploy
 	- Cooldown: adds a 300s cooldown to the deploy button
 	- Noninteractive: deployed bench cannot be interacted with, except via warping (e.g. preventing use during boss fights)
 	- No Mid-Air Deploy: the game must recognize the player as grounded in order to deploy
-	- Blacklist Rooms: prevents use of deploy in rooms which do not allow dreamgate, and if the player does not have lantern, prevents use of deploy in rooms which are dark
+	- No Dark Rooms or Dream Rooms: prevents use of deploy in Dream World rooms, and if the player does not have lantern, prevents use of deploy in rooms which are dark
 	- Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
+	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart.
 
 Credits
 Seanpr - developed the UI, as part of DebugMod
