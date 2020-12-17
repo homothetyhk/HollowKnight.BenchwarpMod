@@ -19,6 +19,8 @@ namespace Benchwarp
         
         public Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
 
+        private string last2Keystrokes = "";
+
         private GameObject canvas;
         private static GUIController _instance;
 
@@ -101,6 +103,23 @@ namespace Benchwarp
         public void Update()
         {
             TopMenu.Update();
+            foreach (var letter in BenchLetters)
+            {
+                if (Input.GetKeyDown(letter.Key))
+                {
+                    Benchwarp.instance.Log($"pressed {letter.Key} {letter.Value}");
+                    if (last2Keystrokes.Length == 2)
+                    {
+                        last2Keystrokes = last2Keystrokes.Remove(0, 1);
+                    }
+                    last2Keystrokes = last2Keystrokes + letter.Value;
+                }
+            }
+            if (BenchHotkeys.TryGetValue(last2Keystrokes, out int benchNum))
+            {
+                last2Keystrokes = "";
+                Benchwarp.instance.Log($"hit hotkey {last2Keystrokes} for bench {Bench.Benches[benchNum]}");
+            }
         }
 
         public static GUIController Instance
@@ -122,5 +141,95 @@ namespace Benchwarp
                 return _instance;
             }
         }
+
+        private static Dictionary<KeyCode, char> BenchLetters = new Dictionary<KeyCode, char>() {
+            {KeyCode.A, 'a'},
+            {KeyCode.B, 'b'},
+            {KeyCode.C, 'c'},
+            {KeyCode.D, 'd'},
+            {KeyCode.E, 'e'},
+            {KeyCode.F, 'f'},
+            {KeyCode.G, 'g'},
+            {KeyCode.H, 'h'},
+            {KeyCode.K, 'k'},
+            {KeyCode.L, 'l'},
+            {KeyCode.M, 'm'},
+            {KeyCode.N, 'n'},
+            {KeyCode.O, 'o'},
+            {KeyCode.P, 'p'},
+            {KeyCode.Q, 'q'},
+            {KeyCode.R, 'r'},
+            {KeyCode.S, 's'},
+            {KeyCode.T, 't'},
+            {KeyCode.U, 'u'},
+            {KeyCode.W, 'w'}
+        };
+
+        private static Dictionary<string, int> BenchHotkeys = new Dictionary<string, int>() {
+            {"kp", 0},
+            {"dm", 1},
+            {"nm", 2},
+
+            {"fs", 3},
+            {"fc", 4},
+            {"sa", 5},
+            {"am", 6},
+            {"be", 7},
+
+            {"gw", 8},
+            {"ss", 9},
+            {"gt", 10},
+            {"gp", 11},
+            {"lu", 12},
+            {"ns", 13},
+
+            {"ta", 14},
+
+            {"qs", 15},
+            {"le", 16},
+            {"br", 17},
+            {"mv", 18},
+
+            {"cq", 19},
+            {"ct", 20},
+            {"cs", 21},
+            {"ws", 22},
+            {"ks", 23},
+            {"ph", 24},
+
+            {"ww", 25},
+            {"ga", 26},
+            {"gr", 27},
+            {"hg", 28},
+
+            {"ds", 29},
+            {"ft", 30},
+            {"bd", 31},
+
+            {"bt", 32},
+            {"hs", 33},
+
+            {"no", 34},
+            {"ec", 35},
+            {"cf", 36},
+            {"bb", 37},
+
+            {"pd", 38},
+            {"cg", 39},
+
+            {"rg", 40},
+            {"gm", 41},
+
+            {"qc", 42},
+            {"qt", 43},
+            {"qg", 44},
+
+            {"pe", 45},
+            {"pa", 46},
+            {"pb", 47},
+
+            {"ut", 48},
+            {"lt", 49}
+        };
     }
 }
