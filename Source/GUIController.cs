@@ -107,6 +107,11 @@ namespace Benchwarp
         }
 
         private void DetectHotkeys() {
+            if (!GameManager.instance.IsGamePaused())
+            {
+                return;
+            }
+            
             foreach (var letter in BenchLetters)
             {
                 if (Input.GetKeyDown(letter.Key))
