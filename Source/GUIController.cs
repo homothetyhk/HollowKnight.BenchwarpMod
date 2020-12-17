@@ -103,11 +103,14 @@ namespace Benchwarp
         public void Update()
         {
             TopMenu.Update();
+            DetectHotkeys();
+        }
+
+        private void DetectHotkeys() {
             foreach (var letter in BenchLetters)
             {
                 if (Input.GetKeyDown(letter.Key))
                 {
-                    Benchwarp.instance.Log($"pressed {letter.Key} {letter.Value}");
                     if (last2Keystrokes.Length == 2)
                     {
                         last2Keystrokes = last2Keystrokes.Remove(0, 1);
@@ -118,7 +121,9 @@ namespace Benchwarp
             if (BenchHotkeys.TryGetValue(last2Keystrokes, out int benchNum))
             {
                 last2Keystrokes = "";
-                Benchwarp.instance.Log($"hit hotkey {last2Keystrokes} for bench {Bench.Benches[benchNum]}");
+                Benchwarp.instance.ApplyUnlockAllFixes();
+                Bench.Benches[benchNum].SetBench();
+                GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
             }
         }
 

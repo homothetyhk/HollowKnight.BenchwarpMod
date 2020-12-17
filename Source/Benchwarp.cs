@@ -272,6 +272,52 @@ namespace Benchwarp
             orig(self);
         }
 
+        internal void ApplyUnlockAllFixes() {
+            if (!globalSettings.UnlockAllBenches) return;
+
+            PlayerData pd = PlayerData.instance;
+
+            FieldInfo[] fields = typeof(PlayerData).GetFields();
+
+            // Most of these are unnecessary, but some titlecards can lock you into a bench
+            foreach
+            (
+                FieldInfo fi in fields.Where
+                (
+                    x => x.Name.StartsWith("visited")
+                        || x.Name.StartsWith("tramOpened")
+                        || x.Name.StartsWith("openedTram")
+                        || x.Name.StartsWith("tramOpened")
+                )
+            )
+            {
+                pd.SetBoolInternal(fi.Name, true);
+            }
+
+            //This actually fixes the unlockable benches
+            SceneData sd = GameManager.instance.sceneData;
+
+            foreach ((string sceneName, string id) in new (string, string)[]
+            {
+                ("Hive_01", "Hive Bench"),
+                ("Ruins1_31", "Toll Machine Bench"),
+                ("Abyss_18", "Toll Machine Bench"),
+                ("Fungus3_50", "Toll Machine Bench")
+            })
+            {
+                sd.SaveMyState
+                (
+                    new PersistentBoolData
+                    {
+                        sceneName = sceneName,
+                        id = id,
+                        activated = true,
+                        semiPersistent = false
+                    }
+                );
+            }
+        }
+
         public void Unload()
         {
             ModHooks.Instance.SetPlayerBoolHook -= BenchWatcher;
