@@ -128,11 +128,19 @@ namespace Benchwarp
                 last2Keystrokes = "";
                 Benchwarp.instance.ApplyUnlockAllFixes();
                 Bench.Benches[benchNum].SetBench();
-                GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
+                Benchwarp.instance.Warp();
             }
-            else if (last2Keystrokes == "lb")
+            else switch (last2Keystrokes)
             {
-                GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
+                case "lb":
+                    last2Keystrokes = "";
+                    Benchwarp.instance.Warp();
+                    break;
+                case "sb":
+                    last2Keystrokes = "";
+                    CustomStartLocation.SetStart();
+                    Benchwarp.instance.Warp();
+                    break;
             }
         }
 

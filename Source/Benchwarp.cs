@@ -135,6 +135,11 @@ namespace Benchwarp
                 };
         }
 
+        public void Warp()
+        {
+            GameManager.instance.StartCoroutine(Respawn());
+        }
+
         public IEnumerator Respawn()
         {
             GameManager.instance.SaveGame();

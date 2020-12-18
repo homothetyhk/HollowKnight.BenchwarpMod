@@ -374,7 +374,7 @@ namespace Benchwarp
             if (Benchwarp.instance.globalSettings.UnlockAllBenches)
                 UnlockAllClicked(null);
 
-            GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
+            Benchwarp.instance.Warp();
         }
 
         private static void DeployClicked(string buttonName)
