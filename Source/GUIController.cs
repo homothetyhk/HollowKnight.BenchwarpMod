@@ -107,7 +107,7 @@ namespace Benchwarp
         }
 
         private void DetectHotkeys() {
-            if (!GameManager.instance.IsGamePaused())
+            if (!(GameManager.instance.IsGamePaused() && Benchwarp.instance.globalSettings.EnableHotkeys))
             {
                 return;
             }

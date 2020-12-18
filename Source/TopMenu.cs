@@ -39,7 +39,8 @@ namespace Benchwarp
                     ("Show Room Name", ShowSceneClicked, t.GetField(nameof(GlobalSettings.ShowScene))),
                     ("Use Room Names", SwapNamesClicked, t.GetField(nameof(GlobalSettings.SwapNames))),
                     ("Enable Deploy", EnableDeployClicked, t.GetField(nameof(GlobalSettings.EnableDeploy))),
-                    ("Always Toggle All", AlwaysToggleAllClicked, t.GetField(nameof(GlobalSettings.AlwaysToggleAll)))
+                    ("Always Toggle All", AlwaysToggleAllClicked, t.GetField(nameof(GlobalSettings.AlwaysToggleAll))),
+                    ("Enable Hotkeys", EnableHotkeysClicked, t.GetField(nameof(GlobalSettings.EnableHotkeys))),
                 }
             };
 
@@ -52,7 +53,7 @@ namespace Benchwarp
 
         private static readonly Dictionary<string, (UnityAction<string>, Vector2)> CustomStartButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
         {
-            ["Set Start"] = (s => CustomStartLocation.SetStart(), new Vector2(1446f, 300f))
+            ["Set Start"] = (s => CustomStartLocation.SetStart(), new Vector2(1446f, 340f))
         };
 
         public static void BuildMenu(GameObject _canvas)
@@ -507,6 +508,12 @@ namespace Benchwarp
         private static void AlwaysToggleAllClicked(string buttonName)
         {
             Benchwarp.instance.globalSettings.AlwaysToggleAll = !Benchwarp.instance.globalSettings.AlwaysToggleAll;
+            Benchwarp.instance.SaveGlobalSettings();
+        }
+
+        private static void EnableHotkeysClicked(string buttonName)
+        {
+            Benchwarp.instance.globalSettings.EnableHotkeys = !Benchwarp.instance.globalSettings.EnableHotkeys;
             Benchwarp.instance.SaveGlobalSettings();
         }
 
