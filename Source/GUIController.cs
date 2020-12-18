@@ -130,6 +130,10 @@ namespace Benchwarp
                 Bench.Benches[benchNum].SetBench();
                 GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
             }
+            else if (last2Keystrokes == "lb")
+            {
+                GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
+            }
         }
 
         public static GUIController Instance
