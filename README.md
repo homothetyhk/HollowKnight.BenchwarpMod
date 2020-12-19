@@ -9,6 +9,7 @@ Options
 - Use Room Names: bench menu uses room names from the game code instead of descriptive names
 - Enable Deploy: adds a menu to place a custom bench point
 - Always Toggle All: all bench menus are displayed by default
+- Enable Hotkeys: lets you warp to benches by typing a short key sequence rather than clicking the menu
 
 Deploy
 - Deploy button: places a bench at the current location
@@ -21,6 +22,60 @@ Deploy
 	- No Dark Rooms or Dream Rooms: prevents use of deploy in Dream World rooms, and if the player does not have lantern, prevents use of deploy in rooms which are dark
 	- Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
 	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart.
+
+Bench Hotkeys
+- **KP**: **K**ing's **P**ass
+- **NM**: **N**ailmaster **M**ato
+- **DM**: **D**irt**M**outh
+- **FC**: **F**orgotten **C**rossroads Stag
+- **FS**: **F**orgotten Crossroads Hot **S**prings
+- **AM**: **A**ncestral **M**ound
+- **SA**: **SA**lubra
+- **BE**: **B**lack **E**gg
+- **GW**: **G**reenpath **W**aterfall
+- **SS**: **S**tone **S**anctuary
+- **GT**: **G**reenpath **T**oll
+- **GP**: **G**reen**P**ath Stag
+- **LU**: **L**ake of **U**nn
+- **NS**: **N**ailmaster **S**heo
+- **TA**: **T**eacher's **A**rchives
+- **QS**: **Q**ueen's **S**tation
+- **LE**: **L**eg **E**ater
+- **BR**: **BR**etta
+- **MV**: **M**antis **V**illage
+- **CQ**: **C**ity **Q**uirrel
+- **CT**: **C**ity **T**oll
+- **CS**: **C**ity **S**torerooms
+- **WS**: **W**atcher **S**pire
+- **KS**: **K**ing's **S**tation
+- **PH**: **P**leasure **H**ouse
+- **WW**: **W**ater**W**ays
+- **GA**: **G**odhome **A**trium
+- **GR**: **G**odhome **R**oof
+- **HG**: **H**all of **G**ods
+- **DS**: **D**eepnest Hot **S**prings
+- **FT**: **F**ailed **T**ramway
+- **BD**: **B**east's **D**en
+- **BT**: **B**asin **T**oll
+- **HS**: **H**idden **S**tation
+- **NO**: **N**ailmaster **O**ro
+- **EC**: **E**dge **C**amp
+- **CF**: **C**olosseum of **F**ools
+- **BB**: Hive (**b**ee-**b**ee)
+- **PD**: **P**eak **D**ark Room
+- **CG**: **C**rystal **G**uardian
+- **RG**: **R**esting **G**rounds Stag
+- **GM**: **G**rey **M**ourner
+- **QC**: **Q**ueen's Gardens **C**ornifer
+- **QT**: **Q**ueen's Gardens **T**oll
+- **QG**: **Q**ueen's Gardens **S**tag
+- **PE**: **P**alace **E**ntrance
+- **PA**: **P**alace **A**trium
+- **PB**: **P**alace **B**alcony
+- **UT**: **U**pper **T**ram
+- **LT**: **L**ower **T**ram
+- **LB**: **L**ast **B**ench (equivalent to just clicking Warp)
+- **SB**: **S**tart **B**ench (equivalent to Set Start)
 
 Credits
 Seanpr - developed the UI, as part of DebugMod
