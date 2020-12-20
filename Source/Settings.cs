@@ -33,5 +33,6 @@ namespace Benchwarp
         public bool NoPreload = false;
         public bool ReducePreload = true;
         public bool EnableHotkeys = false;
+        public Dictionary<string, string> HotkeyOverrides = new Dictionary<string, string>();
     }
 }
