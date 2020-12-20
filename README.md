@@ -77,6 +77,11 @@ Bench Hotkeys
 - **LB**: **L**ast **B**ench (equivalent to just clicking Warp)
 - **SB**: **S**tart **B**ench (equivalent to Set Start)
 
+Each hotkey can be remapped by modifying the "hotkeyOverrides" dictionary in the
+mod's global settings file (Benchwarp.GlobalSettings.json, in your saves folder). This dictionary
+should map the default bindings to their replacements. For example, `"hotkeyOverrides": {"BB": "HV"}` remaps the Hive bench to use the hotkey "HV".
+Custom hotkeys must be composed of exactly two uppercase letters.
+
 Credits
 Seanpr - developed the UI, as part of DebugMod
 Seanpr and 5FiftySix6 - developed the Warp method, as part of this mod
