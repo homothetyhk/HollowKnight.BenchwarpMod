@@ -147,7 +147,7 @@ namespace Benchwarp
             {"FS", 3},
             {"FC", 4},
             {"SA", 5},
-            {"AM", 6},
+            {"SM", 6},
             {"BE", 7},
 
             {"GW", 8},

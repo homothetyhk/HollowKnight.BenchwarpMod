@@ -29,7 +29,7 @@ Bench Hotkeys
 - **DM**: **D**irt**M**outh
 - **FC**: **F**orgotten **C**rossroads Stag
 - **FS**: **F**orgotten Crossroads Hot **S**prings
-- **AM**: **A**ncestral **M**ound
+- **SM**: Ancestral (**S**haman) **M**ound
 - **SA**: **SA**lubra
 - **BE**: **B**lack **E**gg
 - **GW**: **G**reenpath **W**aterfall
