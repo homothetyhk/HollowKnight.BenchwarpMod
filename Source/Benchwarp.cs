@@ -71,7 +71,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "2.3H";
+            return "2.3";
         }
 
         public override int LoadPriority()
