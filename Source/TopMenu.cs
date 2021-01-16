@@ -234,7 +234,7 @@ namespace Benchwarp
                              (string s) => bench.SetBench(),
                              new Rect(0f, 0f, 80f, 40f),
                              GUIController.Instance.TrajanNormal,
-                             !Benchwarp.instance.globalSettings.SwapNames ? bench.name : bench.sceneName,
+                             !Benchwarp.instance.globalSettings.SwapNames ? bench.name : Translator.TranslateSceneName(bench.sceneName),
                              fontSize
                          );
             }
@@ -274,7 +274,7 @@ namespace Benchwarp
             if (gs.ShowScene)
             {
                 sceneNamePanel.SetActive(true, false);
-                sceneNamePanel.GetText("SceneName").UpdateText(GameManager.instance.sceneName);
+                sceneNamePanel.GetText("SceneName").UpdateText(Translator.TranslateSceneName(GameManager.instance.sceneName));
             }
             else sceneNamePanel.SetActive(false, true);
 

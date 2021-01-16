@@ -63,6 +63,9 @@ namespace Benchwarp
 
             // Imagine if GetPlayerIntHook actually worked
             On.GameManager.OnNextLevelReady += FixRespawnType;
+
+            // Create Translator dictionaries from file.
+            Translator.Initialize();
         }
 
         public override string GetVersion()
