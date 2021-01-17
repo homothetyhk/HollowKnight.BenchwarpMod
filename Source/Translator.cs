@@ -40,9 +40,10 @@ namespace Benchwarp
         {
             if (!File.Exists(Path.Combine(Application.persistentDataPath, "TranslatorDictionary.xml")))
             {
-                Modding.Logger.Log("XML not found. Please place TranslatorDictionary.xml into your saves folder.");
+                Benchwarp.instance.Log("XML not found. Please place TranslatorDictionary.xml into your saves folder.");
                 return false;
             }
+            Benchwarp.instance.Log("Translation XML loaded.");
             xml = new XmlDocument();
             xml.Load(Path.Combine(Application.persistentDataPath, "TranslatorDictionary.xml"));
             return true;
