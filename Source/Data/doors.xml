@@ -1,0 +1,6057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doors>
+  <room name="Room_temple" area="Black Egg Temple">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_02</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Tutorial_01" area="King's Pass">
+    <door name="right1">
+      <mapsTo>
+        <room>Town</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <oneWay>Out</oneWay>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Cliffs_02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Town" area="Dirtmouth">
+    <door name="left1">
+      <mapsTo>
+        <room>Tutorial_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Crossroads_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room> </room>
+        <door> </door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <oneWay>Out</oneWay>
+    </door>
+    <door name="door_station">
+      <mapsTo>
+        <room>Room_Town_Stag_Station</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_sly">
+      <mapsTo>
+        <room>Room_shop</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_mapper">
+      <mapsTo>
+        <room>Room_mapper</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_jiji">
+      <mapsTo>
+        <room>Room_Ouiji</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_bretta">
+      <mapsTo>
+        <room>Room_Bretta</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_shop" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>door_sly</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Town_Stag_Station" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>door_station</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_mapper" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>door_mapper</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Bretta" area="Misc">
+    <door name="right1">
+      <mapsTo>
+        <room>Town</room>
+        <door>door_bretta</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Ouiji" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>door_jiji</door>
+      </mapsTo>
+    </door>
+  </room>
+  <!--
+  <room name="Grimm_Divine" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>room_divine</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Grimm_Main_Tent" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>room_grimm</door>
+      </mapsTo>
+    </door>
+  </room>
+  -->
+  <room name="Crossroads_01" area="Forgotten Crossroads">
+    <door name="top1">
+      <mapsTo>
+        <room>Town</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_02" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_temple</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_39</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_03" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_33</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_15</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_21</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_47</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Crossroads_19</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_16</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_04" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_19</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_27</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="door_Mender_House">
+      <mapsTo>
+        <room>Room_Mender_House</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_ruinhouse</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_charmshop">
+      <mapsTo>
+        <room>Room_Charm_Shop</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_50</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_05" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_40</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_06" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_33</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Crossroads_ShamanTemple</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_10</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_07" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_38</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_11_alt</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Crossroads_25</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Crossroads_33</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_08" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_33</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_18</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_30</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_13</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_09" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_36</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_33</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_10" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_21</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_11_alt" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_07</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_12" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_35</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_33</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_13" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_08</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_42</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_14" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_39</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_16</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_48</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_45</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_15" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_03</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_27</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_16" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_40</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_14</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Crossroads_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_18" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_08</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_52</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_06</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_19" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_42</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_43</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_21" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_10</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_22</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_22" area="Forgotten Crossroads">
+    <door name="bot1">
+      <mapsTo>
+        <room>Crossroads_21</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_25" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_07</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_36</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_27" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_46</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Crossroads_04</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_15</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_31</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_30" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_08</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_31" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_27</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_33" area="Forgotten Crossroads">
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_07</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Crossroads_12</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_35" area="Forgotten Crossroads">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_26</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_12</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_36" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_25</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Crossroads_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_37" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_49</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_38" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_39" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_14</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_40" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_16</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_42" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_13</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_43" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_49</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_19</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_45" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_14</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_46" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_27</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_46b" area="Resting Grounds">
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_ShamanTemple" area="Ancestral Mound">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_06</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_47" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_03</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_48" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_14</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_49" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_43</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_37</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_49b" area="City of Tears">
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_28</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_50" area="Blue Lake">
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Crossroads_52" area="Forgotten Crossroads">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_18</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_ruinhouse" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_04</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Charm_Shop" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_04</room>
+        <door>door_charmshop</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Mender_House" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_04</room>
+        <door>door_Mender_House</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_01" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_01b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Crossroads_11_alt</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_01b" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_02" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_01b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus1_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_03" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_31</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_17</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_05</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_04" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_25</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_21</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_05" area="Greenpath">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_14</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_10</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_06" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_07</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_07" area="Greenpath">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_06</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_19</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_08" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_09" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_15</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_30</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_10" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_30</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_10</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_11" area="Greenpath">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_19</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_37</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus1_34</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_29</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_12" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_13</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_29</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_13" area="Greenpath">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_12</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_22</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_14" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_15" area="Greenpath">
+    <door name="door1">
+      <mapsTo>
+        <room>Room_nailmaster_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_16_alt" area="Greenpath">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_22</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_17" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_19" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_10</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_11</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_20_v02" area="Greenpath">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_21</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Fungus1_32</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_28</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_21" area="Greenpath">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_22</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_20_v02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_32</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_22" area="Greenpath">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_30</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_21</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_16_alt</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_23" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_48</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_13</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_24" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_25" area="Greenpath">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_26</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_26" area="Lake of Unn">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_25</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_Slug</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="door_SlugShrine">
+      <mapsTo>
+        <room>Room_Slug_Shrine</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_28" area="Howling Cliffs">
+    <door name="left1">
+      <mapsTo>
+        <room>Cliffs_01</room>
+        <door>right3</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus1_20_v02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_29" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_12</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_11</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_30" area="Greenpath">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_22</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top3">
+      <mapsTo>
+        <room>Fungus1_31</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_10</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_31" area="Greenpath">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_32</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_30</room>
+        <door>top3</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_32" area="Greenpath">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus1_31</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_20_v02</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_21</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_34" area="Greenpath">
+    <door name="door1">
+      <mapsTo>
+        <room>Fungus1_35</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_11</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_35" area="Stone Sanctuary">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_34</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_36</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_36" area="Stone Sanctuary">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_35</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_37" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_11</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus1_Slug" area="Lake of Unn">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_26</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Slug_Shrine" area="Lake of Unn">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_26</room>
+        <door>door_SlugShrine</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_nailmaster_02" area="Greenpath">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_15</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_01" area="Fog Canyon">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus1_11</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_25</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_24</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus3_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_02" area="Fog Canyon">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_01</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus3_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Fungus3_35</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_47</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus2_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_03" area="Fog Canyon">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_02</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_34</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_24" area="Fog Canyon">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_44</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_30</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_25" area="Fog Canyon">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_25b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_25b" area="Fog Canyon">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_26</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_25</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_26" area="Fog Canyon">
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_35</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_28</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus3_25b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Fungus3_27</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_33</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_27" area="Fog Canyon">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_47</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_26</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_28" area="Fog Canyon">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_26</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_30" area="Fog Canyon">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_24</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_35" area="Fog Canyon">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_35</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_44" area="Fog Canyon">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_34</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_Fungus_Shaman</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_24</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_47" area="Fog Canyon">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_27</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Fungus3_archive</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Fungus_Shaman" area="Overgrown Mound">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_44</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_archive" area="Teacher's Archives">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_47</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_archive_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_archive_02" area="Teacher's Archives">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_archive</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_01" area="Queen's Station">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_02</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus2_34</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Fungus2_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_02" area="Queen's Station">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_01</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_34" area="Queen's Station">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_01</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_03" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_18</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_04" area="Fungal Wastes">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_05</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_28</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus2_28</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_05" area="Fungal Wastes">
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_04</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_06</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_06" area="Fungal Wastes">
+    <door name="top1">
+      <mapsTo>
+        <room>Crossroads_18</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_33</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus2_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_26</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus2_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_07" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_06</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_08" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus2_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_32</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_09" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_10</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_08</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_10" area="Fungal Wastes">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus2_21</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_11</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_11" area="Fungal Wastes">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_10</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_18</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus2_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_12</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_12" area="Mantis Village">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_11</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_13</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_13" area="Mantis Village">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_12</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus2_14</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Fungus2_23</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_14" area="Mantis Village">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_17</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_13</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="bot3">
+      <mapsTo>
+        <room>Fungus2_15</room>
+        <door>top3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_15" area="Mantis Village">
+    <door name="top3">
+      <mapsTo>
+        <room>Fungus2_14</room>
+        <door>bot3</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_31</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_25</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_17" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_29</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_11</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_14</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_18" area="Fungal Wastes">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_11</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_19</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_19" area="Fungal Wastes">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_18</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_20</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_20" area="Fungal Wastes">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_21" area="Fungal Wastes">
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_10</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_23" area="Mantis Village">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_13</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Waterways_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_26" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>right1</room>
+        <door>Fungus2_06</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_28" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus2_04</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_29" area="Fungal Core">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_17</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_30</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_30" area="Fungal Core">
+    <door name="bot1">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Fungus2_25</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus2_29</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_31" area="Mantis Village">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_15</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_32" area="Fungal Wastes">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_08</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_33" area="Fungal Wastes">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_26</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_01" area="Fungal Wastes">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_20</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_01b</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Deepnest_01b</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_39</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_01b" area="Deepnest">
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <oneWay>Out</oneWay>
+      <mapsTo>
+        <room>Deepnest_01</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_02</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_17</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_02" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Deepnest_01</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_36</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_03" area="Deepnest">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_30</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_34</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_33</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Deepnest_31</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_09" area="Distant Village">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_10</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_10" area="Distant Village">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_41</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right3">
+      <mapsTo>
+        <room>Deepnest_41</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Deepnest_Spider_Town</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door2">
+      <mapsTo>
+        <room>Room_spider_small</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_spider_small" area="Distant Village">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_10</room>
+        <door>door2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_Spider_Town" area="Beast's Den">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_10</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_14" area="Failed Tramway">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_17</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_26</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_33</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Deepnest_33</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_16" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus2_25</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_17" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_14</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_16</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_01b</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_30</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus2_25" area="Deepnest">
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_16</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <oneWay>Out</oneWay>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus2_15</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_26" area="Failed Tramway">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_26b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Deepnest_26b</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_14</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_35</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_26b" area="Failed Tramway">
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_26</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_26</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_30" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_17</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_37</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_31" area="Deepnest">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_03</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_32</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_32" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_31</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_33" area="Deepnest">
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_14</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Deepnest_14</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_34" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_39</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_35</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_35" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_40</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_26</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_34</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_36" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_37" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_30</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_03_b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_38</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_44</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_38" area="Deepnest">
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_37</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_39" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_41</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_42</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Deepnest_45_v02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_34</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_40" area="Deepnest">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_35</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_41" area="Deepnest">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_39</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_10</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Deepnest_10</room>
+        <door>right3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_42" area="Deepnest">
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_39</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Room_Mask_Maker</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_43</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_43" area="Queen's Gardens">
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_42</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_50</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_44" area="Deepnest">
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_37</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_45_v02" area="Weaver's Den">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_39</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Mask_Maker" area="Deepnest">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_42</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_01" area="Kingdom's Edge">
+    <door name="bot1">
+      <mapsTo>
+        <room>Abyss_03_c</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Hive_03_c</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_02" area="Kingdom's Edge">
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Hive_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Waterways_14</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_03</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_03" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Deepnest_East_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_07</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <oneWay>Out</oneWay>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_East_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_04" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Deepnest_East_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_East_11</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_15</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_06" area="Kingdom's Edge">
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_18</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_03</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_14b</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_nailmaster_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_16</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_07" area="Kingdom's Edge">
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Deepnest_East_07</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_08</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins2_11_b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_08" area="Kingdom's Edge">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_09</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_09" area="Kingdom's Edge">
+    <door name="right1">
+      <mapsTo>
+        <room>Room_Colosseum_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_10b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_08</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_10" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_18</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_11" area="Kingdom's Edge">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_12</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_13</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_18</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_12" area="Kingdom's Edge">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_Hornet</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_11</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_13" area="Kingdom's Edge">
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_11</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_14" area="Kingdom's Edge">
+    <door name="top2">
+      <mapsTo>
+        <room>Deepnest_East_16</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_14b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Deepnest_East_17</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_14b" area="Kingdom's Edge">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_14</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_06</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_15" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_16" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_14</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_17" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_14</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_18" area="Kingdom's Edge">
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_11</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Deepnest_East_06</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Deepnest_East_10</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_nailmaster_03" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_06</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Deepnest_East_Hornet" area="Cast Off Shell">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_12</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Room_Wyrm</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Wyrm" area="Cast Off Shell">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_Hornet</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="GG_Lurker" area="Kingdom's Edge">
+    <door name="left1">
+      <mapsTo>
+        <room>Room_Colosseum_Spectate</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Hive_01" area="Hive">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_03_c</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Hive_02</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Hive_02</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Hive_02" area="Hive">
+    <door name="left1">
+      <mapsTo>
+        <room>Hive_03_c</room>
+        <door>right3</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Hive_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Hive_01</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Hive_03_c" area="Hive">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Hive_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right3">
+      <mapsTo>
+        <room>Hive_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Hive_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Hive_03" area="Hive">
+    <door name="bot1">
+      <mapsTo>
+        <room>Hive_03_c</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Hive_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_02</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Hive_04" area="Hive">
+    <door name="left1">
+      <mapsTo>
+        <room>Hive_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Hive_03_c</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Hive_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Hive_05" area="Hive">
+    <door name="left1">
+      <mapsTo>
+        <room>Hive_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Colosseum_01" area="Colosseum">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_East_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Room_Colosseum_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Colosseum_02" area="Colosseum">
+    <door name="top1">
+      <mapsTo>
+        <room>Room_Colosseum_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Room_Colosseum_Spectate</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Colosseum_Spectate" area="Colosseum">
+    <door name="bot1">
+      <mapsTo>
+        <room>Room_Colosseum_02</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>GG_Lurker</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_01" area="Royal Waterways">
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Waterways_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Abyss_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Waterways_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_02" area="Ancient Basin">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_01</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Abyss_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_03" area="Ancient Basin">
+    <door name="bot1">
+      <mapsTo>
+        <room>Abyss_17</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Abyss_04</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Abyss_02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_03_b" area="Deepnest">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_37</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_03_c" area="Kingdom's Edge">
+    <door name="right1">
+      <mapsTo>
+        <room>Hive_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Deepnest_East_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_04" area="Ancient Basin">
+    <door name="top1">
+      <mapsTo>
+        <room>Abyss_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_18</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Abyss_06_Core</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_05" area="Palace Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_22</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_06_Core" area="Abyss">
+    <door name="top1">
+      <mapsTo>
+        <room>Abyss_04</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_08</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Abyss_12</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Abyss_16</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Abyss_15</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_08" area="Abyss">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_06_Core</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_09" area="Abyss">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_10</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Abyss_Lighthouse_room</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right3">
+      <mapsTo>
+        <room>Abyss_10</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_16</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_10" area="Abyss">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_09</room>
+        <door>right3</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Abyss_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_12" area="Abyss">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_06_Core</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_15" area="Abyss">
+    <door name="top1">
+      <mapsTo>
+        <room>Abyss_06_Core</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_16" area="Abyss">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_06_Core</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_17" area="Ancient Basin">
+    <door name="top1">
+      <mapsTo>
+        <room>Abyss_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_18" area="Ancient Basin">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_19</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_19" area="Ancient Basin">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_21</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_18</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Abyss_20</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Abyss_20</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_20" area="Ancient Basin">
+    <door name="top1">
+      <mapsTo>
+        <room>Abyss_19</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Abyss_19</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_21" area="Ancient Basin">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_22" area="Palace Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Abyss_Lighthouse_room" area="Abyss">
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_09</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_01" area="Royal Waterways">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_05b</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Waterways_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_02" area="Royal Waterways">
+    <door name="top1">
+      <mapsTo>
+        <room>Waterways_04</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Waterways_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top3">
+      <mapsTo>
+        <room>Waterways_05</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Waterways_08</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Waterways_06</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_03" area="Royal Waterways">
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_04" area="Royal Waterways">
+    <door name="bot1">
+      <mapsTo>
+        <room>Waterways_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_04b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Waterways_04b</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_04b" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Waterways_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_05" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Waterways_02</room>
+        <door>top3</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Waterways_15</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_06" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Abyss_01</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Waterways_02</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_07" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_13</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Waterways_13</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Abyss_01</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Ruins_House_03</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Waterways_14</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_08" area="Royal Waterways">
+    <door name="top1">
+      <mapsTo>
+        <room>Waterways_02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_12</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>GG_Pipeway</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_09" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_04b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_23</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_12" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_13" area="Royal Waterways">
+    <door name="left1">
+      <mapsTo>
+        <room>Waterways_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Waterways_07</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_14" area="Royal Waterways">
+    <door name="bot1">
+      <mapsTo>
+        <room>Waterways_07</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Deepnest_East_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Waterways_15" area="Royal Waterways">
+    <door name="top1">
+      <mapsTo>
+        <room>Waterways_05</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="GG_Pipeway" area="Royal Waterways">
+    <door name="right1">
+      <mapsTo>
+        <room>Waterways_08</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>GG_Waterways</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="GG_Waterways" area="Junk Pit">
+    <door name="right1">
+      <mapsTo>
+        <room>GG_Pipeway</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_GG_Shortcut</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_GG_Shortcut" area="Junk Pit">
+    <door name="left1">
+      <mapsTo>
+        <room>GG_Waterways</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_04</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_01" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus2_21</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_17</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_02" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_03" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_05c</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins1_05b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_04" area="City of Tears">
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_nailsmith</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Room_GG_Shortcut</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_05b" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_05c</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Waterways_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_27</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_05c" area="City of Tears">
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins1_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_05b</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_05</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Ruins1_05</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+    <door name="top3">
+      <mapsTo>
+        <room>Ruins1_05</room>
+        <door>bot3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_05" area="City of Tears">
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_05c</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Ruins1_05c</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="bot3">
+      <mapsTo>
+        <room>Ruins1_05c</room>
+        <door>top3</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_18</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins1_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_31</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_06" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_31</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_09" area="Soul Sanctum">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_23</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_05</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_17" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_28</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_18" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_03b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins2_01</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_23" area="Soul Sanctum">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins1_30</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_25</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins1_25</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_09</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_31</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_24" area="Soul Sanctum">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_32</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_30</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins1_32</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins1_30</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_25" area="Soul Sanctum">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_30</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins1_23</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Ruins1_23</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_27" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_05b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_01_b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_28" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_49b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_29</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_17</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_29" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_28</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_30" area="Soul Sanctum">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_24</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins1_24</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_23</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_25</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_31" area="City of Tears">
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins1_05</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins1_31b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Ruins1_31b</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_23</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_31b" area="City of Tears">
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_31</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins1_31</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins1_32" area="Soul Sanctum">
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins1_24</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins1_24</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_nailsmith" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_04</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_01" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_03b</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_01_b</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins1_18</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_01_b" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_27</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_03b" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Ruins2_03</room>
+        <door>bot2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins1_18</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_03" area="City of Tears">
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_Watcher_Room</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_03b</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <mapsTo>
+        <room>Ruins2_03b</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_04" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_01_b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Abyss_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins2_06</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="door_Ruin_House_01">
+      <mapsTo>
+        <room>Ruins_House_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_Ruin_House_02">
+      <mapsTo>
+        <room>Ruins_House_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_Ruin_House_03">
+      <mapsTo>
+        <room>Ruins_House_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door_Ruin_Elevator">
+      <mapsTo>
+        <room>Ruins_Elevator</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_05" area="King's Station">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_10b</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_09</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_06</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_06" area="King's Station">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins2_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_05</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_07" area="King's Station">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_06</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Ruins2_11_b</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_08" area="King's Station">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_09" area="King's Station">
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_05</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_10" area="Resting Grounds">
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_10</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>RestingGrounds_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_10b" area="King's Station">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Ruins2_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins_Bathhouse</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_11_b" area="Tower of Love">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_East_07</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_11</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_07</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_11" area="Tower of Love">
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_11_b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins2_Watcher_Room" area="City of Tears">
+    <door name="bot1">
+      <mapsTo>
+        <room>Ruins2_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins_House_01" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>door_Ruin_House_01</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins_House_02" area="City of Tears">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>door_Ruin_House_02</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins_House_03" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>door_Ruin_House_03</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Waterways_07</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins_Elevator" area="Pleasure House">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins_Bathhouse</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Ruins2_04</room>
+        <door>door_Ruin_Elevator</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Ruins_Bathhouse" area="Pleasure House">
+    <door name="door1">
+      <mapsTo>
+        <room>Ruins_Elevator</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_10b</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_02" area="Resting Grounds">
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_46b</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>RestingGrounds_06</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <oneWay>Out</oneWay>
+    </door>
+  </room>
+  <room name="RestingGrounds_04" area="Resting Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>RestingGrounds_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_05</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_05" area="Resting Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>RestingGrounds_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>RestingGrounds_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>RestingGrounds_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>RestingGrounds_09</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>RestingGrounds_10</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_06" area="Resting Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_50</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Ruins2_10</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>RestingGrounds_02</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_07" area="Resting Grounds">
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_08" area="Spirits' Glade">
+    <door name="left1">
+      <mapsTo>
+        <room>RestingGrounds_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_09" area="Resting Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>RestingGrounds_05</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_10" area="Resting Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>Ruins2_10</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>RestingGrounds_05</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>RestingGrounds_12</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_12" area="Resting Grounds">
+    <door name="bot1">
+      <mapsTo>
+        <room>RestingGrounds_10</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="door_Mansion">
+      <mapsTo>
+        <room>Room_Mansion</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="RestingGrounds_17" area="Resting Grounds">
+    <door name="right1">
+      <mapsTo>
+        <room>RestingGrounds_05</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Mansion" area="Resting Grounds">
+    <door name="left1">
+      <mapsTo>
+        <room>RestingGrounds_12</room>
+        <door>door_Mansion</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_01" area="Crystal Peak">
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_45</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_02" area="Crystal Peak">
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_01</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="top2">
+      <mapsTo>
+        <room>Mines_03</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_33</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_29</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_03" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_17</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_02</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_05</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_04" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_07</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_37</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Mines_29</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Mines_29</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_05" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_11</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_03</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_30</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Mines_06</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_06" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_05</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_36</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_07" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_28</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_10" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_30</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Town</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_16</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_11" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_18</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_32</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_05</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_13" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_20</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <oneWay>Out</oneWay>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_11</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_16" area="Crystal Peak">
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_10</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_17" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_18" area="Crystal Peak">
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_32</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_11</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_20</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_19" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_20</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_20" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_13</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Mines_18</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Mines_19</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_37</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_23</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Mines_31</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_23" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_20</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_25</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Mines_24</room>
+        <door> left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <oneWay>Out</oneWay>
+    </door>
+  </room>
+  <room name="Mines_24" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_23</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_25" area="Hallownest's Crown">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_23</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_34</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_28" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_07</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>RestingGrounds_02</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Mines_35</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_29" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_02</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Mines_04</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_30" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_10</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_31" area="Crystal Peak">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_20</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_32" area="Crystal Peak">
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_18</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_33" area="Forgotten Crossroads">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Crossroads_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_34" area="Hallownest's Crown">
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_25</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Mines_23</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Mines_13</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_35" area="Crystallized Mound">
+    <door name="left1">
+      <mapsTo>
+        <room>Mines_28</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_36" area="Crystal Peak">
+    <door name="right1">
+      <mapsTo>
+        <room>Mines_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Mines_37" area="Crystal Peak">
+    <door name="bot1">
+      <mapsTo>
+        <room>Mines_04</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Mines_20</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_04" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_21</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus3_13</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_34</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus3_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_05" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_04</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_24</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus3_11</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_08" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Deepnest_43</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_11</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_10</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_10" area="Queen's Gardens">
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_13</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_08</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_11" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_05</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus3_08</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_39</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_13" area="Queen's Gardens">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus1_23</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Fungus3_49</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>Fungus3_40</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_10</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_21" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_04</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_22</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_22" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus1_13</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_23</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_21</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_23" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_22</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_48</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_34" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_03</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_04</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_44</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_39" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_11</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_40" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_13</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>Fungus3_48</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_48" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_23</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Fungus1_23</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_Queen</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Fungus3_40</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_49" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Fungus3_13</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Fungus3_50" area="Queen's Gardens">
+    <door name="right1">
+      <mapsTo>
+        <room>Deepnest_43</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_Queen" area="Misc">
+    <door name="left1">
+      <mapsTo>
+        <room>Fungus3_48</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Cliffs_01" area="Howling Cliffs">
+    <door name="right1">
+      <mapsTo>
+        <room>Cliffs_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>Cliffs_04</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+    <door name="right3">
+      <mapsTo>
+        <room>Fungus1_28</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right4">
+      <mapsTo>
+        <room>Cliffs_06</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Cliffs_02" area="Howling Cliffs">
+    <door name="right1">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Town</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>Tutorial_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="bot2">
+      <oneWay>In</oneWay>
+      <mapsTo>
+        <room>Tutorial_01</room>
+        <door>top2</door>
+      </mapsTo>
+    </door>
+    <door name="door1">
+      <mapsTo>
+        <room>Room_nailmaster</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Cliffs_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>Cliffs_03</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Cliffs_03" area="Stag Nest">
+    <door name="right1">
+      <mapsTo>
+        <room>Cliffs_02</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Cliffs_04" area="Howling Cliffs">
+    <door name="right1">
+      <mapsTo>
+        <room>Cliffs_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>Cliffs_01</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Cliffs_05" area="Howling Cliffs">
+    <door name="left1">
+      <mapsTo>
+        <room>right1</room>
+        <door>Cliffs_04</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Cliffs_06" area="Howling Cliffs">
+    <door name="left1">
+      <mapsTo>
+        <room>Cliffs_01</room>
+        <door>right4</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="Room_nailmaster" area="Howling Cliffs">
+    <door name="left1">
+      <mapsTo>
+        <room>Cliffs_02</room>
+        <door>door1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_01" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_11</room>
+        <door>door2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_02</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_03_hub</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_02" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_01</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_03_hub" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_14</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>White_Palace_04</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_15</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_06</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_01</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_04" area="White Palace">
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_14</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>White_Palace_03_hub</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_05" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_15</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>White_Palace_15</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_16</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>White_Palace_16</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_06" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_18</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_07</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_03_hub</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_07" area="White Palace">
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_12</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_06</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_08" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_13</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_13</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_09" area="White Palace">
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_13</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_11" area="White Palace">
+    <door name="door2">
+      <mapsTo>
+        <room>White_Palace_01</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_12" area="White Palace">
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_13</room>
+        <door>left3</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_07</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_13" area="White Palace">
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_08</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_09</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>White_Palace_08</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left3">
+      <mapsTo>
+        <room>White_Palace_12</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_14" area="White Palace">
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_04</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_03_hub</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_15" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_03_hub</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_05</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="right2">
+      <mapsTo>
+        <room>White_Palace_05</room>
+        <door>left2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_16" area="White Palace">
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_05</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+    <door name="left2">
+      <mapsTo>
+        <room>White_Palace_05</room>
+        <door>right2</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_17" area="White Palace">
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_18</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_18" area="White Palace">
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_17</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="right1">
+      <mapsTo>
+        <room>White_Palace_19</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_19" area="White Palace">
+    <door name="top1">
+      <mapsTo>
+        <room>White_Palace_20</room>
+        <door>bot1</door>
+      </mapsTo>
+    </door>
+    <door name="left1">
+      <mapsTo>
+        <room>White_Palace_17</room>
+        <door>right1</door>
+      </mapsTo>
+    </door>
+  </room>
+  <room name="White_Palace_20" area="White Palace">
+    <door name="bot1">
+      <mapsTo>
+        <room>White_Palace_19</room>
+        <door>top1</door>
+      </mapsTo>
+    </door>
+  </room>
+</doors>

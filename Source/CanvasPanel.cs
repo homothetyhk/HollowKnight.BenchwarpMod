@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 namespace Benchwarp
 {
@@ -37,6 +38,15 @@ namespace Benchwarp
             button.AddClickEvent(func);
 
             buttons.Add(name, button);
+        }
+
+        public void ClearButtons()
+        {
+            foreach (CanvasButton button in buttons.Values)
+            {
+                button.Destroy();
+            }
+            buttons.Clear();
         }
 
         public CanvasPanel AddPanel(string name, Texture2D tex, Vector2 pos, Vector2 sz, Rect bgSubSection)
@@ -232,7 +242,7 @@ namespace Benchwarp
 
             foreach (CanvasButton button in buttons.Values)
             {
-                button.Destroy();
+                button.Destroy();   
             }
 
             foreach (CanvasImage image in images.Values)

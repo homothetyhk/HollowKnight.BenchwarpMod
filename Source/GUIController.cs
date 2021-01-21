@@ -100,7 +100,14 @@ namespace Benchwarp
 
         public void Update()
         {
-            TopMenu.Update();
+            try
+            {
+                TopMenu.Update();
+            }
+            catch (Exception e)
+            {
+                Benchwarp.instance.LogError(e);
+            }
         }
 
         public static GUIController Instance
