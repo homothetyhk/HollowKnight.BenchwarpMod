@@ -90,7 +90,7 @@ namespace Benchwarp
             }
         }
 
-        private void ButtonClicked()
+        public void ButtonClicked()
         {
             if (clicked != null && buttonName != null) clicked(buttonName);
         }

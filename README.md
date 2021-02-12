@@ -9,6 +9,9 @@ Options
 - Use Room Names: bench menu uses room names from the game code instead of descriptive names
 - Enable Deploy: adds a menu to place a custom bench point
 - Always Toggle All: all bench menus are displayed by default
+- Doorwarp (beta): replaces bench menu with a menu for selecting scene transitions (area=>room=>door). 
+	- While active, the Warp button can only be used to warp to the selected transition, and will not warp to respawn.
+	- The Flip button is used to change selection to the (vanilla) target of the currently selected transition.
 
 Deploy
 - Deploy button: places a bench at the current location
@@ -23,6 +26,6 @@ Deploy
 	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart.
 
 Credits
-Seanpr - developed the UI, as part of DebugMod
-Seanpr and 5FiftySix6 - developed the Warp method, as part of this mod
+Serena - developed the UI, as part of DebugMod
+Serena and 5FiftySix6 - developed the Warp method, as part of this mod
 The Embraced One - originally created the menu assets, as part of DebugMod

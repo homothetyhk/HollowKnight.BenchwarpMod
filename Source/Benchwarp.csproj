@@ -45,8 +45,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\PlayMaker.dll</HintPath>
     </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.XML" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.dll</HintPath>
@@ -90,6 +90,8 @@
     <Compile Include="CanvasPanel.cs" />
     <Compile Include="CanvasText.cs" />
     <Compile Include="Bench.cs" />
+    <Compile Include="ChangeScene.cs" />
+    <Compile Include="DoorWarp.cs" />
     <Compile Include="CustomStartLocation.cs" />
     <Compile Include="GUIController.cs" />
     <Compile Include="BenchMaker.cs" />
@@ -103,6 +105,9 @@
     <EmbeddedResource Include="Images\ButtonRectEmpty.png" />
     <EmbeddedResource Include="Images\ButtonsMenuBG.png" />
     <EmbeddedResource Include="Images\DropdownBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\doors.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
