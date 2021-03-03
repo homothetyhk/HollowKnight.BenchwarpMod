@@ -90,7 +90,6 @@ namespace Benchwarp
             {
                 try
                 {
-                    Benchwarp.instance.Log("1");
                     if (PlayerData.instance.respawnScene == respawnScene &&
                     PlayerData.instance.respawnMarkerName == respawnMarkerName &&
                     PlayerData.instance.respawnType == respawnType
