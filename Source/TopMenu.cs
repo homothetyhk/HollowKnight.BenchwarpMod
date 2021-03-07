@@ -418,7 +418,7 @@ namespace Benchwarp
                 rootPanel.SetActive(false, true);
             }
 
-            if (gs.AlwaysToggleAll && !gs.DoorWarp)
+            if (gs.AlwaysToggleAll && !gs.DoorWarp && !gs.WarpOnly)
             {
                 foreach (string s in benchPanels)
                     if (!rootPanel.GetPanel(s).active)
@@ -535,8 +535,9 @@ namespace Benchwarp
                     }
                 }
             }
-            else
+            else if (!gs.WarpOnly)
             {
+
                 foreach (Bench bench in Bench.Benches)
                 {
                     if (!rootPanel.GetPanel(bench.areaName).active) continue;
