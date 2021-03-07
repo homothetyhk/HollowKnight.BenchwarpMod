@@ -418,7 +418,7 @@ namespace Benchwarp
                 rootPanel.SetActive(false, true);
             }
 
-            if (gs.AlwaysToggleAll)
+            if (gs.AlwaysToggleAll && !gs.DoorWarp)
             {
                 foreach (string s in benchPanels)
                     if (!rootPanel.GetPanel(s).active)
