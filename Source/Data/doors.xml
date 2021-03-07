@@ -3820,7 +3820,7 @@
       </mapsTo>
     </door>
   </room>
-  <room name="Waterways_13" area="Royal Waterways">
+  <room name="Waterways_13" area="Isma's Grove">
     <door name="left1">
       <mapsTo>
         <room>Waterways_07</room>
