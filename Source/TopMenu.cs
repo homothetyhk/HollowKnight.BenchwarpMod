@@ -242,7 +242,8 @@ namespace Benchwarp
                 CanvasPanel door3 = MakePanel("Doors", new Vector2(-5f, 20f));
                 CanvasPanel door2 = MakePanel("Rooms", new Vector2(395f, 20f));
                 CanvasPanel door1 = MakePanel("Areas", new Vector2(1045f, 20f));
-                List<string> doorAreas = DoorWarp.Doors.Select(d => d.area).Distinct().ToList();
+                // List<string> doorAreas = DoorWarp.Doors.Select(d => d.area).Distinct().ToList();
+                List<string> doorAreas = DoorWarp.Areas;
 
                 for (int i = 0; i < doorAreas.Count; i++)
                 {
