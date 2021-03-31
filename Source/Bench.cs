@@ -39,9 +39,6 @@ namespace Benchwarp
                 new Bench("Pleasure House", "City", "Ruins_Bathhouse", "RestBench", 1, MapZone.CITY, true, "Simple"),
 
                 new Bench("Waterways", "Waterways", "Waterways_02", "RestBench", 1, MapZone.WATERWAYS, true, "Tilted"),
-                new Bench("Godhome Atrium", "Waterways", "GG_Atrium", "RestBench", 1, MapZone.GODS_GLORY, true, "Wide"),
-                new Bench("Godhome Roof", "Waterways", "GG_Atrium_Roof", "RestBench (1)", 1, MapZone.GODS_GLORY),
-                new Bench("Hall of Gods", "Waterways", "GG_Workshop", "RestBench (1)", 1, MapZone.GODS_GLORY),
 
                 new Bench("Hot Springs", "Deepnest", "Deepnest_30", "RestBench", 1, MapZone.DEEPNEST),
                 new Bench("Failed Tramway", "Deepnest", "Deepnest_14", "RestBench", 1, MapZone.DEEPNEST),
@@ -82,16 +79,18 @@ namespace Benchwarp
         public readonly bool preload;
         public readonly string style;
 
+        /*
         public bool visited
         {
-            get => Benchwarp.instance.saveSettings.visitedBenchScenes.ContainsKey(sceneName) ?
-                Benchwarp.instance.saveSettings.visitedBenchScenes[sceneName] : false;
-            set => Benchwarp.instance.saveSettings.visitedBenchScenes[sceneName] = value;
+            get => Benchwarp.instance.Settings.visitedBenchScenes.ContainsKey(sceneName) ?
+                Benchwarp.instance.Settings.visitedBenchScenes[sceneName] : false;
+            set => Benchwarp.instance.Settings.visitedBenchScenes[sceneName] = value;
         }
+        */
+
         public bool benched => PlayerData.instance.respawnScene == sceneName &&
             PlayerData.instance.respawnMarkerName == respawnMarker &&
-            PlayerData.instance.respawnType == respawnType &&
-            !Benchwarp.instance.saveSettings.atDeployedBench;
+            PlayerData.instance.respawnType == respawnType;
 
         public Bench(string _name, string _areaName, string _sceneName, string _respawnMarker, int _respawnType, MapZone _mapZone, bool _preload = false, string _style = null)
         {
@@ -107,8 +106,8 @@ namespace Benchwarp
 
         public void SetBench()
         {
-            if (!Benchwarp.instance.globalSettings.UnlockAllBenches && !visited) return;
-            Benchwarp.instance.saveSettings.atDeployedBench = false;
+            //if (!Benchwarp.instance.GlobalSettings.UnlockAllBenches && !visited) return;
+            
             PlayerData.instance.respawnScene = sceneName;
             PlayerData.instance.respawnMarkerName = respawnMarker;
             PlayerData.instance.respawnType = respawnType;

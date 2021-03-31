@@ -40,8 +40,8 @@
     </door>
     <door name="right1">
       <mapsTo>
-        <room> </room>
-        <door> </door>
+        <room>Mines_10</room>
+        <door>left1</door>
       </mapsTo>
     </door>
     <door name="top1">
@@ -74,6 +74,18 @@
     <door name="door_bretta">
       <mapsTo>
         <room>Room_Bretta</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="room_divine">
+      <mapsTo>
+        <room>Grimm_Divine</room>
+        <door>left1</door>
+      </mapsTo>
+    </door>
+    <door name="room_grimm">
+      <mapsTo>
+        <room>Grimm_Main_Tent</room>
         <door>left1</door>
       </mapsTo>
     </door>
@@ -118,7 +130,6 @@
       </mapsTo>
     </door>
   </room>
-  <!--
   <room name="Grimm_Divine" area="Misc">
     <door name="left1">
       <mapsTo>
@@ -135,7 +146,6 @@
       </mapsTo>
     </door>
   </room>
-  -->
   <room name="Crossroads_01" area="Forgotten Crossroads">
     <door name="top1">
       <mapsTo>
@@ -5196,7 +5206,7 @@
     <door name="right2">
       <mapsTo>
         <room>Mines_24</room>
-        <door> left1</door>
+        <door>left1</door>
       </mapsTo>
     </door>
     <door name="top1">
