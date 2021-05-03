@@ -40,8 +40,8 @@
     </door>
     <door name="right1">
       <mapsTo>
-        <room> </room>
-        <door> </door>
+        <room>Mines_10</room>
+        <door>left1</door>
       </mapsTo>
     </door>
     <door name="top1">
@@ -74,7 +74,7 @@
     <door name="door_bretta">
       <mapsTo>
         <room>Room_Bretta</room>
-        <door>left1</door>
+        <door>right1</door>
       </mapsTo>
     </door>
   </room>
@@ -256,7 +256,7 @@
     <door name="left1">
       <mapsTo>
         <room>Crossroads_07</room>
-        <door>right1</door>
+        <door>right2</door>
       </mapsTo>
     </door>
     <door name="right1">
@@ -970,7 +970,7 @@
     <door name="left1">
       <mapsTo>
         <room>Fungus1_02</room>
-        <door>right1</door>
+        <door>right2</door>
       </mapsTo>
     </door>
     <door name="bot1">
@@ -1037,7 +1037,7 @@
     </door>
     <door name="top1">
       <mapsTo>
-        <room>Fungus1_10</room>
+        <room>Fungus1_05</room>
         <door>bot1</door>
       </mapsTo>
     </door>
@@ -1446,7 +1446,7 @@
     <door name="left1">
       <mapsTo>
         <room>Fungus1_15</room>
-        <door>left1</door>
+        <door>door1</door>
       </mapsTo>
     </door>
   </room>
@@ -1635,7 +1635,7 @@
   <room name="Fungus3_35" area="Fog Canyon">
     <door name="right1">
       <mapsTo>
-        <room>Fungus3_35</room>
+        <room>Fungus3_02</room>
         <door>left3</door>
       </mapsTo>
     </door>
@@ -2111,8 +2111,8 @@
   <room name="Fungus2_26" area="Fungal Wastes">
     <door name="left1">
       <mapsTo>
-        <room>right1</room>
-        <door>Fungus2_06</door>
+        <room>Fungus2_06</room>
+        <door>right1</door>
       </mapsTo>
     </door>
   </room>
@@ -2252,13 +2252,13 @@
   <room name="Deepnest_02" area="Deepnest">
     <door name="left1">
       <mapsTo>
-        <room>Deepnest_01</room>
+        <room>Deepnest_01b</room>
         <door>right1</door>
       </mapsTo>
     </door>
     <door name="left2">
       <mapsTo>
-        <room>Deepnest_01</room>
+        <room>Deepnest_01b</room>
         <door>right2</door>
       </mapsTo>
     </door>
@@ -2807,7 +2807,7 @@
     <door name="right1">
       <mapsTo>
         <room>Deepnest_East_04</room>
-        <door>left2</door>
+        <door>left1</door>
       </mapsTo>
     </door>
     <door name="right2">
@@ -2820,25 +2820,25 @@
   <room name="Deepnest_East_04" area="Kingdom's Edge">
     <door name="left1">
       <mapsTo>
-        <room>Deepnest_East_07</room>
+        <room>Deepnest_East_03</room>
         <door>right1</door>
       </mapsTo>
     </door>
     <door name="left2">
       <mapsTo>
-        <room>Deepnest_East_03</room>
+        <room>Deepnest_East_07</room>
         <door>right1</door>
       </mapsTo>
     </door>
     <door name="right2">
       <mapsTo>
-        <room>Deepnest_East_11</room>
+        <room>Deepnest_East_15</room>
         <door>left1</door>
       </mapsTo>
     </door>
     <door name="right1">
       <mapsTo>
-        <room>Deepnest_East_15</room>
+        <room>Deepnest_East_11</room>
         <door>left1</door>
       </mapsTo>
     </door>
@@ -2904,7 +2904,7 @@
     <door name="right1">
       <mapsTo>
         <room>Deepnest_East_04</room>
-        <door>left1</door>
+        <door>left2</door>
       </mapsTo>
     </door>
   </room>
@@ -3036,7 +3036,7 @@
     <door name="left1">
       <mapsTo>
         <room>Deepnest_East_04</room>
-        <door>right1</door>
+        <door>right2</door>
       </mapsTo>
     </door>
   </room>
@@ -3116,7 +3116,7 @@
     <door name="left1">
       <mapsTo>
         <room>Room_Colosseum_Spectate</room>
-        <door>left1</door>
+        <door>right1</door>
       </mapsTo>
     </door>
   </room>
@@ -3368,7 +3368,7 @@
     <door name="top1">
       <mapsTo>
         <room>Abyss_03</room>
-        <door>bot1</door>
+        <door>bot2</door>
       </mapsTo>
     </door>
     <door name="left1">
@@ -3622,7 +3622,7 @@
     <door name="bot1">
       <mapsTo>
         <room>Waterways_02</room>
-        <door>top1</door>
+        <door>top2</door>
       </mapsTo>
     </door>
   </room>
@@ -3820,7 +3820,7 @@
       </mapsTo>
     </door>
   </room>
-  <room name="Waterways_13" area="Royal Waterways">
+  <room name="Waterways_13" area="Isma's Grove">
     <door name="left1">
       <mapsTo>
         <room>Waterways_07</room>
@@ -3982,7 +3982,7 @@
     <door name="left1">
       <mapsTo>
         <room>Ruins1_03</room>
-        <door>right1</door>
+        <door>right2</door>
       </mapsTo>
     </door>
     <door name="top1">
@@ -4324,13 +4324,13 @@
     <door name="right1">
       <mapsTo>
         <room>Ruins1_31</room>
-        <door>left3</door>
+        <door>left2</door>
       </mapsTo>
     </door>
     <door name="right2">
       <mapsTo>
         <room>Ruins1_31</room>
-        <door>left2</door>
+        <door>left3</door>
       </mapsTo>
     </door>
   </room>
@@ -5058,7 +5058,7 @@
     </door>
     <door name="top1">
       <mapsTo>
-        <room>Mines_32</room>
+        <room>Mines_13</room>
         <door>bot1</door>
       </mapsTo>
     </door>
@@ -5196,7 +5196,7 @@
     <door name="right2">
       <mapsTo>
         <room>Mines_24</room>
-        <door> left1</door>
+        <door>left1</door>
       </mapsTo>
     </door>
     <door name="top1">
@@ -5650,7 +5650,7 @@
     <door name="right2">
       <mapsTo>
         <room>Cliffs_04</room>
-        <door>left2</door>
+        <door>left1</door>
       </mapsTo>
     </door>
     <door name="right3">
@@ -5677,14 +5677,14 @@
     <door name="bot1">
       <mapsTo>
         <room>Tutorial_01</room>
-        <door>top1</door>
+        <door>top2</door>
       </mapsTo>
     </door>
     <door name="bot2">
       <oneWay>In</oneWay>
       <mapsTo>
         <room>Tutorial_01</room>
-        <door>top2</door>
+        <door>top1</door>
       </mapsTo>
     </door>
     <door name="door1">
@@ -5731,8 +5731,8 @@
   <room name="Cliffs_05" area="Howling Cliffs">
     <door name="left1">
       <mapsTo>
-        <room>right1</room>
-        <door>Cliffs_04</door>
+        <room>Cliffs_04</room>
+        <door>right1</door>
       </mapsTo>
     </door>
   </room>
@@ -6027,7 +6027,7 @@
     </door>
     <door name="right1">
       <mapsTo>
-        <room>White_Palace_19</room>
+        <room>White_Palace_06</room>
         <door>left1</door>
       </mapsTo>
     </door>
