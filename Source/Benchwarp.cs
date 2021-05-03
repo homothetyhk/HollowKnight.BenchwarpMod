@@ -10,6 +10,7 @@ using System.Reflection;
 using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using TMPro;
+using HKTranslator;
 
 namespace Benchwarp
 {
@@ -72,6 +73,9 @@ namespace Benchwarp
 
             // Imagine if GetPlayerIntHook actually worked
             On.GameManager.OnNextLevelReady += FixRespawnType;
+
+            // Init translation dictionary if xml is present in saves
+            Translator.Initialize();
         }
 
         public override string GetVersion()

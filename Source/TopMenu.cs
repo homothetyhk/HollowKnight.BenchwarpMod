@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
+using HKTranslator;
 
 namespace Benchwarp
 {
@@ -265,9 +266,10 @@ namespace Benchwarp
                             AddButton
                             (
                                 door2,
-                                rooms[j],
+                                Translator.TranslateScene(rooms[j]),
                                 (roomSelected) =>
                                 {
+                                    roomSelected = Translator.ReverseTranslateScene(roomSelected);
                                     DoorWarpSelection.door = null;
                                     DoorWarpSelection.room = roomSelected;
                                     door3.ClearButtons();
@@ -403,7 +405,7 @@ namespace Benchwarp
             if (gs.ShowScene)
             {
                 sceneNamePanel.SetActive(true, false);
-                sceneNamePanel.GetText("SceneName").UpdateText(GameManager.instance.sceneName);
+                sceneNamePanel.GetText("SceneName").UpdateText(Translator.TranslateScene(GameManager.instance.sceneName));
             }
             else sceneNamePanel.SetActive(false, true);
 
@@ -512,11 +514,11 @@ namespace Benchwarp
                     {
                         if (room == DoorWarpSelection.room)
                         {
-                            rootPanel.GetButton(room, "Rooms")?.SetTextColor(Color.yellow);
+                            rootPanel.GetButton(Translator.TranslateScene(room), "Rooms")?.SetTextColor(Color.yellow);
                         }
                         else
                         {
-                            rootPanel.GetButton(room, "Rooms")?.SetTextColor(Color.white);
+                            rootPanel.GetButton(Translator.TranslateScene(room), "Rooms")?.SetTextColor(Color.white);
                         }
                     }
                 }
