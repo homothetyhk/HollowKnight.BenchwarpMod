@@ -19,6 +19,8 @@ namespace Benchwarp
         
         public Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
 
+        private string last2Keystrokes = "";
+
         private GameObject canvas;
         private static GUIController _instance;
 
@@ -103,10 +105,47 @@ namespace Benchwarp
             try
             {
                 TopMenu.Update();
+                DetectHotkeys();
             }
             catch (Exception e)
             {
                 Benchwarp.instance.LogError(e);
+            }
+
+        private void DetectHotkeys() {
+            if (!(GameManager.instance != null && GameManager.instance.IsGamePaused() && Benchwarp.instance.globalSettings.EnableHotkeys))
+            {
+                last2Keystrokes = "";
+                return;
+            }
+            
+            foreach (var letter in BenchLetters)
+            {
+                if (Input.GetKeyDown(letter))
+                {
+                    if (last2Keystrokes.Length == 2)
+                    {
+                        last2Keystrokes = last2Keystrokes.Remove(0, 1);
+                    }
+                    last2Keystrokes = last2Keystrokes + letter.ToString();
+                }
+            }
+            if (Benchwarp.instance.Hotkeys.TryGetValue(last2Keystrokes, out int benchNum))
+            {
+                last2Keystrokes = "";
+                switch (benchNum)
+                {
+                    case -1:
+                        break;
+                    case -2:
+                        CustomStartLocation.SetStart();
+                        break;
+                    default:
+                        Benchwarp.instance.ApplyUnlockAllFixes();
+                        Bench.Benches[benchNum].SetBench();
+                        break;
+                }
+                Benchwarp.instance.Warp();
             }
         }
 
@@ -129,5 +168,10 @@ namespace Benchwarp
                 return _instance;
             }
         }
+
+        private static HashSet<KeyCode> BenchLetters = new HashSet<KeyCode>()
+        {
+            KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z
+        };
     }
 }

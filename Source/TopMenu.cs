@@ -54,7 +54,8 @@ namespace Benchwarp
                     ("Use Room Names", SwapNamesClicked, t.GetField(nameof(GlobalSettings.SwapNames))),
                     ("Enable Deploy", EnableDeployClicked, t.GetField(nameof(GlobalSettings.EnableDeploy))),
                     ("Always Toggle All", AlwaysToggleAllClicked, t.GetField(nameof(GlobalSettings.AlwaysToggleAll))),
-                    ("Door Warp", DoorWarpClicked, t.GetField(nameof(GlobalSettings.DoorWarp)))
+                    ("Door Warp", DoorWarpClicked, t.GetField(nameof(GlobalSettings.DoorWarp))),
+                    ("Enable Hotkeys", EnableHotkeysClicked, t.GetField(nameof(GlobalSettings.EnableHotkeys))),
                 }
             };
 
@@ -569,7 +570,7 @@ namespace Benchwarp
             if (Benchwarp.instance.globalSettings.UnlockAllBenches)
                 RepairBench(PlayerData.instance.respawnScene);
 
-            GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
+            Benchwarp.instance.Warp();
         }
 
         private static void DeployClicked(string buttonName)
@@ -742,6 +743,12 @@ namespace Benchwarp
             Benchwarp.instance.globalSettings.DoorWarp = !Benchwarp.instance.globalSettings.DoorWarp;
             Benchwarp.instance.SaveGlobalSettings();
             RebuildMenu();
+        }
+
+        private static void EnableHotkeysClicked(string buttonName)
+        {
+            Benchwarp.instance.globalSettings.EnableHotkeys = !Benchwarp.instance.globalSettings.EnableHotkeys;
+            Benchwarp.instance.SaveGlobalSettings();
         }
 
         #endregion
