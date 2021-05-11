@@ -85,14 +85,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Benchwarp.cs" />
-    <Compile Include="CanvasButton.cs" />
-    <Compile Include="CanvasImage.cs" />
-    <Compile Include="CanvasPanel.cs" />
-    <Compile Include="CanvasText.cs" />
+    <Compile Include="CanvasUtil\CanvasButton.cs" />
+    <Compile Include="CanvasUtil\CanvasImage.cs" />
+    <Compile Include="CanvasUtil\CanvasPanel.cs" />
+    <Compile Include="CanvasUtil\CanvasText.cs" />
     <Compile Include="Bench.cs" />
     <Compile Include="ChangeScene.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="DoorWarp.cs" />
-    <Compile Include="CustomStartLocation.cs" />
     <Compile Include="GUIController.cs" />
     <Compile Include="BenchMaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

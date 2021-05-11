@@ -7,7 +7,6 @@ namespace Benchwarp
     {
         public static Bench[] Benches = new Bench[]
             {
-                new Bench("King's Pass", "Cliffs", "Tutorial_01", "Death Respawn Marker", 0, MapZone.KINGS_PASS),
                 new Bench("Dirtmouth", "Cliffs", "Town", "RestBench", 1, MapZone.TOWN, true, "Left"),
                 new Bench("Mato", "Cliffs", "Room_nailmaster", "RestBench", 1, MapZone.CLIFFS, true, "Mato"),
 

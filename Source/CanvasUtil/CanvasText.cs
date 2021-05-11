@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace Benchwarp
+namespace Benchwarp.CanvasUtil
 {
     public class CanvasText
     {

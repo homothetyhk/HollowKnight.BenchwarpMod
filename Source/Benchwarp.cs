@@ -48,7 +48,6 @@ namespace Benchwarp
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
-            CustomStartLocation.Setup();
             BenchMaker.GetPrefabs(preloaded);
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
 
@@ -57,7 +56,6 @@ namespace Benchwarp
             GameObject.DontDestroyOnLoad(UIObj);
 
             ModHooks.Instance.SetPlayerBoolHook += BenchWatcher;
-            UnityEngine.SceneManagement.SceneManager.activeSceneChanged += CheckForKingsPassUnlock;
             ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
 
             ModHooks.Instance.GetPlayerStringHook += RespawnAtDeployedBench;
@@ -76,7 +74,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "2.3DW";
+            return "2.4";
         }
 
         public override int LoadPriority()
@@ -244,24 +242,6 @@ namespace Benchwarp
             }
         }
 
-        private void CheckForKingsPassUnlock(Scene arg0, Scene arg1)
-        {
-            switch (arg1.name)
-            {
-                case "Tutorial_01":
-                    try
-                    {
-                        Bench kp = Bench.Benches.First(b => b.sceneName == "Tutorial_01");
-                        kp.visited = true;
-                    }
-                    catch
-                    {
-                        LogError("Error occurred while attempting to set King's Pass bench as visited.");
-                    }
-                    break;
-            }
-        }
-
         private void FixRespawnType(On.GameManager.orig_OnNextLevelReady orig, GameManager self)
         {
             if (GameManager.instance.RespawningHero)
@@ -284,7 +264,6 @@ namespace Benchwarp
         public void Unload()
         {
             ModHooks.Instance.SetPlayerBoolHook -= BenchWatcher;
-            UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= CheckForKingsPassUnlock;
             ModHooks.Instance.ApplicationQuitHook -= SaveGlobalSettings;
 
             ModHooks.Instance.GetPlayerStringHook -= RespawnAtDeployedBench;

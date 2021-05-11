@@ -40,10 +40,10 @@ namespace Benchwarp
 
         private void LoadResources()
         {
-            CanvasUtil.CreateFonts();
+            Modding.CanvasUtil.CreateFonts();
 
-            TrajanBold = CanvasUtil.TrajanBold;
-            TrajanNormal = CanvasUtil.TrajanNormal;
+            TrajanBold = Modding.CanvasUtil.TrajanBold;
+            TrajanNormal = Modding.CanvasUtil.TrajanNormal;
 
             try
             {
@@ -58,7 +58,7 @@ namespace Benchwarp
             catch
             {
                 Logger.LogWarn("Unable to find Arial! Using Perpetua.");
-                Arial = CanvasUtil.GetFont("Perpetua");
+                Arial = Modding.CanvasUtil.GetFont("Perpetua");
             }
 
             if (TrajanBold == null || TrajanNormal == null || Arial == null)

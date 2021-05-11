@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
+using Benchwarp.CanvasUtil;
 
 namespace Benchwarp
 {
@@ -66,7 +67,7 @@ namespace Benchwarp
 
         private static readonly Dictionary<string, (UnityAction<string>, Vector2)> CustomStartButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
         {
-            ["Set Start"] = (s => CustomStartLocation.SetStart(), new Vector2(1446f, 400f))
+            ["Set Start"] = (s => Events.SetToStart(), new Vector2(-154f, 80f))
         };
 
         public static Vector2 GridPosition(int count, int rowSize, float hSep, float vSep, Vector2 topCenter)
@@ -285,7 +286,8 @@ namespace Benchwarp
                                     }
                                     if (!door3.active) door3.ToggleActive();
                                 },
-                                GridPosition(j, 6, 100f, 40f, new Vector2(5f, 25f))
+                                GridPosition(j, 6, 100f, 40f, new Vector2(5f, 25f)),
+                                displayName: Events.GetSceneName(rooms[j])
                             );
                         }
                     };
@@ -363,7 +365,7 @@ namespace Benchwarp
                              (string s) => bench.SetBench(),
                              new Rect(0f, 0f, 80f, 40f),
                              GUIController.Instance.TrajanNormal,
-                             !Benchwarp.instance.globalSettings.SwapNames ? bench.name : bench.sceneName,
+                             !Benchwarp.instance.globalSettings.SwapNames ? Events.GetBenchName(bench.name) : Events.GetSceneName(bench.sceneName),
                              fontSize
                          );
             }
@@ -403,7 +405,7 @@ namespace Benchwarp
             if (gs.ShowScene)
             {
                 sceneNamePanel.SetActive(true, false);
-                sceneNamePanel.GetText("SceneName").UpdateText(GameManager.instance.sceneName);
+                sceneNamePanel.GetText("SceneName").UpdateText(Events.GetSceneName(GameManager.instance.sceneName));
             }
             else sceneNamePanel.SetActive(false, true);
 
@@ -484,9 +486,10 @@ namespace Benchwarp
                 }
             }
 
-            if (!CustomStartLocation.Inactive && rootPanel.GetButton("Set Start") is CanvasButton startButton)
+            //if (!CustomStartLocation.Inactive && rootPanel.GetButton("Set Start") is CanvasButton startButton)
+            if (rootPanel.GetButton("Set Start") is CanvasButton startButton)
             {
-                startButton.SetTextColor(CustomStartLocation.CheckIfAtStart() ? Color.yellow : Color.white);
+                startButton.SetTextColor(Events.AtStart() ? Color.yellow : Color.white);
             }
 
             if (gs.DoorWarp)
@@ -564,7 +567,7 @@ namespace Benchwarp
             }
 
             if (Benchwarp.instance.globalSettings.UnlockAllBenches)
-                UnlockAllClicked(null);
+                RepairBench(PlayerData.instance.respawnScene);
 
             GameManager.instance.StartCoroutine(Benchwarp.instance.Respawn());
         }
@@ -667,51 +670,45 @@ namespace Benchwarp
                 Benchwarp.instance.globalSettings.UnlockAllBenches = !Benchwarp.instance.globalSettings.UnlockAllBenches;
                 Benchwarp.instance.SaveGlobalSettings();
             }
+        }
 
-            if (!Benchwarp.instance.globalSettings.UnlockAllBenches) return;
-
-            PlayerData pd = PlayerData.instance;
-
-            FieldInfo[] fields = typeof(PlayerData).GetFields();
-
-            // Most of these are unnecessary, but some titlecards can lock you into a bench
-            foreach
-            (
-                FieldInfo fi in fields.Where
-                (
-                    x => x.Name.StartsWith("visited")
-                        || x.Name.StartsWith("tramOpened")
-                        || x.Name.StartsWith("openedTram")
-                        || x.Name.StartsWith("tramOpened")
-                )
-            )
+        static (string, string)[] sdBenches = new (string, string)[]
+        {
+            ("Hive_01", "Hive Bench"),
+            ("Ruins1_31", "Toll Machine Bench"),
+            ("Abyss_18", "Toll Machine Bench"),
+            ("Fungus3_50", "Toll Machine Bench")
+        };
+        private static void RepairBench(string sceneName)
+        {
+            if (sdBenches.FirstOrDefault(p => p.Item1 == sceneName).Item2 is string id)
             {
-                pd.SetBoolInternal(fi.Name, true);
+                GameManager.instance.sceneData.SaveMyState(new PersistentBoolData
+                {
+                    activated = true,
+                    sceneName = sceneName,
+                    semiPersistent = false,
+                    id = id
+                });
             }
 
-            //This actually fixes the unlockable benches
-            SceneData sd = GameManager.instance.sceneData;
-
-            foreach ((string sceneName, string id) in new (string, string)[]
+            switch (sceneName)
             {
-                ("Hive_01", "Hive Bench"),
-                ("Ruins1_31", "Toll Machine Bench"),
-                ("Abyss_18", "Toll Machine Bench"),
-                ("Fungus3_50", "Toll Machine Bench")
-            })
-            {
-                sd.SaveMyState
-                (
-                    new PersistentBoolData
-                    {
-                        sceneName = sceneName,
-                        id = id,
-                        activated = true,
-                        semiPersistent = false
-                    }
-                );
+                case "Crossroads_04":
+                    PlayerData.instance.visitedCrossroads = true;
+                    break;
+                case "Room_Tram":
+                    PlayerData.instance.openedTramLower = true;
+                    PlayerData.instance.tramOpenedDeepnest = true;
+                    break;
+                case "Room_Tram_RG":
+                    PlayerData.instance.openedTramRestingGrounds = true;
+                    PlayerData.instance.tramOpenedCrossroads = true;
+                    break;
             }
         }
+
+
 
         private static void ShowSceneClicked(string buttonName)
         {

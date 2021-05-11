@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Benchwarp
+namespace Benchwarp.CanvasUtil
 {
     public class CanvasImage
     {

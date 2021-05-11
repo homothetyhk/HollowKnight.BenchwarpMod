@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
-namespace Benchwarp
+namespace Benchwarp.CanvasUtil
 {
     public class CanvasPanel
     {
