@@ -146,7 +146,45 @@ namespace Benchwarp
 
         public void Warp()
         {
+            if (globalSettings.UnlockAllBenches) 
+                RepairBench(PlayerData.instance.GetString(nameof(PlayerData.respawnScene)));
             GameManager.instance.StartCoroutine(Respawn());
+        }
+
+        static (string, string)[] sdBenches = new (string, string)[]
+        {
+            ("Hive_01", "Hive Bench"),
+            ("Ruins1_31", "Toll Machine Bench"),
+            ("Abyss_18", "Toll Machine Bench"),
+            ("Fungus3_50", "Toll Machine Bench")
+        };
+        private static void RepairBench(string sceneName)
+        {
+            if (sdBenches.FirstOrDefault(p => p.Item1 == sceneName).Item2 is string id)
+            {
+                GameManager.instance.sceneData.SaveMyState(new PersistentBoolData
+                {
+                    activated = true,
+                    sceneName = sceneName,
+                    semiPersistent = false,
+                    id = id
+                });
+            }
+
+            switch (sceneName)
+            {
+                case "Crossroads_04":
+                    PlayerData.instance.visitedCrossroads = true;
+                    break;
+                case "Room_Tram":
+                    PlayerData.instance.openedTramLower = true;
+                    PlayerData.instance.tramOpenedDeepnest = true;
+                    break;
+                case "Room_Tram_RG":
+                    PlayerData.instance.openedTramRestingGrounds = true;
+                    PlayerData.instance.tramOpenedCrossroads = true;
+                    break;
+            }
         }
 
         public IEnumerator Respawn()
