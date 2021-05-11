@@ -111,8 +111,10 @@ namespace Benchwarp
             {
                 Benchwarp.instance.LogError(e);
             }
+        }
 
-        private void DetectHotkeys() {
+        private void DetectHotkeys()
+        { 
             if (!(GameManager.instance != null && GameManager.instance.IsGamePaused() && Benchwarp.instance.globalSettings.EnableHotkeys))
             {
                 last2Keystrokes = "";
@@ -130,7 +132,7 @@ namespace Benchwarp
                     last2Keystrokes = last2Keystrokes + letter.ToString();
                 }
             }
-            if (Benchwarp.instance.Hotkeys.TryGetValue(last2Keystrokes, out int benchNum))
+            if (Hotkeys.CurrentHotkeys.TryGetValue(last2Keystrokes, out int benchNum))
             {
                 last2Keystrokes = "";
                 switch (benchNum)
@@ -138,10 +140,9 @@ namespace Benchwarp
                     case -1:
                         break;
                     case -2:
-                        CustomStartLocation.SetStart();
+                        Events.SetToStart();
                         break;
                     default:
-                        Benchwarp.instance.ApplyUnlockAllFixes();
                         Bench.Benches[benchNum].SetBench();
                         break;
                 }

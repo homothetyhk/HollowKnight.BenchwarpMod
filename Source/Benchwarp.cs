@@ -18,8 +18,6 @@ namespace Benchwarp
 
         internal static Benchwarp instance;
 
-        internal Dictionary<string, int> Hotkeys = new Dictionary<string, int>();
-
         internal GameObject UIObj;
         internal GlobalSettings globalSettings = new GlobalSettings();
         internal SaveSettings saveSettings = new SaveSettings();
@@ -73,7 +71,7 @@ namespace Benchwarp
             // Imagine if GetPlayerIntHook actually worked
             On.GameManager.OnNextLevelReady += FixRespawnType;
 
-            ApplyHotkeyOverrides();
+            Hotkeys.ApplyHotkeyOverrides();
         }
 
         public override string GetVersion()
@@ -144,95 +142,6 @@ namespace Benchwarp
                 ("White_Palace_01", "WhiteBench"),
                 ("Room_Final_Boss_Atrium", "RestBench")
                 };
-        }
-
-        private static Dictionary<string, int> DefaultHotkeys = new Dictionary<string, int>() {
-            {"KP", 0},
-            {"DM", 1},
-            {"NM", 2},
-
-            {"FS", 3},
-            {"FC", 4},
-            {"SA", 5},
-            {"SM", 6},
-            {"BE", 7},
-
-            {"GW", 8},
-            {"SS", 9},
-            {"GT", 10},
-            {"GP", 11},
-            {"LU", 12},
-            {"NS", 13},
-
-            {"TA", 14},
-
-            {"QS", 15},
-            {"LE", 16},
-            {"BR", 17},
-            {"MV", 18},
-
-            {"CQ", 19},
-            {"CT", 20},
-            {"CS", 21},
-            {"WS", 22},
-            {"KS", 23},
-            {"PH", 24},
-
-            {"WW", 25},
-            {"GA", 26},
-            {"GR", 27},
-            {"HG", 28},
-
-            {"DS", 29},
-            {"FT", 30},
-            {"BD", 31},
-
-            {"BT", 32},
-            {"HS", 33},
-
-            {"NO", 34},
-            {"EC", 35},
-            {"CF", 36},
-            {"BB", 37},
-
-            {"PD", 38},
-            {"CG", 39},
-
-            {"RG", 40},
-            {"GM", 41},
-
-            {"QC", 42},
-            {"QT", 43},
-            {"QG", 44},
-
-            {"PE", 45},
-            {"PA", 46},
-            {"PB", 47},
-
-            {"UT", 48},
-            {"LT", 49},
-
-            {"LB", -1},
-            {"SB", -2}
-        };
-
-        private void ApplyHotkeyOverrides()
-        {
-            foreach (var defaultBind in DefaultHotkeys)
-            {
-                if (!globalSettings.HotkeyOverrides.TryGetValue(defaultBind.Key, out var mappedHotkey))
-                {
-                    mappedHotkey = defaultBind.Key;
-                }
-                try
-                {
-                    Hotkeys.Add(mappedHotkey, defaultBind.Value);
-                }
-                catch (System.ArgumentException)
-                {
-                    LogError($"duplicate binding for hotkey '{mappedHotkey}'");
-                }
-            }
         }
 
         public void Warp()

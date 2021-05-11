@@ -27,7 +27,6 @@ Deploy
 	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart.
 
 Bench Hotkeys
-- **KP**: **K**ing's **P**ass
 - **NM**: **N**ailmaster **M**ato
 - **DM**: **D**irt**M**outh
 - **FC**: **F**orgotten **C**rossroads Stag
@@ -86,6 +85,8 @@ should map the default bindings to their replacements. For example, `"hotkeyOver
 Custom hotkeys must be composed of exactly two uppercase letters.
 
 Credits
+homothety - main developer
+PimpasPimpinela - hotkey support!
 Serena - developed the UI, as part of DebugMod
 Serena and 5FiftySix6 - developed the Warp method, as part of this mod
 The Embraced One - originally created the menu assets, as part of DebugMod
