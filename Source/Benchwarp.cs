@@ -13,7 +13,7 @@ using TMPro;
 
 namespace Benchwarp
 {
-    public class Benchwarp : Mod, ITogglableMod
+    public class Benchwarp : Mod, ITogglableMod,IGlobalSettings<GlobalSettings>,ILocalSettings<SaveSettings>
     {
 
         internal static Benchwarp instance;
@@ -21,18 +21,13 @@ namespace Benchwarp
         internal GameObject UIObj;
         internal GlobalSettings globalSettings = new GlobalSettings();
         internal SaveSettings saveSettings = new SaveSettings();
-        public override ModSettings GlobalSettings 
-        { 
-            get => globalSettings; 
-            set => globalSettings = value as GlobalSettings; 
-        }
+        public void OnLoadGlobal(GlobalSettings s) => globalSettings = s;
 
-        public override ModSettings SaveSettings 
-        { 
-            get => saveSettings; 
-            set => saveSettings = value as SaveSettings; 
-        }
+        public GlobalSettings OnSaveGlobal() => globalSettings;
 
+        public void OnLoadLocal(SaveSettings s) => saveSettings = s;
+
+        public SaveSettings OnSaveLocal() => saveSettings;
         public Benchwarp()
         {
             instance = this;
@@ -55,11 +50,11 @@ namespace Benchwarp
             UIObj.AddComponent<GUIController>();
             GameObject.DontDestroyOnLoad(UIObj);
 
-            ModHooks.Instance.SetPlayerBoolHook += BenchWatcher;
-            ModHooks.Instance.ApplicationQuitHook += SaveGlobalSettings;
+            ModHooks.SetPlayerBoolHook += BenchWatcher;
+            ModHooks.ApplicationQuitHook += SaveGlobalSettings;
 
-            ModHooks.Instance.GetPlayerStringHook += RespawnAtDeployedBench;
-            ModHooks.Instance.SetPlayerStringHook += RemoveRespawnFromDeployedBench;
+            ModHooks.GetPlayerStringHook += RespawnAtDeployedBench;
+            ModHooks.SetPlayerStringHook += RemoveRespawnFromDeployedBench;
 
             GUIController.Instance.BuildMenus();
             
@@ -76,7 +71,7 @@ namespace Benchwarp
 
         public override string GetVersion()
         {
-            return "2.4";
+            return "2.4.1";
         }
 
         public override int LoadPriority()
@@ -354,11 +349,11 @@ namespace Benchwarp
 
         public void Unload()
         {
-            ModHooks.Instance.SetPlayerBoolHook -= BenchWatcher;
-            ModHooks.Instance.ApplicationQuitHook -= SaveGlobalSettings;
+            ModHooks.SetPlayerBoolHook -= BenchWatcher;
+            ModHooks.ApplicationQuitHook -= SaveGlobalSettings;
 
-            ModHooks.Instance.GetPlayerStringHook -= RespawnAtDeployedBench;
-            ModHooks.Instance.SetPlayerStringHook -= RemoveRespawnFromDeployedBench;
+            ModHooks.GetPlayerStringHook -= RespawnAtDeployedBench;
+            ModHooks.SetPlayerStringHook -= RemoveRespawnFromDeployedBench;
 
             On.GameManager.OnNextLevelReady -= FixRespawnType;
 
@@ -371,5 +366,7 @@ namespace Benchwarp
         {
             base.SaveGlobalSettings();
         }
+
+        
     }
 }

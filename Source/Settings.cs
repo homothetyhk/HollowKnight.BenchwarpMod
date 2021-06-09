@@ -6,7 +6,7 @@ using System;
 namespace Benchwarp
 {
     [Serializable]
-    public class SaveSettings : ModSettings
+    public class SaveSettings 
     {
         public bool benchDeployed;
         public bool atDeployedBench;
@@ -17,7 +17,7 @@ namespace Benchwarp
     }
 
     [Serializable]
-    public class GlobalSettings : ModSettings
+    public class GlobalSettings 
     {
         public bool WarpOnly = false;
         public bool UnlockAllBenches = false;
