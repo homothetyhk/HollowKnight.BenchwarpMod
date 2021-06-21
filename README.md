@@ -70,7 +70,7 @@ Bench Hotkeys
 - **GM**: **G**rey **M**ourner
 - **QC**: **Q**ueen's Gardens **C**ornifer
 - **QT**: **Q**ueen's Gardens **T**oll
-- **QG**: **Q**ueen's Gardens **S**tag
+- **QG**: **Q**ueen's **G**ardens Stag
 - **PE**: **P**alace **E**ntrance
 - **PA**: **P**alace **A**trium
 - **PB**: **P**alace **B**alcony
