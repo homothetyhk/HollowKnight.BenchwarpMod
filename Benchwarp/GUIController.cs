@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Modding;
 using UnityEngine;
 using UnityEngine.UI;
 using Logger = Modding.Logger;
@@ -12,6 +11,19 @@ namespace Benchwarp
 {
     public class GUIController : MonoBehaviour
     {
+        public static void Setup()
+        {
+            GameObject GUIObj = new GameObject("Benchwarp GUI");
+            _instance = GUIObj.AddComponent<GUIController>();
+            DontDestroyOnLoad(GUIObj);
+        }
+
+        public static void Unload()
+        {
+            Destroy(_instance.canvas);
+            Destroy(_instance.gameObject);
+        }
+
         public Font TrajanBold { get; private set; }
         public Font TrajanNormal { get; private set; }
 
@@ -72,7 +84,7 @@ namespace Benchwarp
             
             foreach (string res in asm.GetManifestResourceNames())
             {
-                if (!res.StartsWith("Benchwarp.Images.")) continue;
+                if (!res.StartsWith("Benchwarp.Resources.Images.")) continue;
                 
                 try
                 {
@@ -90,7 +102,7 @@ namespace Benchwarp
                         
                         images.Add(internalName, tex);
 
-                        Benchwarp.instance.Log("Loaded image: " + internalName);
+                        //Benchwarp.instance.Log("Loaded image: " + internalName);
                     }
                 }
                 catch (Exception e)
@@ -104,6 +116,8 @@ namespace Benchwarp
         {
             try
             {
+                
+
                 TopMenu.Update();
                 DetectHotkeys();
             }
@@ -115,7 +129,7 @@ namespace Benchwarp
 
         private void DetectHotkeys()
         { 
-            if (!(GameManager.instance != null && GameManager.instance.IsGamePaused() && Benchwarp.instance.globalSettings.EnableHotkeys))
+            if (!(GameManager.instance != null && GameManager.instance.IsGamePaused() && Benchwarp.GS.EnableHotkeys))
             {
                 last2Keystrokes = "";
                 return;
@@ -129,7 +143,7 @@ namespace Benchwarp
                     {
                         last2Keystrokes = last2Keystrokes.Remove(0, 1);
                     }
-                    last2Keystrokes = last2Keystrokes + letter.ToString();
+                    last2Keystrokes += letter.ToString();
                 }
             }
             if (Hotkeys.CurrentHotkeys.TryGetValue(last2Keystrokes, out int benchNum))
@@ -137,16 +151,30 @@ namespace Benchwarp
                 last2Keystrokes = "";
                 switch (benchNum)
                 {
-                    case -1:
+                    case Hotkeys.LastBenchID:
                         break;
-                    case -2:
+                    case Hotkeys.StartBenchID:
                         Events.SetToStart();
                         break;
+                    case Hotkeys.WarpDeployID:
+                        TopMenu.SetClicked(null);
+                        break;
+                    case Hotkeys.ToggleMenuID:
+                        Benchwarp.GS.ShowMenu = !Benchwarp.GS.ShowMenu;
+                        return;
+                    case Hotkeys.DoorWarpID:
+                        TopMenu.DoorWarpClicked(null);
+                        return;
                     default:
-                        Bench.Benches[benchNum].SetBench();
+                        if (0 <= benchNum && benchNum < Bench.Benches.Length) Bench.Benches[benchNum].SetBench();
+                        else
+                        {
+                            Benchwarp.instance.LogError($"Unknown internal hotkey code: {benchNum}");
+                            return;
+                        }
                         break;
                 }
-                Benchwarp.instance.Warp();
+                ChangeScene.WarpToRespawn();
             }
         }
 

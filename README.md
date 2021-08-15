@@ -17,16 +17,20 @@ Options
 Deploy
 - Deploy button: places a bench at the current location
 - Set: alters your respawn/warp point to be your currently deployed bench
-- Style: select your preferred bench sprite
+- Near Style: select your preferred bench sprite which fades in when the hero is near the bench
+- Far Style: select your preferred bench sprite which shows when the hero is away from the bench
+	- For safety, styles cannot be changed while benched.
 - Options:
 	- Cooldown: adds a 300s cooldown to the deploy button
 	- Noninteractive: deployed bench cannot be interacted with, except via warping (e.g. preventing use during boss fights)
 	- No Mid-Air Deploy: the game must recognize the player as grounded in order to deploy
 	- No Dark Rooms or Dream Rooms: prevents use of deploy in Dream World rooms, and if the player does not have lantern, prevents use of deploy in rooms which are dark
-	- Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
-	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart.
+	- [Obsolete] Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
+		- As of version 3.0, Reduce Preloads is no longer a setting, and only one bench is preloaded by default.
+	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart the game.
 
 Bench Hotkeys
+- Each of the following combinations is equivalent to clicking the corresponding bench button, and then the Warp button in Bench Warp mode. In other words, a code for an unselectable bench will result in warping to the current respawn. Hotkeys only perform bench warps; this holds even if the current setting is set to Door Warp mode.
 - **NM**: **N**ailmaster **M**ato
 - **DM**: **D**irt**M**outh
 - **FC**: **F**orgotten **C**rossroads Stag
@@ -77,12 +81,15 @@ Bench Hotkeys
 - **UT**: **U**pper **T**ram
 - **LT**: **L**ower **T**ram
 - **LB**: **L**ast **B**ench (equivalent to just clicking Warp)
-- **SB**: **S**tart **B**ench (equivalent to Set Start)
+- **SB**: **S**tart **B**ench (equivalent to clicking Set Start, then Warp)
+- **WD**: **W**arp to **D**eployed Bench (equivalent to clicking Set in the Deploy submenu, then Warp)
+- **TM**: **T**oggle **M**enu (equivalent to clicking Show Menu in the Benchwarp submenu in the Mods menu)
+- **DW**: **D**oor **W**arp (equivalent to clicking Door Warp in the Settings menu)
 
 Each hotkey can be remapped by modifying the "hotkeyOverrides" dictionary in the
 mod's global settings file (Benchwarp.GlobalSettings.json, in your saves folder). This dictionary
 should map the default bindings to their replacements. For example, `"hotkeyOverrides": {"BB": "HV"}` remaps the Hive bench to use the hotkey "HV".
-Custom hotkeys must be composed of exactly two uppercase letters.
+Custom hotkeys must be composed of exactly two uppercase letters. 
 
 Credits
 homothety - main developer

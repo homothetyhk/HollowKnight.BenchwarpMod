@@ -1,12 +1,11 @@
-﻿using Modding;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using System;
 
 namespace Benchwarp
 {
     [Serializable]
-    public class SaveSettings : ModSettings
+    public class SaveSettings
     {
         public bool benchDeployed;
         public bool atDeployedBench;
@@ -17,7 +16,7 @@ namespace Benchwarp
     }
 
     [Serializable]
-    public class GlobalSettings : ModSettings
+    public class GlobalSettings
     {
         public bool WarpOnly = false;
         public bool UnlockAllBenches = false;
@@ -25,15 +24,16 @@ namespace Benchwarp
         public bool SwapNames = false;
         public bool EnableDeploy = true;
         public bool AlwaysToggleAll = false;
-        public string benchStyle = "Right";
+        public string nearStyle = "Right";
+        public string farStyle = "Right";
         public bool DeployCooldown = true;
         public bool Noninteractive = true;
         public bool NoMidAirDeploy = true;
         public bool NoDarkOrDreamRooms = true;
         public bool NoPreload = false;
-        public bool ReducePreload = true;
         public bool DoorWarp = false;
         public bool EnableHotkeys = false;
+        public bool ShowMenu = true;
         public Dictionary<string, string> HotkeyOverrides = new Dictionary<string, string>();
     }
 }

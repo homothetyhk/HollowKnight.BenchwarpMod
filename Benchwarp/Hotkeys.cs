@@ -13,7 +13,15 @@ namespace Benchwarp
         {
             foreach (var defaultBind in DefaultHotkeys)
             {
-                if (!Benchwarp.instance.globalSettings.HotkeyOverrides.TryGetValue(defaultBind.Key, out var mappedHotkey))
+                if (Benchwarp.GS.HotkeyOverrides.TryGetValue(defaultBind.Key, out var mappedHotkey))
+                {
+                    if (mappedHotkey.Length != 2 || !char.IsLetter(mappedHotkey[0]) || !char.IsLetter(mappedHotkey[1]))
+                    {
+                        Benchwarp.instance.LogError($"Invalid hotkey override {mappedHotkey} for {defaultBind.Key}: hotkeys must consist of exactly two letters.");
+                        mappedHotkey = defaultBind.Key;
+                    }
+                }
+                else
                 {
                     mappedHotkey = defaultBind.Key;
                 }
@@ -23,13 +31,13 @@ namespace Benchwarp
                 }
                 catch (System.ArgumentException)
                 {
-                    Benchwarp.instance.LogError($"duplicate binding for hotkey '{mappedHotkey}'");
+                    Benchwarp.instance.LogError($"Duplicate binding for hotkey '{mappedHotkey}'");
                 }
             }
         }
 
 
-        private static Dictionary<string, int> DefaultHotkeys = new Dictionary<string, int>() 
+        private static Dictionary<string, int> DefaultHotkeys = new Dictionary<string, int>()
         {
             {"DM", 0},
             {"NM", 1},
@@ -60,19 +68,19 @@ namespace Benchwarp
             {"WS", 21},
             {"KS", 22},
             {"PH", 23},
-            
+
             {"WW", 24},
             {"GA", 25},
             {"GR", 26},
             {"HG", 27},
-        
+
             {"DS", 28},
             {"FT", 29},
             {"BD", 30},
 
             {"BT", 31},
             {"HS", 32},
-        
+
             {"NO", 33},
             {"EC", 34},
             {"CF", 35},
@@ -95,11 +103,17 @@ namespace Benchwarp
             {"UT", 47},
             {"LT", 48},
 
-            {"LB", -1},
-            {"SB", -2}
+            {"LB", LastBenchID},
+            {"SB", StartBenchID},
+            { "WD", WarpDeployID },
+            { "TM", ToggleMenuID },
+            { "DW", DoorWarpID },
         };
 
-
-
+        public const int LastBenchID = -1;
+        public const int StartBenchID = -2;
+        public const int WarpDeployID = -3;
+        public const int ToggleMenuID = -4;
+        public const int DoorWarpID = -5;
     }
 }

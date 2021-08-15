@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Benchwarp</RootNamespace>
     <AssemblyName>Benchwarp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -40,6 +42,19 @@
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="ItemChanger">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods\ItemChanger\ItemChanger.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\MMHOOK_Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_PlayMaker">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\MMHOOK_PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PlayMaker, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -66,6 +81,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
@@ -91,6 +109,11 @@
     <Compile Include="CanvasUtil\CanvasText.cs" />
     <Compile Include="Bench.cs" />
     <Compile Include="ChangeScene.cs" />
+    <Compile Include="BenchStyle.cs" />
+    <Compile Include="FsmLambda.cs" />
+    <Compile Include="ObjectCache.cs" />
+    <Compile Include="JsonUtil.cs" />
+    <Compile Include="SpriteManager.cs" />
     <Compile Include="Hotkeys.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="DoorWarp.cs" />
@@ -101,13 +124,51 @@
     <Compile Include="TopMenu.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\ButtonRect.png" />
-    <EmbeddedResource Include="Images\ButtonRectEmpty.png" />
-    <EmbeddedResource Include="Images\ButtonsMenuBG.png" />
-    <EmbeddedResource Include="Images\DropdownBG.png" />
+    <EmbeddedResource Include="Resources\Images\ButtonRect.png" />
+    <EmbeddedResource Include="Resources\Images\ButtonRectEmpty.png" />
+    <EmbeddedResource Include="Resources\Images\ButtonsMenuBG.png" />
+    <EmbeddedResource Include="Resources\Images\DropdownBG.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\doors.xml" />
+    <EmbeddedResource Include="Resources\Styles\Beast.png" />
+    <EmbeddedResource Include="Resources\Styles\Bone.png" />
+    <EmbeddedResource Include="Resources\Styles\Bone_lit.png" />
+    <EmbeddedResource Include="Resources\Styles\Corpse.png" />
+    <EmbeddedResource Include="Resources\Styles\Mato.png" />
+    <EmbeddedResource Include="Resources\Styles\Mato_lit.png" />
+    <EmbeddedResource Include="Resources\Styles\Oro.png" />
+    <EmbeddedResource Include="Resources\Styles\Sheo.png" />
+    <EmbeddedResource Include="Resources\Styles\Shrine.png" />
+    <EmbeddedResource Include="Resources\Styles\Simple.png" />
+    <EmbeddedResource Include="Resources\Styles\Stone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\benches.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\doors.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Styles\Archive.png" />
+    <EmbeddedResource Include="Resources\Styles\Black.png" />
+    <EmbeddedResource Include="Resources\Styles\Black_lit.png" />
+    <EmbeddedResource Include="Resources\Styles\Fool.png" />
+    <EmbeddedResource Include="Resources\Styles\Garden.png" />
+    <EmbeddedResource Include="Resources\Styles\Mantis.png" />
+    <EmbeddedResource Include="Resources\Styles\Right.png" />
+    <EmbeddedResource Include="Resources\Styles\Right_lit.png" />
+    <EmbeddedResource Include="Resources\Styles\Tram.png" />
+    <EmbeddedResource Include="Resources\Styles\Tram_lit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Styles\Camp.png" />
+    <EmbeddedResource Include="Resources\Styles\Gold.png" />
+    <EmbeddedResource Include="Resources\Styles\Ornate.png" />
+    <EmbeddedResource Include="Resources\Styles\White.png" />
+    <EmbeddedResource Include="Resources\Styles\Wide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\styles.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -115,6 +176,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods\Benchwarp"</PostBuildEvent>
   </PropertyGroup>
 </Project>

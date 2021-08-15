@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchwarp", "Source\Benchwarp.csproj", "{A658D7A5-E9F4-4BE4-84EC-711FDA93F18C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchwarp", "Benchwarp\Benchwarp.csproj", "{A658D7A5-E9F4-4BE4-84EC-711FDA93F18C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

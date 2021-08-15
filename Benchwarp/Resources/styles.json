@@ -1,0 +1,623 @@
+{
+  "Right": {
+    "style": "Right",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Right",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    }
+  },
+  "Left": {
+    "style": "Left",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": -1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Right",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.2,
+      "z": 0.0
+    }
+  },
+  "Ornate": {
+    "style": "Ornate",
+    "offset": {
+      "x": 0.0,
+      "y": -0.18,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": -1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Ornate",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.2,
+      "z": 0.0
+    }
+  },
+  "Bone": {
+    "style": "Bone",
+    "offset": {
+      "x": 0.0,
+      "y": -0.7,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 0.424060136
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.007
+    },
+    "spriteName": "Bone",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    }
+  },
+  "Stone": {
+    "style": "Stone",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.04,
+      "y": 1.10564947,
+      "z": 1.04
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Stone",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.3,
+      "z": 0.0
+    }
+  },
+  "Shrine": {
+    "style": "Shrine",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Shrine",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.59,
+      "z": 0.0
+    }
+  },
+  "Archive": {
+    "style": "Archive",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Archive",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.2,
+      "z": 0.0
+    }
+  },
+  "Corpse": {
+    "style": "Corpse",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Corpse",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.55,
+      "z": 0.0
+    }
+  },
+  "Mantis": {
+    "style": "Mantis",
+    "offset": {
+      "x": 0.0,
+      "y": -0.11,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": -1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Mantis",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.55,
+      "z": 0.0
+    }
+  },
+  "Simple": {
+    "style": "Simple",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": -1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.001
+    },
+    "spriteName": "Simple",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    }
+  },
+  "Tilted": {
+    "style": "Tilted",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Right",
+    "tilter": true,
+    "tiltAmount": 16.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.2,
+      "z": 0.0
+    }
+  },
+  "Wide": {
+    "style": "Wide",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Wide",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.55,
+      "z": 0.0
+    }
+  },
+  "Beast": {
+    "style": "Beast",
+    "offset": {
+      "x": 0.0,
+      "y": -0.4,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0685972,
+      "y": 1.2100296,
+      "z": 1.25717318
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Beast",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.3,
+      "z": 0.0
+    }
+  },
+  "Camp": {
+    "style": "Camp",
+    "offset": {
+      "x": 0.0,
+      "y": -0.85,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": -1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Camp",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": -0.4,
+      "y": 0.65,
+      "z": 0.0
+    }
+  },
+  "Fool": {
+    "style": "Fool",
+    "offset": {
+      "x": 0.0,
+      "y": -0.1,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": -1.14694262,
+      "y": 1.1899519,
+      "z": 1.14694262
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Fool",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.4,
+      "z": 0.0
+    }
+  },
+  "Garden": {
+    "style": "Garden",
+    "offset": {
+      "x": 0.0,
+      "y": -0.3,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.1,
+      "y": 1.2,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Garden",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.7,
+      "z": 0.0
+    }
+  },
+  "Tram": {
+    "style": "Tram",
+    "offset": {
+      "x": 0.0,
+      "y": -0.3,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.00200000033
+    },
+    "spriteName": "Tram",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.3,
+      "z": 0.0
+    }
+  },
+  "Mato": {
+    "style": "Mato",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Mato",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 1.2,
+      "z": 0.0
+    }
+  },
+  "Oro": {
+    "style": "Oro",
+    "offset": {
+      "x": 0.0,
+      "y": -0.8,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "spriteName": "Oro",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 1.0,
+      "z": 0.0
+    }
+  },
+  "Sheo": {
+    "style": "Sheo",
+    "offset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.001
+    },
+    "spriteName": "Sheo",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 1.0,
+      "z": 0.0
+    }
+  },
+  "White": {
+    "style": "White",
+    "offset": {
+      "x": 0.0,
+      "y": -0.13,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "White",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.0
+    }
+  },
+  "Black": {
+    "style": "Black",
+    "offset": {
+      "x": 0.0,
+      "y": -0.75,
+      "z": 0.0
+    },
+    "distinctLitSprite": true,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.656,
+      "z": 0.0
+    },
+    "spriteName": "Black",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": -0.1,
+      "y": 0.4,
+      "z": 0.0
+    }
+  },
+  "Gold": {
+    "style": "Gold",
+    "offset": {
+      "x": 0.0,
+      "y": -0.55,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Gold",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.9,
+      "z": 0.0
+    }
+  }
+}

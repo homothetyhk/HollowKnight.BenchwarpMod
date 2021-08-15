@@ -24,14 +24,14 @@ namespace Benchwarp
         public static bool AtStart()
         {
             var (respawnScene, respawnMarkerName, _, _) = GetStartDef();
-            return !Benchwarp.instance.saveSettings.atDeployedBench
+            return !Benchwarp.LS.atDeployedBench
                 && respawnScene == PlayerData.instance.respawnScene 
                 && respawnMarkerName == PlayerData.instance.respawnMarkerName;
         }
         public static void SetToStart()
         {
             var (respawnScene, respawnMarkerName, respawnType, mapZone) = GetStartDef();
-            Benchwarp.instance.saveSettings.atDeployedBench = false;
+            Benchwarp.LS.atDeployedBench = false;
             PlayerData.instance.respawnScene = respawnScene;
             PlayerData.instance.respawnMarkerName = respawnMarkerName;
             PlayerData.instance.respawnType = respawnType;
