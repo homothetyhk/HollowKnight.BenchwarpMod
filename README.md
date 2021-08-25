@@ -28,6 +28,7 @@ Deploy
 	- [Obsolete] Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
 		- As of version 3.0, Reduce Preloads is no longer a setting, and only one bench is preloaded by default.
 	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart the game.
+	- Apply Style To All: applies the selected styles to base game benches. Requires a scene reload to take effect. Not all benches are supported.
 
 Bench Hotkeys
 - Each of the following combinations is equivalent to clicking the corresponding bench button, and then the Warp button in Bench Warp mode. In other words, a code for an unselectable bench will result in warping to the current respawn. Hotkeys only perform bench warps; this holds even if the current setting is set to Door Warp mode.

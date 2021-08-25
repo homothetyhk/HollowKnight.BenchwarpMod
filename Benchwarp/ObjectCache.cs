@@ -21,6 +21,7 @@ namespace Benchwarp
                 return new List<(string, string)>();
             }
 
+           
             return new List<(string, string)>
             {
                 ("Crossroads_47", "RestBench"),
@@ -59,6 +60,20 @@ namespace Benchwarp
             if (objects == null || !DidPreload) return; //happens if mod is reloaded
             _preloadedBench = objects.Values.First().Values.First();
             UnityEngine.Object.DontDestroyOnLoad(_preloadedBench);
+
+            /*
+            foreach (var kdp in objects)
+            {
+                string sceneName = kdp.Key;
+                foreach (var kvp in kdp.Value)
+                {
+                    string objectName = kvp.Key;
+                    GameObject obj = kvp.Value;
+                }
+            }
+
+            JsonUtil.Serialize(BenchStyle._styles, "styles.json");
+            */
         }
     }
 }

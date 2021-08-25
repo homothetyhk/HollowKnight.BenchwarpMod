@@ -1,6 +1,7 @@
 ﻿using GlobalEnums;
 using System;
 using System.Linq;
+using UnityEngine;
 
 namespace Benchwarp
 {
@@ -20,8 +21,8 @@ namespace Benchwarp
         public readonly string respawnMarker;
         public readonly int respawnType;
         public readonly MapZone mapZone;
-        public readonly bool preload;
         public readonly string style;
+        public readonly Vector3 specificOffset;
 
         public bool HasVisited()
         {
@@ -40,7 +41,7 @@ namespace Benchwarp
             !Benchwarp.LS.atDeployedBench;
 
         [Newtonsoft.Json.JsonConstructor]
-        public Bench(string name, string areaName, string sceneName, string respawnMarker, int respawnType, MapZone mapZone, bool preload = false, string style = null)
+        public Bench(string name, string areaName, string sceneName, string respawnMarker, int respawnType, MapZone mapZone, string style, Vector3 specificOffset)
         {
             this.name = name; // may not be unique
             this.areaName = areaName; // may be abbreviated, see below
@@ -48,8 +49,8 @@ namespace Benchwarp
             this.respawnMarker = respawnMarker;
             this.respawnType = respawnType;
             this.mapZone = mapZone;
-            this.preload = preload;
             this.style = style;
+            this.specificOffset = specificOffset;
         }
 
         public void SetBench()

@@ -10,15 +10,6 @@ namespace Benchwarp
 {
     public static class BenchMaker
     {
-        static BenchMaker()
-        {
-            ValidStyles = SpriteManager.GetValidStyles(BenchStyle.StyleNames);
-            foreach (var s in BenchStyle.StyleNames.Except(ValidStyles)) Benchwarp.instance.Log($"Invalid style: {s}");
-
-        }
-        public static HashSet<string> ValidStyles;
-        public static bool IsValidStyle(string style) => ValidStyles.Contains(style);
-
         public static GameObject DeployedBench;
         public const string DEPLOYED_BENCH_RESPAWN_MARKER_NAME = "DeployedBench";
 
@@ -108,7 +99,7 @@ namespace Benchwarp
                 string farStyle = Benchwarp.GS.farStyle;
                 string nearStyle = Benchwarp.GS.nearStyle;
 
-                if (IsValidStyle(farStyle) && BenchStyle.GetStyle(farStyle) is BenchStyle fs)
+                if (BenchStyle.IsValidStyle(farStyle) && BenchStyle.GetStyle(farStyle) is BenchStyle fs)
                 {
                     Sprite benchSprite = SpriteManager.GetSprite(fs.spriteName);
                     if (benchSprite != null)
@@ -116,7 +107,7 @@ namespace Benchwarp
                         DeployedBench.GetComponent<SpriteRenderer>().sprite = benchSprite;
                     }
                 }
-                if (IsValidStyle(nearStyle) && BenchStyle.GetStyle(nearStyle) is BenchStyle ns)
+                if (BenchStyle.IsValidStyle(nearStyle) && BenchStyle.GetStyle(nearStyle) is BenchStyle ns)
                 {
                     string spriteName = ns.distinctLitSprite ? $"{ns.spriteName}_lit" : ns.spriteName;
                     Sprite litSprite = SpriteManager.GetSprite(spriteName);

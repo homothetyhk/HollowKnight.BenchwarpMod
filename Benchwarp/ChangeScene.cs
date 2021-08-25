@@ -178,16 +178,19 @@ namespace Benchwarp
 
             switch (sceneName)
             {
+                case "Town":
+                    PlayerData.instance.SetBool(nameof(PlayerData.visitedDirtmouth), true);
+                    break;
                 case "Crossroads_04":
-                    PlayerData.instance.visitedCrossroads = true;
+                    PlayerData.instance.SetBool(nameof(PlayerData.visitedCrossroads), true);
                     break;
                 case "Room_Tram":
-                    PlayerData.instance.openedTramLower = true;
-                    PlayerData.instance.tramOpenedDeepnest = true;
+                    PlayerData.instance.SetBool(nameof(PlayerData.openedTramLower), true);
+                    PlayerData.instance.SetBool(nameof(PlayerData.tramOpenedDeepnest), true);
                     break;
                 case "Room_Tram_RG":
-                    PlayerData.instance.openedTramRestingGrounds = true;
-                    PlayerData.instance.tramOpenedCrossroads = true;
+                    PlayerData.instance.SetBool(nameof(PlayerData.openedTramRestingGrounds), true);
+                    PlayerData.instance.SetBool(nameof(PlayerData.tramOpenedCrossroads), true);
                     break;
             }
         }

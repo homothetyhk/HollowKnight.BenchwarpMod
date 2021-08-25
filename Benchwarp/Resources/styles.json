@@ -3,10 +3,18 @@
     "style": "Right",
     "offset": {
       "x": 0.0,
-      "y": -0.68,
+      "y": -0.7,
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -30,10 +38,18 @@
     "style": "Left",
     "offset": {
       "x": 0.0,
-      "y": -0.68,
+      "y": -0.7,
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": -1.0,
       "y": 1.0,
@@ -61,6 +77,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": -1.0,
       "y": 1.0,
@@ -88,6 +112,14 @@
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -115,6 +147,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.04,
       "y": 1.10564947,
@@ -142,6 +182,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -169,6 +217,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -192,10 +248,18 @@
     "style": "Corpse",
     "offset": {
       "x": 0.0,
-      "y": -0.68,
+      "y": -1.0,
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 3.40119028,
+      "y": 0.4037857
+    },
+    "triggerOffset": {
+      "x": 0.009788513,
+      "y": -0.376628876
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -223,6 +287,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": -1.0,
       "y": 1.0,
@@ -250,6 +322,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": -1.0,
       "y": 1.0,
@@ -277,6 +357,14 @@
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -304,6 +392,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -331,6 +427,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0685972,
       "y": 1.2100296,
@@ -354,12 +458,20 @@
     "style": "Camp",
     "offset": {
       "x": 0.0,
-      "y": -0.85,
+      "y": -1.25,
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": 0.2
+    },
     "localScale": {
-      "x": -1.0,
+      "x": 1.0,
       "y": 1.0,
       "z": 1.0
     },
@@ -372,8 +484,8 @@
     "tilter": false,
     "tiltAmount": 0.0,
     "adjustVector": {
-      "x": -0.4,
-      "y": 0.65,
+      "x": -0.35,
+      "y": 0.2,
       "z": 0.0
     }
   },
@@ -385,6 +497,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": -1.14694262,
       "y": 1.1899519,
@@ -412,6 +532,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.1,
       "y": 1.2,
@@ -439,6 +567,14 @@
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -462,10 +598,18 @@
     "style": "Mato",
     "offset": {
       "x": 0.0,
-      "y": -0.68,
+      "y": -0.8,
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -493,6 +637,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -516,10 +668,18 @@
     "style": "Sheo",
     "offset": {
       "x": 0.0,
-      "y": -0.68,
+      "y": -0.8,
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.31869024
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.543777466
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -547,6 +707,14 @@
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.1682992
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -1.150734
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -574,6 +742,14 @@
       "z": 0.0
     },
     "distinctLitSprite": true,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -597,10 +773,18 @@
     "style": "Gold",
     "offset": {
       "x": 0.0,
-      "y": -0.55,
+      "y": -0.7,
       "z": 0.0
     },
     "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
     "localScale": {
       "x": 1.0,
       "y": 1.0,
@@ -617,6 +801,76 @@
     "adjustVector": {
       "x": 0.0,
       "y": 0.9,
+      "z": 0.0
+    }
+  },
+  "Toll": {
+    "style": "Toll",
+    "offset": {
+      "x": 0.0,
+      "y": -0.78,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
+    "localScale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Toll",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.2,
+      "z": 0.0
+    }
+  },
+  "TollLeft": {
+    "style": "TollLeft",
+    "offset": {
+      "x": 0.0,
+      "y": -0.78,
+      "z": 0.0
+    },
+    "distinctLitSprite": false,
+    "triggerSize": {
+      "x": 2.859375,
+      "y": 0.225780487
+    },
+    "triggerOffset": {
+      "x": 0.0,
+      "y": -0.590234756
+    },
+    "localScale": {
+      "x": -1.0,
+      "y": 1.0,
+      "z": 1.0
+    },
+    "litOffset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.006
+    },
+    "spriteName": "Toll",
+    "tilter": false,
+    "tiltAmount": 0.0,
+    "adjustVector": {
+      "x": 0.0,
+      "y": 0.2,
       "z": 0.0
     }
   }

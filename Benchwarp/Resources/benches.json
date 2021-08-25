@@ -6,8 +6,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "TOWN",
-    "preload": true,
-    "style": "Left"
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Mato",
@@ -16,8 +20,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CLIFFS",
-    "preload": true,
-    "style": "Mato"
+    "style": "Mato",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.8,
+      "z": 0.0
+    }
   },
   {
     "name": "Hot Springs",
@@ -26,8 +34,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CROSSROADS",
-    "preload": true,
-    "style": "Right"
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Stag",
@@ -36,8 +48,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CROSSROADS",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Salubra",
@@ -46,8 +62,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CROSSROADS",
-    "preload": true,
-    "style": "Ornate"
+    "style": "Ornate",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Ancestral Mound",
@@ -56,8 +76,12 @@
     "respawnMarker": "BoneBench",
     "respawnType": 1,
     "mapZone": "SHAMAN_TEMPLE",
-    "preload": true,
-    "style": "Bone"
+    "style": "Bone",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.7,
+      "z": 0.0
+    }
   },
   {
     "name": "Black Egg Temple",
@@ -66,8 +90,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "FINAL_BOSS",
-    "preload": true,
-    "style": "Black"
+    "style": "Black",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.75,
+      "z": 0.0
+    }
   },
   {
     "name": "Waterfall",
@@ -76,8 +104,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GREEN_PATH",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Stone Sanctuary",
@@ -86,8 +118,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GREEN_PATH",
-    "preload": true,
-    "style": "Stone"
+    "style": "Stone",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Toll",
@@ -96,8 +132,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GREEN_PATH",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Stag",
@@ -106,8 +146,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GREEN_PATH",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Lake of Unn",
@@ -116,8 +160,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GREEN_PATH",
-    "preload": true,
-    "style": "Shrine"
+    "style": "Shrine",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Sheo",
@@ -126,8 +174,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GREEN_PATH",
-    "preload": true,
-    "style": "Sheo"
+    "style": "Sheo",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.8,
+      "z": 0.0
+    }
   },
   {
     "name": "Archives",
@@ -136,8 +188,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "FOG_CANYON",
-    "preload": true,
-    "style": "Archive"
+    "style": "Archive",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Queen's Station",
@@ -146,8 +202,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "QUEENS_STATION",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Leg Eater",
@@ -156,8 +216,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "WASTES",
-    "preload": true,
-    "style": "Corpse"
+    "style": "Corpse",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -1.0,
+      "z": 0.0
+    }
   },
   {
     "name": "Bretta",
@@ -166,8 +230,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "WASTES",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Mantis Village",
@@ -176,8 +244,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "WASTES",
-    "preload": true,
-    "style": "Mantis"
+    "style": "Mantis",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Quirrel",
@@ -186,8 +258,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CITY",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Toll",
@@ -196,8 +272,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CITY",
-    "preload": false,
-    "style": null
+    "style": "Toll",
+    "specificOffset": {
+      "x": 0.0,
+      "y": 0.46,
+      "z": 0.0
+    }
   },
   {
     "name": "City Storerooms",
@@ -206,8 +286,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CITY",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Watcher's Spire",
@@ -216,8 +300,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CITY",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "King's Station",
@@ -226,8 +314,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CITY",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Pleasure House",
@@ -236,8 +328,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "CITY",
-    "preload": true,
-    "style": "Simple"
+    "style": "Simple",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": -0.02
+    }
   },
   {
     "name": "Waterways",
@@ -246,8 +342,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "WATERWAYS",
-    "preload": true,
-    "style": "Tilted"
+    "style": "Tilted",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Godhome Atrium",
@@ -256,8 +356,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "GODS_GLORY",
-    "preload": true,
-    "style": "Wide"
+    "style": "Wide",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Godhome Roof",
@@ -266,8 +370,12 @@
     "respawnMarker": "RestBench (1)",
     "respawnType": 1,
     "mapZone": "GODS_GLORY",
-    "preload": false,
-    "style": "Gold"
+    "style": "Gold",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.7,
+      "z": 0.0
+    }
   },
   {
     "name": "Hall of Gods",
@@ -276,8 +384,12 @@
     "respawnMarker": "RestBench (1)",
     "respawnType": 1,
     "mapZone": "GODS_GLORY",
-    "preload": false,
-    "style": null
+    "style": "Wide",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Hot Springs",
@@ -286,8 +398,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "DEEPNEST",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Failed Tramway",
@@ -296,8 +412,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "DEEPNEST",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Beast's Den",
@@ -306,8 +426,12 @@
     "respawnMarker": "RestBench Return",
     "respawnType": 1,
     "mapZone": "BEASTS_DEN",
-    "preload": true,
-    "style": "Beast"
+    "style": "Beast",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.5,
+      "z": 0.0
+    }
   },
   {
     "name": "Toll",
@@ -316,8 +440,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "ABYSS",
-    "preload": false,
-    "style": null
+    "style": "Toll",
+    "specificOffset": {
+      "x": 0.0,
+      "y": 0.46,
+      "z": 0.0
+    }
   },
   {
     "name": "Hidden Station",
@@ -326,8 +454,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "ABYSS",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Oro",
@@ -336,8 +468,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "OUTSKIRTS",
-    "preload": true,
-    "style": "Oro"
+    "style": "Oro",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.8,
+      "z": 0.18
+    }
   },
   {
     "name": "Camp",
@@ -346,8 +482,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "OUTSKIRTS",
-    "preload": true,
-    "style": "Camp"
+    "style": "Camp",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.85,
+      "z": 0.0
+    }
   },
   {
     "name": "Colosseum",
@@ -356,8 +496,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "COLOSSEUM",
-    "preload": true,
-    "style": "Fool"
+    "style": "Fool",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.45,
+      "z": 0.0
+    }
   },
   {
     "name": "Hive",
@@ -366,8 +510,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "HIVE",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Dark Room",
@@ -376,8 +524,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "MINES",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.78,
+      "z": 0.0
+    }
   },
   {
     "name": "Crystal Guardian",
@@ -386,8 +538,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "MINES",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Stag",
@@ -396,8 +552,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "RESTING_GROUNDS",
-    "preload": false,
-    "style": null
+    "style": "Right",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Grey Mourner",
@@ -406,8 +566,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "RESTING_GROUNDS",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Cornifer",
@@ -416,8 +580,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "ROYAL_GARDENS",
-    "preload": true,
-    "style": "Garden"
+    "style": "Garden",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.3,
+      "z": 0.0
+    }
   },
   {
     "name": "Toll",
@@ -426,8 +594,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "ROYAL_GARDENS",
-    "preload": false,
-    "style": null
+    "style": "TollLeft",
+    "specificOffset": {
+      "x": 0.0,
+      "y": 0.46,
+      "z": 0.0
+    }
   },
   {
     "name": "Stag",
@@ -436,8 +608,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "ROYAL_GARDENS",
-    "preload": false,
-    "style": null
+    "style": "Left",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.68,
+      "z": 0.0
+    }
   },
   {
     "name": "Entrance",
@@ -446,8 +622,12 @@
     "respawnMarker": "WhiteBench",
     "respawnType": 1,
     "mapZone": "WHITE_PALACE",
-    "preload": true,
-    "style": "White"
+    "style": "White",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.13,
+      "z": 0.0
+    }
   },
   {
     "name": "Atrium",
@@ -456,8 +636,12 @@
     "respawnMarker": "WhiteBench",
     "respawnType": 1,
     "mapZone": "WHITE_PALACE",
-    "preload": false,
-    "style": null
+    "style": "White",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.13,
+      "z": 0.0
+    }
   },
   {
     "name": "Balcony",
@@ -466,8 +650,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "WHITE_PALACE",
-    "preload": false,
-    "style": null
+    "style": "White",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.13,
+      "z": 0.0
+    }
   },
   {
     "name": "Upper Tram",
@@ -476,8 +664,12 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "TRAM_UPPER",
-    "preload": false,
-    "style": null
+    "style": "Tram",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.7,
+      "z": 0.0
+    }
   },
   {
     "name": "Lower Tram",
@@ -486,7 +678,11 @@
     "respawnMarker": "RestBench",
     "respawnType": 1,
     "mapZone": "TRAM_LOWER",
-    "preload": true,
-    "style": "Tram"
+    "style": "Tram",
+    "specificOffset": {
+      "x": 0.0,
+      "y": -0.7,
+      "z": 0.0
+    }
   }
 ]

@@ -43,6 +43,7 @@ namespace Benchwarp
                     ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetField(nameof(GlobalSettings.NoMidAirDeploy))),
                     ("No Dark or Dream Rooms", NoDarkOrDreamClicked, t.GetField(nameof(GlobalSettings.NoDarkOrDreamRooms))),
                     ("No Preload", NoPreloadClicked, t.GetField(nameof(GlobalSettings.NoPreload))),
+                    ("Apply Style To All", VanillaBenchStylesClicked, t.GetField(nameof(GlobalSettings.ModifyVanillaBenchStyles))),
                 },
 
                 ["Settings"] = new (string, UnityAction<string>, FieldInfo)[]
@@ -196,7 +197,7 @@ namespace Benchwarp
                     {
                         AddButton(nearStyle, styleName, NearStyleChanged, position);
 
-                        position += new Vector2(0f, 25f);
+                        position += new Vector2(0f, 23f);
                     }
                 }
                 
@@ -209,7 +210,7 @@ namespace Benchwarp
                     {
                         AddButton(farStyle, styleName, FarStyleChanged, position);
 
-                        position += new Vector2(0f, 25f);
+                        position += new Vector2(0f, 23f);
                     }
                 }
                 
@@ -407,7 +408,7 @@ namespace Benchwarp
                 cooldown -= Time.unscaledDeltaTime;
             }
 
-            if (rootPanel == null || sceneNamePanel == null) return;
+            if (rootPanel == null || sceneNamePanel == null || GameManager.instance == null) return;
             if (gs.ShowScene)
             {
                 sceneNamePanel.SetActive(true, false);
@@ -416,7 +417,7 @@ namespace Benchwarp
             else sceneNamePanel.SetActive(false, true);
 
 
-            if (!Benchwarp.GS.ShowMenu || GameManager.instance == null || HeroController.instance == null || !GameManager.instance.IsGameplayScene() || !GameManager.instance.IsGamePaused())
+            if (!Benchwarp.GS.ShowMenu || HeroController.instance == null || !GameManager.instance.IsGameplayScene() || !GameManager.instance.IsGamePaused())
             {
                 if (rootPanel.active) rootPanel.SetActive(false, true);
                 return;
@@ -469,7 +470,7 @@ namespace Benchwarp
                 {
                     foreach (string style in BenchStyle.StyleNames)
                     {
-                        rootPanel.GetButton(style, "Near Style").SetTextColor(BenchMaker.IsValidStyle(style) && !PlayerData.instance.atBench ? gs.nearStyle == style ? Color.yellow : Color.white : Color.red);
+                        rootPanel.GetButton(style, "Near Style").SetTextColor(BenchStyle.IsValidStyle(style) && !PlayerData.instance.atBench ? gs.nearStyle == style ? Color.yellow : Color.white : Color.red);
                     }
                 }
 
@@ -477,7 +478,7 @@ namespace Benchwarp
                 {
                     foreach (string style in BenchStyle.StyleNames)
                     {
-                        rootPanel.GetButton(style, "Far Style").SetTextColor(BenchMaker.IsValidStyle(style) && !PlayerData.instance.atBench ? gs.farStyle == style ? Color.yellow : Color.white : Color.red);
+                        rootPanel.GetButton(style, "Far Style").SetTextColor(BenchStyle.IsValidStyle(style) && !PlayerData.instance.atBench ? gs.farStyle == style ? Color.yellow : Color.white : Color.red);
                     }
                 }
 
@@ -618,7 +619,7 @@ namespace Benchwarp
 
         private static void NearStyleChanged(string buttonName)
         {
-            if (!BenchMaker.IsValidStyle(buttonName) || PlayerData.instance.atBench) return;
+            if (!BenchStyle.IsValidStyle(buttonName) || PlayerData.instance.atBench) return;
             Benchwarp.GS.nearStyle = buttonName;
             BenchMaker.UpdateStyleFromMenu();
             Benchwarp.instance.SaveGlobalSettings();
@@ -626,7 +627,7 @@ namespace Benchwarp
 
         private static void FarStyleChanged(string buttonName)
         {
-            if (!BenchMaker.IsValidStyle(buttonName) || PlayerData.instance.atBench) return;
+            if (!BenchStyle.IsValidStyle(buttonName) || PlayerData.instance.atBench) return;
             Benchwarp.GS.farStyle = buttonName;
             BenchMaker.UpdateStyleFromMenu();
             Benchwarp.instance.SaveGlobalSettings();
@@ -664,6 +665,12 @@ namespace Benchwarp
         private static void NoPreloadClicked(string buttonName)
         {
             Benchwarp.GS.NoPreload = !Benchwarp.GS.NoPreload;
+            Benchwarp.instance.SaveGlobalSettings();
+        }
+
+        private static void VanillaBenchStylesClicked(string buttonName)
+        {
+            Benchwarp.GS.ModifyVanillaBenchStyles = !Benchwarp.GS.ModifyVanillaBenchStyles;
             Benchwarp.instance.SaveGlobalSettings();
         }
 

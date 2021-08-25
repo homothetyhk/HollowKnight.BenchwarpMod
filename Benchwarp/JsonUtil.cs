@@ -46,6 +46,45 @@ namespace Benchwarp
             }
         }
 
+        private class Vector2Converter : JsonConverter<Vector2>
+        {
+            public override Vector2 ReadJson(JsonReader reader, Type objectType, Vector2 existingValue, bool hasExistingValue, JsonSerializer serializer)
+            {
+                float x = 0;
+                float y = 0;
+
+                while (reader.Read())
+                {
+                    if (reader.TokenType == JsonToken.PropertyName)
+                    {
+                        string propertyName = (string)reader.Value;
+                        switch (propertyName)
+                        {
+                            case "x":
+                                x = (float)reader.ReadAsDouble();
+                                break;
+                            case "y":
+                                y = (float)reader.ReadAsDouble();
+                                break;
+                        }
+                    }
+                    else if (reader.TokenType == JsonToken.EndObject) break;
+                }
+
+                return new Vector2(x, y);
+            }
+
+            public override void WriteJson(JsonWriter writer, Vector2 value, JsonSerializer serializer)
+            {
+                writer.WriteStartObject();
+                writer.WritePropertyName("x");
+                writer.WriteValue(value.x);
+                writer.WritePropertyName("y");
+                writer.WriteValue(value.y);
+                writer.WriteEndObject();
+            }
+        }
+
         private class Vector3Converter : JsonConverter<Vector3>
         {
             public override Vector3 ReadJson(JsonReader reader, Type objectType, Vector3 existingValue, bool hasExistingValue, JsonSerializer serializer)
@@ -101,6 +140,7 @@ namespace Benchwarp
             };
 
             _js.Converters.Add(new StringEnumConverter());
+            _js.Converters.Add(new Vector2Converter());
             _js.Converters.Add(new Vector3Converter());
         }
     }

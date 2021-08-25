@@ -24,6 +24,7 @@ namespace Benchwarp
         public bool SwapNames = false;
         public bool EnableDeploy = true;
         public bool AlwaysToggleAll = false;
+        public bool ModifyVanillaBenchStyles = false;
         public string nearStyle = "Right";
         public string farStyle = "Right";
         public bool DeployCooldown = true;

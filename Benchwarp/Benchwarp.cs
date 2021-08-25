@@ -27,6 +27,7 @@ namespace Benchwarp
             ModHooks.SetPlayerStringHook += RemoveRespawnFromDeployedBench;
             // Imagine if GetPlayerIntHook actually worked
             On.GameManager.OnNextLevelReady += FixRespawnType;
+            On.PlayMakerFSM.OnEnable += StyleOverride;
 
             GUIController.Setup();
             GUIController.Instance.BuildMenus();
@@ -39,6 +40,47 @@ namespace Benchwarp
             if (Hotkeys.CurrentHotkeys.Count == 0)
             {
                 Hotkeys.ApplyHotkeyOverrides();
+            }
+        }
+
+        private void StyleOverride(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM fsm)
+        {
+            orig(fsm);
+            if (GS.ModifyVanillaBenchStyles && fsm.FsmName == "Bench Control")
+            {
+                if (fsm.gameObject == BenchMaker.DeployedBench) return;
+                switch (fsm.gameObject.scene.name)
+                {
+                    // benches that are too much trouble to implement
+
+                    case "Ruins1_02": // mostly works, but the bench sprite is part of Quirrel
+                    case "Deepnest_East_13": // camp
+                    case "Fungus1_24": // qg cornifer
+                    case "Mines_18": // cg2
+
+                    // Tolls work, but only after a scene change
+                    case "Fungus3_50":
+                    case "Ruins1_31":
+                    case "Abyss_18":
+                        return;
+                }
+
+
+                GameObject benchGO = fsm.gameObject;
+                Bench bench = Bench.Benches.FirstOrDefault(b => b.sceneName == benchGO.scene.name);
+                if (bench == null) return;
+
+                if (!BenchStyle.IsValidStyle(bench.style) || !BenchStyle.IsValidStyle(GS.nearStyle) || !BenchStyle.IsValidStyle(GS.farStyle)) return;
+
+                BenchStyle origStyle = BenchStyle.GetStyle(bench.style);
+                BenchStyle nearStyle = BenchStyle.GetStyle(GS.nearStyle);
+                BenchStyle farStyle = BenchStyle.GetStyle(GS.farStyle);
+
+                Vector3 position = benchGO.transform.position - bench.specificOffset;
+                nearStyle.ApplyFsmAndPositionChanges(benchGO, position);
+                nearStyle.ApplyLitSprite(benchGO);
+                farStyle.ApplyDefaultSprite(benchGO);
+                UnityEngine.Object.Destroy(benchGO.GetComponent<RestBenchTilt>());
             }
         }
 
@@ -147,7 +189,7 @@ namespace Benchwarp
 
         public void OnLoadGlobal(GlobalSettings s)
         {
-            GS = s;
+            GS = s ?? GS ?? new GlobalSettings();
         }
 
         public GlobalSettings OnSaveGlobal()
@@ -157,7 +199,7 @@ namespace Benchwarp
 
         public void OnLoadLocal(SaveSettings s)
         {
-            LS = s;
+            LS = s ?? new SaveSettings();
         }
 
         public SaveSettings OnSaveLocal()
@@ -165,13 +207,17 @@ namespace Benchwarp
             return LS;
         }
 
-        public bool ToggleButtonInsideMenu => false;
+        public bool ToggleButtonInsideMenu => true;
 
         public List<IMenuMod.MenuEntry> GetMenuData(IMenuMod.MenuEntry? toggleButtonEntry)
         {
+            var e = toggleButtonEntry.Value;
+            var entry = new IMenuMod.MenuEntry(e.Name, e.Values, "Toggle all effects of the Benchwarp mod.", e.Saver, e.Loader);
+
             return new List<IMenuMod.MenuEntry>
             {
-                new IMenuMod.MenuEntry("Show Menu", new string[] { "True", "False" }, "Toggle the Benchwarp Menu UI", (i) => GS.ShowMenu = i == 0, () => GS.ShowMenu ? 0 : 1),
+                entry,
+                new IMenuMod.MenuEntry("Show Menu", new string[] { "True", "False" }, "Toggle only the Benchwarp Menu UI", (i) => GS.ShowMenu = i == 0, () => GS.ShowMenu ? 0 : 1),
             };
         }
     }
