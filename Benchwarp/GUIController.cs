@@ -54,7 +54,6 @@ namespace Benchwarp
 
         private void LoadResources()
         {
-            Modding.CanvasUtil.CreateFonts();
 
             TrajanBold = Modding.CanvasUtil.TrajanBold;
             TrajanNormal = Modding.CanvasUtil.TrajanNormal;
