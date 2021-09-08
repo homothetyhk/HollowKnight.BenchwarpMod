@@ -54,20 +54,16 @@ namespace Benchwarp
 
         private void LoadResources()
         {
-            Modding.CanvasUtil.CreateFonts();
-
             TrajanBold = Modding.CanvasUtil.TrajanBold;
             TrajanNormal = Modding.CanvasUtil.TrajanNormal;
 
             try
             {
-
                 Arial = Font.CreateDynamicFontFromOSFont
                 (
                     Font.GetOSInstalledFontNames().First(x => x.ToLower().Contains("arial")),
                     13
                 );
-
             }
             catch
             {
@@ -101,8 +97,6 @@ namespace Benchwarp
                         string internalName = split[split.Length - 2];
                         
                         images.Add(internalName, tex);
-
-                        //Benchwarp.instance.Log("Loaded image: " + internalName);
                     }
                 }
                 catch (Exception e)
@@ -116,8 +110,6 @@ namespace Benchwarp
         {
             try
             {
-                
-
                 TopMenu.Update();
                 DetectHotkeys();
             }
