@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Modding;
 using UnityEngine;
 
@@ -209,16 +210,35 @@ namespace Benchwarp
 
         public bool ToggleButtonInsideMenu => true;
 
+        private readonly string[] bools = new string[] { "True", "False" };
+
         public List<IMenuMod.MenuEntry> GetMenuData(IMenuMod.MenuEntry? toggleButtonEntry)
         {
             var e = toggleButtonEntry.Value;
             var entry = new IMenuMod.MenuEntry(e.Name, e.Values, "Toggle all effects of the Benchwarp mod.", e.Saver, e.Loader);
 
-            return new List<IMenuMod.MenuEntry>
+            List<IMenuMod.MenuEntry> menuEntries = new List<IMenuMod.MenuEntry>() { entry };
+
+            foreach (FieldInfo fi in typeof(GlobalSettings).GetFields())
             {
-                entry,
-                new IMenuMod.MenuEntry("Show Menu", new string[] { "True", "False" }, "Toggle only the Benchwarp Menu UI", (i) => GS.ShowMenu = i == 0, () => GS.ShowMenu ? 0 : 1),
-            };
+                if (fi.FieldType != typeof(bool))
+                {
+                    continue;
+                }
+                if (fi.GetCustomAttribute<MenuToggleableAttribute>() is MenuToggleableAttribute mt)
+                {
+                    menuEntries.Add(new IMenuMod.MenuEntry()
+                    {
+                        Name = mt.name,
+                        Description = mt.description,
+                        Values = bools,
+                        Saver = opt => { fi.SetValue(GS, opt == 0); TopMenu.RebuildMenu(); },
+                        Loader = () => (bool)fi.GetValue(GS) ? 0 : 1
+                    });
+                }
+            }
+
+            return menuEntries;
         }
     }
 }
