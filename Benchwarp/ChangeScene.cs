@@ -23,6 +23,7 @@ namespace Benchwarp
         private static IEnumerator Respawn()
         {
             GameManager.instance.SaveGame();
+            GameManager.instance.TimePasses();
             GameManager.instance.ResetSemiPersistentItems();
             UIManager.instance.UIClosePauseMenu();
 
