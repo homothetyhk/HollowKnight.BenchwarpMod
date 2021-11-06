@@ -92,6 +92,10 @@ namespace Benchwarp
             }
             MenuButtonList.ClearAllLastSelected();
             PlayerData.instance.atBench = false; // kill bench storage
+            if (HeroController.instance != null)
+            {
+                HeroController.instance.cState.nearBench = false;
+            }
 
             SceneLoad load = ReflectionHelper.GetField<GameManager, SceneLoad>(GameManager.instance, "sceneLoad");
             if (load != null)
