@@ -1830,7 +1830,7 @@
     },
     "target": {
       "door": "left1",
-      "room": "Fungus1_34"
+      "room": "Fungus1_37"
     },
     "area": "Greenpath",
     "oneWay": "Bidirectional"
@@ -2465,7 +2465,7 @@
       "room": "Fungus1_37"
     },
     "target": {
-      "door": "right1",
+      "door": "right2",
       "room": "Fungus1_11"
     },
     "area": "Greenpath",
@@ -3029,7 +3029,7 @@
       "room": "Fungus2_34"
     },
     "target": {
-      "door": "left2",
+      "door": "left3",
       "room": "Fungus2_01"
     },
     "area": "Queen's Station",
@@ -3174,7 +3174,7 @@
     },
     "target": {
       "door": "right1",
-      "room": "Fungus2_05"
+      "room": "Fungus2_33"
     },
     "area": "Fungal Wastes",
     "oneWay": "Bidirectional"
@@ -8366,11 +8366,11 @@
   {
     "self": {
       "door": "left2",
-      "room": "RestingGrounds_07"
+      "room": "RestingGrounds_05"
     },
     "target": {
       "door": "right1",
-      "room": "RestingGrounds_04"
+      "room": "RestingGrounds_07"
     },
     "area": "Resting Grounds",
     "oneWay": "Bidirectional"
