@@ -34,7 +34,7 @@ namespace Benchwarp
         private static readonly Type t = typeof(GlobalSettings);
 
         private static readonly Dictionary<string, (string, UnityAction<string>, FieldInfo)[]> Panels =
-            new Dictionary<string, (string, UnityAction<string>, FieldInfo)[]>
+            new()
             {
                 ["Options"] = new (string, UnityAction<string>, FieldInfo)[]
                 {
@@ -59,14 +59,14 @@ namespace Benchwarp
                 }
             };
 
-        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> Buttons = new Dictionary<string, (UnityAction<string>, Vector2)>
+        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> Buttons = new()
         {
             ["Deploy"] = (DeployClicked, new Vector2(-154f, 400f)),
             ["Set"] = (SetClicked, new Vector2(-54f, 400f)),
             ["Destroy"] = (s => BenchMaker.DestroyBench(), new Vector2(46f, 400f)),
         };
 
-        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> CustomStartButtons = new Dictionary<string, (UnityAction<string>, Vector2)>
+        private static readonly Dictionary<string, (UnityAction<string>, Vector2)> CustomStartButtons = new()
         {
             ["Set Start"] = (s => Events.SetToStart(), new Vector2(-154f, 80f))
         };
@@ -115,7 +115,7 @@ namespace Benchwarp
             rootPanel = new CanvasPanel
                 (_canvas, GUIController.Instance.images["ButtonsMenuBG"], new Vector2(342f, 15f), new Vector2(1346f, 0f), new Rect(0f, 0f, 0f, 0f));
 
-            Rect buttonRect = new Rect(0, 0, GUIController.Instance.images["ButtonRect"].width, GUIController.Instance.images["ButtonRect"].height);
+            Rect buttonRect = new(0, 0, GUIController.Instance.images["ButtonRect"].width, GUIController.Instance.images["ButtonRect"].height);
 
             fontSize = 12;
 
@@ -193,7 +193,7 @@ namespace Benchwarp
 
                 CanvasPanel nearStyle = MakePanel("Near Style", new Vector2(145f, 420f));
                 {
-                    Vector2 position = new Vector2(5f, 25f);
+                    Vector2 position = new(5f, 25f);
 
                     foreach (string styleName in BenchStyle.StyleNames)
                     {
@@ -206,7 +206,7 @@ namespace Benchwarp
 
                 CanvasPanel farStyle = MakePanel("Far Style", new Vector2(245f, 420f));
                 {
-                    Vector2 position = new Vector2(5f, 25f);
+                    Vector2 position = new(5f, 25f);
 
                     foreach (string styleName in BenchStyle.StyleNames)
                     {
@@ -351,9 +351,9 @@ namespace Benchwarp
                 }
             }
 
-            Vector2 panelDistance = new Vector2(-155f, 20f);
+            Vector2 panelDistance = new(-155f, 20f);
 
-            Dictionary<string, Vector2> panelButtonHeight = new Dictionary<string, Vector2>();
+            Dictionary<string, Vector2> panelButtonHeight = new();
             benchPanels = new List<string>();
 
             foreach (Bench bench in Bench.Benches)
@@ -766,14 +766,14 @@ namespace Benchwarp
         {
             if (string.IsNullOrEmpty(DoorWarpSelection.door) || string.IsNullOrEmpty(DoorWarpSelection.room)) return;
 
-            if (!DoorWarp.IndexedDoors.TryGetValue(DoorWarpSelection.room, out var roomDoors) || !roomDoors.TryGetValue(DoorWarpSelection.door, out Door orig))
+            if (!DoorWarp.IndexedDoors.TryGetValue(DoorWarpSelection.room, out Dictionary<string, Door> roomDoors) || !roomDoors.TryGetValue(DoorWarpSelection.door, out Door orig))
             {
                 return;
             }
 
             if (orig.target.IsInvalid()) return;
 
-            if (!DoorWarp.IndexedDoors.TryGetValue(orig.target.room, out var roomDoors2) || !roomDoors2.TryGetValue(orig.target.door, out Door target))
+            if (!DoorWarp.IndexedDoors.TryGetValue(orig.target.room, out Dictionary<string, Door> roomDoors2) || !roomDoors2.TryGetValue(orig.target.door, out Door target))
             {
                 return;
             }

@@ -23,7 +23,7 @@ namespace Benchwarp
             this.room = room;
         }
 
-        public static DoorTarget None = new DoorTarget();
+        public static DoorTarget None = new();
 
         public override string ToString()
         {

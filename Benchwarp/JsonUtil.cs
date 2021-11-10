@@ -15,20 +15,16 @@ namespace Benchwarp
 
         public static T Deserialize<T>(string embeddedResourcePath)
         {
-            using (StreamReader sr = new StreamReader(typeof(JsonUtil).Assembly.GetManifestResourceStream(embeddedResourcePath)))
-            using (var jtr = new JsonTextReader(sr))
-            {
-                return _js.Deserialize<T>(jtr);
-            }
+            using StreamReader sr = new(typeof(JsonUtil).Assembly.GetManifestResourceStream(embeddedResourcePath));
+            using JsonTextReader jtr = new(sr);
+            return _js.Deserialize<T>(jtr);
         }
 
         public static T DeserializeString<T>(string json)
         {
-            using (StringReader sr = new StringReader(json))
-            using (var jtr = new JsonTextReader(sr))
-            {
-                return _js.Deserialize<T>(jtr);
-            }
+            using StringReader sr = new(json);
+            using JsonTextReader jtr = new(sr);
+            return _js.Deserialize<T>(jtr);
         }
 
         public static void Serialize(object o, string fileName)
@@ -38,12 +34,10 @@ namespace Benchwarp
 
         public static string Serialize(object o)
         {
-            using (StringWriter sw = new StringWriter())
-            {
-                _js.Serialize(sw, o);
-                sw.Flush();
-                return sw.ToString();
-            }
+            using StringWriter sw = new();
+            _js.Serialize(sw, o);
+            sw.Flush();
+            return sw.ToString();
         }
 
         private class Vector2Converter : JsonConverter<Vector2>

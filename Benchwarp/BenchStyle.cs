@@ -12,7 +12,7 @@ namespace Benchwarp
 
         public static BenchStyle GetStyle(string style)
         {
-            return style != null ? _styles.TryGetValue(style, out var bs) ? bs : null : null;
+            return style != null ? _styles.TryGetValue(style, out BenchStyle bs) ? bs : null : null;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Benchwarp
             }
 
             PlayMakerFSM fsm = bench.LocateMyFSM("Bench Control");
-            var fv = fsm.FsmVariables;
+            HutongGames.PlayMaker.FsmVariables fv = fsm.FsmVariables;
             fv.FindFsmBool("Tilter").Value = tilter;
             fv.FindFsmFloat("Tilt Amount").Value = tiltAmount;
             fv.FindFsmVector3("Adjust Vector").Value = adjustVector;
@@ -79,7 +79,7 @@ namespace Benchwarp
         {
             _styles = JsonUtil.Deserialize<Dictionary<string, BenchStyle>>("Benchwarp.Resources.styles.json");
             _validStyles = SpriteManager.GetValidStyles(BenchStyle.StyleNames);
-            foreach (var s in StyleNames.Except(_validStyles)) Benchwarp.instance.Log($"Invalid style: {s}");
+            foreach (string s in StyleNames.Except(_validStyles)) Benchwarp.instance.Log($"Invalid style: {s}");
         }
     }
 }

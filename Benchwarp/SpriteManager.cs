@@ -13,15 +13,15 @@ namespace Benchwarp
     public static class SpriteManager
     {
         private const string _prefix = "Benchwarp.Resources.Styles.";
-        private static readonly Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
+        private static readonly Dictionary<string, Sprite> _sprites = new();
         private static readonly string[] resourceNames = typeof(SpriteManager).Assembly.GetManifestResourceNames();
 
         public static HashSet<string> GetValidStyles(IEnumerable<string> styles)
         {
-            HashSet<string> h = new HashSet<string>();
+            HashSet<string> h = new();
             foreach (string s in styles)
             {
-                var bs = BenchStyle.GetStyle(s);
+                BenchStyle bs = BenchStyle.GetStyle(s);
                 bool normal = false;
                 bool lit = false;
                 string prefix = _prefix + bs.spriteName;
@@ -67,7 +67,7 @@ namespace Benchwarp
 
         private static Sprite FromStream(Stream s)
         {
-            Texture2D tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+            Texture2D tex = new(1, 1, TextureFormat.RGBA32, false);
             byte[] buffer = ToArray(s);
             tex.LoadImage(buffer, markNonReadable: true);
             tex.filterMode = FilterMode.Trilinear;
@@ -76,11 +76,9 @@ namespace Benchwarp
 
         private static byte[] ToArray(Stream s)
         {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                s.CopyTo(ms);
-                return ms.ToArray();
-            }
+            using MemoryStream ms = new();
+            s.CopyTo(ms);
+            return ms.ToArray();
         }
     }
 }

@@ -48,8 +48,7 @@ namespace Benchwarp.CanvasUtil
             buttonTransform.SetScaleX(size.x / bgSubSection.width);
             buttonTransform.SetScaleY(size.y / bgSubSection.height);
 
-            Vector2 position = new Vector2
-            (
+            Vector2 position = new            (
                 (pos.x + size.x / bgSubSection.width * bgSubSection.width / 2f) / 1920f,
                 (1080f - (pos.y + size.y / bgSubSection.height * bgSubSection.height / 2f)) / 1080f
             );
@@ -124,7 +123,7 @@ namespace Benchwarp.CanvasUtil
             if (buttonObj != null)
             {
                 Vector2 sz = buttonObj.GetComponent<RectTransform>().sizeDelta;
-                Vector2 position = new Vector2((pos.x + sz.x / 2f) / 1920f, (1080f - (pos.y + sz.y / 2f)) / 1080f);
+                Vector2 position = new((pos.x + sz.x / 2f) / 1920f, (1080f - (pos.y + sz.y / 2f)) / 1080f);
                 buttonObj.GetComponent<RectTransform>().anchorMin = position;
                 buttonObj.GetComponent<RectTransform>().anchorMax = position;
             }

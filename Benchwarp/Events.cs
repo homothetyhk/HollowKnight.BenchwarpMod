@@ -9,28 +9,28 @@ namespace Benchwarp
 {
     public static class Events
     {
-        public static readonly SequentialEventHandler<string> OnGetSceneName = new SequentialEventHandler<string>();
+        public static readonly SequentialEventHandler<string> OnGetSceneName = new();
         public static string GetSceneName(string sceneName) => OnGetSceneName.Invoke(sceneName);
 
 
-        public static readonly SequentialEventHandler<string> OnGetBenchName = new SequentialEventHandler<string>();
+        public static readonly SequentialEventHandler<string> OnGetBenchName = new();
         public static string GetBenchName(string benchName) => OnGetBenchName.Invoke(benchName);
 
 
         public static readonly SequentialEventHandler<(string respawnScene, string respawnMarkerName, int respawnType, int mapZone)>
-            OnGetStartDef = new SequentialEventHandler<(string respawnScene, string respawnMarkerName, int respawnType, int mapZone)>();
+            OnGetStartDef = new();
         public static (string respawnScene, string respawnMarkerName, int respawnType, int mapZone) GetStartDef() =>
             OnGetStartDef.Invoke(("Tutorial_01", "Death Respawn Marker", 0, 2));
         public static bool AtStart()
         {
-            var (respawnScene, respawnMarkerName, _, _) = GetStartDef();
+            (string respawnScene, string respawnMarkerName, int _, int _) = GetStartDef();
             return !Benchwarp.LS.atDeployedBench
                 && respawnScene == PlayerData.instance.respawnScene 
                 && respawnMarkerName == PlayerData.instance.respawnMarkerName;
         }
         public static void SetToStart()
         {
-            var (respawnScene, respawnMarkerName, respawnType, mapZone) = GetStartDef();
+            (string respawnScene, string respawnMarkerName, int respawnType, int mapZone) = GetStartDef();
             Benchwarp.LS.atDeployedBench = false;
             PlayerData.instance.respawnScene = respawnScene;
             PlayerData.instance.respawnMarkerName = respawnMarkerName;
@@ -61,7 +61,7 @@ namespace Benchwarp
 
     public class SequentialEventHandler<T>
     {
-        private readonly List<Func<T, T>> modifiers = new List<Func<T, T>>();
+        private readonly List<Func<T, T>> modifiers = new();
 
         public event Func<T, T> Event
         {
@@ -71,7 +71,7 @@ namespace Benchwarp
 
         public T Invoke(T defaultValue)
         {
-            foreach (var f in modifiers)
+            foreach (Func<T, T> f in modifiers)
             {
                 defaultValue = f(defaultValue);
             }

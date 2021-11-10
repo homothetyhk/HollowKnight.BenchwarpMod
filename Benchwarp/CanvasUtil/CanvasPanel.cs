@@ -13,10 +13,10 @@ namespace Benchwarp.CanvasUtil
         private Vector2 position;
         private readonly Vector2 size;
         
-        private readonly Dictionary<string, CanvasButton> buttons = new Dictionary<string, CanvasButton>();
-        private readonly Dictionary<string, CanvasPanel> panels = new Dictionary<string, CanvasPanel>();
-        private readonly Dictionary<string, CanvasImage> images = new Dictionary<string, CanvasImage>();
-        private readonly Dictionary<string, CanvasText> texts = new Dictionary<string, CanvasText>();
+        private readonly Dictionary<string, CanvasButton> buttons = new();
+        private readonly Dictionary<string, CanvasPanel> panels = new();
+        private readonly Dictionary<string, CanvasImage> images = new();
+        private readonly Dictionary<string, CanvasText> texts = new();
 
         public bool active;
 
@@ -34,7 +34,7 @@ namespace Benchwarp.CanvasUtil
 
         public void AddButton(string name, Texture2D tex, Vector2 pos, Vector2 sz, UnityAction<string> func, Rect bgSubSection, Font font = null, string text = null, int fontSize = 13)
         {
-            CanvasButton button = new CanvasButton(canvas, name, tex, position + pos, size + sz, bgSubSection, font, text, fontSize);
+            CanvasButton button = new(canvas, name, tex, position + pos, size + sz, bgSubSection, font, text, fontSize);
             button.AddClickEvent(func);
 
             buttons.Add(name, button);
@@ -51,7 +51,7 @@ namespace Benchwarp.CanvasUtil
 
         public CanvasPanel AddPanel(string name, Texture2D tex, Vector2 pos, Vector2 sz, Rect bgSubSection)
         {
-            CanvasPanel panel = new CanvasPanel(canvas, tex, position + pos, sz, bgSubSection);
+            CanvasPanel panel = new(canvas, tex, position + pos, sz, bgSubSection);
 
             panels.Add(name, panel);
 
@@ -60,14 +60,14 @@ namespace Benchwarp.CanvasUtil
 
         public void AddImage(string name, Texture2D tex, Vector2 pos, Vector2 size, Rect subSprite)
         {
-            CanvasImage image = new CanvasImage(canvas, tex, position + pos, size, subSprite);
+            CanvasImage image = new(canvas, tex, position + pos, size, subSprite);
 
             images.Add(name, image);
         }
 
         public void AddText(string name, string text, Vector2 pos, Vector2 sz, Font font, int fontSize = 13, FontStyle style = FontStyle.Normal, TextAnchor alignment = TextAnchor.UpperLeft)
         {
-            CanvasText t = new CanvasText(canvas, position + pos, sz, font, text, fontSize, style, alignment);
+            CanvasText t = new(canvas, position + pos, sz, font, text, fontSize, style, alignment);
 
             texts.Add(name, t);
         }

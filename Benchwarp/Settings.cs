@@ -42,7 +42,7 @@ namespace Benchwarp
         public bool DoorWarp = false;
         [MenuToggleable(name: "Enable Hotkeys")]
         public bool EnableHotkeys = false;
-        public Dictionary<string, string> HotkeyOverrides = new Dictionary<string, string>();
+        public Dictionary<string, string> HotkeyOverrides = new();
     }
 
     public class MenuToggleableAttribute : Attribute

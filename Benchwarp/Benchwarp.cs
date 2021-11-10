@@ -15,8 +15,8 @@ namespace Benchwarp
             instance = this;
         }
 
-        public static GlobalSettings GS { get; private set; } = new GlobalSettings();
-        public static SaveSettings LS { get; private set; } = new SaveSettings();
+        public static GlobalSettings GS { get; private set; } = new();
+        public static SaveSettings LS { get; private set; } = new();
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloaded)
         {
@@ -33,7 +33,7 @@ namespace Benchwarp
             GUIController.Setup();
             GUIController.Instance.BuildMenus();
 
-            if (Benchwarp.LS.benchDeployed && GameManager.instance.sceneName == Benchwarp.LS.benchScene)
+            if (LS.benchDeployed && GameManager.instance.sceneName == LS.benchScene)
             {
                 BenchMaker.MakeBench(); // Since the mod could be reenabled in any scene
             }
@@ -103,7 +103,7 @@ namespace Benchwarp
                 foreach (Bench bench in Bench.Benches)
                 {
                     if (bench.AtBench()) bench.SetVisited(true);
-                    else if (GameManager.instance.sceneName == bench.sceneName && Benchwarp.LS.benchScene != bench.sceneName) bench.SetVisited(true);
+                    else if (GameManager.instance.sceneName == bench.sceneName && LS.benchScene != bench.sceneName) bench.SetVisited(true);
                     else continue;
                     break;
                 }
@@ -118,32 +118,27 @@ namespace Benchwarp
                 case nameof(PlayerData.respawnMarkerName):
                     if (value != BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME)
                     {
-                        Benchwarp.LS.atDeployedBench = false;
+                        LS.atDeployedBench = false;
                     }
                     break;
                 case nameof(PlayerData.respawnScene):
-                    if (value != Benchwarp.LS.benchScene)
+                    if (value != LS.benchScene)
                     {
-                        Benchwarp.LS.atDeployedBench = false;
+                        LS.atDeployedBench = false;
                     }
                     break;
             }
             return value;
         }
 
-        private string RespawnAtDeployedBench(string stringName, string value)
-        {
-            if (!Benchwarp.LS.atDeployedBench) return value;
-            switch (stringName)
+        private string RespawnAtDeployedBench(string stringName, string value) => !LS.atDeployedBench
+            ? value 
+            : stringName switch
             {
-                case nameof(PlayerData.respawnMarkerName):
-                    return BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
-                case nameof(PlayerData.respawnScene):
-                    return Benchwarp.LS.benchScene;
-                default:
-                    return value;
-            }
-        }
+                nameof(PlayerData.respawnMarkerName) => BenchMaker.DEPLOYED_BENCH_RESPAWN_MARKER_NAME,
+                nameof(PlayerData.respawnScene) => LS.benchScene,
+                _ => value,
+            };
 
         private void FixRespawnType(On.GameManager.orig_OnNextLevelReady orig, GameManager self)
         {
@@ -190,7 +185,7 @@ namespace Benchwarp
 
         public void OnLoadGlobal(GlobalSettings s)
         {
-            GS = s ?? GS ?? new GlobalSettings();
+            GS = s ?? GS ?? new();
         }
 
         public GlobalSettings OnSaveGlobal()
@@ -200,7 +195,7 @@ namespace Benchwarp
 
         public void OnLoadLocal(SaveSettings s)
         {
-            LS = s ?? new SaveSettings();
+            LS = s ?? new();
         }
 
         public SaveSettings OnSaveLocal()
@@ -214,10 +209,10 @@ namespace Benchwarp
 
         public List<IMenuMod.MenuEntry> GetMenuData(IMenuMod.MenuEntry? toggleButtonEntry)
         {
-            var e = toggleButtonEntry.Value;
-            var entry = new IMenuMod.MenuEntry(e.Name, e.Values, "Toggle all effects of the Benchwarp mod.", e.Saver, e.Loader);
+            IMenuMod.MenuEntry e = toggleButtonEntry.Value;
+            IMenuMod.MenuEntry entry = new(e.Name, e.Values, "Toggle all effects of the Benchwarp mod.", e.Saver, e.Loader);
 
-            List<IMenuMod.MenuEntry> menuEntries = new List<IMenuMod.MenuEntry>() { entry };
+            List<IMenuMod.MenuEntry> menuEntries = new() { entry };
 
             foreach (FieldInfo fi in typeof(GlobalSettings).GetFields())
             {
@@ -227,7 +222,7 @@ namespace Benchwarp
                 }
                 if (fi.GetCustomAttribute<MenuToggleableAttribute>() is MenuToggleableAttribute mt)
                 {
-                    menuEntries.Add(new IMenuMod.MenuEntry()
+                    menuEntries.Add(new()
                     {
                         Name = mt.name,
                         Description = mt.description,

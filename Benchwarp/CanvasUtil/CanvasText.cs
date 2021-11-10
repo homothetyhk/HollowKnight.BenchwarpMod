@@ -41,7 +41,7 @@ namespace Benchwarp.CanvasUtil
 
             textObj.transform.SetParent(parent.transform, false);
 
-            Vector2 position = new Vector2((pos.x + size.x / 2f) / 1920f, (1080f - (pos.y + size.y / 2f)) / 1080f);
+            Vector2 position = new((pos.x + size.x / 2f) / 1920f, (1080f - (pos.y + size.y / 2f)) / 1080f);
             textTransform.anchorMin = position;
             textTransform.anchorMax = position;
 
@@ -56,7 +56,7 @@ namespace Benchwarp.CanvasUtil
             {
                 RectTransform textTransform = textObj.GetComponent<RectTransform>();
 
-                Vector2 position = new Vector2((pos.x + size.x / 2f) / 1920f, (1080f - (pos.y + size.y / 2f)) / 1080f);
+                Vector2 position = new((pos.x + size.x / 2f) / 1920f, (1080f - (pos.y + size.y / 2f)) / 1080f);
                 textTransform.anchorMin = position;
                 textTransform.anchorMax = position;
             }

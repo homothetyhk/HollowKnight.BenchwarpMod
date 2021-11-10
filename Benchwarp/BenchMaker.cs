@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using HutongGames.PlayMaker;
+using UObject = UnityEngine.Object;
 
 namespace Benchwarp
 {
@@ -20,7 +21,7 @@ namespace Benchwarp
 
             if (!ObjectCache.DidPreload)
             {
-                GameObject marker = new GameObject();
+                GameObject marker = new();
                 marker.transform.position = new Vector3(Benchwarp.LS.benchX, Benchwarp.LS.benchY, 7.4f);
                 marker.tag = "RespawnPoint";
                 marker.name = DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
@@ -39,7 +40,7 @@ namespace Benchwarp
 
         public static void DestroyBench(bool DontDeleteData = false)
         {
-            if (DeployedBench != null) GameObject.Destroy(DeployedBench);
+            if (DeployedBench != null) UObject.Destroy(DeployedBench);
             if (DontDeleteData) return;
             Benchwarp.LS.benchDeployed = false;
             Benchwarp.LS.atDeployedBench = false;

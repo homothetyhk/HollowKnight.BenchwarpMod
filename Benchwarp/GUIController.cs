@@ -13,7 +13,7 @@ namespace Benchwarp
     {
         public static void Setup()
         {
-            GameObject GUIObj = new GameObject("Benchwarp GUI");
+            GameObject GUIObj = new("Benchwarp GUI");
             _instance = GUIObj.AddComponent<GUIController>();
             DontDestroyOnLoad(GUIObj);
         }
@@ -29,7 +29,7 @@ namespace Benchwarp
 
         private Font Arial { get; set; }
         
-        public Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
+        public Dictionary<string, Texture2D> images = new();
 
         private string last2Keystrokes = "";
 
@@ -84,20 +84,18 @@ namespace Benchwarp
                 
                 try
                 {
-                    using (Stream imageStream = asm.GetManifestResourceStream(res))
-                    {
+                    using Stream imageStream = asm.GetManifestResourceStream(res);
 
-                        byte[] buffer = new byte[imageStream.Length];
-                        imageStream.Read(buffer, 0, buffer.Length);
+                    byte[] buffer = new byte[imageStream.Length];
+                    imageStream.Read(buffer, 0, buffer.Length);
 
-                        Texture2D tex = new Texture2D(1, 1);
-                        tex.LoadImage(buffer.ToArray());
+                    Texture2D tex = new(1, 1);
+                    tex.LoadImage(buffer.ToArray());
 
-                        string[] split = res.Split('.');
-                        string internalName = split[split.Length - 2];
-                        
-                        images.Add(internalName, tex);
-                    }
+                    string[] split = res.Split('.');
+                    string internalName = split[split.Length - 2];
+
+                    images.Add(internalName, tex);
                 }
                 catch (Exception e)
                 {
@@ -127,7 +125,7 @@ namespace Benchwarp
                 return;
             }
             
-            foreach (var letter in BenchLetters)
+            foreach (KeyCode letter in BenchLetters)
             {
                 if (Input.GetKeyDown(letter))
                 {
@@ -182,7 +180,7 @@ namespace Benchwarp
 
                 Benchwarp.instance.LogWarn("Couldn't find GUIController");
 
-                GameObject GUIObj = new GameObject();
+                GameObject GUIObj = new();
                 _instance = GUIObj.AddComponent<GUIController>();
                 DontDestroyOnLoad(GUIObj);
 
@@ -190,7 +188,7 @@ namespace Benchwarp
             }
         }
 
-        private static HashSet<KeyCode> BenchLetters = new HashSet<KeyCode>()
+        private static HashSet<KeyCode> BenchLetters = new()
         {
             KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z
         };

@@ -7,13 +7,13 @@ namespace Benchwarp
 {
     public static class Hotkeys
     {
-        internal static Dictionary<string, int> CurrentHotkeys = new Dictionary<string, int>();
+        internal static Dictionary<string, int> CurrentHotkeys = new();
 
         internal static void ApplyHotkeyOverrides()
         {
-            foreach (var defaultBind in DefaultHotkeys)
+            foreach (KeyValuePair<string, int> defaultBind in DefaultHotkeys)
             {
-                if (Benchwarp.GS.HotkeyOverrides.TryGetValue(defaultBind.Key, out var mappedHotkey))
+                if (Benchwarp.GS.HotkeyOverrides.TryGetValue(defaultBind.Key, out string mappedHotkey))
                 {
                     if (mappedHotkey.Length != 2 || !char.IsLetter(mappedHotkey[0]) || !char.IsLetter(mappedHotkey[1]))
                     {
@@ -37,7 +37,7 @@ namespace Benchwarp
         }
 
 
-        private static Dictionary<string, int> DefaultHotkeys = new Dictionary<string, int>()
+        private static Dictionary<string, int> DefaultHotkeys = new()
         {
             {"DM", 0},
             {"NM", 1},
