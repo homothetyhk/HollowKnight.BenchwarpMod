@@ -24,7 +24,6 @@ namespace Benchwarp
         {
             GameManager.instance.SaveGame();
             GameManager.instance.TimePasses();
-            GameManager.instance.ResetSemiPersistentItems();
             UIManager.instance.UIClosePauseMenu();
 
             // Collection of various redundant attempts to fix the infamous soul orb bug
@@ -39,6 +38,18 @@ namespace Benchwarp
             // Set some stuff which would normally be set by LoadSave
             HeroController.instance.AffectedByGravity(false);
             HeroController.instance.transitionState = HeroTransitionState.EXITING_SCENE;
+            if (HeroController.instance != null)
+            {
+                if (HeroController.instance.cState.onConveyor || HeroController.instance.cState.onConveyorV || HeroController.instance.cState.inConveyorZone)
+                {
+                    HeroController.instance.GetComponent<ConveyorMovementHero>()?.StopConveyorMove();
+                    HeroController.instance.cState.inConveyorZone = false;
+                    HeroController.instance.cState.onConveyor = false;
+                    HeroController.instance.cState.onConveyorV = false;
+                }
+
+                HeroController.instance.cState.nearBench = false;
+            }
             GameManager.instance.cameraCtrl.FadeOut(CameraFadeType.LEVEL_TRANSITION);
 
             yield return new WaitForSecondsRealtime(0.5f);
@@ -95,6 +106,14 @@ namespace Benchwarp
             PlayerData.instance.atBench = false; // kill bench storage
             if (HeroController.instance != null)
             {
+                if (HeroController.instance.cState.onConveyor || HeroController.instance.cState.onConveyorV || HeroController.instance.cState.inConveyorZone)
+                {
+                    HeroController.instance.GetComponent<ConveyorMovementHero>()?.StopConveyorMove();
+                    HeroController.instance.cState.inConveyorZone = false;
+                    HeroController.instance.cState.onConveyor = false;
+                    HeroController.instance.cState.onConveyorV = false;
+                }
+
                 HeroController.instance.cState.nearBench = false;
             }
 

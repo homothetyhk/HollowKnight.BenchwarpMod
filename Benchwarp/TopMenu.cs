@@ -95,6 +95,8 @@ namespace Benchwarp
 
         public static void RebuildMenu()
         {
+            if (!canvas) return; // Benchwarp is toggled off
+
             rootPanel.Destroy();
             sceneNamePanel.Destroy();
             BuildMenu(canvas);
@@ -412,7 +414,13 @@ namespace Benchwarp
             if (gs.ShowScene)
             {
                 sceneNamePanel.SetActive(true, false);
-                sceneNamePanel.GetText("SceneName").UpdateText(Events.GetSceneName(GameManager.instance.sceneName));
+                string sceneText = Events.GetSceneName(GameManager.instance.sceneName);
+                if (HeroController.instance != null)
+                {
+                    Vector2 heroPos = HeroController.instance.transform.position;
+                    sceneText += $" {heroPos}";
+                }
+                sceneNamePanel.GetText("SceneName").UpdateText(sceneText);
             }
             else sceneNamePanel.SetActive(false, true);
 
