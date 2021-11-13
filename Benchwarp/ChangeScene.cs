@@ -56,6 +56,12 @@ namespace Benchwarp
 
             // Actually respawn the character
             GameManager.instance.SetPlayerDataBool(nameof(PlayerData.atBench), false);
+            // Allow the player to have control if they warp to a non-bench while diving or cdashing
+            if (HeroController.instance != null)
+            {
+                HeroController.instance.cState.superDashing = false;
+                HeroController.instance.cState.spellQuake = false;
+            }
             GameManager.instance.ReadyForRespawn(false);
 
             yield return new WaitWhile(() => GameManager.instance.IsInSceneTransition);
