@@ -771,9 +771,9 @@ namespace Benchwarp
                 return;
             }
 
-            if (orig.target.IsInvalid()) return;
+            if (orig.Target.IsInvalid()) return;
 
-            if (!DoorWarp.IndexedDoors.TryGetValue(orig.target.room, out Dictionary<string, Door> roomDoors2) || !roomDoors2.TryGetValue(orig.target.door, out Door target))
+            if (!DoorWarp.IndexedDoors.TryGetValue(orig.Target.room, out Dictionary<string, Door> roomDoors2) || !roomDoors2.TryGetValue(orig.Target.door, out Door target))
             {
                 return;
             }
@@ -783,9 +783,9 @@ namespace Benchwarp
             CanvasPanel doorPanel = rootPanel.GetPanel("Doors");
 
             if (!areaPanel.active) areaPanel.ToggleActive();
-            areaPanel.GetButton(target.area).ButtonClicked();
-            roomPanel.GetButton(target.self.room).ButtonClicked();
-            doorPanel.GetButton(target.self.door).ButtonClicked();
+            areaPanel.GetButton(target.Area).ButtonClicked();
+            roomPanel.GetButton(target.Self.room).ButtonClicked();
+            doorPanel.GetButton(target.Self.door).ButtonClicked();
         }
     }
 }

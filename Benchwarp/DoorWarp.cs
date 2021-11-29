@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Benchwarp
 {
@@ -11,16 +14,46 @@ namespace Benchwarp
         Out = 2
     }
 
+    public class DoorTargetConverter : JsonConverter<DoorTarget>
+    {
+        public static readonly Regex r = new(@"([^\[]*)\[([^\]]*)\]");
+        public override DoorTarget ReadJson(JsonReader reader, Type objectType, DoorTarget existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            JToken jt = JToken.Load(reader);
+            if (jt.Type == JTokenType.String)
+            {
+                string s = jt.Value<string>();
+                if (s == "None") return DoorTarget.None;
+                else
+                {
+                    Match m = r.Match(jt.Value<string>());
+                    return new(m.Groups[1].Value, m.Groups[2].Value);
+                }
+            }
+            else if (jt.Type == JTokenType.Object)
+            {
+                return new(jt.Value<string>(nameof(DoorTarget.room)), jt.Value<string>(nameof(DoorTarget.door)));
+            }
+            else throw new NotSupportedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, DoorTarget value, JsonSerializer serializer)
+        {
+            writer.WriteValue(value.ToString());
+        }
+    }
+
+    [JsonConverter(typeof(DoorTargetConverter))]
     public readonly struct DoorTarget
     {
-        public readonly string door;
         public readonly string room;
+        public readonly string door;
 
-        [Newtonsoft.Json.JsonConstructor]
-        public DoorTarget(string door, string room)
+        [JsonConstructor]
+        public DoorTarget(string room, string door)
         {
-            this.door = door;
             this.room = room;
+            this.door = door;
         }
 
         public static DoorTarget None = new();
@@ -35,28 +68,7 @@ namespace Benchwarp
         public bool IsInvalid() => door == null || room == null;
     }
 
-    public class Door
-    {
-        public readonly DoorTarget self;
-        public readonly DoorTarget target;
-        public readonly string area;
-        public readonly OneWay oneWay;
-
-        [Newtonsoft.Json.JsonConstructor]
-        public Door(DoorTarget self, string area, OneWay oneWay, DoorTarget target)
-        {
-            this.self = self;
-            this.area = area;
-            this.oneWay = oneWay;
-            this.target = target;
-        }
-
-        public override string ToString()
-        {
-            return self.ToString();
-        }
-    }
-
+    public record Door(DoorTarget Self, DoorTarget Target, string Area, OneWay OneWay);
 
     public static class DoorWarp
     {
@@ -69,7 +81,7 @@ namespace Benchwarp
         static DoorWarp()
         {
             Doors = JsonUtil.Deserialize<Door[]>("Benchwarp.Resources.doors.json");
-            IndexedDoors = Doors.GroupBy(d => d.self.room).ToDictionary(g => g.Key, g => g.ToDictionary(d => d.self.door, d => d));
+            IndexedDoors = Doors.GroupBy(d => d.Self.room).ToDictionary(g => g.Key, g => g.ToDictionary(d => d.Self.door, d => d));
 
             // Areas = Doors.Select(d => d.area).Distinct().ToArray();
             // Better to order areas manually
@@ -120,10 +132,10 @@ namespace Benchwarp
                 "Queen's Gardens",
                 "Howling Cliffs",
                 "Stag Nest",
-                "White Palace"
+                "White Palace",
             };
-            RoomsByArea = Doors.GroupBy(d => d.area).ToDictionary(g => g.Key, g => g.Select(d => d.self.room).Distinct().ToArray());
-            DoorsByRoom = Doors.GroupBy(d => d.self.room).ToDictionary(g => g.Key, g => g.Select(d => d.self.door).ToArray());
+            RoomsByArea = Doors.GroupBy(d => d.Area).ToDictionary(g => g.Key, g => g.Select(d => d.Self.room).Distinct().ToArray());
+            DoorsByRoom = Doors.GroupBy(d => d.Self.room).ToDictionary(g => g.Key, g => g.Select(d => d.Self.door).ToArray());
         }
     }
 }

@@ -136,7 +136,7 @@ namespace Benchwarp
             GameManager.instance.StopAllCoroutines();
             ReflectionHelper.SetField<GameManager, SceneLoad>(GameManager.instance, "sceneLoad", null);
 
-            GameManager.instance.BeginSceneTransition(new GameManager.SceneLoadInfo
+            GameManager.instance.BeginSceneTransition(new DoorwarpSceneLoadInfo
             {
                 IsFirstLevelForPlayer = false,
                 SceneName = sceneName,
@@ -148,6 +148,11 @@ namespace Benchwarp
                 Visualization = GameManager.SceneLoadVisualizations.Default,
                 AlwaysUnloadUnusedAssets = false
             });
+        }
+
+        // Some mods (ItemChanger) check type to detect vanilla scene loads.
+        private class DoorwarpSceneLoadInfo : GameManager.SceneLoadInfo 
+        {
         }
 
         private static GatePosition GetGatePosition(string name)

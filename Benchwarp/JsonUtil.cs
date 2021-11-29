@@ -128,7 +128,7 @@ namespace Benchwarp
         {
             _js = new JsonSerializer
             {
-                DefaultValueHandling = DefaultValueHandling.Include,
+                DefaultValueHandling = DefaultValueHandling.Ignore,
                 Formatting = Formatting.Indented,
                 TypeNameHandling = TypeNameHandling.Auto,
             };
