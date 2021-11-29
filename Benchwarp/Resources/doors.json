@@ -5,6 +5,26 @@
     "Area": "Black Egg Temple"
   },
   {
+    "Self": "Room_temple[door1]",
+    "Target": "Room_Final_Boss_Atrium[left1]",
+    "Area": "Black Egg Temple"
+  },
+  {
+    "Self": "Room_Final_Boss_Atrium[left1]",
+    "Target": "Room_temple[door1]",
+    "Area": "Black Egg Temple"
+  },
+  {
+    "Self": "Room_Final_Boss_Atrium[right1]",
+    "Target": "Room_Final_Boss_Core[left1]",
+    "Area": "Black Egg Temple"
+  },
+  {
+    "Self": "Room_Final_Boss_Core[left1]",
+    "Target": "Room_Final_Boss_Atrium[right1]",
+    "Area": "Black Egg Temple"
+  },
+  {
     "Self": "Tutorial_01[right1]",
     "Target": "Town[left1]",
     "Area": "King's Pass"
@@ -65,8 +85,28 @@
     "Area": "Dirtmouth"
   },
   {
+    "Self": "Town[room_divine]",
+    "Target": "Grimm_Divine[left1]",
+    "Area": "Dirtmouth"
+  },
+  {
+    "Self": "Town[room_grimm]",
+    "Target": "Grimm_Main_Tent[left1]",
+    "Area": "Dirtmouth"
+  },
+  {
     "Self": "Room_shop[left1]",
     "Target": "Town[door_sly]",
+    "Area": "Misc"
+  },
+  {
+    "Self": "Room_shop[door1]",
+    "Target": "Room_Sly_Storeroom[top1]",
+    "Area": "Misc"
+  },
+  {
+    "Self": "Room_Sly_Storeroom[top1]",
+    "Target": "Room_shop[door1]",
     "Area": "Misc"
   },
   {
@@ -85,8 +125,33 @@
     "Area": "Misc"
   },
   {
+    "Self": "Room_Bretta[door1]",
+    "Target": "Room_Bretta_Basement[top1]",
+    "Area": "Misc"
+  },
+  {
+    "Self": "Room_Bretta_Basement[top1]",
+    "Target": "Room_Bretta[door1]",
+    "Area": "Misc"
+  },
+  {
     "Self": "Room_Ouiji[left1]",
     "Target": "Town[door_jiji]",
+    "Area": "Misc"
+  },
+  {
+    "Self": "Room_Jinn[left1]",
+    "Target": "Town[door_jiji]",
+    "Area": "Misc"
+  },
+  {
+    "Self": "Grimm_Divine[left1]",
+    "Target": "Town[room_divine]",
+    "Area": "Misc"
+  },
+  {
+    "Self": "Grimm_Main_Tent[left1]",
+    "Target": "Town[room_grimm]",
     "Area": "Misc"
   },
   {
@@ -585,8 +650,18 @@
     "Area": "Forgotten Crossroads"
   },
   {
+    "Self": "Crossroads_49[elev_entrance]",
+    "Target": "Crossroads_49b[elev_entrance]",
+    "Area": "Forgotten Crossroads"
+  },
+  {
     "Self": "Crossroads_49b[right1]",
     "Target": "Ruins1_28[left1]",
+    "Area": "City of Tears"
+  },
+  {
+    "Self": "Crossroads_49b[elev_entrance]",
+    "Target": "Crossroads_49[elev_entrance]",
     "Area": "City of Tears"
   },
   {
@@ -3373,6 +3448,11 @@
     "Area": "Resting Grounds"
   },
   {
+    "Self": "Ruins2_10[elev_entrance]",
+    "Target": "Ruins2_10b[elev_entrance]",
+    "Area": "Resting Grounds"
+  },
+  {
     "Self": "Ruins2_10b[right1]",
     "Target": "Deepnest_East_09[left1]",
     "Area": "King's Station"
@@ -3385,6 +3465,11 @@
   {
     "Self": "Ruins2_10b[left1]",
     "Target": "Ruins_Bathhouse[right1]",
+    "Area": "King's Station"
+  },
+  {
+    "Self": "Ruins2_10b[elev_entrance]",
+    "Target": "Ruins2_10[elev_entrance]",
     "Area": "King's Station"
   },
   {
@@ -4446,5 +4531,151 @@
     "Self": "White_Palace_20[bot1]",
     "Target": "White_Palace_19[top1]",
     "Area": "White Palace"
+  },
+  {
+    "Self": "GG_Atrium[top1]",
+    "Target": "GG_Atrium_Roof[bot1]",
+    "Area": "Godhome",
+    "OneWay": "In"
+  },
+  {
+    "Self": "GG_Atrium[top2]",
+    "Target": "GG_Atrium_Roof[bot2]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Atrium[Door_Workshop]",
+    "Target": "GG_Workshop[left1]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Atrium[door1_blueRoom]",
+    "Target": "GG_Blue_Room[left1]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Atrium_Roof[bot1]",
+    "Target": "GG_Atrium[top1]",
+    "Area": "Godhome",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "GG_Atrium_Roof[bot2]",
+    "Target": "GG_Atrium[top2]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Atrium_Roof[door_Land_of_Storms]",
+    "Target": "GG_Land_of_Storms[door1]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Workshop[left1]",
+    "Target": "GG_Atrium[Door_Workshop]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Blue_Room[left1]",
+    "Target": "GG_Atrium[door1_blueRoom]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "GG_Land_of_Storms[door1]",
+    "Target": "GG_Atrium_Roof[door_Land_of_Storms]",
+    "Area": "Godhome"
+  },
+  {
+    "Self": "Room_Town_Stag_Station[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Crossroads_47[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Fungus1_16_alt[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Fungus2_02[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Fungus3_40[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Ruins1_29[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Ruins2_08[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "RestingGrounds_09[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Deepnest_09[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Abyss_22[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Cliffs_03[door_stagExit]",
+    "Area": "Stag",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Room_Tram_RG[door1]",
+    //"Target": "Crossroads_46[door_tram]",
+    "Area": "Tram",
+    "OneWay": "Out"
+  },
+  {
+    "Self": "Room_Tram[door1]",
+    "Target": "Abyss_03[door_tram_arrive]",
+    "Area": "Tram"
+  },
+  /*
+  // these softlock if the tram is not unlocked and in position
+  {
+    "Self": "Crossroads_46[door_tram]",
+    "Target": "Room_Tram_RG[door1]",
+    "Area": "Tram"
+  },
+  {
+    "Self": "Crossroads_46b[door_tram]",
+    "Target": "Room_Tram_RG[door1]",
+    "Area": "Tram"
+  },
+  */
+  {
+    "Self": "Abyss_03[door_tram_arrive]",
+    "Target": "Room_Tram[door1]",
+    "Area": "Tram"
+  },
+  {
+    "Self": "Abyss_03_b[door_tram_arrive]",
+    "Target": "Room_Tram[door1]",
+    "Area": "Tram"
+  },
+  {
+    "Self": "Abyss_03_c[door_tram_arrive]",
+    "Target": "Room_Tram[door1]",
+    "Area": "Tram"
   }
 ]

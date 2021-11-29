@@ -133,6 +133,9 @@ namespace Benchwarp
                 "Howling Cliffs",
                 "Stag Nest",
                 "White Palace",
+                "Godhome",
+                "Stag",
+                "Tram"
             };
             RoomsByArea = Doors.GroupBy(d => d.Area).ToDictionary(g => g.Key, g => g.Select(d => d.Self.room).Distinct().ToArray());
             DoorsByRoom = Doors.GroupBy(d => d.Self.room).ToDictionary(g => g.Key, g => g.Select(d => d.Self.door).ToArray());
