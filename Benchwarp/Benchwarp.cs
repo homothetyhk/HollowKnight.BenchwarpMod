@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Modding;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Benchwarp
 {
@@ -176,6 +177,7 @@ namespace Benchwarp
             try
             {
                 base.SaveGlobalSettings();
+                RefreshMenu();
             }
             catch (Exception e)
             {
@@ -234,6 +236,18 @@ namespace Benchwarp
             }
 
             return menuEntries;
+        }
+
+        public void RefreshMenu()
+        {
+            MenuScreen screen = ModHooks.BuiltModMenuScreens[this];
+            if (screen != null)
+            {
+                foreach (MenuOptionHorizontal option in screen.GetComponentsInChildren<MenuOptionHorizontal>())
+                {
+                    option.menuSetting.RefreshValueFromGameSettings();
+                }
+            }
         }
     }
 }
