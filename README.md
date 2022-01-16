@@ -6,6 +6,7 @@ Options
 - Warp Only: removes bench selection menu
 - Unlock All: enables all benches on the selection menu
 - Show Room Name: displays the name of the current room from the game code in the bottom left
+- Max Displayed Room Names: if `Show Room Name` is enabled, show up to this many additional loaded rooms
 - Use Room Names: bench menu uses room names from the game code instead of descriptive names
 - Enable Deploy: adds a menu to place a custom bench point
 - Always Toggle All: all bench menus are displayed by default

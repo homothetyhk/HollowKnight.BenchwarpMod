@@ -218,9 +218,20 @@ namespace Benchwarp
 
             foreach (FieldInfo fi in typeof(GlobalSettings).GetFields())
             {
-                if (fi.FieldType != typeof(bool))
+                if (fi.GetCustomAttribute<MenuIntAttribute>() is MenuIntAttribute mi)
                 {
-                    continue;
+                    menuEntries.Add(new()
+                    {
+                        Name = mi.name,
+                        Description = mi.description,
+                        Values = mi.values,
+                        Saver = opt => fi.SetValue(GS, int.Parse(mi.values[opt])),
+                        Loader = () =>
+                        {
+                            string needle = ((int) fi.GetValue(GS)).ToString();
+                            return Array.FindIndex(mi.values, s => s == needle);
+                        }
+                    });
                 }
                 if (fi.GetCustomAttribute<MenuToggleableAttribute>() is MenuToggleableAttribute mt)
                 {
