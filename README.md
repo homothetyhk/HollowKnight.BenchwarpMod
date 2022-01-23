@@ -86,6 +86,7 @@ Bench Hotkeys
 - **WD**: **W**arp to **D**eployed Bench (equivalent to clicking Set in the Deploy submenu, then Warp)
 - **TM**: **T**oggle **M**enu (equivalent to clicking Show Menu in the Benchwarp submenu in the Mods menu)
 - **DW**: **D**oor **W**arp (equivalent to clicking Door Warp in the Settings menu)
+- **DB**: **D**eploy **B**ench (equivalent to clicking Set in the Deploy submenu,but not Warp)
 
 Each hotkey can be remapped by modifying the "hotkeyOverrides" dictionary in the
 mod's global settings file (Benchwarp.GlobalSettings.json, in your saves folder). This dictionary
