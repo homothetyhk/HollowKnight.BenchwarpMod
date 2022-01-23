@@ -155,6 +155,9 @@ namespace Benchwarp
                     case Hotkeys.DoorWarpID:
                         TopMenu.DoorWarpClicked(null);
                         return;
+                    case Hotkeys.DeployBenchID:
+                        TopMenu.SetClicked(null);
+                        return;
                     default:
                         if (0 <= benchNum && benchNum < Bench.Benches.Length) Bench.Benches[benchNum].SetBench();
                         else
