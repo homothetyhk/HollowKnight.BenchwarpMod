@@ -108,6 +108,7 @@ namespace Benchwarp
             { "WD", WarpDeployID },
             { "TM", ToggleMenuID },
             { "DW", DoorWarpID },
+            { "DB", DeployBenchID},
         };
 
         public const int LastBenchID = -1;
@@ -115,5 +116,6 @@ namespace Benchwarp
         public const int WarpDeployID = -3;
         public const int ToggleMenuID = -4;
         public const int DoorWarpID = -5;
+        public const int DeployBenchID = -6;
     }
 }
