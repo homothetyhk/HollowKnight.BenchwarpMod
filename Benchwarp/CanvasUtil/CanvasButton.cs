@@ -55,8 +55,6 @@ namespace Benchwarp.CanvasUtil
             
             buttonTransform.anchorMin = buttonTransform.anchorMax = position;
 
-            Object.DontDestroyOnLoad(buttonObj);
-
             if (font != null && text != null)
             {
                 textObj = new GameObject();
@@ -67,8 +65,6 @@ namespace Benchwarp.CanvasUtil
                 t.fontSize = fontSize;
                 t.alignment = TextAnchor.MiddleCenter;
                 textObj.transform.SetParent(buttonObj.transform, false);
-
-                Object.DontDestroyOnLoad(textObj);
             }
         }
 

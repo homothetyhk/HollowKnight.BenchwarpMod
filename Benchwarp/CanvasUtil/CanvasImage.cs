@@ -39,8 +39,6 @@ namespace Benchwarp.CanvasUtil
             imageTransform.SetScaleX(size.x / subSprite.width);
             imageTransform.SetScaleY(size.y / subSprite.height);
 
-            GameObject.DontDestroyOnLoad(imageObj);
-
             active = true;
         }
 

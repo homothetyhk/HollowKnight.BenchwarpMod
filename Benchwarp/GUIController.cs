@@ -119,7 +119,7 @@ namespace Benchwarp
 
         private void DetectHotkeys()
         { 
-            if (!(GameManager.instance != null && GameManager.instance.IsGamePaused() && Benchwarp.GS.EnableHotkeys))
+            if (!(GameManager.UnsafeInstance != null && GameManager.instance.IsGamePaused() && Benchwarp.GS.EnableHotkeys))
             {
                 last2Keystrokes = "";
                 return;

@@ -38,7 +38,7 @@ namespace Benchwarp
             // Set some stuff which would normally be set by LoadSave
             HeroController.instance.AffectedByGravity(false);
             HeroController.instance.transitionState = HeroTransitionState.EXITING_SCENE;
-            if (HeroController.instance != null)
+            if (HeroController.SilentInstance != null)
             {
                 if (HeroController.instance.cState.onConveyor || HeroController.instance.cState.onConveyorV || HeroController.instance.cState.inConveyorZone)
                 {
@@ -57,7 +57,7 @@ namespace Benchwarp
             // Actually respawn the character
             GameManager.instance.SetPlayerDataBool(nameof(PlayerData.atBench), false);
             // Allow the player to have control if they warp to a non-bench while diving or cdashing
-            if (HeroController.instance != null)
+            if (HeroController.SilentInstance != null)
             {
                 HeroController.instance.cState.superDashing = false;
                 HeroController.instance.cState.spellQuake = false;
@@ -75,7 +75,7 @@ namespace Benchwarp
 
             // Restore various things normally handled by exiting the pause menu. None of these are necessary afaik
             GameCameras.instance.ResumeCameraShake();
-            if (HeroController.instance != null)
+            if (HeroController.SilentInstance != null)
             {
                 HeroController.instance.UnPause();
             }
@@ -96,7 +96,7 @@ namespace Benchwarp
             GameManager.instance.FadeSceneIn();
             GameManager.instance.isPaused = false;
             GameCameras.instance.ResumeCameraShake();
-            if (HeroController.instance != null)
+            if (HeroController.SilentInstance != null)
             {
                 HeroController.instance.UnPause();
             }
@@ -104,13 +104,13 @@ namespace Benchwarp
             TimeController.GenericTimeScale = 1f;
             GameManager.instance.actorSnapshotUnpaused.TransitionTo(0f);
             GameManager.instance.ui.AudioGoToGameplay(.2f);
-            if (HeroController.instance != null)
+            if (HeroController.SilentInstance != null)
             {
                 HeroController.instance.UnPause();
             }
             MenuButtonList.ClearAllLastSelected();
             PlayerData.instance.atBench = false; // kill bench storage
-            if (HeroController.instance != null)
+            if (HeroController.SilentInstance != null)
             {
                 if (HeroController.instance.cState.onConveyor || HeroController.instance.cState.onConveyorV || HeroController.instance.cState.inConveyorZone)
                 {
