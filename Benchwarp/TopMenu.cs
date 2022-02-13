@@ -594,7 +594,7 @@ namespace Benchwarp
             ChangeScene.WarpToRespawn();
         }
 
-        private static void DeployClicked(string buttonName)
+        public static void DeployClicked(string buttonName)
         {
             if (onCooldown) return;
             if (Benchwarp.GS.NoDarkOrDreamRooms && BenchMaker.IsDarkOrDreamRoom()) return;
