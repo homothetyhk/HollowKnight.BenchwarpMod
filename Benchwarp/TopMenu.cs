@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Benchwarp.CanvasUtil;
 
+using USceneManager = UnityEngine.SceneManagement.SceneManager;
+
 namespace Benchwarp
 {
     public static class DoorWarpSelection
@@ -420,7 +422,29 @@ namespace Benchwarp
                     Vector2 heroPos = HeroController.instance.transform.position;
                     sceneText += $" {heroPos}";
                 }
-                sceneNamePanel.GetText("SceneName").UpdateText(sceneText);
+
+                var sceneNameText = sceneNamePanel.GetText("SceneName");
+                
+                if (gs.MaxSceneNames > 1)
+                {
+                    int nLines = 1;
+                
+                    for (int i = 1; i < Math.Min(USceneManager.sceneCount, gs.MaxSceneNames); i++)
+                    {
+                        sceneText += $"\n{Events.GetSceneName(USceneManager.GetSceneAt(i).name)}";
+                        nLines++;
+                    }
+
+                    if (USceneManager.sceneCount > gs.MaxSceneNames)
+                    {
+                        sceneText += $"\n(+ {USceneManager.sceneCount - gs.MaxSceneNames} more)";
+                        nLines++;
+                    }
+                    
+                    sceneNameText.SetPosition(new Vector2(5f, 1080f - 20 * nLines));
+                }
+
+                sceneNameText.UpdateText(sceneText);
             }
             else sceneNamePanel.SetActive(false, true);
 
