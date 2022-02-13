@@ -423,7 +423,7 @@ namespace Benchwarp
                     sceneText += $" {heroPos}";
                 }
 
-                var sceneNameText = sceneNamePanel.GetText("SceneName");
+                CanvasText sceneNameText = sceneNamePanel.GetText("SceneName");
                 
                 if (gs.MaxSceneNames > 1)
                 {

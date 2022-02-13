@@ -39,7 +39,7 @@ namespace Benchwarp
         }
 
         /*
-         // Example code for accessing events without referencing Benchwarp.dll
+         // Example code for accessing above events without referencing Benchwarp.dll
         public static void SafeAdd(Func<string, string> f)
         {
             try
@@ -57,6 +57,59 @@ namespace Benchwarp
             }
         }
         */
+
+        /// <summary>
+        /// Event invoked for each bench in the menu. Return true to prevent the bench from appearing, and false otherwise.
+        /// <br/>The bench list is only updated when subscribers are added or removed, or when Bench.RefreshBenchList is called manually.
+        /// </summary>
+        public static event Func<Bench, bool> BenchSuppressors
+        {
+            add
+            {
+                _benchSuppressors.Add(value);
+                Bench.RefreshBenchList();
+                TopMenu.RebuildMenu();
+            }
+            remove
+            {
+                _benchSuppressors.Remove(value);
+                Bench.RefreshBenchList();
+                TopMenu.RebuildMenu();
+            }
+        }
+        private static readonly List<Func<Bench, bool>> _benchSuppressors = new();
+        internal static bool ShouldSuppressBench(Bench bench)
+        {
+            bool value = false;
+            foreach (var f in _benchSuppressors) value |= f(bench);
+            return value;
+        }
+
+
+        /// <summary>
+        /// Event which allows adding new benches to the menu. Benches will be organized into the existing area categories.
+        /// <br/>The bench list is only updated when subscribers are added or removed, or when Bench.RefreshBenchList is called manually.
+        /// </summary>
+        public static event Func<IEnumerable<Bench>> BenchInjectors
+        {
+            add
+            {
+                _benchInjectors.Add(value);
+                Bench.RefreshBenchList();
+                TopMenu.RebuildMenu();
+            }
+            remove
+            {
+                _benchInjectors.Remove(value);
+                Bench.RefreshBenchList();
+                TopMenu.RebuildMenu();
+            }
+        }
+        private static readonly List<Func<IEnumerable<Bench>>> _benchInjectors = new();
+        internal static IEnumerable<Bench> GetInjectedBenches()
+        {
+            return _benchInjectors.SelectMany(f => f());
+        }
     }
 
     public class SequentialEventHandler<T>

@@ -159,7 +159,11 @@ namespace Benchwarp
                         TopMenu.DeployClicked(null);
                         return;
                     default:
-                        if (0 <= benchNum && benchNum < Bench.Benches.Length) Bench.Benches[benchNum].SetBench();
+                        if (0 <= benchNum && benchNum < Bench.baseBenches.Length)
+                        {
+                            if (Bench.Benches.Contains(Bench.baseBenches[benchNum])) Bench.baseBenches[benchNum].SetBench();
+                            else return;
+                        }
                         else
                         {
                             Benchwarp.instance.LogError($"Unknown internal hotkey code: {benchNum}");

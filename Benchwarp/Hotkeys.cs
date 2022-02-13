@@ -29,7 +29,7 @@ namespace Benchwarp
                 {
                     CurrentHotkeys.Add(mappedHotkey, defaultBind.Value);
                 }
-                catch (System.ArgumentException)
+                catch (ArgumentException)
                 {
                     Benchwarp.instance.LogError($"Duplicate binding for hotkey '{mappedHotkey}'");
                 }

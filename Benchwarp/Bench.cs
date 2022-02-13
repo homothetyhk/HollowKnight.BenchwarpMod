@@ -1,5 +1,7 @@
 ﻿using GlobalEnums;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
@@ -9,11 +11,29 @@ namespace Benchwarp
     {
         static Bench()
         {
-            Benches = JsonUtil.Deserialize<Bench[]>("Benchwarp.Resources.benches.json");
+            baseBenches = JsonUtil.Deserialize<Bench[]>("Benchwarp.Resources.benches.json");
+            RefreshBenchList();
         }
 
+        public static readonly Bench[] baseBenches;
+        public static ReadOnlyCollection<Bench> Benches { get; private set; }
 
-        public static readonly Bench[] Benches;
+        public static void RefreshBenchList()
+        {
+            List<Bench> benches = new();
+            foreach (Bench bench in baseBenches)
+            {
+                if (Events.ShouldSuppressBench(bench)) continue;
+                benches.Add(bench);
+            }
+            foreach (Bench bench in Events.GetInjectedBenches())
+            {
+                if (Events.ShouldSuppressBench(bench)) continue;
+                benches.Add(bench);
+            }
+            Benches = benches.AsReadOnly();
+        }
+
 
         public readonly string name;
         public readonly string areaName;
@@ -26,13 +46,13 @@ namespace Benchwarp
 
         public bool HasVisited()
         {
-            return Benchwarp.LS.visitedBenchScenes.ContainsKey(sceneName)
-                && Benchwarp.LS.visitedBenchScenes[sceneName];
+            return Benchwarp.LS.visitedBenchScenes.Contains(new(sceneName, respawnMarker));
         }
 
         public void SetVisited(bool value)
         {
-            Benchwarp.LS.visitedBenchScenes[sceneName] = value;
+            if (value) Benchwarp.LS.visitedBenchScenes.Add(new(sceneName, respawnMarker));
+            else Benchwarp.LS.visitedBenchScenes.Remove(new(sceneName, respawnMarker));
         }
 
         public bool AtBench() => PlayerData.instance.respawnScene == sceneName &&
