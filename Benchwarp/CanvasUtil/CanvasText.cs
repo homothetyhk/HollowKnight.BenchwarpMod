@@ -45,8 +45,6 @@ namespace Benchwarp.CanvasUtil
             textTransform.anchorMin = position;
             textTransform.anchorMax = position;
 
-            Object.DontDestroyOnLoad(textObj);
-
             active = true;
         }
         
