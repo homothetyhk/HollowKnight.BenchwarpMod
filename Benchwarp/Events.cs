@@ -9,6 +9,35 @@ namespace Benchwarp
 {
     public static class Events
     {
+        /// <summary>
+        /// Event invoked when a request to benchwarp is made, before beginning to warp.
+        /// </summary>
+        public static event Action OnBenchwarp;
+        internal static void InvokeOnBenchwarp()
+        {
+            try { OnBenchwarp?.Invoke(); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+        }
+        /// <summary>
+        /// Event with (scene, gate) parameters, invoked when a request to doorwarp is made, before beginning to warp.
+        /// </summary>
+        public static event Action<string, string> OnDoorwarp;
+        internal static void InvokeOnDoorwarp(string sceneName, string gateName)
+        {
+            try { OnDoorwarp?.Invoke(sceneName, gateName); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+        }
+        /// <summary>
+        /// Event invoked when a bench is unlocked, after its key is added to local settings.
+        /// </summary>
+        public static event Action<BenchKey> OnBenchUnlock;
+        internal static void InvokeOnBenchUnlock(BenchKey key)
+        {
+            try { OnBenchUnlock?.Invoke(key); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+        }
+
+
         public static readonly SequentialEventHandler<string> OnGetSceneName = new();
         public static string GetSceneName(string sceneName) => OnGetSceneName.Invoke(sceneName);
 

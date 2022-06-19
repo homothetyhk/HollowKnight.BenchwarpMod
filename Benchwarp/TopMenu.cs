@@ -597,11 +597,13 @@ namespace Benchwarp
 
                     if (!bench.HasVisited() && !gs.UnlockAllBenches)
                     {
-                        rootPanel.GetButton(bench.name, bench.areaName).SetTextColor(Color.red);
+                        rootPanel.GetButton(bench.name, bench.areaName)
+                            .SetTextColor(bench.IsLocked() ? Color.Lerp(Color.magenta, Color.black, 0.5f) : Color.red);
                     }
                     else
                     {
-                        rootPanel.GetButton(bench.name, bench.areaName).SetTextColor(bench.AtBench() ? Color.yellow : Color.white);
+                        rootPanel.GetButton(bench.name, bench.areaName)
+                            .SetTextColor(bench.AtBench() ? Color.yellow : Color.white);
                     }
                 }
             }
@@ -631,7 +633,7 @@ namespace Benchwarp
             Benchwarp.LS.benchY = HeroController.instance.transform.position.y;
             Benchwarp.LS.benchScene = GameManager.instance.sceneName;
 
-            BenchMaker.MakeBench();
+            BenchMaker.MakeDeployedBench();
 
             SetClicked(null);
 
@@ -676,9 +678,9 @@ namespace Benchwarp
         {
             Benchwarp.GS.Noninteractive = !Benchwarp.GS.Noninteractive;
             Benchwarp.instance.SaveGlobalSettings();
-            if (BenchMaker.DeployedBench != null)
+            if (BenchMaker.DeployedBench != null && ObjectCache.DidPreload)
             {
-                BenchMaker.UpdateInteractive();
+                BenchMaker.UpdateInteractive(BenchMaker.DeployedBench, Benchwarp.GS.Noninteractive);
             }
         }
 

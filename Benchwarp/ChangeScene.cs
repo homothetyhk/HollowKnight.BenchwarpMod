@@ -1,10 +1,7 @@
 ﻿using GlobalEnums;
 using Modding;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Benchwarp
@@ -13,6 +10,7 @@ namespace Benchwarp
     {
         public static void WarpToRespawn()
         {
+            Events.InvokeOnBenchwarp();
             if (Benchwarp.GS.UnlockAllBenches)
             {
                 UnlockBench(PlayerData.instance.GetString(nameof(PlayerData.respawnScene)));
@@ -91,6 +89,7 @@ namespace Benchwarp
 
         public static void ChangeToScene(string sceneName, string gateName, float delay = 0f)
         {
+            Events.InvokeOnDoorwarp(sceneName, gateName);
             UIManager.instance.UIClosePauseMenu();
             Time.timeScale = 1f;
             GameManager.instance.FadeSceneIn();
@@ -226,6 +225,9 @@ namespace Benchwarp
                 case "Room_Tram_RG":
                     PlayerData.instance.SetBool(nameof(PlayerData.openedTramRestingGrounds), true);
                     PlayerData.instance.SetBool(nameof(PlayerData.tramOpenedCrossroads), true);
+                    break;
+                case "White_Palace_01":
+                    PlayerData.instance.SetBool(nameof(PlayerData.visitedWhitePalace), true);
                     break;
             }
         }

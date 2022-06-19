@@ -14,8 +14,7 @@ namespace Benchwarp
         public static GameObject DeployedBench;
         public const string DEPLOYED_BENCH_RESPAWN_MARKER_NAME = "DeployedBench";
 
-
-        public static void MakeBench()
+        public static void MakeDeployedBench()
         {
             if (!Benchwarp.LS.benchDeployed) return;
 
@@ -31,11 +30,11 @@ namespace Benchwarp
 
             DeployedBench = ObjectCache.GetNewBench();
             DeployedBench.name = DEPLOYED_BENCH_RESPAWN_MARKER_NAME;
-            DeployedBench.SetActive(true); 
-            UpdateInteractive();
-            RemoveSaveRespawnActions();
+            DeployedBench.SetActive(true);
+            UpdateInteractive(DeployedBench, Benchwarp.GS.Noninteractive);
+            RemoveSaveRespawnActions(DeployedBench);
             BenchStyle.GetStyle(Benchwarp.GS.nearStyle).ApplyFsmAndPositionChanges(DeployedBench, new Vector3(Benchwarp.LS.benchX, Benchwarp.LS.benchY, 0.02f));
-            ApplyStyleSprites();
+            ApplyStyleSprites(DeployedBench, Benchwarp.GS.farStyle, Benchwarp.GS.nearStyle);
         }
 
         public static void DestroyBench(bool DontDeleteData = false)
@@ -46,12 +45,10 @@ namespace Benchwarp
             Benchwarp.LS.atDeployedBench = false;
         }
 
-        public static void UpdateInteractive()
+        public static void UpdateInteractive(GameObject bench, bool noninteractive)
         {
-            if (DeployedBench == null || !ObjectCache.DidPreload) return;
-
-            FsmState idle = DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Idle");
-            if (Benchwarp.GS.Noninteractive)
+            FsmState idle = bench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Idle");
+            if (noninteractive)
             {
                 idle.Transitions = Array.Empty<FsmTransition>();
             }
@@ -70,11 +67,9 @@ namespace Benchwarp
             }
         }
 
-        public static void RemoveSaveRespawnActions()
+        public static void RemoveSaveRespawnActions(GameObject bench)
         {
-            if (DeployedBench == null || !ObjectCache.DidPreload) return;
-
-            FsmState restBurst = DeployedBench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Rest Burst");
+            FsmState restBurst = bench.LocateMyFSM("Bench Control").FsmStates.First(s => s.Name == "Rest Burst");
             if (restBurst.Actions.Length < 27) return;
 
             List<FsmStateAction> actions = restBurst.Actions.ToList();
@@ -83,29 +78,19 @@ namespace Benchwarp
             restBurst.Actions = actions.ToArray();
         }
 
-        public static void UpdateStyleFromMenu()
-        {
-            BenchStyle.GetStyle(Benchwarp.GS.nearStyle)
-                .ApplyFsmAndPositionChanges(DeployedBench, new Vector3(Benchwarp.LS.benchX, Benchwarp.LS.benchY, 0.02f));
-            ApplyStyleSprites();
-        }
-
-        public static void ApplyStyleSprites()
+        public static void ApplyStyleSprites(GameObject bench, string farStyle, string nearStyle)
         {
             if (!ObjectCache.DidPreload) return;
             if (DeployedBench == null) return;
 
             try
             {
-                string farStyle = Benchwarp.GS.farStyle;
-                string nearStyle = Benchwarp.GS.nearStyle;
-
                 if (BenchStyle.IsValidStyle(farStyle) && BenchStyle.GetStyle(farStyle) is BenchStyle fs)
                 {
                     Sprite benchSprite = SpriteManager.GetSprite(fs.spriteName);
                     if (benchSprite != null)
                     {
-                        DeployedBench.GetComponent<SpriteRenderer>().sprite = benchSprite;
+                        bench.GetComponent<SpriteRenderer>().sprite = benchSprite;
                     }
                 }
                 if (BenchStyle.IsValidStyle(nearStyle) && BenchStyle.GetStyle(nearStyle) is BenchStyle ns)
@@ -114,21 +99,13 @@ namespace Benchwarp
                     Sprite litSprite = SpriteManager.GetSprite(spriteName);
                     if (litSprite != null)
                     {
-                        DeployedBench.transform.Find("Lit").gameObject.GetComponent<SpriteRenderer>().sprite = litSprite;
+                        bench.transform.Find("Lit").gameObject.GetComponent<SpriteRenderer>().sprite = litSprite;
                     }
                 }
             }
             catch (Exception e)
             {
                 Benchwarp.instance.LogError(e);
-            }
-        }
-
-        public static void TryToDeploy(Scene arg0, Scene arg1)
-        {
-            if (Benchwarp.LS.benchDeployed && arg1.name == Benchwarp.LS.benchScene)
-            {
-                MakeBench();
             }
         }
 
@@ -139,6 +116,21 @@ namespace Benchwarp
                 || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODS_GLORY
                 || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODSEEKER_WASTE
                 || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.WHITE_PALACE;
+        }
+
+        internal static void UpdateStyleFromMenu()
+        {
+            BenchStyle.GetStyle(Benchwarp.GS.nearStyle)
+                .ApplyFsmAndPositionChanges(DeployedBench, new Vector3(Benchwarp.LS.benchX, Benchwarp.LS.benchY, 0.02f));
+            ApplyStyleSprites(DeployedBench, Benchwarp.GS.farStyle, Benchwarp.GS.nearStyle);
+        }
+
+        internal static void TryToDeploy(Scene arg0, Scene arg1)
+        {
+            if (Benchwarp.LS.benchDeployed && arg1.name == Benchwarp.LS.benchScene)
+            {
+                MakeDeployedBench();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modding.Converters;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,20 +25,20 @@ namespace Benchwarp
 
         public BenchStyle() { }
         public string style;
-        public Vector3 offset;
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 offset;
         public bool distinctLitSprite;
 
-        public Vector2 triggerSize;
-        public Vector2 triggerOffset;
+        [JsonConverter(typeof(Vector2Converter))] public Vector2 triggerSize;
+        [JsonConverter(typeof(Vector2Converter))] public Vector2 triggerOffset;
 
-        public Vector3 localScale;
-        public Vector3 litOffset;
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 localScale;
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 litOffset;
         public string spriteName;
 
         // fsm parameters
         public bool tilter;
         public float tiltAmount;
-        public Vector3 adjustVector;
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 adjustVector;
 
         public void ApplyFsmAndPositionChanges(GameObject bench, Vector3 position)
         {

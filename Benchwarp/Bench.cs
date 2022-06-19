@@ -1,9 +1,10 @@
 ﻿using GlobalEnums;
-using System;
+using Modding.Converters;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Benchwarp
 {
@@ -42,17 +43,40 @@ namespace Benchwarp
         public readonly int respawnType;
         public readonly MapZone mapZone;
         public readonly string style;
-        public readonly Vector3 specificOffset;
+        [JsonConverter(typeof(Vector3Converter))] public readonly Vector3 specificOffset;
 
         public bool HasVisited()
         {
-            return Benchwarp.LS.visitedBenchScenes.Contains(new(sceneName, respawnMarker));
+            return Benchwarp.LS.visitedBenchScenes.Contains(ToBenchKey());
         }
 
         public void SetVisited(bool value)
         {
-            if (value) Benchwarp.LS.visitedBenchScenes.Add(new(sceneName, respawnMarker));
-            else Benchwarp.LS.visitedBenchScenes.Remove(new(sceneName, respawnMarker));
+            if (value)
+            {
+                if (Benchwarp.LS.visitedBenchScenes.Add(ToBenchKey()))
+                {
+                    Events.InvokeOnBenchUnlock(ToBenchKey());
+                }
+            }
+            else Benchwarp.LS.visitedBenchScenes.Remove(ToBenchKey());
+        }
+
+        /// <summary>
+        /// Checks whether the bench is locked. Locked benches are not unlocked by benching, but can still be unlocked by SetVisited.
+        /// </summary>
+        public bool IsLocked()
+        {
+            return Benchwarp.LS.lockedBenches.Contains(ToBenchKey());
+        }
+
+        /// <summary>
+        /// Locks or unlocks the bench. Locked benches are not unlocked by benching, but can still be unlocked by SetVisited.
+        /// </summary>
+        public void SetLocked(bool value)
+        {
+            if (value) Benchwarp.LS.lockedBenches.Add(ToBenchKey());
+            else Benchwarp.LS.lockedBenches.Remove(ToBenchKey());
         }
 
         public bool AtBench() => PlayerData.instance.respawnScene == sceneName &&
@@ -60,8 +84,9 @@ namespace Benchwarp
             PlayerData.instance.respawnType == respawnType &&
             !Benchwarp.LS.atDeployedBench;
 
-        [Newtonsoft.Json.JsonConstructor]
-        public Bench(string name, string areaName, string sceneName, string respawnMarker, int respawnType, MapZone mapZone, string style, Vector3 specificOffset)
+        [JsonConstructor]
+        public Bench(string name, string areaName, string sceneName, string respawnMarker, 
+            int respawnType, MapZone mapZone, string style, Vector3 specificOffset)
         {
             this.name = name; // may not be unique
             this.areaName = areaName; // may be abbreviated, see below
@@ -73,6 +98,9 @@ namespace Benchwarp
             this.specificOffset = specificOffset;
         }
 
+        /// <summary>
+        /// Sets this as the current respawn. Fails if the bench is not unlocked, either by being visited or by GS.UnlockAllBenches.
+        /// </summary>
         public void SetBench()
         {
             if (!Benchwarp.GS.UnlockAllBenches && !HasVisited()) return;
@@ -85,6 +113,11 @@ namespace Benchwarp
         public static Bench GetStyleBench(string style)
         {
             return Benches.First(bench => bench.style == style);
+        }
+
+        public BenchKey ToBenchKey()
+        {
+            return new(sceneName, respawnMarker);
         }
     }
 }

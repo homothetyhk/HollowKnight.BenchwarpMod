@@ -36,7 +36,7 @@ namespace Benchwarp
 
             if (LS.benchDeployed && GameManager.instance.sceneName == LS.benchScene)
             {
-                BenchMaker.MakeBench(); // Since the mod could be reenabled in any scene
+                BenchMaker.MakeDeployedBench(); // Since the mod could be reenabled in any scene
             }
 
             if (Hotkeys.CurrentHotkeys.Count == 0)
@@ -103,6 +103,7 @@ namespace Benchwarp
             {
                 foreach (Bench bench in Bench.Benches)
                 {
+                    if (bench.IsLocked()) continue;
                     if (bench.AtBench()) bench.SetVisited(true);
                     else if (GameManager.instance.sceneName == bench.sceneName && LS.benchScene != bench.sceneName) bench.SetVisited(true);
                     else continue;
