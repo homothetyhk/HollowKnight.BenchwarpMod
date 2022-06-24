@@ -2,6 +2,8 @@
 
 Mod which creates a clickable menu on the pause screen to alter your current bench respawn point. Use warp button (or save and quit) after selection to travel to new bench. By default, only benches visited after installing the mod can be destinations.
 
+Benchwarp fixes a bug where a the player can softlock by interacting with a bench before an area title popup occurs. As a side-effect, benches are interactable during the area title popup with Benchwarp.
+
 Options
 - Warp Only: removes bench selection menu
 - Unlock All: enables all benches on the selection menu
