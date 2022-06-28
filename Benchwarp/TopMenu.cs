@@ -382,7 +382,7 @@ namespace Benchwarp
                              (string s) => bench.SetBench(),
                              new Rect(0f, 0f, 80f, 40f),
                              GUIController.Instance.TrajanNormal,
-                             !Benchwarp.GS.SwapNames ? Events.GetBenchName(bench.name) : Events.GetSceneName(bench.sceneName),
+                             !Benchwarp.GS.SwapNames ? Events.GetBenchName(bench) : Events.GetBenchSceneName(bench),
                              fontSize
                          );
             }

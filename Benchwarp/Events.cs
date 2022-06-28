@@ -9,6 +9,8 @@ namespace Benchwarp
 {
     public static class Events
     {
+        public delegate void BenchNameModifier(Bench bench, ref string name);
+
         /// <summary>
         /// Event invoked when a request to benchwarp is made, before beginning to warp.
         /// </summary>
@@ -37,13 +39,35 @@ namespace Benchwarp
             catch (Exception e) { Benchwarp.instance.LogError(e); }
         }
 
+        /// <summary>
+        /// Event invoked to determine the displayed name of a bench.
+        /// </summary>
+        public static event BenchNameModifier OnGetBenchName;
+        public static string GetBenchName(Bench bench)
+        {
+            string name = bench.name;
+            try { OnGetBenchName?.Invoke(bench, ref name); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+            return name;
+        }
 
+        /// <summary>
+        /// Event invoked to determine the displayed scene of a bench. Runs after OnGetSceneName.
+        /// </summary>
+        public static event BenchNameModifier OnGetBenchSceneName;
+        public static string GetBenchSceneName(Bench bench)
+        {
+            string name =  GetSceneName(bench.sceneName);
+            try { OnGetBenchSceneName?.Invoke(bench, ref name); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+            return name;
+        }
+
+        /// <summary>
+        /// Event invoked to determine the displayed name of a scene. Runs before OnGetBenchSceneName, when relevant.
+        /// </summary>
         public static readonly SequentialEventHandler<string> OnGetSceneName = new();
         public static string GetSceneName(string sceneName) => OnGetSceneName.Invoke(sceneName);
-
-
-        public static readonly SequentialEventHandler<string> OnGetBenchName = new();
-        public static string GetBenchName(string benchName) => OnGetBenchName.Invoke(benchName);
 
 
         public static readonly SequentialEventHandler<(string respawnScene, string respawnMarkerName, int respawnType, int mapZone)>
@@ -68,7 +92,7 @@ namespace Benchwarp
         }
 
         /*
-         // Example code for accessing above events without referencing Benchwarp.dll
+         // Example code for accessing SequentialEventHandlers without referencing Benchwarp.dll
         public static void SafeAdd(Func<string, string> f)
         {
             try
