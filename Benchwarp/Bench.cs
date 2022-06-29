@@ -13,10 +13,30 @@ namespace Benchwarp
         static Bench()
         {
             baseBenches = JsonUtil.Deserialize<Bench[]>("Benchwarp.Resources.benches.json");
-            RefreshBenchList();
+
+            // force benches to show in original area order unless modified by subsequent BenchComparisons.
+            Dictionary<string, int> areaOrder = baseBenches
+                .Select(b => b.areaName)
+                .Distinct()
+                .Select((a, i) => (a, i))
+                .ToDictionary(p => p.a, p => p.i);
+            Events.BenchComparisons += (b1, b2) =>
+            {
+                if (b1.areaName is null || !areaOrder.TryGetValue(b1.areaName, out int a1)) return 1;
+                if (b2.areaName is null || !areaOrder.TryGetValue(b2.areaName, out int a2)) return -1;
+                return a1.CompareTo(a2);
+            };
+
+            // RefreshBenchList(); // not needed, since Events.BenchComparisons.add refreshes bench list.
         }
 
+        /// <summary>
+        /// The list of benches embedded in Benchwarp.
+        /// </summary>
         public static readonly Bench[] baseBenches;
+        /// <summary>
+        /// The current list of benches. Can be modified by injecting or suppressing through Events, and refreshed by RefreshBenchList.
+        /// </summary>
         public static ReadOnlyCollection<Bench> Benches { get; private set; }
 
         public static void RefreshBenchList()
@@ -32,9 +52,9 @@ namespace Benchwarp
                 if (Events.ShouldSuppressBench(bench)) continue;
                 benches.Add(bench);
             }
-            Benches = benches.AsReadOnly();
-        }
 
+            Benches = Events.GetSortedBenchList(benches).AsReadOnly();
+        }
 
         public readonly string name;
         public readonly string areaName;

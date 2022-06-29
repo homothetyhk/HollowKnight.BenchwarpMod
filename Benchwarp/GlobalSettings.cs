@@ -30,6 +30,9 @@ namespace Benchwarp
         public bool DoorWarp = false;
         [MenuToggleable(name: "Enable Hotkeys")]
         public bool EnableHotkeys = false;
+        [MenuToggleable(name: "Legacy Hotkeys", description: "Toggle Benchwarp or restart to apply changes")]
+        public bool LegacyHotkeys = false;
+
         public Dictionary<string, string> HotkeyOverrides = new();
     }
 }

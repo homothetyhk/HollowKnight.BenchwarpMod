@@ -39,10 +39,11 @@ namespace Benchwarp
                 BenchMaker.MakeDeployedBench(); // Since the mod could be reenabled in any scene
             }
 
-            if (Hotkeys.CurrentHotkeys.Count == 0)
+            if (GS.LegacyHotkeys)
             {
-                Hotkeys.ApplyHotkeyOverrides();
+                Hotkeys.ApplyLegacyHotkeys();
             }
+            Hotkeys.RefreshHotkeys();
         }
 
         private static void OnEnableBenchFsm(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM fsm)
@@ -184,6 +185,7 @@ namespace Benchwarp
             On.GameManager.OnNextLevelReady -= FixRespawnType;
             On.PlayMakerFSM.OnEnable -= OnEnableBenchFsm;
 
+            Hotkeys.RemoveLegacyHotkeys();
             BenchMaker.DestroyBench(DontDeleteData: true);
             GUIController.Unload();
         }

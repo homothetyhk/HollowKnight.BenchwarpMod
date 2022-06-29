@@ -358,8 +358,9 @@ namespace Benchwarp
             Dictionary<string, Vector2> panelButtonHeight = new();
             benchPanels = new List<string>();
 
-            foreach (Bench bench in Bench.Benches)
+            for (int i = 0; i < Bench.Benches.Count; i++)
             {
+                Bench bench = Bench.Benches[i];
                 if (!panelButtonHeight.ContainsKey(bench.areaName))
                 {
                     benchPanels.Add(bench.areaName);
@@ -372,6 +373,16 @@ namespace Benchwarp
                     panelButtonHeight[bench.areaName] += new Vector2(0f, 40f);
                 }
 
+                rootPanel.GetPanel(bench.areaName)
+                        .AddText
+                        (
+                            bench.name + " index",
+                            $"{i:D2}",
+                            panelButtonHeight[bench.areaName] - new Vector2(7f, 4.5f),
+                            Vector2.zero,
+                            GUIController.Instance.TrajanNormal,
+                            fontSize - 1
+                        );
                 rootPanel.GetPanel(bench.areaName)
                          .AddButton
                          (

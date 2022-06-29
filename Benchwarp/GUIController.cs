@@ -124,8 +124,8 @@ namespace Benchwarp
                 last2Keystrokes = "";
                 return;
             }
-            
-            foreach (KeyCode letter in BenchLetters)
+
+            for (KeyCode letter = KeyCode.A; letter <= KeyCode.Z; letter++)
             {
                 if (Input.GetKeyDown(letter))
                 {
@@ -136,42 +136,33 @@ namespace Benchwarp
                     last2Keystrokes += letter.ToString();
                 }
             }
-            if (Hotkeys.CurrentHotkeys.TryGetValue(last2Keystrokes, out int benchNum))
+            for (KeyCode alpha = KeyCode.Alpha0; alpha <= KeyCode.Alpha9; alpha++)
+            {
+                if (Input.GetKeyDown(alpha))
+                {
+                    if (last2Keystrokes.Length == 2)
+                    {
+                        last2Keystrokes = last2Keystrokes.Remove(0, 1);
+                    }
+                    last2Keystrokes += (alpha - KeyCode.Alpha0).ToString();
+                }
+            }
+            for (KeyCode pad = KeyCode.Keypad0; pad <= KeyCode.Keypad9; pad++)
+            {
+                if (Input.GetKeyDown(pad))
+                {
+                    if (last2Keystrokes.Length == 2)
+                    {
+                        last2Keystrokes = last2Keystrokes.Remove(0, 1);
+                    }
+                    last2Keystrokes += (pad - KeyCode.Keypad0).ToString();
+                }
+            }
+
+            if (Hotkeys.TryGetActionID(last2Keystrokes, out int actionID))
             {
                 last2Keystrokes = "";
-                switch (benchNum)
-                {
-                    case Hotkeys.LastBenchID:
-                        break;
-                    case Hotkeys.StartBenchID:
-                        Events.SetToStart();
-                        break;
-                    case Hotkeys.WarpDeployID:
-                        TopMenu.SetClicked(null);
-                        break;
-                    case Hotkeys.ToggleMenuID:
-                        Benchwarp.GS.ShowMenu = !Benchwarp.GS.ShowMenu;
-                        return;
-                    case Hotkeys.DoorWarpID:
-                        TopMenu.DoorWarpClicked(null);
-                        return;
-                    case Hotkeys.DeployBenchID:
-                        TopMenu.DeployClicked(null);
-                        return;
-                    default:
-                        if (0 <= benchNum && benchNum < Bench.baseBenches.Length)
-                        {
-                            if (Bench.Benches.Contains(Bench.baseBenches[benchNum])) Bench.baseBenches[benchNum].SetBench();
-                            else return;
-                        }
-                        else
-                        {
-                            Benchwarp.instance.LogError($"Unknown internal hotkey code: {benchNum}");
-                            return;
-                        }
-                        break;
-                }
-                ChangeScene.WarpToRespawn();
+                Hotkeys.DoHotkeyAction(actionID);
             }
         }
 
@@ -194,10 +185,5 @@ namespace Benchwarp
                 return _instance;
             }
         }
-
-        private static HashSet<KeyCode> BenchLetters = new()
-        {
-            KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z
-        };
     }
 }

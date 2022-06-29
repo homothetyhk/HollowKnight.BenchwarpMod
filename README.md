@@ -34,56 +34,9 @@ Deploy
 	- Apply Style To All: applies the selected styles to base game benches. Requires a scene reload to take effect. Not all benches are supported.
 
 Bench Hotkeys
-- Each of the following combinations is equivalent to clicking the corresponding bench button, and then the Warp button in Bench Warp mode. In other words, a code for an unselectable bench will result in warping to the current respawn. Hotkeys only perform bench warps; this holds even if the current setting is set to Door Warp mode.
-- **NM**: **N**ailmaster **M**ato
-- **DM**: **D**irt**M**outh
-- **FC**: **F**orgotten **C**rossroads Stag
-- **FS**: **F**orgotten Crossroads Hot **S**prings
-- **SM**: Ancestral (**S**haman) **M**ound
-- **SA**: **SA**lubra
-- **BE**: **B**lack **E**gg
-- **GW**: **G**reenpath **W**aterfall
-- **SS**: **S**tone **S**anctuary
-- **GT**: **G**reenpath **T**oll
-- **GP**: **G**reen**P**ath Stag
-- **LU**: **L**ake of **U**nn
-- **NS**: **N**ailmaster **S**heo
-- **TA**: **T**eacher's **A**rchives
-- **QS**: **Q**ueen's **S**tation
-- **LE**: **L**eg **E**ater
-- **BR**: **BR**etta
-- **MV**: **M**antis **V**illage
-- **CQ**: **C**ity **Q**uirrel
-- **CT**: **C**ity **T**oll
-- **CS**: **C**ity **S**torerooms
-- **WS**: **W**atcher **S**pire
-- **KS**: **K**ing's **S**tation
-- **PH**: **P**leasure **H**ouse
-- **WW**: **W**ater**W**ays
-- **GA**: **G**odhome **A**trium
-- **GR**: **G**odhome **R**oof
-- **HG**: **H**all of **G**ods
-- **DS**: **D**eepnest Hot **S**prings
-- **FT**: **F**ailed **T**ramway
-- **BD**: **B**east's **D**en
-- **BT**: **B**asin **T**oll
-- **HS**: **H**idden **S**tation
-- **NO**: **N**ailmaster **O**ro
-- **EC**: **E**dge **C**amp
-- **CF**: **C**olosseum of **F**ools
-- **BB**: Hive (**b**ee-**b**ee)
-- **PD**: **P**eak **D**ark Room
-- **CG**: **C**rystal **G**uardian
-- **RG**: **R**esting **G**rounds Stag
-- **GM**: **G**rey **M**ourner
-- **QC**: **Q**ueen's Gardens **C**ornifer
-- **QT**: **Q**ueen's Gardens **T**oll
-- **QG**: **Q**ueen's **G**ardens Stag
-- **PE**: **P**alace **E**ntrance
-- **PA**: **P**alace **A**trium
-- **PB**: **P**alace **B**alcony
-- **UT**: **U**pper **T**ram
-- **LT**: **L**ower **T**ram
+- A small 2-digit number is displayed above each bench. Typing that number while paused is equivalent to clicking the corresponding bench button, and then the Warp button in Bench Warp mode. In other words, a code for an unselectable bench will result in warping to the current respawn. Hotkeys only perform bench warps; this holds even if the current setting is set to Door Warp mode.
+
+There are also several convenient commands available by entering certain letter combinations:
 - **LB**: **L**ast **B**ench (equivalent to just clicking Warp)
 - **SB**: **S**tart **B**ench (equivalent to clicking Set Start, then Warp)
 - **WD**: **W**arp to **D**eployed Bench (equivalent to clicking Set in the Deploy submenu, then Warp)
@@ -91,9 +44,11 @@ Bench Hotkeys
 - **DW**: **D**oor **W**arp (equivalent to clicking Door Warp in the Settings menu)
 - **DB**: **D**eploy **B**ench (equivalent to clicking Deploy in the Deploy submenu)
 
-Each hotkey can be remapped by modifying the "hotkeyOverrides" dictionary in the
+In older versions of Benchwarp, hotkeys were implemented through entering a 2 letter sequence associated with the name of the bench. That feature can be reactivated by enabling the Legacy Hotkeys setting in the mod menu, and toggling the mod or restarting the game.
+
+Hotkeys can be remapped by modifying the "hotkeyOverrides" dictionary in the
 mod's global settings file (Benchwarp.GlobalSettings.json, in your saves folder). This dictionary
-should map the default bindings to their replacements. For example, `"hotkeyOverrides": {"BB": "HV"}` remaps the Hive bench to use the hotkey "HV".
+should map the default bindings to their replacements. For example, `"hotkeyOverrides": {"SB": "WS"}` remaps the Start Bench command to use the hotkey "WS".
 Custom hotkeys must be composed of exactly two uppercase letters. 
 
 Credits

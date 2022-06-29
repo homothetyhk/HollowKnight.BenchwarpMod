@@ -57,7 +57,7 @@ namespace Benchwarp
         public static event BenchNameModifier OnGetBenchSceneName;
         public static string GetBenchSceneName(Bench bench)
         {
-            string name =  GetSceneName(bench.sceneName);
+            string name = GetSceneName(bench.sceneName);
             try { OnGetBenchSceneName?.Invoke(bench, ref name); }
             catch (Exception e) { Benchwarp.instance.LogError(e); }
             return name;
@@ -69,6 +69,48 @@ namespace Benchwarp
         public static readonly SequentialEventHandler<string> OnGetSceneName = new();
         public static string GetSceneName(string sceneName) => OnGetSceneName.Invoke(sceneName);
 
+        /// <summary>
+        /// Event invoked to define new hotkey commands. The action will be invoked if the code is entered while the game is paused.
+        /// <br/>The string must be a two letter code. The code may be overriden by GS.HotkeyOverrides.
+        /// <br/>Invalid codes will be ignored, logging an error message. A null code will be silently ignored.
+        /// <br/>Duplicate codes will be ignored, logging an error message. Check Hotkeys.CurrentHotkeys and GS.HotkeyOverrides before returning to avoid this.
+        /// </summary>
+        public static event Func<(string, Action)> HotkeyRequests
+        {
+            add
+            {
+                _hotkeyRequests.Add(value);
+                Hotkeys.RefreshHotkeys();
+            }
+            remove
+            {
+                _hotkeyRequests.Remove(value);
+                Hotkeys.RefreshHotkeys();
+            }
+        }
+        /// <summary>
+        /// Add many subscribers to HotkeyRequests, refreshing the hotkey list at the end.
+        /// </summary>
+        public static void AddHotkeyRequests(IEnumerable<Func<(string, Action)>> fs)
+        {
+            _hotkeyRequests.AddRange(fs);
+            Hotkeys.RefreshHotkeys();
+        }
+        /// <summary>
+        /// Remove many subscribers from HotkeyRequests, refreshing the hotkey list at the end.
+        /// </summary>
+        public static void RemoveHotkeyRequests(IEnumerable<Func<(string, Action)>> fs)
+        {
+            foreach (var f in fs) _hotkeyRequests.Remove(f);
+            Hotkeys.RefreshHotkeys();
+        }
+
+        private static readonly List<Func<(string, Action)>> _hotkeyRequests = new();
+        internal static IEnumerable<(string, Action)> GetHotkeyRequests()
+        {
+            return _hotkeyRequests.Select(f => f());
+        }
+
 
         public static readonly SequentialEventHandler<(string respawnScene, string respawnMarkerName, int respawnType, int mapZone)>
             OnGetStartDef = new();
@@ -78,7 +120,7 @@ namespace Benchwarp
         {
             (string respawnScene, string respawnMarkerName, int _, int _) = GetStartDef();
             return !Benchwarp.LS.atDeployedBench
-                && respawnScene == PlayerData.instance.respawnScene 
+                && respawnScene == PlayerData.instance.respawnScene
                 && respawnMarkerName == PlayerData.instance.respawnMarkerName;
         }
         public static void SetToStart()
@@ -163,25 +205,86 @@ namespace Benchwarp
         {
             return _benchInjectors.SelectMany(f => f());
         }
-    }
 
-    public class SequentialEventHandler<T>
-    {
-        private readonly List<Func<T, T>> modifiers = new();
-
-        public event Func<T, T> Event
+        /// <summary>
+        /// Event which supplies comparers to sort the bench list once generated.
+        /// Comparers will act in order on the list, with a stable sort. The final list will then be grouped by area and flattened.
+        /// </summary>
+        public static event Comparison<Bench> BenchComparisons
         {
-            add => modifiers.Add(value);
-            remove => modifiers.Remove(value);
+            add
+            {
+                _benchComparisons.Add(value);
+                Bench.RefreshBenchList();
+            }
+            remove
+            {
+                _benchComparisons.Remove(value);
+                Bench.RefreshBenchList();
+            }
+        }
+        private static readonly List<Comparison<Bench>> _benchComparisons = new();
+        internal static List<Bench> GetSortedBenchList(List<Bench> benches)
+        {
+            foreach (Comparison<Bench> c in _benchComparisons)
+            {
+                benches.StableSort(c);
+            }
+            return benches.GroupBy(b => b.areaName).SelectMany(g => g).ToList();
         }
 
-        public T Invoke(T defaultValue)
+        private static void StableSort<T>(this IList<T> ts, Comparison<T> comparison)
         {
-            foreach (Func<T, T> f in modifiers)
+            KeyValuePair<int, T>[] keys = new KeyValuePair<int, T>[ts.Count];
+            for (int i = 0; i < ts.Count; i++) keys[i] = new(i, ts[i]);
+            Array.Sort(keys, StableComparer<T>.GetStableComparison(comparison));
+
+            for (int i = 0; i < ts.Count; i++)
             {
-                defaultValue = f(defaultValue);
+                ts[i] = keys[i].Value;
             }
-            return defaultValue;
+        }
+
+        private class StableComparer<T> : IComparer<KeyValuePair<int, T>>
+        {
+            public StableComparer(IComparer<T> comparison) => this.comparer = comparison;
+            private readonly IComparer<T> comparer;
+
+            public static Comparison<KeyValuePair<int, T>> GetStableComparison(Comparison<T> comparison)
+            {
+                int CompareTo(KeyValuePair<int, T> x, KeyValuePair<int, T> y)
+                {
+                    int diff = comparison(x.Value, y.Value);
+                    return diff != 0 ? diff : x.Key - y.Key;
+                }
+                return CompareTo;
+            }
+
+            public int Compare(KeyValuePair<int, T> x, KeyValuePair<int, T> y)
+            {
+                int diff = comparer.Compare(x.Value, y.Value);
+                return diff != 0 ? diff : x.Key - y.Key;
+            }
+        }
+
+        public class SequentialEventHandler<T>
+        {
+            private readonly List<Func<T, T>> modifiers = new();
+
+            public event Func<T, T> Event
+            {
+                add => modifiers.Add(value);
+                remove => modifiers.Remove(value);
+            }
+
+            public T Invoke(T defaultValue)
+            {
+                foreach (Func<T, T> f in modifiers)
+                {
+                    defaultValue = f(defaultValue);
+                }
+                return defaultValue;
+            }
         }
     }
 }
