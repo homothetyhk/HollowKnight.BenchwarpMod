@@ -633,6 +633,7 @@ namespace Benchwarp
 
         public static void DeployClicked(string buttonName)
         {
+            if (!Benchwarp.GS.EnableDeploy) return;
             if (onCooldown) return;
             if (Benchwarp.GS.NoDarkOrDreamRooms && BenchMaker.IsDarkOrDreamRoom()) return;
             if (Benchwarp.GS.NoMidAirDeploy && !HeroController.instance.CheckTouchingGround()) return;
@@ -656,7 +657,7 @@ namespace Benchwarp
 
         public static void SetClicked(string buttonName)
         {
-            if (!Benchwarp.LS.benchDeployed) return;
+            if (!Benchwarp.LS.benchDeployed || Benchwarp.GS.WarpOnly) return;
             Benchwarp.LS.atDeployedBench = true;
         }
 

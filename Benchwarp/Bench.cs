@@ -119,11 +119,11 @@ namespace Benchwarp
         }
 
         /// <summary>
-        /// Sets this as the current respawn. Fails if the bench is not unlocked, either by being visited or by GS.UnlockAllBenches.
+        /// Sets this as the current respawn. No effect if WarpOnly is active or the bench is not unlocked, either by being visited or by GS.UnlockAllBenches.
         /// </summary>
         public void SetBench()
         {
-            if (!Benchwarp.GS.UnlockAllBenches && !HasVisited()) return;
+            if (Benchwarp.GS.WarpOnly || !Benchwarp.GS.UnlockAllBenches && !HasVisited()) return;
             Benchwarp.LS.atDeployedBench = false;
             PlayerData.instance.respawnScene = sceneName;
             PlayerData.instance.respawnMarkerName = respawnMarker;

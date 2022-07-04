@@ -123,8 +123,12 @@ namespace Benchwarp
                 && respawnScene == PlayerData.instance.respawnScene
                 && respawnMarkerName == PlayerData.instance.respawnMarkerName;
         }
+        /// <summary>
+        /// Sets respawn to the respawn marker specified by OnGetStartDef, defaulting to King's Pass. No effect if WarpOnly mode is active.
+        /// </summary>
         public static void SetToStart()
         {
+            if (Benchwarp.GS.WarpOnly) return;
             (string respawnScene, string respawnMarkerName, int respawnType, int mapZone) = GetStartDef();
             Benchwarp.LS.atDeployedBench = false;
             PlayerData.instance.respawnScene = respawnScene;
