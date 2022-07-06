@@ -87,6 +87,20 @@ namespace Benchwarp
             GameManager.instance.ui.AudioGoToGameplay(.2f);
         }
 
+        public static void OnBenchwarpCleanup()
+        {
+            // reset some things not cleaned up when exiting dream sequences, etc
+            if (HeroController.SilentInstance != null)
+            {
+                HeroController.SilentInstance.takeNoDamage = false;
+                if (!BenchMaker.IsDreamRoom() && HeroController.SilentInstance.proxyFSM?.FsmVariables?.FindFsmBool("No Charms") is HutongGames.PlayMaker.FsmBool noCharms) noCharms.Value = false;
+            }
+            if (HutongGames.PlayMaker.FsmVariables.GlobalVariables.FindFsmBool("Is HUD Out") is HutongGames.PlayMaker.FsmBool hudOut && hudOut.Value)
+            {
+                PlayMakerFSM.BroadcastEvent("IN");
+            }
+        }
+
         public static void ChangeToScene(string sceneName, string gateName, float delay = 0f)
         {
             Events.InvokeOnDoorwarp(sceneName, gateName);

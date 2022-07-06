@@ -112,10 +112,19 @@ namespace Benchwarp
         public static bool IsDarkOrDreamRoom()
         {
             return (!PlayerData.instance.hasLantern && GameManager.instance.sm.darknessLevel == 2)
-                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.DREAM_WORLD
-                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODS_GLORY
-                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODSEEKER_WASTE
-                || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.WHITE_PALACE;
+                || IsDreamRoom();
+        }
+
+        public static bool IsDreamRoom()
+        {
+            return GameManager.instance.sm.mapZone switch
+            {
+                GlobalEnums.MapZone.DREAM_WORLD
+                or GlobalEnums.MapZone.GODS_GLORY
+                or GlobalEnums.MapZone.GODSEEKER_WASTE
+                or GlobalEnums.MapZone.WHITE_PALACE => true,
+                _ => false,
+            };
         }
 
         internal static void UpdateStyleFromMenu()

@@ -30,6 +30,7 @@ namespace Benchwarp
             // Imagine if GetPlayerIntHook actually worked
             On.GameManager.OnNextLevelReady += FixRespawnType;
             On.PlayMakerFSM.OnEnable += OnEnableBenchFsm;
+            Events.OnBenchwarp += ChangeScene.OnBenchwarpCleanup;
 
             GUIController.Setup();
             GUIController.Instance.BuildMenus();
@@ -44,6 +45,23 @@ namespace Benchwarp
                 Hotkeys.ApplyLegacyHotkeys();
             }
             Hotkeys.RefreshHotkeys();
+        }
+
+        public void Unload()
+        {
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= BenchMaker.TryToDeploy;
+            ModHooks.SetPlayerBoolHook -= BenchWatcher;
+            ModHooks.GetPlayerStringHook -= RespawnAtDeployedBench;
+            ModHooks.SetPlayerStringHook -= RemoveRespawnFromDeployedBench;
+            On.GameManager.OnNextLevelReady -= FixRespawnType;
+            On.PlayMakerFSM.OnEnable -= OnEnableBenchFsm;
+            Events.OnBenchwarp -= ChangeScene.OnBenchwarpCleanup;
+
+            GUIController.Unload();
+
+            BenchMaker.DestroyBench(DontDeleteData: true);
+
+            Hotkeys.RemoveLegacyHotkeys();
         }
 
         private static void OnEnableBenchFsm(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM fsm)
@@ -174,20 +192,6 @@ namespace Benchwarp
             }
 
             orig(self);
-        }
-
-        public void Unload()
-        {
-            UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= BenchMaker.TryToDeploy;
-            ModHooks.SetPlayerBoolHook -= BenchWatcher;
-            ModHooks.GetPlayerStringHook -= RespawnAtDeployedBench;
-            ModHooks.SetPlayerStringHook -= RemoveRespawnFromDeployedBench;
-            On.GameManager.OnNextLevelReady -= FixRespawnType;
-            On.PlayMakerFSM.OnEnable -= OnEnableBenchFsm;
-
-            Hotkeys.RemoveLegacyHotkeys();
-            BenchMaker.DestroyBench(DontDeleteData: true);
-            GUIController.Unload();
         }
 
         new public void SaveGlobalSettings()
