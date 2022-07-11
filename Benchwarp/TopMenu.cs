@@ -373,7 +373,9 @@ namespace Benchwarp
                     panelButtonHeight[bench.areaName] += new Vector2(0f, 40f);
                 }
 
-                rootPanel.GetPanel(bench.areaName)
+                if (Benchwarp.GS.EnableHotkeys)
+                {
+                    rootPanel.GetPanel(bench.areaName)
                         .AddText
                         (
                             bench.name + " index",
@@ -383,6 +385,7 @@ namespace Benchwarp
                             GUIController.Instance.TrajanNormal,
                             fontSize - 1
                         );
+                }
                 rootPanel.GetPanel(bench.areaName)
                          .AddButton
                          (
@@ -780,6 +783,7 @@ namespace Benchwarp
         {
             Benchwarp.GS.EnableHotkeys = !Benchwarp.GS.EnableHotkeys;
             Benchwarp.instance.SaveGlobalSettings();
+            RebuildMenu();
         }
 
         #endregion
