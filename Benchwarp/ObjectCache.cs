@@ -8,21 +8,36 @@ namespace Benchwarp
     public static class ObjectCache
     {
         public static bool DidPreload { get; private set; }
+        private static bool _forcedPreload = false;
         private static GameObject _preloadedBench;
         public static GameObject GetNewBench() => GameObject.Instantiate(_preloadedBench);
 
+        /// <summary>
+        /// Forces Benchwarp to preload a bench regardless of the NoPreload setting.
+        /// </summary>
+        public static void ForcePreload()
+        {
+            _forcedPreload = true;
+        }
 
         public static List<(string, string)> GetPreloadNames()
         {
-            DidPreload = !Benchwarp.GS.NoPreload;
+            DidPreload = !Benchwarp.GS.NoPreload || _forcedPreload;
+            return DidPreload 
+                ? new(1) { ("Crossroads_47", "RestBench"), }
+                : new(0);
+        }
 
-            if (Benchwarp.GS.NoPreload)
-            {
-                return new List<(string, string)>();
-            }
+        public static void SavePreloads(Dictionary<string, Dictionary<string, GameObject>> objects)
+        {
+            if (objects == null || !DidPreload) return; //happens if mod is reloaded
+            _preloadedBench = objects.Values.First().Values.First();
+            UnityEngine.Object.DontDestroyOnLoad(_preloadedBench);
+        }
 
-           
-            return new List<(string, string)>
+        // Old preload list
+        /*
+            new List<(string, string)>
             {
                 ("Crossroads_47", "RestBench"),
                 /*
@@ -51,29 +66,7 @@ namespace Benchwarp
                 ("White_Palace_01", "WhiteBench"),
                 ("Room_Final_Boss_Atrium", "RestBench"),
                 ("GG_Atrium_Roof", "RestBench (1)")
-                */
             };
-        }
-
-        public static void SavePreloads(Dictionary<string, Dictionary<string, GameObject>> objects)
-        {
-            if (objects == null || !DidPreload) return; //happens if mod is reloaded
-            _preloadedBench = objects.Values.First().Values.First();
-            UnityEngine.Object.DontDestroyOnLoad(_preloadedBench);
-
-            /*
-            foreach (var kdp in objects)
-            {
-                string sceneName = kdp.Key;
-                foreach (var kvp in kdp.Value)
-                {
-                    string objectName = kvp.Key;
-                    GameObject obj = kvp.Value;
-                }
-            }
-
-            JsonUtil.Serialize(BenchStyle._styles, "styles.json");
             */
-        }
     }
 }
