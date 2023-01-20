@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace Benchwarp.CanvasUtil
 {
@@ -181,8 +180,8 @@ namespace Benchwarp.CanvasUtil
 
         public void Destroy()
         {
-            Object.Destroy(buttonObj);
-            Object.Destroy(textObj);
+            UObject.Destroy(buttonObj);
+            UObject.Destroy(textObj);
         }
     }
 }

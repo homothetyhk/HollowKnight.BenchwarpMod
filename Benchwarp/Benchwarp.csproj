@@ -8,8 +8,15 @@
     <AssemblyName>Benchwarp</AssemblyName>
     <AssemblyVersion>3.2.1</AssemblyVersion>
     <LangVersion>latest</LangVersion>
+    <ImplicitUsings>true</ImplicitUsings>
     <FileVersion>3.2.1</FileVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <Using Remove="System.Net.Http" />
+    <Using Remove="System.Threading" />
+    <Using Remove="System.Threading.Tasks" />
+    <Using Include="UnityEngine.Object" Alias="UObject" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Assembly-CSharp.dll</HintPath>

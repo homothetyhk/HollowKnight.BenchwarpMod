@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using System;
-
-namespace Benchwarp
+﻿namespace Benchwarp
 {
     public class SaveSettings
     {

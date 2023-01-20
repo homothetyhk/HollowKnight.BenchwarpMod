@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Benchwarp
+﻿namespace Benchwarp
 {
     public class MenuToggleableAttribute : Attribute
     {

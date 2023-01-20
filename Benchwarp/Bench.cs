@@ -1,10 +1,8 @@
 ﻿using GlobalEnums;
 using Modding.Converters;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using UnityEngine;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using UnityEngine;
 
 namespace Benchwarp
 {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Benchwarp.CanvasUtil;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
-using Benchwarp.CanvasUtil;
-
 using USceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace Benchwarp

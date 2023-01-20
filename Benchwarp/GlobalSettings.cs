@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Benchwarp
+﻿namespace Benchwarp
 {
     public class GlobalSettings
     {

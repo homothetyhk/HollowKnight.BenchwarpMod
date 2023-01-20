@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System;
-
-namespace Benchwarp
+﻿namespace Benchwarp
 {
     public class MenuIntAttribute : Attribute
     {

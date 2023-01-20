@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace Benchwarp.CanvasUtil
 {
@@ -109,7 +108,7 @@ namespace Benchwarp.CanvasUtil
 
         public void Destroy()
         {
-            Object.Destroy(textObj);
+            UObject.Destroy(textObj);
         }
     }
 }

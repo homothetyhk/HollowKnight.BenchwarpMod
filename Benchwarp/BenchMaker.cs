@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using HutongGames.PlayMaker;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using HutongGames.PlayMaker;
-using UObject = UnityEngine.Object;
 
 namespace Benchwarp
 {

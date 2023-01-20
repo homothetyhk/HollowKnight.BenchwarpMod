@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using System.Linq;
 
 namespace Benchwarp.CanvasUtil
 {
