@@ -658,6 +658,7 @@ namespace Benchwarp
         {
             if (!Benchwarp.LS.benchDeployed || Benchwarp.GS.WarpOnly) return;
             Benchwarp.LS.atDeployedBench = true;
+            Events.InvokeOnBenchSelected();
         }
 
         #region Deploy options

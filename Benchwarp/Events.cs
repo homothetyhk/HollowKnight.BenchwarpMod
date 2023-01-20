@@ -1,10 +1,20 @@
-using GlobalEnums;
+﻿using GlobalEnums;
 
 namespace Benchwarp
 {
     public static class Events
     {
         public delegate void BenchNameModifier(Bench bench, ref string name);
+
+        /// <summary>
+        /// Event invoked after a bench is selected from the menu, or the deployed bench is selected.
+        /// </summary>
+        public static event Action OnBenchSelected;
+        internal static void InvokeOnBenchSelected()
+        {
+            try { OnBenchSelected?.Invoke(); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+        }
 
         /// <summary>
         /// Event invoked when a request to benchwarp is made, before beginning to warp.

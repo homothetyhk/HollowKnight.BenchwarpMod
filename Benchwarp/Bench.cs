@@ -97,9 +97,9 @@ namespace Benchwarp
             else Benchwarp.LS.lockedBenches.Remove(ToBenchKey());
         }
 
-        public bool AtBench() => PlayerData.instance.respawnScene == sceneName &&
-            PlayerData.instance.respawnMarkerName == respawnMarker &&
-            PlayerData.instance.respawnType == respawnType &&
+        public bool AtBench() => PlayerData.instance.GetString(nameof(PlayerData.respawnScene)) == sceneName &&
+            PlayerData.instance.GetString(nameof(PlayerData.respawnMarkerName)) == respawnMarker &&
+            PlayerData.instance.GetInt(nameof(PlayerData.respawnType)) == respawnType &&
             !Benchwarp.LS.atDeployedBench;
 
         [JsonConstructor]
@@ -127,6 +127,7 @@ namespace Benchwarp
             PlayerData.instance.respawnMarkerName = respawnMarker;
             PlayerData.instance.respawnType = respawnType;
             PlayerData.instance.mapZone = mapZone;
+            Events.InvokeOnBenchSelected();
         }
         public static Bench GetStyleBench(string style)
         {
