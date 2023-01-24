@@ -50,8 +50,20 @@ namespace Benchwarp
         public static event BenchNameModifier OnGetBenchName;
         public static string GetBenchName(Bench bench)
         {
-            string name = bench.name;
+            string name = I18n.Localize(bench.name);
             try { OnGetBenchName?.Invoke(bench, ref name); }
+            catch (Exception e) { Benchwarp.instance.LogError(e); }
+            return name;
+        }
+
+        /// <summary>
+        /// Event invoked to determine the displayed area of a bench.
+        /// </summary>
+        public static event BenchNameModifier OnGetBenchArea;
+        public static string GetBenchArea(Bench bench)
+        {
+            string name = I18n.Localize(bench.areaName);
+            try { OnGetBenchArea?.Invoke(bench, ref name); }
             catch (Exception e) { Benchwarp.instance.LogError(e); }
             return name;
         }
@@ -62,7 +74,7 @@ namespace Benchwarp
         public static event BenchNameModifier OnGetBenchSceneName;
         public static string GetBenchSceneName(Bench bench)
         {
-            string name = GetSceneName(bench.sceneName);
+            string name = GetSceneName(I18n.Localize(bench.sceneName));
             try { OnGetBenchSceneName?.Invoke(bench, ref name); }
             catch (Exception e) { Benchwarp.instance.LogError(e); }
             return name;
