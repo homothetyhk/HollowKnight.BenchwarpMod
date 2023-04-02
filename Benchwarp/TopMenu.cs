@@ -152,7 +152,7 @@ namespace Benchwarp
                     s => rootPanel.TogglePanel(name),
                     buttonRect,
                     GUIController.Instance.TrajanBold,
-                    name
+                    I18n.Localize(name)
                 );
 
                 return newPanel;
@@ -168,7 +168,7 @@ namespace Benchwarp
                 WarpClicked,
                 buttonRect,
                 GUIController.Instance.TrajanBold,
-                "Warp"
+                I18n.Localize("Warp")
             );
 
             if (Benchwarp.GS.EnableDeploy)
@@ -184,7 +184,7 @@ namespace Benchwarp
                         pair.Value.Item1,
                         buttonRect,
                         GUIController.Instance.TrajanBold,
-                        pair.Key,
+                        I18n.Localize(pair.Key),
                         fontSize: 11
                     );
                 }
@@ -195,7 +195,7 @@ namespace Benchwarp
 
                     foreach (string styleName in BenchStyle.StyleNames)
                     {
-                        AddButton(nearStyle, styleName, NearStyleChanged, position);
+                        AddButton(nearStyle, styleName, NearStyleChanged, position, I18n.Localize(styleName));
 
                         position += new Vector2(0f, 23f);
                     }
@@ -208,7 +208,7 @@ namespace Benchwarp
 
                     foreach (string styleName in BenchStyle.StyleNames)
                     {
-                        AddButton(farStyle, styleName, FarStyleChanged, position);
+                        AddButton(farStyle, styleName, FarStyleChanged, position, I18n.Localize(styleName));
 
                         position += new Vector2(0f, 23f);
                     }
@@ -227,7 +227,8 @@ namespace Benchwarp
                         options,
                         name,
                         action,
-                        new Vector2(5f, 25 + i * 40)
+                        new Vector2(5f, 25 + i * 40),
+                        I18n.Localize(name)
                     );
                 }
             }
@@ -247,7 +248,8 @@ namespace Benchwarp
                     settings,
                     name,
                     action,
-                    new Vector2(5f, 25 + i * 40)
+                    new Vector2(5f, 25 + i * 40),
+                    I18n.Localize(name)
                 );
             }
             settings.SetActive(false, true);
@@ -323,7 +325,7 @@ namespace Benchwarp
                     FlipClicked,
                     buttonRect,
                     GUIController.Instance.TrajanBold,
-                    "Flip"
+                    I18n.Localize("Flip")
                 );
 
                 rootPanel.FixRenderOrder();
@@ -344,7 +346,7 @@ namespace Benchwarp
                         pair.Value.Item1,
                         buttonRect,
                         GUIController.Instance.TrajanBold,
-                        pair.Key
+                        I18n.Localize(pair.Key)
                     );
                 }
             }
@@ -406,7 +408,7 @@ namespace Benchwarp
                 AllClicked,
                 buttonRect,
                 GUIController.Instance.TrajanBold,
-                "All"
+                I18n.Localize("All")
             );
 
             rootPanel.FixRenderOrder();
@@ -490,7 +492,7 @@ namespace Benchwarp
 
                 if (cooldown <= 0 && onCooldown)
                 {
-                    deploy.UpdateText("Deploy");
+                    deploy.UpdateText(I18n.Localize("Deploy"));
                     onCooldown = false;
                 }
 
