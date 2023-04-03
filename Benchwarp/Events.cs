@@ -45,36 +45,39 @@ namespace Benchwarp
         }
 
         /// <summary>
-        /// Event invoked to determine the displayed name of a bench.
+        /// Event invoked to determine the displayed name of a bench. The initial value of the name parameter is <see cref="Bench.name"/> after localization.
+        /// It is the subscriber's responsibility to localize if the name is modified.
         /// </summary>
         public static event BenchNameModifier OnGetBenchName;
         public static string GetBenchName(Bench bench)
         {
-            string name = I18n.Localize(bench.name);
+            string name = Localize(bench.name);
             try { OnGetBenchName?.Invoke(bench, ref name); }
             catch (Exception e) { Benchwarp.instance.LogError(e); }
             return name;
         }
 
         /// <summary>
-        /// Event invoked to determine the displayed area of a bench.
+        /// Event invoked to determine the displayed area of a bench. The initial value of the name parameter is <see cref="Bench.areaName"/> after localization.
+        /// It is the subscriber's responsibility to localize if the name is modified.
         /// </summary>
         public static event BenchNameModifier OnGetBenchArea;
         public static string GetBenchArea(Bench bench)
         {
-            string name = I18n.Localize(bench.areaName);
+            string name = Localize(bench.areaName);
             try { OnGetBenchArea?.Invoke(bench, ref name); }
             catch (Exception e) { Benchwarp.instance.LogError(e); }
             return name;
         }
 
         /// <summary>
-        /// Event invoked to determine the displayed scene of a bench. Runs after OnGetSceneName.
+        /// Event invoked to determine the displayed scene of a bench. The initial value of the name parameter is the result of <see cref="GetSceneName(string)"/> on <see cref="Bench.sceneName"/> after localization.
+        /// It is the subscriber's responsibility to localize if the name is modified.
         /// </summary>
         public static event BenchNameModifier OnGetBenchSceneName;
         public static string GetBenchSceneName(Bench bench)
         {
-            string name = GetSceneName(I18n.Localize(bench.sceneName));
+            string name = GetSceneName(bench.sceneName);
             try { OnGetBenchSceneName?.Invoke(bench, ref name); }
             catch (Exception e) { Benchwarp.instance.LogError(e); }
             return name;
@@ -82,9 +85,10 @@ namespace Benchwarp
 
         /// <summary>
         /// Event invoked to determine the displayed name of a scene. Runs before OnGetBenchSceneName, when relevant.
+        /// The initial value is the unlocalized scene name. The final value is passed to localization before <see cref="GetSceneName(string)"/> returns.
         /// </summary>
         public static readonly SequentialEventHandler<string> OnGetSceneName = new();
-        public static string GetSceneName(string sceneName) => OnGetSceneName.Invoke(sceneName);
+        public static string GetSceneName(string sceneName) => Localize(OnGetSceneName.Invoke(sceneName));
 
         /// <summary>
         /// Event invoked to define new hotkey commands. The action will be invoked if the code is entered while the game is paused.

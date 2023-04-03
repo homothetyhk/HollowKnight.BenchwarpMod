@@ -8,6 +8,7 @@ namespace Benchwarp
     {
         internal static void Hook()
         {
+            HookLocalization();
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += BenchMaker.TryToDeploy;
             ModHooks.SetPlayerBoolHook += BenchWatcher;
             ModHooks.GetPlayerStringHook += RespawnAtDeployedBench;
@@ -20,6 +21,7 @@ namespace Benchwarp
 
         internal static void Unhook()
         {
+            UnhookLocalization();
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= BenchMaker.TryToDeploy;
             ModHooks.SetPlayerBoolHook -= BenchWatcher;
             ModHooks.GetPlayerStringHook -= RespawnAtDeployedBench;
@@ -145,7 +147,7 @@ namespace Benchwarp
             nearStyle.ApplyFsmAndPositionChanges(benchGO, position);
             nearStyle.ApplyLitSprite(benchGO);
             farStyle.ApplyDefaultSprite(benchGO);
-            UnityEngine.Object.Destroy(benchGO.GetComponent<RestBenchTilt>());
+            UObject.Destroy(benchGO.GetComponent<RestBenchTilt>());
         }
     }
 }

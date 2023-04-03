@@ -16,6 +16,7 @@
     <Using Remove="System.Threading" />
     <Using Remove="System.Threading.Tasks" />
     <Using Include="UnityEngine.Object" Alias="UObject" />
+    <Using Include="Benchwarp.Localization" Static="true"/>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">

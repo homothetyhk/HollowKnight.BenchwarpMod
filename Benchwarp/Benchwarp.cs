@@ -95,7 +95,7 @@ namespace Benchwarp
         public List<IMenuMod.MenuEntry> GetMenuData(IMenuMod.MenuEntry? toggleButtonEntry)
         {
             IMenuMod.MenuEntry e = toggleButtonEntry.Value;
-            IMenuMod.MenuEntry entry = new(e.Name, e.Values, I18n.Localize("Toggle all effects of the Benchwarp mod."), e.Saver, e.Loader);
+            IMenuMod.MenuEntry entry = new(e.Name, e.Values, Localize("Toggle all effects of the Benchwarp mod."), e.Saver, e.Loader);
 
             List<IMenuMod.MenuEntry> menuEntries = new() { entry };
 
@@ -105,8 +105,8 @@ namespace Benchwarp
                 {
                     menuEntries.Add(new()
                     {
-                        Name = I18n.Localize(mi.name),
-                        Description = I18n.Localize(mi.description),
+                        Name = Localize(mi.name),
+                        Description = Localize(mi.description),
                         Values = mi.values,
                         Saver = opt => fi.SetValue(GS, int.Parse(mi.values[opt])),
                         Loader = () =>
@@ -120,8 +120,8 @@ namespace Benchwarp
                 {
                     menuEntries.Add(new()
                     {
-                        Name = I18n.Localize(mt.name),
-                        Description = I18n.Localize(mt.description),
+                        Name = Localize(mt.name),
+                        Description = Localize(mt.description),
                         Values = bools,
                         Saver = opt => { fi.SetValue(GS, opt == 0); TopMenu.RebuildMenu(); },
                         Loader = () => (bool)fi.GetValue(GS) ? 0 : 1

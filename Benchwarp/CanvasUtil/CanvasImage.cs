@@ -94,7 +94,7 @@ namespace Benchwarp.CanvasUtil
 
         public void Destroy()
         {
-            GameObject.Destroy(imageObj); ;
+            UObject.Destroy(imageObj); ;
         }
     }
 }

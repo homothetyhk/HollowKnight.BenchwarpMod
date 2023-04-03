@@ -77,7 +77,7 @@ namespace Benchwarp
         static BenchStyle()
         {
             _styles = JsonUtil.Deserialize<Dictionary<string, BenchStyle>>("Benchwarp.Resources.styles.json");
-            _validStyles = SpriteManager.GetValidStyles(BenchStyle.StyleNames);
+            _validStyles = SpriteManager.GetValidStyles(StyleNames);
             foreach (string s in StyleNames.Except(_validStyles)) Benchwarp.instance.Log($"Invalid style: {s}");
         }
     }

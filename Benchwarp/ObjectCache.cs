@@ -7,7 +7,7 @@ namespace Benchwarp
         public static bool DidPreload { get; private set; }
         private static bool _forcedPreload = false;
         private static GameObject _preloadedBench;
-        public static GameObject GetNewBench() => GameObject.Instantiate(_preloadedBench);
+        public static GameObject GetNewBench() => UObject.Instantiate(_preloadedBench);
 
         /// <summary>
         /// Forces Benchwarp to preload a bench regardless of the NoPreload setting.
@@ -29,7 +29,7 @@ namespace Benchwarp
         {
             if (objects == null || !DidPreload) return; //happens if mod is reloaded
             _preloadedBench = objects.Values.First().Values.First();
-            UnityEngine.Object.DontDestroyOnLoad(_preloadedBench);
+            UObject.DontDestroyOnLoad(_preloadedBench);
         }
 
         // Old preload list
