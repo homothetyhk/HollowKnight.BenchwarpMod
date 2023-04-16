@@ -6,10 +6,10 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RootNamespace>Benchwarp</RootNamespace>
     <AssemblyName>Benchwarp</AssemblyName>
-    <AssemblyVersion>3.2.2</AssemblyVersion>
+    <AssemblyVersion>3.2.3</AssemblyVersion>
+    <FileVersion>3.2.3</FileVersion>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>true</ImplicitUsings>
-    <FileVersion>3.2.2</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <Using Remove="System.Net.Http" />
