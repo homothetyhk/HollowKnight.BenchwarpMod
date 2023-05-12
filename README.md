@@ -16,6 +16,7 @@ Options
 	- While active, the Warp button can only be used to warp to the selected transition, and will not warp to respawn.
 	- The Flip button is used to change selection to the (vanilla) target of the currently selected transition.
 - Enable Hotkeys: lets you warp to benches by typing a short key sequence rather than clicking the menu
+- Override Localization: leaves bench names & UI in English when the game is in Chinese
 
 Deploy
 - Deploy button: places a bench at the current location
