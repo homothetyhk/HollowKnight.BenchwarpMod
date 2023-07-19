@@ -30,6 +30,8 @@
         public bool EnableHotkeys = false;
         [MenuToggleable(name: "Legacy Hotkeys", description: "Toggle Benchwarp or restart to apply changes")]
         public bool LegacyHotkeys = false;
+        [MenuToggleable(name: "Override Localization", description: "Keeps Benchwarp in English regardless of game language")]
+        public bool OverrideLocalization = false;
 
         public Dictionary<string, string> HotkeyOverrides = new();
     }

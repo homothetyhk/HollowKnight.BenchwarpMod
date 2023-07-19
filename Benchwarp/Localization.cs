@@ -55,6 +55,8 @@ public static class Localization
 
     public static string Localize(string text) 
     {
+        if (Benchwarp.GS.OverrideLocalization) return text;
+
         return _map is not null && _map.TryGetValue(text, out string newText) ? newText : text;
     }
 }
