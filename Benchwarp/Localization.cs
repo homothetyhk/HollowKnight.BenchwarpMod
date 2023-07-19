@@ -48,6 +48,7 @@ public static class Localization
         return newLang switch
         {
             LanguageCode.ZH => "zh",
+            LanguageCode.PT => "pt",
             _ => null
         };
     }
