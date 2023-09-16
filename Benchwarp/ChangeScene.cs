@@ -63,6 +63,8 @@ namespace Benchwarp
 
             yield return new WaitWhile(() => GameManager.instance.IsInSceneTransition);
 
+            EventRegister.SendEvent("UPDATE BLUE HEALTH"); // checks if hp is adjusted for Joni's blessing
+
             // Revert pause menu timescale
             Time.timeScale = 1f;
             GameManager.instance.FadeSceneIn();
