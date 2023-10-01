@@ -52,6 +52,12 @@ mod's global settings file (Benchwarp.GlobalSettings.json, in your saves folder)
 should map the default bindings to their replacements. For example, `"hotkeyOverrides": {"SB": "WS"}` remaps the Start Bench command to use the hotkey "WS".
 Custom hotkeys must be composed of exactly two uppercase letters. 
 
+Some rooms may not be safe to place a deployed bench, including dream areas, Godhome arenas, and Colosseum trials. If you are unable to load into a deployed bench, you can recover through the following steps:
+- Disable Benchwarp using the mod menu. That is, navigate to Options->Mods->Benchwarp Options->Benchwarp and set to Off.
+- Reload the save file. You should now be at your most recent permanent respawn point.
+- Reenable Benchwarp using the mod menu.
+- Use the deploy menu to destroy the old deployed bench, or to deploy a new bench in a safe location.
+
 Credits
 homothety - main developer
 PimpasPimpinela - hotkey support!
