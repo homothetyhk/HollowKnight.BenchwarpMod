@@ -104,10 +104,13 @@ namespace Benchwarp
             }
         }
 
-        public static bool IsDarkOrDreamRoom()
+        public static bool IsUnsafeRoom()
         {
-            return (!PlayerData.instance.hasLantern && GameManager.instance.sm.darknessLevel == 2)
-                || IsDreamRoom();
+            return IsDreamRoom() || GameManager.instance.sceneName switch
+            {
+                "Room_Colosseum_Bronze" or "Room_Colosseum_Silver" or "Room_Colosseum_Gold" => true,
+                _ => false
+            };
         }
 
         public static bool IsDreamRoom()

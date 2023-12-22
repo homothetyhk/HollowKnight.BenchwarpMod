@@ -6,8 +6,8 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RootNamespace>Benchwarp</RootNamespace>
     <AssemblyName>Benchwarp</AssemblyName>
-    <AssemblyVersion>3.2.4</AssemblyVersion>
-    <FileVersion>3.2.4</FileVersion>
+    <AssemblyVersion>3.2.5</AssemblyVersion>
+    <FileVersion>3.2.5</FileVersion>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>

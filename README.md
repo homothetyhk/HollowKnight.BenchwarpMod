@@ -28,7 +28,8 @@ Deploy
 	- Cooldown: adds a 300s cooldown to the deploy button
 	- Noninteractive: deployed bench cannot be interacted with, except via warping (e.g. preventing use during boss fights)
 	- No Mid-Air Deploy: the game must recognize the player as grounded in order to deploy
-	- No Dark Rooms or Dream Rooms: prevents use of deploy in Dream World rooms, and if the player does not have lantern, prevents use of deploy in rooms which are dark
+	- Allow Deploy in Unsafe Rooms: prevents use of deploy in unsafe areas, including Dream World rooms and Colosseum trials.
+	  - This setting can be accessed from the mod menu, but should not be enabled in normal use. Placing a bench in an unsafe room can make it impossible to load into the bench after a menu/death/warp. See the section below for instructions on how to recover a save file in such circumstances.
 	- [Obsolete] Reduce Preloads: when the game starts up, only the selected style is preloaded. To use other styles, the player must restart the game.
 		- As of version 3.0, Reduce Preloads is no longer a setting, and only one bench is preloaded by default.
 	- No preloads: no bench styles are preloaded. The deploy button instead will create a respawn marker. To deploy benches, the player must change the setting and restart the game.

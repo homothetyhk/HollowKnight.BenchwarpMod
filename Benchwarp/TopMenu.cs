@@ -39,7 +39,6 @@ namespace Benchwarp
                     ("Cooldown", CooldownClicked, t.GetField(nameof(GlobalSettings.DeployCooldown))),
                     ("Noninteractive", NoninteractiveClicked, t.GetField(nameof(GlobalSettings.Noninteractive))),
                     ("No Mid-Air Deploy", NoMidAirDeployClicked, t.GetField(nameof(GlobalSettings.NoMidAirDeploy))),
-                    ("No Dark or Dream Rooms", NoDarkOrDreamClicked, t.GetField(nameof(GlobalSettings.NoDarkOrDreamRooms))),
                     ("No Preload", NoPreloadClicked, t.GetField(nameof(GlobalSettings.NoPreload))),
                     ("Apply Style To All", VanillaBenchStylesClicked, t.GetField(nameof(GlobalSettings.ModifyVanillaBenchStyles))),
                 },
@@ -497,7 +496,7 @@ namespace Benchwarp
                 }
 
                 bool cantDeploy = onCooldown
-                    || gs.NoDarkOrDreamRooms && BenchMaker.IsDarkOrDreamRoom()
+                    || !gs.DeployInUnsafeRooms && BenchMaker.IsUnsafeRoom()
                     || gs.NoMidAirDeploy && !HeroController.instance.CheckTouchingGround();
 
                 deploy.SetTextColor(cantDeploy ? Color.red : Color.white);
@@ -636,7 +635,7 @@ namespace Benchwarp
         {
             if (!Benchwarp.GS.EnableDeploy) return;
             if (onCooldown) return;
-            if (Benchwarp.GS.NoDarkOrDreamRooms && BenchMaker.IsDarkOrDreamRoom()) return;
+            if (!Benchwarp.GS.DeployInUnsafeRooms && BenchMaker.IsUnsafeRoom()) return;
             if (Benchwarp.GS.NoMidAirDeploy && !HeroController.instance.CheckTouchingGround()) return;
 
             BenchMaker.DestroyBench();
@@ -701,12 +700,6 @@ namespace Benchwarp
         private static void NoMidAirDeployClicked(string buttonName)
         {
             Benchwarp.GS.NoMidAirDeploy = !Benchwarp.GS.NoMidAirDeploy;
-            Benchwarp.instance.SaveGlobalSettings();
-        }
-
-        private static void NoDarkOrDreamClicked(string buttonName)
-        {
-            Benchwarp.GS.NoDarkOrDreamRooms = !Benchwarp.GS.NoDarkOrDreamRooms;
             Benchwarp.instance.SaveGlobalSettings();
         }
 

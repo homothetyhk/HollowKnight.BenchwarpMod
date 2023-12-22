@@ -14,6 +14,8 @@
         public bool SwapNames = false;
         [MenuToggleable(name: "Enable Deploy")]
         public bool EnableDeploy = true;
+        [MenuToggleable(name: "Allow Deploy in Unsafe Rooms", description: "Placing unsafe benches may break your save.")]
+        public bool DeployInUnsafeRooms = false;
         [MenuToggleable(name: "Always Toggle All")]
         public bool AlwaysToggleAll = false;
         public bool ModifyVanillaBenchStyles = false;
@@ -22,7 +24,7 @@
         public bool DeployCooldown = true;
         public bool Noninteractive = true;
         public bool NoMidAirDeploy = true;
-        public bool NoDarkOrDreamRooms = true;
+        
         public bool NoPreload = false;
         [MenuToggleable(name: "Door Warp")]
         public bool DoorWarp = false;
