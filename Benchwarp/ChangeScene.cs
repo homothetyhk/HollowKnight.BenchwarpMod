@@ -94,7 +94,18 @@ namespace Benchwarp
             if (HeroController.SilentInstance != null)
             {
                 HeroController.SilentInstance.takeNoDamage = false;
-                if (!BenchMaker.IsDreamRoom() && HeroController.SilentInstance.proxyFSM?.FsmVariables?.FindFsmBool("No Charms") is HutongGames.PlayMaker.FsmBool noCharms) noCharms.Value = false;
+
+                switch (GameManager.instance.sm.mapZone)
+                {
+                    case MapZone.DREAM_WORLD:
+                    case MapZone.GODS_GLORY:
+                    case MapZone.GODSEEKER_WASTE:
+                    case MapZone.WHITE_PALACE:
+                        break;
+                    default:
+                        if (HeroController.SilentInstance.proxyFSM?.FsmVariables?.FindFsmBool("No Charms") is HutongGames.PlayMaker.FsmBool noCharms) noCharms.Value = false;
+                        break;
+                }
             }
             if (HutongGames.PlayMaker.FsmVariables.GlobalVariables.FindFsmBool("Is HUD Out") is HutongGames.PlayMaker.FsmBool hudOut && hudOut.Value)
             {

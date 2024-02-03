@@ -106,21 +106,15 @@ namespace Benchwarp
 
         public static bool IsUnsafeRoom()
         {
-            return IsDreamRoom() || GameManager.instance.sceneName switch
-            {
-                "Room_Colosseum_Bronze" or "Room_Colosseum_Silver" or "Room_Colosseum_Gold" => true,
-                _ => false
-            };
-        }
+            if (BossSceneController.IsBossScene || GameManager.instance.sm.mapZone == GlobalEnums.MapZone.DREAM_WORLD) return true;
 
-        public static bool IsDreamRoom()
-        {
-            return GameManager.instance.sm.mapZone switch
+            return GameManager.instance.sceneName switch
             {
-                GlobalEnums.MapZone.DREAM_WORLD
-                or GlobalEnums.MapZone.GODS_GLORY
-                or GlobalEnums.MapZone.GODSEEKER_WASTE
-                or GlobalEnums.MapZone.WHITE_PALACE => true,
+                "Dream_Final"
+                or "Room_Colosseum_Bronze"
+                or "Room_Colosseum_Silver"
+                or "Room_Colosseum_Gold" 
+                  => true,
                 _ => false,
             };
         }
