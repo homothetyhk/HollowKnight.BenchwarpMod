@@ -49,6 +49,7 @@ public static class Localization
         {
             LanguageCode.ZH => "zh",
             LanguageCode.PT => "pt",
+            LanguageCode.FR => "fr",
             _ => null
         };
     }
