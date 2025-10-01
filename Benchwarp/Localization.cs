@@ -5,6 +5,20 @@ namespace Benchwarp;
 public static class Localization
 {
     private static Dictionary<string, string> _map;
+    private static readonly HashSet<LanguageCode> _langs;
+
+    static Localization()
+    {
+        _langs = [];
+        foreach (string s in typeof(Localization).Assembly.GetManifestResourceNames())
+        {
+            string[] components = s.Split('.'); // Benchwarp.Resources.Langs.{code}.json
+            if (components.Length != 5
+                || components[2] != "Langs"
+                ) continue;
+            _langs.Add((LanguageCode)Enum.Parse(typeof(LanguageCode), components[3], ignoreCase: true));
+        }
+    }
 
     internal static void HookLocalization()
     {
@@ -26,11 +40,11 @@ public static class Localization
 
     private static void SetLanguage(LanguageCode code)
     {
-        if (GetBenchwarpLanguageCode(code) is string name)
+        if (_langs.Contains(code))
         {
             try
             {
-                _map = JsonUtil.Deserialize<Dictionary<string, string>>($"Benchwarp.Resources.Langs.{name}.json");
+                _map = JsonUtil.Deserialize<Dictionary<string, string>>($"Benchwarp.Resources.Langs.{code.ToString().ToLowerInvariant()}.json");
             }
             catch (Exception e)
             {
@@ -41,16 +55,6 @@ public static class Localization
         {
             _map = null;
         }
-    }
-
-    private static string GetBenchwarpLanguageCode(LanguageCode newLang)
-    {
-        return newLang switch
-        {
-            LanguageCode.ZH => "zh",
-            LanguageCode.PT => "pt",
-            _ => null
-        };
     }
 
     public static string Localize(string text) 
