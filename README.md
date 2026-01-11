@@ -66,4 +66,10 @@ Serena - developed the UI, as part of DebugMod
 Serena and 5FiftySix6 - developed the Warp method, as part of this mod
 The Embraced One - originally created the menu assets, as part of DebugMod
 
+##  License
+
 Benchwarp is licensed under LGPL. Source code and license can be found at https://github.com/homothetyhk/HollowKnight.BenchwarpMod/
+
+## Installation
+
+Benchwarp can be installed by any of the various modding installers (Scarab, Lumafly, etc) made by the Hollow Knight modding community.
